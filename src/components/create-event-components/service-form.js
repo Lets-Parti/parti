@@ -67,7 +67,7 @@ class ServiceForm extends React.Component
                         <Grid item sm="12" xs="12" align="left">
                             <TextField
                                 id="standard-multiline-static"
-                                placeholder="Tell us about your event"
+                                placeholder="Describe what you need"
                                 multiline
                                 rows={4}
                                 variant="outlined"

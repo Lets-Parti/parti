@@ -1,6 +1,6 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import '../create-event/create-event.css'
+import StaticData from '../../static-data/static-data'
 
 import Navbar from '../../components/navbar'
 import Footer from '../../components/footer'
@@ -8,15 +8,12 @@ import ServiceForm from '../../components/create-event-components/service-form'
 
 import Grid from '@material-ui/core/Grid';
 import LinearWithValueLabel from '../../components/linearprogress-label'
-import IconButton from '@material-ui/core/IconButton';
 import Button from '@material-ui/core/Button';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
-      
-let MAX_NUM_SERVICES = 5
 
 class CreateEvent extends React.Component
 {
-    constructor(props)
+    constructor()
     {
         super()
         this.state = {
@@ -31,7 +28,8 @@ class CreateEvent extends React.Component
 
     newService()
     {
-        if(this.state.services_count < MAX_NUM_SERVICES)
+        let max = StaticData.MAX_NUM_SERVICES
+        if(this.state.services_count < max)
         {
             let newState = this.state.services.concat(
                 <div>
@@ -64,6 +62,7 @@ class CreateEvent extends React.Component
 
     render()
     {
+        console.log(this.state.services)
         return(
             <div>
                 <Navbar />
@@ -89,7 +88,6 @@ class CreateEvent extends React.Component
                         >
                             Add Service
                         </Button>
-
                 </div>
                 </Grid>
 

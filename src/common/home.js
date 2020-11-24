@@ -4,7 +4,6 @@ import Grid from '@material-ui/core/Grid';
 
 import Navbar from '../components/navbar';
 import Footer from '../components/footer'
-import ButtonFill from '../components/button-fill'; 
 
 import bgwavy from '../resources/backgrounds/bgwavy.png'
 import graphicdemo from '../resources/backgrounds/demos.png'
@@ -65,10 +64,15 @@ function IntroText(){
       <p className={classes.banner_description}>Need a DJ for your party? A photographer for your wedding? Parti will help you find the perfect services. Start by creating your first event!</p>
 
       <div className={classes.buttons}>
-        <ButtonFill text='Create an Event' />
+        <button onClick={createEventButtonClick}>Create Event</button>
       </div>
     </div>
   )
+}
+
+function createEventButtonClick()
+{
+  window.location.href = '/create-event'
 }
 
 function GraphicDemo(){

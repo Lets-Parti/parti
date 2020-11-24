@@ -1,5 +1,6 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
+
 import Home from './common/home'
 import ErrorNotFound from './common/404'
 import About from './common/about'
