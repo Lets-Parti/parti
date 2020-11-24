@@ -1,0 +1,26 @@
+.page-content {
+  width: 50%;
+  font-family: Roboto, sans-serif;
+}
+
+.display-flex-center {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.question {
+  color: grey;
+}
+
+.status-bar {
+  width: 75%;
+}
+
+.status {
+  color: gold;
+}
+
+.title {
+  font-size: 2rem;
+}

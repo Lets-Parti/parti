@@ -2,12 +2,9 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Link from '@material-ui/core/Link'
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import logo from '../resources/logos/appicon-whitebg.png';
+import logo from '../resources/logos/main.svg';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -32,10 +29,10 @@ const useStyles = makeStyles((theme) => ({
     },
     logo: {
         height: 50,
-        width: 50,
     }, 
     buttonGroup: {
-        marginLeft: 20
+        marginLeft: 20, 
+        paddingTop: 30
     }
   }));
 
@@ -47,7 +44,7 @@ function Navbar()
         <AppBar position="static" className={classes.navbar}>
           <Toolbar>
 
-            <a href="index.html" className={classes.logo}>
+            <a href="/" className={classes.logo}>
                 <img src={logo} className={classes.logo}></img>
             </a>
 

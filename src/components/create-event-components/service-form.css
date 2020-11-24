@@ -1,0 +1,17 @@
+.form {
+  width: 75%;
+}
+
+.service-form {
+  padding-top: 25px;
+  padding-bottom: 40px;
+  width: 75%;
+}
+
+.seperator {
+  height: 0px;
+}
+
+.form {
+  padding-bottom: 0px;
+}

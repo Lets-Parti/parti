@@ -3,13 +3,12 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 
 import Navbar from '../components/navbar';
-import ButtonClear from '../components/button-clear';
+import Footer from '../components/footer'
 import ButtonFill from '../components/button-fill'; 
 
-
 import bgwavy from '../resources/backgrounds/bgwavy.png'
-import logo from '../resources/logos/appicon.png'
-import { blue } from '@material-ui/core/colors';
+import graphicdemo from '../resources/backgrounds/demos.png'
+
 
 const useStyles = makeStyles((theme) => ({
   intro: {
@@ -20,11 +19,21 @@ const useStyles = makeStyles((theme) => ({
     backgroundSize: '100%',
     width: '100%',
     height: '1000px', 
-    fontFamily: '"Roboto", sans-serif'
+    fontFamily: '"Roboto", sans-serif',
   }, 
+  graphicdemo: {
+    backgroundImage: `url(${graphicdemo})`,
+    backgroundPosition: 'left',
+    backgroundPositionY: 0,
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: '100%',
+    width: '100%',
+    height: '1000px', 
+    fontFamily: '"Roboto", sans-serif',
+  },
   introtext: {
-    padding: theme.spacing(4), 
-    display: 'inline-block'
+    paddingTop: theme.spacing(5), 
+    paddingLeft: theme.spacing(10)
   },
   banner: {
     fontSize: '3rem', 
@@ -36,10 +45,40 @@ const useStyles = makeStyles((theme) => ({
     color: '#505F98'
   }, 
   banner_description: {
-    marginTop: 40,
-    color: '#505F98'
+    marginTop: 20,
+    color: '#505F98', 
+    lineHeight: 2
+  },
+  buttons: {
+    marginTop: '50px'
   }
 }));
+
+function IntroText(){
+  const classes = useStyles(); 
+
+  return(
+    <div className={classes.introtext}>
+      <h1 className={classes.banner}>Effortless Event Planning</h1>
+
+      <p className={classes.banner_pitch}>Manage all of your event's needs in 1 app</p> 
+      <p className={classes.banner_description}>Need a DJ for your party? A photographer for your wedding? Parti will help you find the perfect services. Start by creating your first event!</p>
+
+      <div className={classes.buttons}>
+        <ButtonFill text='Create an Event' />
+      </div>
+    </div>
+  )
+}
+
+function GraphicDemo(){
+  const classes = useStyles(); 
+  
+  return(
+    <div className={classes.graphicdemo}></div>
+  )
+}
+
 
 function Home() {
   const classes = useStyles(); 
@@ -50,36 +89,20 @@ function Home() {
       
       <div className={classes.intro}>
       <Grid container spacing={3}>
-        <Grid item xs={6}>
+        <Grid item sm={6} xs={12}>
           <IntroText />
         </Grid>
-        <Grid item xs={6}>
-          (Insert Graphic Demos here )
+        <Grid item sm={6} xs={12}>
+          <GraphicDemo />
         </Grid>
       </Grid>
-
       </div>
+
+      <Footer />
     </div>
   )
 }
 
-function IntroText(){
-  const classes = useStyles(); 
 
-  return(
-    <div className={classes.introtext}>
-      <h1 className={classes.banner}>Effortless Event Planning</h1>
-
-      <p className={classes.banner_pitch}>Find everything you neeed for your event in 1 app</p> 
-      <p className={classes.banner_description}>Need a DJ for your party? A photographer for your wedding? Parti will help you find the perfect services. Start by 
-          creating an event below
-      </p>
-
-
-      <ButtonFill text='Create an Event' />
-      <ButtonClear text='Learn More' />
-    </div>
-  )
-}
 
 export default Home;
