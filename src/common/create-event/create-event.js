@@ -1,23 +1,23 @@
 import React from 'react';
 import '../create-event/create-event.css'
-import StaticData from '../../static-data/static-data'
+import StaticData from '../../static/static-data'
+import theme from '../../theme'
 
 import Navbar from '../../components/navbar'
-import Footer from '../../components/footer'
 import ServiceForm from '../../components/create-event-components/service-form'
 
 import Grid from '@material-ui/core/Grid';
 import LinearWithValueLabel from '../../components/linearprogress-label'
 import Button from '@material-ui/core/Button';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
+import {ThemeProvider} from '@material-ui/core/styles'
 
-class CreateEvent extends React.Component
+class SelectServices extends React.Component
 {
     constructor()
     {
         super()
         this.state = {
-            progress: 50,
             index: 0,
             services_count: 0,
             services: []
@@ -62,40 +62,62 @@ class CreateEvent extends React.Component
 
     render()
     {
-        console.log(this.state.services)
+        return(
+            <div>
+                <p className="question">What services are you looking for?</p>
+
+                {this.state.services}
+
+                <Button
+                    variant="contained"
+                    startIcon={<AddCircleOutlineIcon />}
+                    onClick={this.newService}
+                    color="primary"
+                >
+                    Add Service
+                </Button>
+            </div>
+        )
+    }
+}
+
+
+class CreateEvent extends React.Component
+{
+    constructor()
+    {
+        super()
+        this.state = {
+            progress: 50,
+            page: 1,
+        }
+    }
+
+    render()
+    {
+        
         return(
             <div>
                 <Navbar />
                 
                 <Grid align="center">
-                <div className="page-content">
-
+                    <ThemeProvider theme={theme}>
+                    <div className="page-content">
                         <p className="title">Create Event</p>
-
                         <div className="status-bar">
-                            <LinearWithValueLabel value={this.state.progress}/>
-                        </div>
+                        <LinearWithValueLabel value={this.state.progress}/>
+                    </div>
 
-                        <p className="question">What services are you looking for?</p>
+                    <SelectServices />
 
-                        {this.state.services}
-
-                        <Button
-                            variant="contained"
-                            color="secondary"
-                            startIcon={<AddCircleOutlineIcon />}
-                            onClick={this.newService}
-                        >
-                            Add Service
-                        </Button>
-                </div>
+                    </div>
+                    </ThemeProvider>
                 </Grid>
-
-            <Footer />
-
             </div>
         )
     }
 }
+
+
 
 export default CreateEvent

@@ -7,7 +7,7 @@ import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Select from 'react-select'
 
-import StaticData from '../../static-data/static-data'
+import StaticData from '../../static/static-data'
 
 class ServiceForm extends React.Component
 {

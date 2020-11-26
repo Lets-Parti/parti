@@ -50,13 +50,13 @@ function Navbar()
 
             <div className={classes.buttonGroup}>
                 <Link href="/">
-                  <Button color="inherit" className={classes.menuButton}>home</Button>
+                  <Button color="" className={classes.menuButton}>home</Button>
                 </Link> 
                 <Link href="/about">
-                  <Button color="inherit" className={classes.menuButton}>about</Button>
+                  <Button color="" className={classes.menuButton}>about</Button>
                 </Link> 
                 <Link href="#">
-                  <Button color="inherit" className={classes.menuButton}>careers</Button>
+                  <Button color="" className={classes.menuButton}>careers</Button>
                 </Link>
             </div>
 
