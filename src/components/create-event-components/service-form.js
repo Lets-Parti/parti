@@ -27,6 +27,8 @@ class ServiceForm extends React.Component
     {
         this.setState({
             [event.target.name]: event.target.value
+        }, () => {
+            this.updateParentState()
         })
     }
 
@@ -34,12 +36,17 @@ class ServiceForm extends React.Component
     {
         this.setState({
             [name]: value
+        }, () =>
+        {
+            this.updateParentState()
         })
     }
 
-    deleteSelf()
+    updateParentState()
     {
-        alert("delete")
+        let data = this.state
+        let index = this.state.index
+        this.props.getChildrenData(index, data)
     }
 
     render(props)

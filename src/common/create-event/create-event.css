@@ -11,6 +11,16 @@
 
 .question {
   color: grey;
+  padding-top: 15px;
+  padding-bottom: 40px;
+  margin-bottom: 0px;
+}
+
+.question2 {
+  color: grey;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+  margin-top: 40px;
 }
 
 .status-bar {
@@ -23,4 +33,16 @@
 
 .title {
   font-size: 2rem;
+}
+
+.seperator {
+  padding-bottom: 20px;
+}
+
+.zipcode {
+  width: 50%;
+}
+
+.general-info-form {
+  width: 75%;
 }

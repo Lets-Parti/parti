@@ -3,8 +3,8 @@
 }
 
 .service-form {
-  padding-top: 25px;
-  padding-bottom: 40px;
+  padding-top: 0px;
+  padding-top: 40px;
   width: 75%;
 }
 
@@ -14,4 +14,13 @@
 
 .form {
   padding-bottom: 0px;
+}
+
+.title {
+  margin-bottom: 0px;
+}
+
+.submit {
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
