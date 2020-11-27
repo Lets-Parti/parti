@@ -1,70 +1,49 @@
-# Getting Started with Create React App
+# Getting Started with Parti!
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The project is built in React.js. It will use MaterialUI framework for front-end and Firebase for back-end
 
-## Available Scripts
+- [React Tutorial](https://www.youtube.com/watch?v=DLX62G4lc44&t=13506s&ab_channel=freeCodeCamp.org)
+- Material UI [documentation](https://material-ui.com/getting-started/installation/)
 
-In the project directory, you can run:
+## Installation
 
-### `yarn start`
+First step is to clone the GitHub repository
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Run `npm install`
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Running `npm install` will install all of the `node_module` dependencies required to start the project
 
-### `yarn test`
+### Run `npm start`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Running an `npm start` will begin your local application in a local server. This is your development environment. The server address is at [http://localhost:3000/](http://localhost:3000/)
 
-### `yarn build`
+## Project Structure
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The /parti folder contains 2 folders (public & src), package.json, and a README.md
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### /parti/public
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+This folder contains `index.html`. Because React is a One-Page web application, you won't be touching the `/parti/public` at all
 
-### `yarn eject`
+### package.json
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+package.json is the project configuration. This is a list of all the `node_module` dependencies. Running an `npm install` will scan through your `package.json` and install all dependencies
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### /parti/src
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+The source folder is where you will be doing all of your work as a developer. See section below for details
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## src folder
 
-## Learn More
+You will be doing all of your development in src folder
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- App.js controls the route switching. Specify the path and component. ex.`<Route exact path="/create-event" component={CreateEvent}></Route>`
+- index.js contains the ReactDOM, which sends the App component to index.html
+- common folder contains all of the common access pages such as home page, about page, etc
+- components folder contains all reusable components.
+- resources folder contains all resources such as images, logo, background art
+- static folder will contain all static data such as constant variables and project configuration
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## GitHub Workflow
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**Do not merge things into master **
