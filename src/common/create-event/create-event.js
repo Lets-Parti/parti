@@ -1,5 +1,5 @@
 import React from 'react';
-import '../create-event/create-event.css'
+import '../../stylesheets/create-event.css'
 import StaticData from '../../static/static-data'
 import theme from '../../theme'
 

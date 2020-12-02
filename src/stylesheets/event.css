@@ -1,0 +1,37 @@
+.eventCard {
+  border: 1px solid #cd72b4;
+  border-radius: 5px;
+  margin-top: 50px;
+}
+
+.eventCardTitle {
+  font-size: 1.5rem;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.eventWrapper {
+  margin: 30px;
+  margin-left: 20px;
+  margin-right: 20px;
+  /* border: 1px solid black; */
+}
+
+.eventCardSubtitle {
+  font-size: 1.25rem;
+  font-weight: lighter;
+  margin-top: 30px;
+}
+
+.eventInfo {
+  font-size: 0.9rem;
+}
+
+.subInfo {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.serviceCard {
+  /* border: 1px solid black; */
+}

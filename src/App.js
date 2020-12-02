@@ -5,6 +5,7 @@ import Home from './common/home'
 import ErrorNotFound from './common/404'
 import About from './common/about'
 import CreateEvent from './common/create-event/create-event'
+import Events from './user/events'
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
         <Route exact path="/about" component={About}></Route>
         <Route exact path="/404" component={ErrorNotFound}></Route>
         <Route exact path="/create-event" component={CreateEvent}></Route>
+        <Route exact path="/events" component={Events}></Route>
         <Redirect to="/404"></Redirect>
       </Switch>
     </Router>
