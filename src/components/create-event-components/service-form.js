@@ -1,5 +1,4 @@
 import React from 'react';
-import '../create-event-components/service-form.css'
 
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';

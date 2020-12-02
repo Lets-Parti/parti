@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import '../stylesheets/event.css'
 
 class ServiceCard extends React.Component

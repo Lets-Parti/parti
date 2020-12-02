@@ -1,11 +1,12 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
 
-import Home from './common/home'
-import ErrorNotFound from './common/404'
-import About from './common/about'
-import CreateEvent from './common/create-event/create-event'
-import Events from './user/events'
+import Home from '../src/pages/home'
+import About from '../src/pages/about'
+import ErrorNotFound from '../src/pages/404'
+
+import CreateEvent from '../src/pages/create-event/create-event'
+import Events from './pages/user/events'
 
 function App() {
 

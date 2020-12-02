@@ -1,8 +1,3 @@
-.page-content {
-  width: 50%;
-  font-family: Roboto, sans-serif;
-}
-
 .display-flex-center {
   align-items: center;
   justify-content: center;
@@ -44,5 +39,19 @@
 }
 
 .general-info-form {
+  width: 100%;
+}
+
+.submit {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.form {
+  padding-bottom: 0px;
   width: 75%;
+}
+
+.service-form {
+  padding-bottom: 50px;
 }

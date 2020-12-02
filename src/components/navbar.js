@@ -45,7 +45,7 @@ function Navbar()
           <Toolbar>
 
             <a href="/" className={classes.logo}>
-                <img src={logo} className={classes.logo}></img>
+                <img src={logo} className={classes.logo} alt="partilogo"></img>
             </a>
 
             <div className={classes.buttonGroup}>

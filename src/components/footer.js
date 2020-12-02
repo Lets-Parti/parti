@@ -10,13 +10,13 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-function FooterContent()
-{
-    const classes = useStyles(); 
-    return(
-        <div>hi</div>
-    )
-}
+// function FooterContent()
+// {
+//     const classes = useStyles(); 
+//     return(
+//         <div>hi</div>
+//     )
+// }
 
 function Footer()
 {

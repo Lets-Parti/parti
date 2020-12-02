@@ -31,7 +31,11 @@ class EventCard extends Component
         let serviceComponents = []
         services.forEach(service =>
         {
-            serviceComponents.push(<ServiceCard data={service} />)
+            serviceComponents.push(
+            <Grid sm="4" xs="6">     
+                <ServiceCard data={service} />
+            </Grid>
+            )
         })
 
         return(
@@ -52,8 +56,10 @@ class EventCard extends Component
 
                         <p className="eventCardSubtitle">Services ({services.length})</p>
                         <hr></hr>
-                        {serviceComponents}
 
+                        <Grid container>
+                            {serviceComponents}
+                        </Grid>
                     </Grid>
                 </div>
             </div>
