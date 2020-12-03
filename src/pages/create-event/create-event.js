@@ -21,6 +21,7 @@ import {
     KeyboardDatePicker,
   } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns'
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 //API 
 import axios from 'axios'
@@ -38,7 +39,9 @@ class CreateEvent extends React.Component
             description: '',
             serviceComponents: [], 
             services_count: 0,
-            services: {}
+            services: {}, 
+            errors: {}, 
+            isLoading: false
         }
         //Method bindings 
         this.onSubmitForm = this.onSubmitForm.bind(this)
@@ -51,6 +54,9 @@ class CreateEvent extends React.Component
 
     onSubmitForm()
     {
+        this.setState({
+            isLoading: true
+        })
 
         let services = []
 
@@ -75,11 +81,11 @@ class CreateEvent extends React.Component
             description: this.state.description, 
             services 
         }
-
+        
         axios.post('/events', JSON.stringify(data), 
         {
             headers: {
-                'Authorization': 'Bearer ' + 'eyJhbGciOiJSUzI1NiIsImtpZCI6IjlhZDBjYjdjMGY1NTkwMmY5N2RjNTI0NWE4ZTc5NzFmMThkOWM3NjYiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vbGV0cy1wYXJ0aSIsImF1ZCI6ImxldHMtcGFydGkiLCJhdXRoX3RpbWUiOjE2MDY5NDUzNDYsInVzZXJfaWQiOiJlVEQ5YmFTeDlDTWVoU2FwQ1RqYWF3NURKREkzIiwic3ViIjoiZVREOWJhU3g5Q01laFNhcENUamFhdzVESkRJMyIsImlhdCI6MTYwNjk0NTM0NiwiZXhwIjoxNjA2OTQ4OTQ2LCJlbWFpbCI6Im1hdHQ4cEBnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsibWF0dDhwQGdtYWlsLmNvbSJdfSwic2lnbl9pbl9wcm92aWRlciI6InBhc3N3b3JkIn19.SmZjPvcZq8Fl1eP8GhMIMWS38xw6nEy5pE5i8HUJlb1U2BsszmtDbQ0SfoxfjLZSnMlXrCmvZqQmrFiBnpamHPUmVsoaN9bwOhxPnwV0VKW_BeQ0fcaMI_2hW_B5hZZJjd1Yjme4r-QUTAveQwJSXFKNroNB9pKYAn1HPS12wf79CQFwWYRglrWB0H1GN-9zE8efh0f4gFRwPotLfHsH3ELZtpubr-mJkhPXxt6wcn7psMjQcfaLmqSjVNbEOjqu1bsmLL2BEG1zjdv8wBhvJtcx5nD57TzIP1gp1A7m02R23_1gI3org1BmaNmxOCG7YD0xinKV_R2qujY8txH14Q',
+                'Authorization': 'Bearer ' + 'eyJhbGciOiJSUzI1NiIsImtpZCI6ImI5ODI2ZDA5Mzc3N2NlMDA1ZTQzYTMyN2ZmMjAyNjUyMTQ1ZTk2MDQiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vbGV0cy1wYXJ0aSIsImF1ZCI6ImxldHMtcGFydGkiLCJhdXRoX3RpbWUiOjE2MDY5NTk2OTQsInVzZXJfaWQiOiJlVEQ5YmFTeDlDTWVoU2FwQ1RqYWF3NURKREkzIiwic3ViIjoiZVREOWJhU3g5Q01laFNhcENUamFhdzVESkRJMyIsImlhdCI6MTYwNjk1OTY5NCwiZXhwIjoxNjA2OTYzMjk0LCJlbWFpbCI6Im1hdHQ4cEBnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsibWF0dDhwQGdtYWlsLmNvbSJdfSwic2lnbl9pbl9wcm92aWRlciI6InBhc3N3b3JkIn19.f6RjNJcOkcpK7H41ppJhGVNnJ1gY9aOC4_EnPOLx7CGVPQxefyX2I9wg69zMok7JtvOhL3vdxL7kbh8dstp1XIL6uvL8eSRlhcKeCkEfZnLbf48qQ3C7c8Div6ZUsrOklfWGC8Enn8iWqtH4F647XCob2wgWFlhbSHug7Ey1k7A5Pj2j8JBOb6LKhLOXwQKjaALfgRBQq6GX6jnEfpOYn0-js2Dvfci6_VCaca30zU7P64F-liUHBPZfdWIoOrFAvyzffoVwiZJtEXgxkGhbi2r40PUcgkJ2fAZitGQNLVoPsP9mJW2mQma7vuUQeXKjyP5BnnTkC3OadxzQ9wWv_Q',
                 'Content-Type': 'application/json'
             }
         })
@@ -95,7 +101,8 @@ class CreateEvent extends React.Component
         {
             console.log(err.response.data)
             this.setState({
-                error: err.response.data
+                errors: err.response.data,
+                isLoading: false
             })
         })
     }
@@ -166,8 +173,15 @@ class CreateEvent extends React.Component
         let AddServiceButton
         let SubmitButton
         let servicesCounter = this.state.services_count > 0 ? `(${this.state.services_count})` : null
+        let missingService = this.state.errors.serviceType ? <p className="errorMessage">{this.state.errors.serviceType}</p> : null
 
-        if(this.state.services_count === 0)
+        console.log(this.state.errors)
+
+        if(this.state.isLoading)                                    
+        {
+            SubmitButton = <CircularProgress color="primary" />
+            AddServiceButton = null
+        }else if(this.state.services_count === 0)
         {
             AddServiceButton =                         
             <div className="addService">
@@ -201,8 +215,8 @@ class CreateEvent extends React.Component
                 >
                 <AddCircleOutlineIcon />
             </IconButton>
-
         }
+
 
         return(
             <div>
@@ -225,6 +239,8 @@ class CreateEvent extends React.Component
                                     name='title'
                                     value={this.state.title}
                                     onChange={this.eventChange}
+                                    helperText={this.state.errors.title}
+                                    error={this.state.errors.title ? true : false}
                                     />
                                 </Grid>
 
@@ -236,6 +252,8 @@ class CreateEvent extends React.Component
                                         name='zipcode'
                                         value={this.state.zipcode}
                                         onChange={this.eventChange}
+                                        helperText={this.state.errors.zipcode}
+                                        error={this.state.errors.zipcode ? true : false}
                                         />
                                 </Grid>
 
@@ -255,6 +273,8 @@ class CreateEvent extends React.Component
                                             'aria-label': 'change date',
                                         }}
                                         style={{marginTop: 25}}
+                                        helperText={this.state.errors.eventDate}
+                                        error={this.state.errors.eventDate ? true : false}
                                         />
                                     </MuiPickersUtilsProvider>
                                 </Grid>
@@ -276,10 +296,10 @@ class CreateEvent extends React.Component
                                 </Grid>
                             </Grid>
                         </div>
-
+                        
                         
                         <div className="services-form">
-                            <p className="question">Services {servicesCounter}</p>
+                            <p className="question">Services {servicesCounter} {missingService}</p>
                             {this.state.serviceComponents}
                         </div>
                         

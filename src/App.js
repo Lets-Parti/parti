@@ -5,6 +5,7 @@ import Home from '../src/pages/home'
 import About from '../src/pages/about'
 import ErrorNotFound from '../src/pages/404'
 
+import SignUp from '../src/pages/signup'
 import CreateEvent from '../src/pages/create-event/create-event'
 import Events from './pages/user/events'
 
@@ -18,6 +19,7 @@ function App() {
         <Route exact path="/404" component={ErrorNotFound}></Route>
         <Route exact path="/create-event" component={CreateEvent}></Route>
         <Route exact path="/events" component={Events}></Route>
+        <Route exact path="/signup" component={SignUp}></Route>
         <Redirect to="/404"></Redirect>
       </Switch>
     </Router>

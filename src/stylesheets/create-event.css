@@ -26,10 +26,6 @@
   color: gold;
 }
 
-.title {
-  font-size: 2rem;
-}
-
 .seperator {
   padding-bottom: 20px;
 }
@@ -54,4 +50,8 @@
 
 .service-form {
   padding-bottom: 50px;
+}
+
+.errorMessage {
+  color: red;
 }
