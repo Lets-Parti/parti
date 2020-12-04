@@ -5,16 +5,22 @@ import Navbar from '../../components/navbar'
 import EventCard from '../../components/event-card'
 import Grid from '@material-ui/core/Grid';
 import {ThemeProvider} from '@material-ui/core/styles'
+import CircularProgress from '@material-ui/core/CircularProgress';
+
+//Redux
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 
 import axios from 'axios'
 
-class Events extends Component
+class Events extends React.Component
 {
     constructor()
     {
         super()
         this.state = {
-            events: null
+            events: null,
+            isLoading: false
         }
     }
 
@@ -22,7 +28,7 @@ class Events extends Component
     {
         let auth = {
             headers: {
-                'Authorization': 'Bearer ' + 'eyJhbGciOiJSUzI1NiIsImtpZCI6IjlhZDBjYjdjMGY1NTkwMmY5N2RjNTI0NWE4ZTc5NzFmMThkOWM3NjYiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vbGV0cy1wYXJ0aSIsImF1ZCI6ImxldHMtcGFydGkiLCJhdXRoX3RpbWUiOjE2MDY5NDUzNDYsInVzZXJfaWQiOiJlVEQ5YmFTeDlDTWVoU2FwQ1RqYWF3NURKREkzIiwic3ViIjoiZVREOWJhU3g5Q01laFNhcENUamFhdzVESkRJMyIsImlhdCI6MTYwNjk0NTM0NiwiZXhwIjoxNjA2OTQ4OTQ2LCJlbWFpbCI6Im1hdHQ4cEBnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsibWF0dDhwQGdtYWlsLmNvbSJdfSwic2lnbl9pbl9wcm92aWRlciI6InBhc3N3b3JkIn19.SmZjPvcZq8Fl1eP8GhMIMWS38xw6nEy5pE5i8HUJlb1U2BsszmtDbQ0SfoxfjLZSnMlXrCmvZqQmrFiBnpamHPUmVsoaN9bwOhxPnwV0VKW_BeQ0fcaMI_2hW_B5hZZJjd1Yjme4r-QUTAveQwJSXFKNroNB9pKYAn1HPS12wf79CQFwWYRglrWB0H1GN-9zE8efh0f4gFRwPotLfHsH3ELZtpubr-mJkhPXxt6wcn7psMjQcfaLmqSjVNbEOjqu1bsmLL2BEG1zjdv8wBhvJtcx5nD57TzIP1gp1A7m02R23_1gI3org1BmaNmxOCG7YD0xinKV_R2qujY8txH14Q'
+                'Authorization': localStorage.FBIdToken
             }
         }   
 
@@ -32,7 +38,6 @@ class Events extends Component
             this.setState({
                 events: JSON.stringify(res.data)
             })
-
         })
         .catch(err =>
         {

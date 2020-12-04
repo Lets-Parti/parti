@@ -2,11 +2,7 @@ import React from 'react';
 
 //Stylesheets
 import '../stylesheets/common.css'
-import '../stylesheets/signup.css'
-
-//Theme
-import {ThemeProvider} from '@material-ui/core/styles'
-import theme from '../theme'
+import '../stylesheets/loginsignup.css'
 
 //Component Imports
 import Navbar from '../components/navbar'
@@ -19,6 +15,12 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 
 //API
 import axios from 'axios'
+
+
+//Redux
+import {connect} from 'react-redux'
+import {signupUser} from '../redux/actions/userActions'
+import PropTypes from 'prop-types'
 
 class SignUp extends React.Component
 {
@@ -63,26 +65,19 @@ class SignUp extends React.Component
             zipcode: this.state.zipcode,
         }
 
-        axios.post('/signup', JSON.stringify(data), 
-        {            
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-        .then(res => 
+        this.props.signupUser(data, this.props.history); 
+    }
+
+    componentWillReceiveProps(nextProps)
+    {
+        if(nextProps.UI.errors)
         {
-            console.log(res)
             this.setState({
-                isLoading: false
+                errors: nextProps.UI.errors
             })
-        })
-        .catch(err => 
-        {
-            console.log(err.response.data)
-            this.setState({
-                errors: err.response.data,
-                isLoading: false
-            })
+        }
+        this.setState({
+            isLoading: nextProps.UI.isLoading
         })
     }
 
@@ -103,7 +98,6 @@ class SignUp extends React.Component
             <div>
                 <Navbar />
                 <Grid align="center">
-                <ThemeProvider theme={theme}>
                     <div className="page-content">
                         <div className="sign-up-form">
                         <p className="title">Sign Up</p>
@@ -192,11 +186,27 @@ class SignUp extends React.Component
                             </div>
                         </div>
                     </div>
-                </ThemeProvider>
                 </Grid>
             </div>
         )
     }
 }
 
-export default SignUp
+SignUp.propTypes = {
+    classes: PropTypes.object.isRequired, 
+    user: PropTypes.object.isRequired, 
+    UI: PropTypes.object.isRequired, 
+    signupUser: PropTypes.func.isRequired
+}
+
+
+const mapStateToProps = (state) => ({
+    user: state.user,
+    UI: state.UI
+})
+
+const mapActionsToProps = {
+    signupUser
+}
+
+export default connect(mapStateToProps, mapActionsToProps)(SignUp)

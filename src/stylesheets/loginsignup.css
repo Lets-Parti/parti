@@ -13,3 +13,8 @@
 .form-seperator {
   height: 20px;
 }
+
+.errorStatement {
+  color: red;
+  margin-top: 0px;
+}

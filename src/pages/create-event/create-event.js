@@ -1,7 +1,6 @@
 import React from 'react';
 import '../../stylesheets/create-event.css'
 import '../../stylesheets/common.css'
-import theme from '../../theme'
 import StaticData from '../../static/static-data'
 
 //SubComponents 
@@ -14,7 +13,6 @@ import Button from '@material-ui/core/Button';
 import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import IconButton from '@material-ui/core/IconButton';
-import {ThemeProvider} from '@material-ui/core/styles'
 import TextField from '@material-ui/core/TextField';
 import {
     MuiPickersUtilsProvider,
@@ -25,7 +23,6 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 
 //API 
 import axios from 'axios'
-
 
 class CreateEvent extends React.Component
 {
@@ -223,7 +220,6 @@ class CreateEvent extends React.Component
                 <Navbar />
 
                 <Grid align="center">
-                    <ThemeProvider theme={theme}>
                     <div className="page-content">
                         <p className="title">Create Event</p>
 
@@ -308,7 +304,6 @@ class CreateEvent extends React.Component
 
 
                     </div>
-                    </ThemeProvider>
                 </Grid>
             </div>
         )
