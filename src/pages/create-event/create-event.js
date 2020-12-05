@@ -21,6 +21,11 @@ import {
 import DateFnsUtils from '@date-io/date-fns'
 import CircularProgress from '@material-ui/core/CircularProgress';
 
+//Redux
+import { connect } from 'react-redux'
+import { createEvent } from '../../redux/actions/dataActions'
+import PropTypes from 'prop-types'
+
 //API 
 import axios from 'axios'
 
@@ -51,10 +56,6 @@ class CreateEvent extends React.Component
 
     onSubmitForm()
     {
-        this.setState({
-            isLoading: true
-        })
-
         let services = []
 
         for(var key of Object.keys(this.state.services))
@@ -78,30 +79,8 @@ class CreateEvent extends React.Component
             description: this.state.description, 
             services 
         }
-        
-        axios.post('/events', JSON.stringify(data), 
-        {
-            headers: {
-                'Authorization': 'Bearer ' + 'eyJhbGciOiJSUzI1NiIsImtpZCI6ImI5ODI2ZDA5Mzc3N2NlMDA1ZTQzYTMyN2ZmMjAyNjUyMTQ1ZTk2MDQiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vbGV0cy1wYXJ0aSIsImF1ZCI6ImxldHMtcGFydGkiLCJhdXRoX3RpbWUiOjE2MDY5NTk2OTQsInVzZXJfaWQiOiJlVEQ5YmFTeDlDTWVoU2FwQ1RqYWF3NURKREkzIiwic3ViIjoiZVREOWJhU3g5Q01laFNhcENUamFhdzVESkRJMyIsImlhdCI6MTYwNjk1OTY5NCwiZXhwIjoxNjA2OTYzMjk0LCJlbWFpbCI6Im1hdHQ4cEBnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsibWF0dDhwQGdtYWlsLmNvbSJdfSwic2lnbl9pbl9wcm92aWRlciI6InBhc3N3b3JkIn19.f6RjNJcOkcpK7H41ppJhGVNnJ1gY9aOC4_EnPOLx7CGVPQxefyX2I9wg69zMok7JtvOhL3vdxL7kbh8dstp1XIL6uvL8eSRlhcKeCkEfZnLbf48qQ3C7c8Div6ZUsrOklfWGC8Enn8iWqtH4F647XCob2wgWFlhbSHug7Ey1k7A5Pj2j8JBOb6LKhLOXwQKjaALfgRBQq6GX6jnEfpOYn0-js2Dvfci6_VCaca30zU7P64F-liUHBPZfdWIoOrFAvyzffoVwiZJtEXgxkGhbi2r40PUcgkJ2fAZitGQNLVoPsP9mJW2mQma7vuUQeXKjyP5BnnTkC3OadxzQ9wWv_Q',
-                'Content-Type': 'application/json'
-            }
-        })
-        .then(res =>
-        {
-            console.log(res); 
-            if(res.status === 201)
-            {
-                this.props.history.push('/events')
-            }
-        })
-        .catch(err =>
-        {
-            console.log(err.response.data)
-            this.setState({
-                errors: err.response.data,
-                isLoading: false
-            })
-        })
+
+        this.props.createEvent(data, this.props.history);
     }
 
     eventChange(event)
@@ -165,6 +144,19 @@ class CreateEvent extends React.Component
         })
     }
 
+    componentWillReceiveProps(nextProps)
+    {
+        if(nextProps.UI.errors)
+        {
+            this.setState({
+                errors: nextProps.UI.errors
+            })
+        }
+        this.setState({
+            isLoading: nextProps.UI.isLoading
+        })
+    }
+
     render()
     {
         let AddServiceButton
@@ -172,7 +164,10 @@ class CreateEvent extends React.Component
         let servicesCounter = this.state.services_count > 0 ? `(${this.state.services_count})` : null
         let missingService = this.state.errors.serviceType ? <p className="errorMessage">{this.state.errors.serviceType}</p> : null
 
-        console.log(this.state.errors)
+        if(this.state.isLoading)
+        {
+            SubmitButton = <CircularProgress />
+        }
 
         if(this.state.isLoading)                                    
         {
@@ -309,5 +304,20 @@ class CreateEvent extends React.Component
         )
     }
 }
+CreateEvent.propTypes = {
+    createEvent: PropTypes.func.isRequired, 
+    data: PropTypes.object.isRequired,
+    UI: PropTypes.object.isRequired
+}
 
-export default CreateEvent
+const mapStateToProps = (state) => ({
+    UI: state.UI,
+    data: state.data
+})
+
+const mapActionsToProps = {
+    createEvent
+}
+
+
+export default connect(mapStateToProps, mapActionsToProps)(CreateEvent)

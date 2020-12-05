@@ -1,18 +1,30 @@
-// import {SET_ERRORS, CLEAR_ERRORS, LOADING_UI} from '../types';
-// const initialState = {
-//     isLoading: false, 
-//     events: null
-// }
+import {SET_EVENTS, LOADING_DATA, CREATE_EVENT} from '../types'
 
-// export default function(state = initialState, action) {
-//     switch(action.type)
-//     {
-//         case SET_AUTHENTICATED: 
-//             return {
-//                 ...state, 
-//                 authenticated: true
-//             }
-//         default: 
-//             return state
-//     }
-// }
+const initialState = {
+    events: [], 
+    isLoading: false
+}
+
+export default function(state = initialState, action) {
+    switch(action.type)
+    {
+        case LOADING_DATA: 
+            return {
+                ...state, 
+                isLoading: true
+            }
+        case SET_EVENTS: 
+            return {
+                ...state, 
+                events: action.payload,
+                isLoading: false
+            }
+        case CREATE_EVENT: 
+            return {
+                ...state, 
+                isLoading: false
+            }
+        default: 
+            return state
+    }
+}

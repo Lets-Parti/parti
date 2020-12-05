@@ -10,3 +10,6 @@ export const LOADING_UI = 'LOADING_UI'
 export const CLEAR_ERRORS = 'CLEAR_ERRORS'
 
 //Data reducer types 
+export const SET_EVENTS = 'SET_EVENTS'
+export const CREATE_EVENT = 'CREATE_EVENT'
+export const LOADING_DATA = 'LOADING_DATA'

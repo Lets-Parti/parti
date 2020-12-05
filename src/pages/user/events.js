@@ -9,7 +9,9 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 
 //Redux
 import { connect } from 'react-redux'
+import { getEvents } from '../../redux/actions/dataActions'
 import PropTypes from 'prop-types'
+
 
 import axios from 'axios'
 
@@ -19,47 +21,30 @@ class Events extends React.Component
     {
         super()
         this.state = {
-            events: null,
-            isLoading: false
+            
         }
     }
 
     componentDidMount()
     {
-        let auth = {
-            headers: {
-                'Authorization': localStorage.FBIdToken
-            }
-        }   
-
-        axios.get('/events/user', auth)
-        .then(res =>
-        {
-            this.setState({
-                events: JSON.stringify(res.data)
-            })
-        })
-        .catch(err =>
-        {
-            console.log(err)
-            console.error(`Could not fetch event data. ${err.code}`);
-        })
-        // let sampleData = [{"createdAt":"2020-11-30T22:49:32.565Z","zipcode":"85286","eventDate":"2021-01-12T00:00:00","userHandle":"matt8p","services":[{"vendorFound":false,"service":{},"serviceType":"Photographer","description":"I need a cool photographer"},{"vendorFound":false,"service":{},"serviceType":"Photographer","description":"I need a cool photographer"},{"vendorFound":false,"service":{},"serviceType":"Photographer","description":"I need a cool photographer"}],"description":"Mom's 20th!","title":"Mom's Anniversary","eventID":"DCkKbWVxGDbO8sVCpfuZ"},{"services":[{"service":{},"description":"I need a DJ for my party","vendorFound":false,"serviceType":"DJ"}],"title":"Matt's Birthday","zipcode":"85286","description":"Matt's 20th Birthday","userHandle":"matt8p","eventDate":"2021-01-12T00:00:00","createdAt":"2020-11-30T22:46:59.721Z","eventID":"nIljOG40icYuGvq4ZSA5"}];
-        // this.setState({
-        //     events: JSON.stringify(sampleData)
-        // })
+        this.props.getEvents(); 
     }
 
     render()
     {
-        let arrayOfEvents = [] 
+        const {events, isLoading} = this.props.data; 
 
-        if(this.state.events !== null)
+        let dataDisplay = null
+        if(isLoading)
         {
-            JSON.parse(this.state.events).map(event=>
+            dataDisplay = <CircularProgress />
+        }else
+        {
+            dataDisplay = []
+            events.forEach(event => 
             {
-                arrayOfEvents.push(<EventCard key={event.eventID} data={event}/>)
-            })
+                dataDisplay.push(<EventCard key={event.eventID} data={event}/>)    
+            });
         }
         
         return(
@@ -69,7 +54,7 @@ class Events extends React.Component
                     <ThemeProvider theme={theme}>
                     <div className="page-content">
                         <p className="title">My Events</p>
-                        {arrayOfEvents}
+                        {dataDisplay}
                     </div>
                     </ThemeProvider>
                 </Grid>
@@ -78,4 +63,18 @@ class Events extends React.Component
     }
 }
 
-export default Events;
+Events.propTypes = {
+    getEvents: PropTypes.func.isRequired, 
+    data: PropTypes.object.isRequired
+}
+
+const mapStateToProps = (state) => ({
+    data: state.data
+})
+
+const mapActionsToProps = {
+    getEvents
+}
+
+
+export default connect(mapStateToProps, mapActionsToProps)(Events)

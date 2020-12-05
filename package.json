@@ -1,7 +1,7 @@
 {
   "name": "parti",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
     "@date-io/date-fns": "^1.3.13",
     "@material-ui/core": "^4.11.0",
@@ -13,6 +13,7 @@
     "axios": "^0.21.0",
     "date-fns": "^2.16.1",
     "jwt-decode": "^3.1.2",
+    "live-server": "^1.2.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-redux": "^7.2.2",
@@ -35,20 +36,14 @@
       "react-app/jest"
     ]
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
   "devDependencies": {
-    "typescript": "^4.1.2"
+    "typescript": "^3.3.1"
   },
   "proxy": "https://us-central1-lets-parti.cloudfunctions.net/api"
 }
