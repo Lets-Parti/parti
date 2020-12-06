@@ -11,7 +11,6 @@ function About() {
 
   return (
     <div>
-        <Navbar />
         <p>(TODO: ABOUT PAGE)</p>
         <h1>Change stuff here</h1>
     </div>

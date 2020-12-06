@@ -5,7 +5,6 @@ function ErrorNotFound() {
 
   return (
     <div>
-        <Navbar />
         <p>404 not found error!</p>
     </div>
   )

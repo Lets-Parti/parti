@@ -8,6 +8,8 @@ import SignUp from '../src/pages/signup'
 import Login from '../src/pages/login'
 import CreateEvent from '../src/pages/create-event/create-event'
 import Events from './pages/user/events'
+//Components
+import Navbar from '../src/components/navbar'
 //Theme
 import {ThemeProvider} from '@material-ui/core/styles'
 import theme from './theme'
@@ -50,16 +52,19 @@ class App extends React.Component
       <ThemeProvider theme={theme}>
       <Provider store={store}>
         <Router>
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/about" component={About} />
-            <Route exact path="/404" component={ErrorNotFound} />
-            <ProtectedRoute exact path="/create-event" component={CreateEvent} />
-            <ProtectedRoute exact path="/events" component={Events} />
-            <AuthRoute exact path="/signup" component={SignUp} />
-            <AuthRoute exact path="/login" component={Login} />
-            <Redirect to="/404"></Redirect>
-          </Switch>
+        <Navbar />
+          <div className="container">
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route exact path="/about" component={About} />
+              <Route exact path="/404" component={ErrorNotFound} />
+              <ProtectedRoute exact path="/create-event" component={CreateEvent} />
+              <ProtectedRoute exact path="/events" component={Events} />
+              <AuthRoute exact path="/signup" component={SignUp} />
+              <AuthRoute exact path="/login" component={Login} />
+              <Redirect to="/404"></Redirect>
+            </Switch>
+            </div>
         </Router>
       </Provider>
       </ThemeProvider>

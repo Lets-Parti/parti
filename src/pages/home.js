@@ -89,8 +89,6 @@ function Home() {
 
   return (
     <div>
-      <Navbar />
-      
       <div className={classes.intro}>
       <Grid container spacing={3}>
         <Grid item sm={6} xs={12}>
@@ -106,7 +104,5 @@ function Home() {
     </div>
   )
 }
-
-
 
 export default Home;

@@ -212,8 +212,6 @@ class CreateEvent extends React.Component
 
         return(
             <div>
-                <Navbar />
-
                 <Grid align="center">
                     <div className="page-content">
                         <p className="title">Create Event</p>

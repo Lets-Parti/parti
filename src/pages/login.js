@@ -69,7 +69,7 @@ class Login extends React.Component
     render()
     {
         let ButtonDisplay = this.state.isLoading ? 
-        <CircularProgress colo="primary" /> 
+        <CircularProgress color="primary" /> 
         :                   
         <Button
             variant="contained"
@@ -84,7 +84,6 @@ class Login extends React.Component
 
         return(
             <div>
-                <Navbar />
                 <Grid align="center">
                     <div className="page-content">
                         <div className="sign-up-form">

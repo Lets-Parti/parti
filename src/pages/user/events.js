@@ -49,7 +49,6 @@ class Events extends React.Component
         
         return(
             <div>
-                <Navbar />
                 <Grid align="center">
                     <ThemeProvider theme={theme}>
                     <div className="page-content">

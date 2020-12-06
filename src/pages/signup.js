@@ -96,7 +96,6 @@ class SignUp extends React.Component
 
         return(
             <div>
-                <Navbar />
                 <Grid align="center">
                     <div className="page-content">
                         <div className="sign-up-form">
