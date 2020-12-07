@@ -51,3 +51,19 @@ You will be doing all of your development in src folder
 \*change\*\*
 
 ** This is aaric change **
+
+## Github Commands 
+- `git checkout -b xxx` => create new branch with name xxx
+
+- `git checkout xxx` => switch to branch xxx
+
+- `git branch` => checks what current branch you're in
+
+- `git pull origin master` => updates the master with latest code
+
+- `git add .` => add all files 
+
+- `git commit -m 'your comment in quotes'` => write your comment
+
+- `git push origin xxx` => pushes the code from your branch to Github
+
