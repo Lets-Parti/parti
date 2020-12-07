@@ -315,6 +315,9 @@ class Navbar extends React.Component {
                 <Link href="/about">
                 <Button className={classes.menuButton}>About</Button>
                 </Link> 
+                <Link href="/discover">
+                <Button className={classes.menuButton}>Discover</Button>
+                </Link> 
             </div>
         </div>
     )

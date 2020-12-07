@@ -1,7 +1,7 @@
-import {SET_EVENTS, LOADING_DATA, CREATE_EVENT, SET_ERRORS, LOADING_UI, CLEAR_ERRORS} from '../types'
+import {SET_EVENTS, LOADING_DATA, CREATE_EVENT, SET_ERRORS, LOADING_UI, CLEAR_ERRORS, DISCOVER} from '../types'
 import axios from 'axios'
 
-export const getEvents = () => (dispatch) =>
+export const getEvents = () => (dispatch) =>                        
 {
     dispatch({type: LOADING_DATA});
 
@@ -38,6 +38,32 @@ export const createEvent = (eventData, history) => (dispatch) =>
         dispatch({type: CLEAR_ERRORS})
         history.push('/events')
     })
+    .catch(err =>
+    {
+        dispatch({
+            type: SET_ERRORS, 
+            payload: err.response.data
+        })
+    })
+}
+
+export const discover = (queryData) => (dispatch) =>
+{
+    dispatch({type: LOADING_DATA});
+
+    axios.get('/discover', {
+        headers: {
+            'service': queryData.service
+        }
+    })
+    .then(res =>
+        {
+            console.log(res); 
+            dispatch({
+                type: DISCOVER, 
+                payload: res.data
+            })
+        })
     .catch(err =>
     {
         dispatch({

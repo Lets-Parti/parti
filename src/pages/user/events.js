@@ -1,19 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 import '../../stylesheets/common.css'
-import theme from '../../theme'
-import Navbar from '../../components/navbar'
 import EventCard from '../../components/event-card'
 import Grid from '@material-ui/core/Grid';
-import {ThemeProvider} from '@material-ui/core/styles'
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 //Redux
 import { connect } from 'react-redux'
 import { getEvents } from '../../redux/actions/dataActions'
 import PropTypes from 'prop-types'
-
-
-import axios from 'axios'
 
 class Events extends React.Component
 {
@@ -50,12 +44,10 @@ class Events extends React.Component
         return(
             <div>
                 <Grid align="center">
-                    <ThemeProvider theme={theme}>
                     <div className="page-content">
                         <p className="title">My Events</p>
                         {dataDisplay}
                     </div>
-                    </ThemeProvider>
                 </Grid>
             </div>
         )
