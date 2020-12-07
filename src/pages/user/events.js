@@ -1,6 +1,6 @@
 import React from 'react';
 import '../../stylesheets/common.css'
-import EventCard from '../../components/event-card'
+import EventCard from '../../components/events-components/event-card'
 import Grid from '@material-ui/core/Grid';
 import CircularProgress from '@material-ui/core/CircularProgress';
 

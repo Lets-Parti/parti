@@ -4,8 +4,9 @@ import Grid from '@material-ui/core/Grid';
 import EventIcon from '@material-ui/icons/Event';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 
-import ServiceCard from '../components/service-card'
-import '../stylesheets/event.css'
+import ServiceCard from './service-card'
+import '../../stylesheets/event.css'
+import '../../stylesheets/common.css'
 
 class EventCard extends Component
 {
@@ -28,11 +29,11 @@ class EventCard extends Component
         let date = new Date(this.state.eventDate)
         let services = JSON.parse(this.state.services)
 
-        let serviceComponents = []
+        let serviceCards = []
         services.forEach(service =>
         {
-            serviceComponents.push(
-            <Grid sm="4" xs="6">     
+            serviceCards.push(
+            <Grid sm="6" xs="12">     
                 <ServiceCard data={service} />
             </Grid>
             )
@@ -48,9 +49,8 @@ class EventCard extends Component
                             <p class="subInfo"> <EventIcon fontSize="small"/>{date.toString()}</p>
                             <p class="subInfo"> <LocationOnIcon fontSize="small"/>{this.state.zipcode}</p>
                         </div>
- 
-
-                        <p className="eventCardSubtitle">Description</p>
+                        <div className="seperator" />
+                        
                         <hr></hr>
                         <p>{this.state.description}</p>
 
@@ -58,7 +58,7 @@ class EventCard extends Component
                         <hr></hr>
 
                         <Grid container>
-                            {serviceComponents}
+                            {serviceCards}
                         </Grid>
                     </Grid>
                 </div>

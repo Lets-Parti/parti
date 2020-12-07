@@ -32,6 +32,36 @@
   margin-bottom: 5px;
 }
 
+/* <ServiceCard /> styling */
 .serviceCard {
-  border: 1px solid black;
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-top: 15px;
+}
+
+.serviceCardContainer {
+  margin: 30px;
+}
+
+.serviceCardHeader {
+  font-size: 1.2rem;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.serviceCardDescription {
+  font-size: 0.8rem;
+  color: grey;
+  line-height: 2;
+}
+
+.vendorFoundText {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-size: 0.8rem;
+  color: green;
+}
+
+.vendorNotFoundIcon {
+  color: orange;
 }

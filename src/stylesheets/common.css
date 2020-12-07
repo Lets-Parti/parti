@@ -1,5 +1,5 @@
 .page-content {
-  width: 50%;
+  width: 60%;
   font-family: Roboto, sans-serif;
 }
 
@@ -9,4 +9,8 @@
 
 .lightText {
   color: gray;
+}
+
+.seperator {
+  height: 0px;
 }
