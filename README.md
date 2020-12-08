@@ -74,7 +74,7 @@ You will be doing all of your development in src folder
 
 2) `git branch` => check what branch you are in
 
-3) `git pull` => pull master branch
+3) `git pull` => pull master branch and update master branch locally
 
 4) `git checkout -b xxx` => checkout to new branch in which you resolve the issue
 
@@ -90,4 +90,8 @@ You will be doing all of your development in src folder
 
 3) `git commit -m 'your comment in quotes'` => write your comment
 
-4) `git push origin xxx` => pushes the code from your branch to Github
+4) `git push origin xxx` => pushes the code from your branch to Github (you're basically done here)
+
+5) `git checkout master` => switch to master branch
+
+6) `git pull` => pull master branch and update the master branch locally
