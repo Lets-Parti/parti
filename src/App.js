@@ -9,7 +9,7 @@ import Login from '../src/pages/login'
 import CreateEvent from '../src/pages/create-event/create-event'
 import Events from './pages/user/events'
 import Discover from './pages/discover/discover'
-import Feedback from '../src/pages/feedback'
+import Feedback from './pages/feedback'
 //Components
 import Navbar from '../src/components/navbar'
 //Theme
