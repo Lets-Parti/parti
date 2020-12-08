@@ -90,4 +90,8 @@ You will be doing all of your development in src folder
 
 3) `git commit -m 'your comment in quotes'` => write your comment
 
-4) `git push origin xxx` => pushes the code from your branch to Github
+4) `git push origin xxx` => pushes the code from your branch to Github (you're basically done here)
+
+5) `git checkout master` => switch to master branch
+
+6) `git pull` => pull master branch and update the master branch locally
