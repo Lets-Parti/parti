@@ -18,8 +18,8 @@ import EventIcon from '@material-ui/icons/Event';
 import ReceiptIcon from '@material-ui/icons/Receipt';
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import NotificationsIcon from "@material-ui/icons/Notifications";
-import MoreIcon from "@material-ui/icons/MoreVert";
 import DehazeIcon from '@material-ui/icons/Dehaze';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 //Logo
 import logo from '../resources/logos/main.svg'
@@ -27,6 +27,8 @@ import logo from '../resources/logos/main.svg'
 //Redux
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
+import {logoutUser} from '../redux/actions/userActions'
+
 
 const styles = theme => ({
   grow: {
@@ -104,10 +106,29 @@ const styles = theme => ({
 });
 
 class Navbar extends React.Component {
-  state = {
-    achorEl: false,
-    MobileMoreAnchorEl: false
-  };
+  constructor()
+  {
+    super(); 
+    this.state = {
+      achorEl: false,
+      MobileMoreAnchorEl: false, 
+      anchorEl: null
+    };
+  }
+
+  handleClick = (event) =>
+  {
+    this.setState({
+      anchorEl: event.currentTarget
+    })
+  }
+   
+  handleClose = () =>
+  {
+    this.setState({
+      anchorEl: null
+    })
+  }
 
   handleProfileMenuOpen = event => {
     this.setState({
@@ -139,6 +160,11 @@ class Navbar extends React.Component {
       console.log(event)
   }
 
+  logOut = () =>
+  {
+    this.props.logoutUser(); 
+  }
+
   render() {
     const {authenticated, user} = this.props.user
     const { classes } = this.props;
@@ -149,7 +175,7 @@ class Navbar extends React.Component {
     (
         <div>
             <Link href="/home">
-                <MenuItem name="home" onClick={this.headerOnClick}>
+                <MenuItem name="home">
                 <IconButton aria-label="" color="inherit">
                     <HomeIcon />
                 </IconButton>
@@ -158,7 +184,7 @@ class Navbar extends React.Component {
             </Link>
 
             <Link href="/events">
-                <MenuItem id="events" onClick={this.headerOnClick}>
+                <MenuItem id="events">
                 <IconButton aria-label="" color="inherit">
                     <EventIcon />
                 </IconButton>
@@ -207,7 +233,7 @@ class Navbar extends React.Component {
             </Link>
 
             <Link href="/profile">
-                <MenuItem onClick={this.handleProfileMenuOpen}>
+                <MenuItem>
                 <IconButton
                     aria-label="account of current user"
                     aria-controls="primary-search-account-menu"
@@ -217,6 +243,20 @@ class Navbar extends React.Component {
                     <AccountCircle />
                 </IconButton>
                 <p>Profile</p>
+                </MenuItem> 
+            </Link>
+
+            <Link onClick={this.logOut}>
+              <MenuItem>
+                  <IconButton
+                      aria-label="Log Out"
+                      aria-controls="primary-search-account-menu"
+                      aria-haspopup="true"
+                      color="inherit"
+                  >
+                  <ExitToAppIcon />
+                  </IconButton>
+                  <p>Log Out</p>
                 </MenuItem> 
             </Link>
         </div>
@@ -344,17 +384,53 @@ class Navbar extends React.Component {
             </IconButton>
         </Link>
 
-        <Link href="/profile">
-            <IconButton
-            edge="end"
-            aria-label="account of current user"
-            aria-haspopup="true"
-            onClick={this.handleProfileMenuOpen}
-            color="inherit"
-            >
-            <AccountCircle />
+        <div className="accountIcon">
+        <Link>
+          <IconButton
+              edge="end"
+              aria-label="account of current user"
+              aria-haspopup="true"
+              onClick={this.handleClick}
+              color="inherit"
+              >
+              <AccountCircle />
             </IconButton>
+            <Menu
+              id="simple-menu"
+              anchorEl={this.state.anchorEl}
+              keepMounted
+              open={Boolean(this.state.anchorEl)}
+              onClose={this.handleClose}
+              >
+                <Link href="/profile">
+                    <MenuItem>
+                    <IconButton
+                        aria-label="account of current user"
+                        aria-controls="primary-search-account-menu"
+                        aria-haspopup="true"
+                        color="inherit"
+                    >
+                        <AccountCircle />
+                    </IconButton>
+                    <p>Profile</p>
+                    </MenuItem> 
+                </Link>
+                <Link>
+                  <MenuItem onClick={this.logOut}>
+                      <IconButton
+                          aria-label="account of current user"
+                          aria-controls="primary-search-account-menu"
+                          aria-haspopup="true"
+                          color="inherit"
+                      >
+                          <ExitToAppIcon />
+                      </IconButton>
+                      <p>Log Out</p>
+                  </MenuItem> 
+                </Link>
+            </Menu>
         </Link>
+        </div>
     </div>
     )
     :
@@ -406,7 +482,6 @@ class Navbar extends React.Component {
             </div>
 
             {renderRightSideButtons}
-
             </Toolbar>
         </AppBar>
         
@@ -417,14 +492,17 @@ class Navbar extends React.Component {
 }
 
 Navbar.propTypes = {
-    user: PropTypes.object.isRequired
+    user: PropTypes.object.isRequired,
+    logoutUser: PropTypes.func.isRequired
 }
 
 const mapStateToProps = (state) => ({
     user: state.user
 })
 
-const mapActionsToProps = {}
+const mapActionsToProps = {
+  logoutUser
+}
 
 export default connect(mapStateToProps, mapActionsToProps)(withStyles(styles)(Navbar))
 
