@@ -95,3 +95,5 @@ You will be doing all of your development in src folder
 5) `git checkout master` => switch to master branch
 
 6) `git pull` => pull master branch and update the master branch locally
+
+7) Done
