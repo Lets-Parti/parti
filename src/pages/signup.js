@@ -35,11 +35,13 @@ class SignUp extends React.Component
             confirmPassword: '',
             type: 'client',
             zipcode: '',
+            bio: '',
             isLoading: false,
             errors: {}
         }
         this.eventChange = this.eventChange.bind(this)
         this.onSubmitForm = this.onSubmitForm.bind(this)
+        this.switchToServiceSignUp = this.switchToServiceSignUp.bind(this)
     }   
 
     eventChange(event)
@@ -64,8 +66,15 @@ class SignUp extends React.Component
             type: this.state.type,
             zipcode: this.state.zipcode,
         }
-
+        
         this.props.signupUser(data, this.props.history); 
+    }
+
+    switchToServiceSignUp()
+    {
+        this.setState({
+            type: 'service'
+        })
     }
 
     componentWillReceiveProps(nextProps)
@@ -94,6 +103,196 @@ class SignUp extends React.Component
             Join the Parti
         </Button>
 
+        let signUpForm = this.state.type === 'client' ? 
+        <div className="sign-up-form-container">
+        <TextField
+            label="Email" 
+            variant="outlined" 
+            size="small" 
+            fullWidth='true'
+            name='email'
+            onChange={this.eventChange}
+            value={this.state.email}
+            helperText={this.state.errors.email}
+            error={this.state.errors.email ? true : false}
+            />
+        <div className="form-seperator" />
+        <TextField
+            label="Full Name" 
+            variant="outlined" 
+            size="small" 
+            fullWidth='true'
+            name='fullName'
+            onChange={this.eventChange}
+            value={this.state.fullName}
+            helperText={this.state.errors.fullName}
+            error={this.state.errors.fullName ? true : false}
+            />
+        <div className="form-seperator" />    
+        <TextField
+            label="Username" 
+            variant="outlined" 
+            size="small" 
+            fullWidth='true'
+            name='userHandle'
+            onChange={this.eventChange}
+            value={this.state.userHandle}
+            helperText={this.state.errors.userHandle}
+            error={this.state.errors.userHandle ? true : false}
+            />
+        <div className="form-seperator" />                                   
+        <TextField
+            label="Zipcode" 
+            variant="outlined" 
+            size="small" 
+            fullWidth='true'
+            name='zipcode'
+            onChange={this.eventChange}
+            value={this.state.zipcode}
+            helperText={this.state.errors.zipcode}
+            error={this.state.errors.zipcode ? true : false}
+            />
+        <div className="form-seperator" />                                   
+        <TextField
+            label="Password" 
+            variant="outlined" 
+            type="password"
+            size="small" 
+            fullWidth='true'
+            name='password'
+            onChange={this.eventChange}
+            value={this.state.password}
+            helperText={this.state.errors.password}
+            error={this.state.errors.password ? true : false}
+            />
+        <div className="form-seperator" />                                    
+        <TextField
+            label="Confirm Password" 
+            variant="outlined" 
+            type="password"
+            size="small" 
+            fullWidth='true'
+            name='confirmPassword'
+            onChange={this.eventChange}
+            value={this.state.confirmPassword}
+            helperText={this.state.errors.confirmPassword}
+            error={this.state.errors.confirmPassword ? true : false}
+            />
+        <div className="form-seperator" />
+        <div className="form-seperator" />
+
+        
+        {ButtonDisplay}
+        <div className="form-seperator" />
+        <Button
+            variant="outlined"
+            color="primary"
+            onClick={this.switchToServiceSignUp}
+            >
+            Join as a Service
+        </Button>
+
+        <div className="form-seperator" />
+        <p>Part of the Parti? <a href="/login">Sign in</a></p>
+    </div> 
+    :   
+    // Sign up for Services
+    <div className="sign-up-form-container">                            
+        <TextField
+            label="Company Email" 
+            variant="outlined" 
+            size="small" 
+            fullWidth='true'
+            name='email'
+            onChange={this.eventChange}
+            value={this.state.email}
+            helperText={this.state.errors.email}
+            error={this.state.errors.email ? true : false}
+            />
+        <div className="form-seperator" />
+        <TextField
+            label="Company Name" 
+            variant="outlined" 
+            size="small" 
+            fullWidth='true'
+            name='fullName'
+            onChange={this.eventChange}
+            value={this.state.fullName}
+            helperText={this.state.errors.fullName}
+            error={this.state.errors.fullName ? true : false}
+            />
+        <div className="form-seperator" />    
+        <TextField
+            label="Username" 
+            variant="outlined" 
+            size="small" 
+            fullWidth='true'
+            name='userHandle'
+            onChange={this.eventChange}
+            value={this.state.userHandle}
+            helperText={this.state.errors.userHandle}
+            error={this.state.errors.userHandle ? true : false}
+            />
+        <div className="form-seperator" />                                   
+        <TextField
+            label="Zipcode" 
+            variant="outlined" 
+            size="small" 
+            fullWidth='true'
+            name='zipcode'
+            onChange={this.eventChange}
+            value={this.state.zipcode}
+            helperText={this.state.errors.zipcode}
+            error={this.state.errors.zipcode ? true : false}
+            />
+        <div className="form-seperator" />                                   
+        <TextField
+            label="Password" 
+            variant="outlined" 
+            type="password"
+            size="small" 
+            fullWidth='true'
+            name='password'
+            onChange={this.eventChange}
+            value={this.state.password}
+            helperText={this.state.errors.password}
+            error={this.state.errors.password ? true : false}
+            />
+        <div className="form-seperator" />                                    
+        <TextField
+            label="Confirm Password" 
+            variant="outlined" 
+            type="password"
+            size="small" 
+            fullWidth='true'
+            name='confirmPassword'
+            onChange={this.eventChange}
+            value={this.state.confirmPassword}
+            helperText={this.state.errors.confirmPassword}
+            error={this.state.errors.confirmPassword ? true : false}
+            />
+        <div className="form-seperator" />                                    
+        <TextField
+            label="Company Bio" 
+            variant="outlined" 
+            type="password"
+            size="small" 
+            multiline
+            rows={5}
+            fullWidth='true'
+            name='bio'
+            onChange={this.eventChange}
+            value={this.state.bio}
+            helperText={this.state.errors.bio}
+            error={this.state.errors.bio ? true : false}
+        />
+        <div className="form-seperator" />
+        <div className="form-seperator" />
+        {ButtonDisplay}
+        <div className="form-seperator" />
+        <p>Part of the Parti? <a href="/login">Sign in</a></p>
+    </div>
+
         return(
             <div>
                 <Grid align="center">
@@ -101,88 +300,7 @@ class SignUp extends React.Component
                         <div className="sign-up-form">
                         <p className="title">Sign Up</p>
                         <p className="lightText">One step closer to joining the Parti</p>
-                            <div className="sign-up-form-container">
-                                <TextField
-                                    label="Email" 
-                                    variant="outlined" 
-                                    size="small" 
-                                    fullWidth='true'
-                                    name='email'
-                                    onChange={this.eventChange}
-                                    value={this.state.email}
-                                    helperText={this.state.errors.email}
-                                    error={this.state.errors.email ? true : false}
-                                    />
-                                <div className="form-seperator" />
-                                <TextField
-                                    label="Full Name" 
-                                    variant="outlined" 
-                                    size="small" 
-                                    fullWidth='true'
-                                    name='fullName'
-                                    onChange={this.eventChange}
-                                    value={this.state.fullName}
-                                    helperText={this.state.errors.fullName}
-                                    error={this.state.errors.fullName ? true : false}
-                                    />
-                                <div className="form-seperator" />    
-                                <TextField
-                                    label="Username" 
-                                    variant="outlined" 
-                                    size="small" 
-                                    fullWidth='true'
-                                    name='userHandle'
-                                    onChange={this.eventChange}
-                                    value={this.state.userHandle}
-                                    helperText={this.state.errors.userHandle}
-                                    error={this.state.errors.userHandle ? true : false}
-                                    />
-                                <div className="form-seperator" />                                   
-                                <TextField
-                                    label="Zipcode" 
-                                    variant="outlined" 
-                                    size="small" 
-                                    fullWidth='true'
-                                    name='zipcode'
-                                    onChange={this.eventChange}
-                                    value={this.state.zipcode}
-                                    helperText={this.state.errors.zipcode}
-                                    error={this.state.errors.zipcode ? true : false}
-                                    />
-                                <div className="form-seperator" />                                   
-                                <TextField
-                                    label="Password" 
-                                    variant="outlined" 
-                                    type="password"
-                                    size="small" 
-                                    fullWidth='true'
-                                    name='password'
-                                    onChange={this.eventChange}
-                                    value={this.state.password}
-                                    helperText={this.state.errors.password}
-                                    error={this.state.errors.password ? true : false}
-                                    />
-                                <div className="form-seperator" />                                    
-                                <TextField
-                                    label="Confirm Password" 
-                                    variant="outlined" 
-                                    type="password"
-                                    size="small" 
-                                    fullWidth='true'
-                                    name='confirmPassword'
-                                    onChange={this.eventChange}
-                                    value={this.state.confirmPassword}
-                                    helperText={this.state.errors.confirmPassword}
-                                    error={this.state.errors.confirmPassword ? true : false}
-                                    />
-                                <div className="form-seperator" />
-                                <div className="form-seperator" />
-
-                                {ButtonDisplay}
-
-                                <div className="form-seperator" />
-                                <p>Part of the Parti? <a href="/login">Sign in</a></p>
-                            </div>
+                        {signUpForm}
                         </div>
                     </div>
                 </Grid>
