@@ -52,7 +52,8 @@ You will be doing all of your development in src folder
 
 ** This is aaric change **
 
-## Github Commands 
+## Github Commands Overview
+
 - `git checkout -b xxx` => create new branch with name xxx
 
 - `git checkout xxx` => switch to branch xxx
@@ -67,13 +68,15 @@ You will be doing all of your development in src folder
 
 - `git push origin xxx` => pushes the code from your branch to Github
 
-## Github Commands to Begin Issue
+## Github Commands to Begin Resolving Issue
 
-1) `git checkout master`
+1) `git checkout master` => switch to master branch
 
-2) `git branch`
+2) `git branch` => check what branch you are in
 
-3) `git pull`
+3) `git pull` => pull master branch
 
-4) `git checkout -b xxx'
+4) `git checkout -b xxx` => checkout to new branch in which you resolve the issue
+
+5) `git pull` => pull to update master code into your new (xxx) branch
 
