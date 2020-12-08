@@ -31,7 +31,6 @@ class DiscoverCard extends Component
                         <h1>{this.state.fullName}</h1>
                         <p>@{this.state.userHandle}</p>
                         <p>{this.state.bio}</p>
-
                         <p>Tags: {tags}</p>
                         <p>Zipcode: {this.state.zipcode}</p>
                     </Grid>
