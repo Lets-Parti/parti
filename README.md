@@ -67,3 +67,13 @@ You will be doing all of your development in src folder
 
 - `git push origin xxx` => pushes the code from your branch to Github
 
+## Github Commands to Begin Issue
+
+1) `git checkout master`
+
+2) `git branch`
+
+3) `git pull`
+
+4) `git checkout -b xxx'
+
