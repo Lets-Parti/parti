@@ -5,9 +5,6 @@ import '../stylesheets/common.css'
 import '../stylesheets/loginsignup.css'
 import '../stylesheets/feedback.css'
 
-//Component Imports
-import Navbar from '../components/navbar'
-
 //MaterialUI Imports 
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
@@ -16,7 +13,6 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 
 //Redux
 import { connect } from 'react-redux'
-import { loginUser } from '../redux/actions/userActions'
 import PropTypes from 'prop-types'
 
 class Feedback extends React.Component
