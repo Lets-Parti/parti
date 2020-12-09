@@ -23,7 +23,6 @@ class Discover extends React.Component {
             discover_cards: [],
             isLoading: false
         }
-        this.onSubmitForm = this.onSubmitForm.bind(this);
     }
 
     componentDidMount() {
