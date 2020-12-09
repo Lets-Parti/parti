@@ -11,63 +11,71 @@ import { connect } from 'react-redux'
 import { discover } from '../../redux/actions/dataActions'
 import PropTypes from 'prop-types'
 
+//Select
+import Select from 'react-select'
+import StaticData from '../../static/static-data'
 
-class Discover extends React.Component
-{
-    constructor()
-    {
+class Discover extends React.Component {
+    constructor() {
         super()
         this.state = {
             service: '',
-            discover_cards: [], 
+            discover_cards: [],
             isLoading: false
         }
-        this.onSubmitForm = this.onSubmitForm.bind(this); 
     }
 
-    componentDidMount()
-    {
+    componentDidMount() {
         const query = {
-            service: 'DJ'
+            service: ''
         }
-        this.props.discover(query); 
+        this.props.discover(query);
     }
 
-    onSubmitForm = (event) =>
-    {
-
+    handleChangeSelect(name, value) {
+        this.setState({
+            [name]: value
+        })
+        const query = {
+            service: value.value
+        }
+        this.props.discover(query);
     }
 
-    render()
-    {
-        const {discover, isLoading} = this.props.data; 
+    render() {
+        console.log(this.state.service);
+        const { discover, isLoading } = this.props.data;
 
         let dataDisplay
-        if(isLoading)
-        {
+        if (isLoading) {
             dataDisplay = <CircularProgress />
-        }else
-        {
+        } else {
             dataDisplay = []
-            discover.forEach(service =>
-            {
-                dataDisplay.push(<DiscoverCard data={service} />); 
+            discover.forEach(service => {
+                dataDisplay.push(<DiscoverCard data={service} />);
             })
         }
 
-        return(
+        return (
             <Grid align="center">
-            <div className="page-content">
-                <p className="title">Discover</p>
-                {dataDisplay}
-            </div>
-        </Grid>
+                <div className="page-content">
+                    <p className="title">Discover</p>
+                    <Select
+                        options={StaticData.options}
+                        styles="width:100px;"
+                        id="select"
+                        value={this.state.service}
+                        onChange={this.handleChangeSelect.bind(this, "service")}
+                    />
+                    {dataDisplay}
+                </div>
+            </Grid>
         )
     }
 }
 
 Discover.propTypes = {
-    discover: PropTypes.func.isRequired, 
+    discover: PropTypes.func.isRequired,
     data: PropTypes.object.isRequired
 }
 
