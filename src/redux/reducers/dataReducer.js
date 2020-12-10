@@ -1,8 +1,9 @@
-import {SET_EVENTS, LOADING_DATA, CREATE_EVENT, DISCOVER} from '../types'
+import {SET_EVENTS, LOADING_DATA, CREATE_EVENT, DISCOVER, SET_USER_DATA} from '../types'
 
 const initialState = {
     events: [], 
     discover: [],
+    user: null, 
     isLoading: false
 }
 
@@ -29,6 +30,12 @@ export default function(state = initialState, action) {
             return {
                 ...state, 
                 discover: action.payload, 
+                isLoading: false
+            }
+        case SET_USER_DATA: 
+            return {
+                ...state, 
+                user: action.payload, 
                 isLoading: false
             }
         default: 

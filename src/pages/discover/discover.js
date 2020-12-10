@@ -1,5 +1,6 @@
 import React from 'react';
 import '../../stylesheets/common.css'
+import '../../stylesheets/discover.css'
 import Grid from '@material-ui/core/Grid';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
@@ -60,13 +61,16 @@ class Discover extends React.Component {
             <Grid align="center">
                 <div className="page-content">
                     <p className="title">Discover</p>
-                    <Select
-                        options={StaticData.options}
-                        styles="width:100px;"
-                        id="select"
-                        value={this.state.service}
-                        onChange={this.handleChangeSelect.bind(this, "service")}
-                    />
+                    <p className="lightText">What service are you looking for?</p>
+                    <div className="discoverSelect">
+                        <Select
+                            options={StaticData.options}
+                            styles="width:100px;"
+                            id="select"
+                            value={this.state.service}
+                            onChange={this.handleChangeSelect.bind(this, "service")}
+                        />
+                    </div>
                     {dataDisplay}
                 </div>
             </Grid>
