@@ -17,6 +17,24 @@ Running `npm install` will install all of the `node_module` dependencies require
 
 Running an `npm start` will begin your local application in a local server. This is your development environment. The server address is at [http://localhost:3000/](http://localhost:3000/)
 
+### Install Firebase commands into your computer
+
+1) Open Terminal
+
+2) Run this command: `sudo npm install -g firebase`
+
+3) It will ask you to input your computer password. Input your password. If you messed up, retry your computer password again. If you messed up three times in a row, go back to Step 2
+
+4) It will take a couple seconds to install
+
+5) Run this command: `sudo npm install -g firebase-tools`
+
+6) It will ask you to input your computer password. Input your password. If you messed up, retry your computer password again. If you messed up three times in a row, go back to Step 5
+
+7) It will take a couple seconds to install
+
+8) Check to see if it actually installed by running: `firebase --version`. If a version number pops up, you are good to go
+
 ## Project Structure
 
 The /parti folder contains 2 folders (public & src), package.json, and a README.md
