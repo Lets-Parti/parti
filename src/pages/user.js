@@ -30,19 +30,22 @@ class User extends React.Component
         const handle = this.props.match.params.userhandle
         this.props.getUserByHandle(handle); 
     }
-    
+
     render()
-    {
+    {   const {user, isLoading} = this.props.data; 
         let userDisplay = null
-        const {user, isLoading} = this.props.data; 
-        
+
         if(user && !isLoading)
         {
             userDisplay = user.userHandle
+        }else
+        {
+            userDisplay = <CircularProgress />
         }
 
         return(
             <div>
+
                 <p>{userDisplay}</p>
             </div>
         )
