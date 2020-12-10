@@ -2,7 +2,7 @@ import React from 'react';
 import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
 //Pages
 import Home from '../src/pages/home'
-import About from '../src/pages/about'
+import About from '../src/pages/about/about'
 import ErrorNotFound from '../src/pages/404'
 import SignUp from '../src/pages/signup'
 import Login from '../src/pages/login'
