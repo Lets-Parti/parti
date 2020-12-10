@@ -34,31 +34,43 @@
 }
 
 .profile-image {
-  height: 7rem;
+  height: 100%;
   border-radius: 50%;
 }
 
 .grid-item-bigpicture {
   /* This is for testing */
   border: 1px solid black;
-
-  height: 9rem;
+}
+.bigpicture-section {
+  width: 100%;
+}
+.grid-item-smallpictures {
+  /* This is for testing */
+  border: 1px solid black;
+}
+.smallpicture-section {
+  width: 100%;
 }
 .grid-item-description {
   /* This is for testing */
   border: 1px solid black;
-
-  height: 9rem;
 }
 .grid-item-request {
   /* This is for testing */
   border: 1px solid black;
-
-  height: 9rem;
 }
+
+/* Fourth Row: Reviews Section */
 .grid-item-reviews {
   /* This is for testing */
   border: 1px solid black;
-
-  height: 9rem;
+}
+.reviews-section {
+  height: 100%;
+  margin: 2rem;
+}
+.banner {
+  fontSize: 3rem;
+  color: #505F98;
 }
