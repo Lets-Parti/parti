@@ -13,10 +13,6 @@ export const CLEAR_ERRORS = 'CLEAR_ERRORS'
 export const SET_EVENTS = 'SET_EVENTS'
 export const CREATE_EVENT = 'CREATE_EVENT'
 export const LOADING_DATA = 'LOADING_DATA'
-<<<<<<< HEAD
 export const DISCOVER = 'DISCOVER'
 export const SET_USER_DATA = 'SET_USER_DATS'
-=======
 export const CREATE_FEEDBACK = 'CREATE_FEEDBACK'
-export const DISCOVER = 'DISCOVER'
->>>>>>> dfc63976e8d796c84785dbdbe2bfeda2c3009433
