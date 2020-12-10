@@ -6,7 +6,7 @@ const initialState = {
     user: null, 
     isLoading: false
 }
-
+f
 export default function(state = initialState, action) {
     switch(action.type)
     {
