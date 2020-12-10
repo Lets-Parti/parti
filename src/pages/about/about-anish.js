@@ -2,7 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 
-import aaricportrait from './imgs/aaricportrait.jpg';
+import anishportrait from './imgs/aaricportrait.jpg';
 
 const useStyles = makeStyles((theme) => ({
   intro: {
@@ -25,7 +25,7 @@ function AboutAnish() {
       <div className={classes.intro}>
         <Grid container>
           <Grid item sm={3} xs={12}>
-            <img className={classes.portrait} src={aaricportrait}></img>
+            <img className={classes.portrait} src={anishportrait}></img>
           </Grid>
           <Grid item sm={9} xs={12}>
             <p className={classes.aboutmetext}>Anish is a exquisite man!</p>
