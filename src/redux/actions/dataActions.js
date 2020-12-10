@@ -1,4 +1,4 @@
-import {SET_EVENTS, LOADING_DATA, CREATE_EVENT, SET_ERRORS, LOADING_UI, CLEAR_ERRORS, DISCOVER} from '../types'
+import {SET_EVENTS, LOADING_DATA, CREATE_EVENT, SET_ERRORS, LOADING_UI, CLEAR_ERRORS, DISCOVER, SET_USER_DATA} from '../types'
 import axios from 'axios'
 
 export const getEvents = () => (dispatch) =>                        
@@ -94,6 +94,29 @@ export const discover = (queryData) => (dispatch) =>
         dispatch({
             type: SET_ERRORS, 
             payload: err.response.data
+        })
+    })
+}
+
+export const getUserByHandle = (userHandle) => (dispatch) =>
+{
+    dispatch({type: LOADING_DATA});
+    axios.get(`/user/${userHandle}`)
+    .then(res =>
+    {
+        if(res.data.user)
+        {
+            dispatch({
+                type: SET_USER_DATA, 
+                payload: res.data.user
+            })
+        }
+    })
+    .catch(() =>
+    {
+        dispatch({
+            type: SET_USER_DATA, 
+            payload: null
         })
     })
 }

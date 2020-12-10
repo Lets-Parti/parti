@@ -9,7 +9,11 @@ import Login from '../src/pages/login'
 import CreateEvent from '../src/pages/create-event/create-event'
 import Events from './pages/user/events'
 import Discover from './pages/discover/discover'
+<<<<<<< HEAD
+import User from './pages/user'
+=======
 import Feedback from './pages/feedback'
+>>>>>>> dfc63976e8d796c84785dbdbe2bfeda2c3009433
 //Components
 import Navbar from '../src/components/navbar'
 //Theme
@@ -61,6 +65,7 @@ class App extends React.Component
               <Route exact path="/about" component={About} />
               <Route exact path="/feedback" component={Feedback} />
               <Route exact path="/404" component={ErrorNotFound} />
+              <Route exact path="/user/:userhandle" component={User} />
               <ProtectedRoute exact path="/create-event" component={CreateEvent} />
               <ProtectedRoute exact path="/events" component={Events} />
               <Route exact path="/discover" component={Discover} />
