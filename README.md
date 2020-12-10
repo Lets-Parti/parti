@@ -88,7 +88,7 @@ You will be doing all of your development in src folder
 
 2) `git branch` => check what branch you are in
 
-3) `git pull` => pull master branch
+3) `git pull` => pull master branch and update master branch locally
 
 4) `git checkout -b xxx` => checkout to new branch in which you resolve the issue
 

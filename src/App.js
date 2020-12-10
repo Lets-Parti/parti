@@ -9,6 +9,7 @@ import Login from '../src/pages/login'
 import CreateEvent from '../src/pages/create-event/create-event'
 import Events from './pages/user/events'
 import Discover from './pages/discover/discover'
+import Feedback from './pages/feedback'
 //Components
 import Navbar from '../src/components/navbar'
 //Theme
@@ -58,6 +59,7 @@ class App extends React.Component
             <Switch>
               <Route exact path="/" component={Home} />
               <Route exact path="/about" component={About} />
+              <Route exact path="/feedback" component={Feedback} />
               <Route exact path="/404" component={ErrorNotFound} />
               <ProtectedRoute exact path="/create-event" component={CreateEvent} />
               <ProtectedRoute exact path="/events" component={Events} />

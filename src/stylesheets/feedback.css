@@ -1,0 +1,31 @@
+.feedback-form-container{
+    margin: 20px;
+    /* border: 1px solid black; */
+    width: 90%;
+}
+
+.errorMessage {
+  color: red
+}
+
+/* .sign-up-form {
+    border: 1px solid #ffd4eb;
+    border-radius: 5px;
+    margin-top: 50px;
+  }
+  
+  .sign-up-form-container {
+    margin: 20px;
+    // border: 1px solid black; 
+    width: 50%;
+  }
+  
+  .form-seperator {
+    height: 20px;
+  }
+  
+  .errorStatement {
+    color: red;
+    margin-top: 0px;
+  } */
+  
