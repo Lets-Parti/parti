@@ -90,8 +90,8 @@ class Feedback extends React.Component
                 <Grid align="center">
                     <div className="page-content">
                         <div className="sign-up-form">
-                        <p className="title">Feedback Form</p>
-                        <p className="lightText">How was your experience using Parti? Please leave your thoughts on the form below, along with your information!</p>
+                        <p className="title">Feedback</p>
+                        <p className="lightText">Thanks for using Parti! Let us know about your experience.</p>
                             <div className="feedback-form-container">
                                 <TextField
                                     label="Please talk about your experience" 
