@@ -8,6 +8,8 @@ import Footer from '../components/footer'
 import bgwavy from '../resources/backgrounds/bgwavy.png'
 import graphicdemo from '../resources/backgrounds/demos.png'
 
+import Button from '@material-ui/core/Button';
+
 
 const useStyles = makeStyles((theme) => ({
   intro: {
@@ -64,7 +66,13 @@ function IntroText(){
       <p className={classes.banner_description}>Need a DJ for your party? A photographer for your wedding? Parti will help you find the perfect services. Start by creating your first event!</p>
 
       <div className={classes.buttons}>
-        <button onClick={createEventButtonClick}>Create Event</button>
+        <Button
+            variant="contained"
+            color="primary"
+            onClick={createEventButtonClick}
+            >
+            Create Event
+        </Button>
       </div>
     </div>
   )

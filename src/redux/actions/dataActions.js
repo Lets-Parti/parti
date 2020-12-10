@@ -47,6 +47,31 @@ export const createEvent = (eventData, history) => (dispatch) =>
     })
 }
 
+export const createFeedback = (feedbackData, history) => (dispatch) =>
+{
+    dispatch({type: LOADING_UI});
+
+    axios.post('/feedback', feedbackData,
+    {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(res =>
+    {
+        console.log(res); 
+        dispatch({type: CLEAR_ERRORS})
+        history.push('/')
+    })
+    .catch(err =>
+    {
+        dispatch({
+            type: SET_ERRORS, 
+            payload: err.response.data
+        })
+    })
+}
+
 export const discover = (queryData) => (dispatch) =>
 {
     dispatch({type: LOADING_DATA});
