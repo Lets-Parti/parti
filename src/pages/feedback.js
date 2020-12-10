@@ -13,6 +13,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 
 //Redux
 import { connect } from 'react-redux'
+import { createFeedback } from '../redux/actions/dataActions'
 import PropTypes from 'prop-types'
 
 class Feedback extends React.Component
@@ -49,6 +50,7 @@ class Feedback extends React.Component
             info: this.state.info,
             phone: this.state.phone
         }
+        this.props.createFeedback(data, this.props.history)
     }
 
     componentWillReceiveProps(nextProps)
@@ -80,6 +82,9 @@ class Feedback extends React.Component
         const {classes, UI: {isLoading}} = this.props; 
         const {errors} = this.state
         console.log(this.state);
+
+        // let errorMessage = Object.keys(this.state.errors).length > 0 ? "Something went wrong" : null
+
         return(
             <div>
                 <Grid align="center">
@@ -132,8 +137,7 @@ class Feedback extends React.Component
                                     />
                                 <div className="form-seperator" />
                                 <div className="form-seperator" />
-                                <p className="errorStatement">{this.state.errors.auth}</p>
-
+                            
                                 {ButtonDisplay}
 
                                 <div className="form-seperator" />
@@ -148,18 +152,16 @@ class Feedback extends React.Component
 }
 
 Feedback.propTypes = {
-    loginUser: PropTypes.func.isRequired, 
-    user: PropTypes.object.isRequired, 
+    createFeedback: PropTypes.func.isRequired, 
     UI: PropTypes.object.isRequired
 }
 
 const mapStateToProps = (state) => ({
-    user: state.user, 
     UI: state.UI
 })
 
 const mapActionsToProps = {
-    
+    createFeedback
 }
 
 export default connect(mapStateToProps, mapActionsToProps)(Feedback)
