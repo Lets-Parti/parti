@@ -142,11 +142,12 @@ export const uploadProfileImage = (formData) => (dispatch) =>
     axios.post('/user/image', formData)
     .then(res => {
         dispatch(getUserData()); 
-        dispatch({type: CLEAR_ERRORS})
+        dispatch({type: CLEAR_ERRORS});
+        window.location.href = "/account/edit";
     })
     .catch(err =>
     {
-        alert(`Error: ${err}`);
+        alert(`Something went wrong: ${err}`);
     })
 }
 
@@ -156,11 +157,12 @@ export const uploadMediaImage = (formData) => (dispatch) =>
     axios.post('/user/services/media', formData)
     .then(res =>{
         dispatch(getUserData()); 
-        dispatch({type: CLEAR_ERRORS})
+        dispatch({type: CLEAR_ERRORS});
+        window.location.href = "/account/edit";
     })
     .catch(err =>
     {
-        alert(`Error: ${err}`);
+        alert(`Something went wrong: ${err}`);
     })
 }
 
