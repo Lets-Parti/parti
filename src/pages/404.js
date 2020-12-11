@@ -5,7 +5,7 @@ function ErrorNotFound() {
 
   return (
     <div>
-        <p>404 not found error!</p>
+        <p>404 Page not found error!</p>
     </div>
   )
 }

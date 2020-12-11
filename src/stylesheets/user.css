@@ -1,23 +1,16 @@
-.userContainer {
-  /* background-color: aqua; */
-  margin-left: 3rem;
-  margin-right: 3rem;
+@import "~react-image-gallery/styles/css/image-gallery.css";
+
+.user-container {
+  margin-left: 8rem;
+  margin-right: 8rem;
   margin-top: 3rem;
   font-family: Roboto, sans-serif;
-}
-.firstRow {
-  margin: 1rem;
-}
-
-.grid-item-userinfo {
-  /* This is for testing */
-  border: 1px solid black;
-
-  height: 9rem;
+  border-radius: 3%;
+  padding: 50px;
+  background-color: #F5F5F5; 
 }
 
 .grid-item-messagebutton {
-  border: 1px solid black;
   height: 4rem;
 }
 
@@ -33,32 +26,79 @@
   color: grey;
 }
 
-.profile-image {
-  height: 7rem;
+.profile-image img {
   border-radius: 50%;
+  box-shadow: 0 0 0 1pt #e3dee2;
+  width: 100%;
 }
 
-.grid-item-bigpicture {
-  /* This is for testing */
-  border: 1px solid black;
-
-  height: 9rem;
+.image-gallery {
+  width: 100%;
 }
-.grid-item-description {
-  /* This is for testing */
-  border: 1px solid black;
 
-  height: 9rem;
+.grid-item-title {
+    padding-left: 50px;
+    padding-top: 20px;
 }
-.grid-item-request {
-  /* This is for testing */
-  border: 1px solid black;
 
-  height: 9rem;
+.reviews-section {
+  width: 100%;
 }
-.grid-item-reviews {
-  /* This is for testing */
-  border: 1px solid black;
 
-  height: 9rem;
+.bio-container {
+  height: 100%;
+  margin-left: 20px;
+  margin-right: 20px; 
+  padding: 0px;
+  line-height: 2;
+}
+.banner {
+  font-size: 2.5rem;
+  color: black;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+
+.image-gallery {
+  width: 100%;
+  height: auto;
+}
+
+.image-gallery-slide img {
+  width: 100%;
+  height: 60vh;
+  object-fit: cover;
+  overflow-y: hidden;
+  object-position: center center;
+}
+
+.fullscreen .image-gallery-slide img {
+  max-height: 100vh;
+}
+
+.bio {
+  font-size: 1.5rem;
+  margin-top: 0px;
+  color: #6C6969;
+}
+
+.chip-padding {
+  margin-right: 5px;
+  font-size: 1.5rem;
+}
+
+.review-card {
+    word-wrap: break-word;
+    height: 25vh;
+    line-height: 1.5;
+    padding: 20px;
+}
+
+.review-handle {
+  font-size: 1.2rem; 
+  color: gray;
+}
+
+.review-body {
+  font-size: 1.25rem;
 }
