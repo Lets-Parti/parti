@@ -4,8 +4,6 @@ import { Redirect } from 'react-router';
 //Stylesheets
 import '../stylesheets/common.css'
 import '../stylesheets/user.css'
-import profileImage from '../resources/images/no_img.jpg'
-import testImage from './test-imgs/test_img.jpg'
 
 //MaterialUI Imports
 import Grid from '@material-ui/core/Grid';
@@ -99,7 +97,7 @@ class User extends React.Component
                 {/* First Row */}
                 <Grid container className="row">
                   <Grid item className="grid-item-userinfo" sm={2} xs={12} align="right">
-                      <img className="profile-image" src={userProfileImageURL} />
+                      <img className="user-profile-image" src={userProfileImageURL} />
                   </Grid>
                   <Grid item className="grid-item-title" sm={8} xs={12} align="left">
                       <p className="company-name">{userDisplay}</p>
@@ -119,7 +117,7 @@ class User extends React.Component
                 {/* Second Row */}
                 <Grid container className="row">
                   <Grid container className="image-gallery" sm={6} xs={12}>
-                    <ImageGallery items={carouselImages} autoPlay="true" slideDuration="1000" />
+                    <ImageGallery items={carouselImages} />
                   </Grid>
                   
                   <Grid item className="grid-item-description" sm={6} xs={12}>
