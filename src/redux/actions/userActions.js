@@ -112,10 +112,79 @@ export const updateUserProfile = (userData, userType) => (dispatch) =>
             zipcode: userData.zipcode, 
             fullName: userData.fullName, 
             tags: userData.tags, 
-            mediaImages: userData.mediaImages, 
             bio: userData.bio, 
         }
+
+        axios.post('/account/edit', JSON.stringify(dataSentToDB),
+        {            
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(res =>
+        {
+            dispatch({type: CLEAR_ERRORS});
+            window.location.href = "/account/edit"
+        })
+        .catch(err => 
+        {
+            dispatch({
+                type: SET_ERRORS, 
+                payload: err.response.data
+            })
+        })
     }
+}
+
+export const uploadProfileImage = (formData) => (dispatch) =>
+{
+    dispatch({type: LOADING_UI})
+    axios.post('/user/image', formData)
+    .then(res => {
+        dispatch(getUserData()); 
+        dispatch({type: CLEAR_ERRORS})
+    })
+    .catch(err =>
+    {
+        alert(`Error: ${err}`);
+    })
+}
+
+export const uploadMediaImage = (formData) => (dispatch) =>
+{
+    dispatch({type: LOADING_UI})
+    axios.post('/user/services/media', formData)
+    .then(res =>{
+        dispatch(getUserData()); 
+        dispatch({type: CLEAR_ERRORS})
+    })
+    .catch(err =>
+    {
+        alert(`Error: ${err}`);
+    })
+}
+
+export const deleteMediaImage = (indexValue) => (dispatch) =>
+{
+    dispatch({type: LOADING_UI})
+    let axiosData = {
+        index: indexValue
+    }
+    axios.post('/user/services/media/delete', JSON.stringify(axiosData), 
+    {            
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(res =>
+    {
+        dispatch(getUserData()); 
+        dispatch({type: CLEAR_ERRORS})
+    })
+    .catch(err =>
+    {
+        console.error(err); 
+    })
 }
 
 const setAuthorizationHeader = (token) => {
