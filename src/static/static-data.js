@@ -6,7 +6,7 @@ const StaticData =
         { value: 'Food Truck', label: `Food Truck`},
       ],
     MAX_NUM_SERVICES: 5, 
-    MAX_MEDIA_IMAGES: 2
+    MAX_MEDIA_IMAGES: 5
 }
 
 

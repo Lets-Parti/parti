@@ -108,6 +108,7 @@ class AccountEdit extends React.Component
         if(this.props.user.user.mediaImages.length >= StaticData.MAX_MEDIA_IMAGES)
         {
             alert(`Cannot have more than ${StaticData.MAX_MEDIA_IMAGES} images in gallery`);
+            return; 
         }
         const image = event.target.files[0]; 
         let newImage = await resizeMediaImage(image); 

@@ -91,7 +91,6 @@ class User extends React.Component
                         </Grid>
                     </Grid>
             </div>
-                
         )
     }
 }
