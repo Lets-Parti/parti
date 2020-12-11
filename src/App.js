@@ -2,7 +2,7 @@ import React from 'react';
 import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
 //Pages
 import Home from '../src/pages/home'
-import About from '../src/pages/about'
+import About from '../src/pages/about/about'
 import ErrorNotFound from '../src/pages/404'
 import SignUp from '../src/pages/signup'
 import Login from '../src/pages/login'
@@ -12,6 +12,7 @@ import Discover from './pages/discover/discover'
 import DiscoverEvents from './pages/discover/discover-events'
 import User from './pages/user'
 import Feedback from './pages/feedback'
+import AccountEdit from './pages/user/edit'
 //Components
 import Navbar from '../src/components/navbar'
 //Theme
@@ -66,6 +67,7 @@ class App extends React.Component
               <ProtectedRoute exact path="/user/:userhandle" component={User} />
               <ProtectedRoute exact path="/create-event" component={CreateEvent} />
               <ProtectedRoute exact path="/events" component={Events} />
+              <ProtectedRoute exact path="/account/edit" component={AccountEdit} />
               <Route exact path="/discover" component={Discover} />
               <Route exact path="/discover-events" component={DiscoverEvents} />
               <AuthRoute exact path="/signup" component={SignUp} />
