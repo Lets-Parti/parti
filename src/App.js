@@ -12,7 +12,7 @@ import Discover from './pages/discover/discover'
 import DiscoverEvents from './pages/discover/discover-events'
 import User from './pages/user'
 import Feedback from './pages/feedback'
-import AccountEdit from './pages/user/edit'
+import AccountEdit from './pages/user/accountedit'
 //Components
 import Navbar from '../src/components/navbar'
 //Theme

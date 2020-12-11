@@ -1,7 +1,9 @@
 .profile-image {
   height: 10rem;
+  width: 10rem;
   border-radius: 50%;
   box-shadow: 0 0 0 1pt #e3dee2;
+  object-fit: cover;
 }
 
 .full-name {
