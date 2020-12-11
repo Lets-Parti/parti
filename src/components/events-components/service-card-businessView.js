@@ -36,7 +36,7 @@ class ServiceCardBView extends React.Component
         :
         <div>
             <p>Offer your {this.state.serviceType} service</p>
-            <Link href="/discover">
+            <Link href="/contracts">
                 <Button variant="contained" color="primary">Offer</Button>
             </Link> 
         </div>

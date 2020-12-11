@@ -26,7 +26,7 @@ export const getEventsForDiscover = () => (dispatch) =>
 {
     dispatch({type: LOADING_DATA});
 
-    axios.get('/events')
+    axios.get('/discover/events')
     .then(res => 
     {
         dispatch({

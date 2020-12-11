@@ -28,16 +28,34 @@ class DiscoverEvents extends React.Component
     {
         super()
         this.state = {
-            
+            service: '',
+            discover_cards: [],
+            isLoading: false
         }
     }
-
     componentDidMount()
     {
         this.props.getEventsForDiscover(); 
     }
 
+    // componentDidMount() {
+    //     const query = {
+    //         service: ''
+    //     }
+    //     this.props.discover(query);
+    // }
 
+    // handleChangeSelect(name, value) {
+    //     this.setState({
+    //         [name]: value
+    //     })
+    //     const query = {
+    //         service: value.value
+    //     }
+    //     this.props.discover(query);
+    // }
+
+// remove
     render() {
         console.log(this.state);
         const {events, isLoading} = this.props.data; 
@@ -61,13 +79,13 @@ class DiscoverEvents extends React.Component
                     <p className="title">Discover Events</p>
                     <p className="lightText">Here is a listing of events near you that are looking for your services!</p>
                     <div className="discoverSelect">
-                         {/* <Select
+                          {/* <Select
                             options={StaticData.options}
                             styles="width:100px;"
                             id="select"
                             value={this.state.service}
                             onChange={this.handleChangeSelect.bind(this, "service")}
-                        />  */}
+                        />   */}
                     </div>
                     {dataDisplay}
                 </div>
