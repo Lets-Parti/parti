@@ -11,6 +11,7 @@ import Events from './pages/user/events'
 import Discover from './pages/discover/discover'
 import User from './pages/user'
 import Feedback from './pages/feedback'
+import AccountEdit from './pages/user/accountedit'
 //Components
 import Navbar from '../src/components/navbar'
 //Theme
@@ -65,6 +66,7 @@ class App extends React.Component
               <Route exact path="/user/:userhandle" component={User} />
               <ProtectedRoute exact path="/create-event" component={CreateEvent} />
               <ProtectedRoute exact path="/events" component={Events} />
+              <ProtectedRoute exact path="/account/edit" component={AccountEdit} />
               <Route exact path="/discover" component={Discover} />
               <AuthRoute exact path="/signup" component={SignUp} />
               <AuthRoute exact path="/login" component={Login} />

@@ -232,7 +232,7 @@ class Navbar extends React.Component {
             </MenuItem>
             </Link>
 
-            <Link href="/profile">
+            <Link href="/account/edit">
                 <MenuItem>
                 <IconButton
                     aria-label="account of current user"
@@ -310,7 +310,6 @@ class Navbar extends React.Component {
             </Link>
         </div>
     )
-
 
     const renderMobileMenu = (
       <Menu
@@ -402,7 +401,7 @@ class Navbar extends React.Component {
               open={Boolean(this.state.anchorEl)}
               onClose={this.handleClose}
               >
-                <Link href="/profile">
+                <Link href="/account/edit">
                     <MenuItem>
                     <IconButton
                         aria-label="account of current user"
