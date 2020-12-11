@@ -74,28 +74,33 @@ class User extends React.Component
                         <Grid item className="grid-item-bigpicture" sm={6} xs={12}>
                             <img className="bigpicture-section" src={testImage}></img>
                         </Grid>
-                        <Grid container className="grid-item-smallpictures" sm={6} xs={12}>
-                            <Grid item sm={6} xs={6}>
-                              <img className="smallpicture-section" src={testImage}></img>
-                            </Grid>
-                            <Grid item sm={6} xs={6}>
-                              <img className="smallpicture-section" src={testImage}></img>
-                            </Grid>
-                            <Grid item sm={6} xs={6}>
-                              <img className="smallpicture-section" src={testImage}></img>
-                            </Grid>
-                            <Grid item sm={6} xs={6}>
-                              <img className="smallpicture-section" src={testImage}></img>
-                            </Grid>
+                        <Grid container className="grid-item-smallpictures" sm={6} xs={12} alignItems="center" justify="center">
+                          <Grid item className="grid-item-smallpictures" sm={6} xs={3}>
+                            <img className="smallpicture-section" src={testImage}></img>
                           </Grid>
+                          <Grid item className="grid-item-smallpictures" sm={6} xs={3}>
+                            <img className="smallpicture-section" src={testImage}></img>
+                          </Grid>
+                          <Grid item className="grid-item-smallpictures" sm={6} xs={3}>
+                            <img className="smallpicture-section" src={testImage}></img>
+                          </Grid>
+                          <Grid item className="grid-item-smallpictures" sm={6} xs={3}>
+                            <img className="smallpicture-section" src={testImage}></img>
+                          </Grid>
+                        </Grid>
 
 
                         {/* Third Row */}
                         <Grid item className="grid-item-description" sm={6} xs={12}>
-
+                          <div className="reviews-section">
+                            <h1 className="banner">Review</h1>
+                            <hr></hr>
+                            <p>This is placeholder for a review</p>
+                            <p>This is second review</p>
+                          </div>
                         </Grid>
                         <Grid item className="grid-item-request" sm={6} xs={12}>
-
+                          <p>REQUEST QUOTE DROPDOWN</p>
                         </Grid>
 
                         {/* Fourth Row */}

@@ -50,8 +50,11 @@
   border: 1px solid black;
 }
 .smallpicture-section {
-  width: 100%;
+  width: 90%;
+  border-radius: 5%;
+  border: 1px solid black;
 }
+
 .grid-item-description {
   /* This is for testing */
   border: 1px solid black;
