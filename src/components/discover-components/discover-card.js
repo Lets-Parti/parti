@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 
+//MaterialUI Components
+import Button from '@material-ui/core/Button';
+
 import Grid from '@material-ui/core/Grid';
-import '../../stylesheets/event.css'
+import '../../stylesheets/discover-card.css';
 
 class DiscoverCard extends Component
 {
@@ -13,7 +16,9 @@ class DiscoverCard extends Component
             userHandle: this.props.data.userHandle, 
             bio: this.props.data.bio, 
             zipcode: this.props.data.zipcode, 
-            tags: this.props.data.tags
+            tags: this.props.data.tags,
+            mediaImages: this.props.data.mediaImages,
+            profileImageUrl: this.props.data.imageUrl
         }
     }
 
@@ -25,14 +30,29 @@ class DiscoverCard extends Component
             tags.push(<p>{tag}</p>); 
         })
         return(
-            <div className="eventCard">
-                <div className="eventWrapper">
-                    <Grid align="left">
-                        <h1>{this.state.fullName}</h1>
-                        <p>@{this.state.userHandle}</p>
-                        <p>{this.state.bio}</p>
-                        <p>Tags: {tags}</p>
-                        <p>Zipcode: {this.state.zipcode}</p>
+            <div className="discover-card">
+                <div className="discover-container">
+                    <Grid container>
+                        <Grid sm={1} xs={3} className="grid-object">
+                            <img src={this.state.profileImageUrl} className="profile-image"/>
+                        </Grid>
+                        <Grid sm={7} xs={9} className="grid-object" align="left">
+                            <div className="left-padding">
+                                <p className="title">{this.state.fullName}</p>
+                                <p className="handle">@{this.state.userHandle}</p>
+                            </div>
+                        </Grid>
+                        <Grid sm={4} xs={12}className="grid-object" align="right">
+                        <Button
+                            variant="contained"
+                            color="primary"
+                            onClick={this.onMessage}
+                            >
+                            Message
+                        </Button>
+                        </Grid>
+
+
                     </Grid>
                 </div>
             </div>

@@ -1,0 +1,37 @@
+.discover-container {
+  margin: 30px;
+}
+
+.title {
+  font-size: 2rem;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.profile-image {
+  height: 5rem;
+  width: 5rem;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1pt #e3dee2;
+  object-fit: cover;
+}
+
+.grid-object {
+  border: 0px solid red;
+}
+
+.left-padding {
+  padding-left: 20px;
+}
+
+.handle {
+  margin-top: 10px;
+  color: gray;
+}
+
+.discover-card {
+  border: 1px solid #cd72b4;
+  border-radius: 5px;
+  margin-top: 50px;
+  width: 80%;
+}
