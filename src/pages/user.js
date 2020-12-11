@@ -1,7 +1,6 @@
 import React from 'react';
 import { Redirect } from 'react-router';
 
-
 //Stylesheets
 import '../stylesheets/common.css'
 import '../stylesheets/user.css'
@@ -13,6 +12,7 @@ import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import Chip from '@material-ui/core/Chip';
 
 //Material UI Icons
 import MessageIcon from '@material-ui/icons/Message';
@@ -21,6 +21,9 @@ import MessageIcon from '@material-ui/icons/Message';
 import { connect } from 'react-redux'
 import { getUserByHandle } from '../redux/actions/dataActions'
 import PropTypes from 'prop-types'
+
+//Image Gallery (From Online) {https://www.npmjs.com/package/react-image-gallery}
+import ImageGallery from 'react-image-gallery';
 
 class User extends React.Component
 {
@@ -41,86 +44,111 @@ class User extends React.Component
     render()
     {
         const {user, isLoading} = this.props.data;
-        let userDisplay = null
-        let userHandle = null
-        let userProfileImage = null
         let fullProfile = null
-        let imageGallery = null
+        let circularProgress = null; 
 
         if(user && !isLoading) {
-            userDisplay = user.fullName
-            userHandle = user.userHandle
-            userProfileImage = user.imageUrl
-            imageGallery = user.mediaImages
+            let userDisplay = user.fullName
+            let userHandle = user.userHandle
+            let userProfileImageURL = user.imageUrl
+            let imageGallery = user.mediaImages
+            let bio = user.bio
+            let tags = user.tags
+
+            let reviewData = user.reviews
+            let averageStars = reviewData.averageStars
+            let numberOfReviews = reviewData.numberOfReviews
+            let reviews = reviewData.reviews
+
+            
+            let reviewCards = [];
+            reviews.forEach(review =>
+            {
+                reviewCards.push(
+                  <Grid item sm={4} xs={12} className="review-card">
+                      <p className="review-handle">@{review.userHandle} - ({review.stars}/5)</p>
+                      <p className="review-body">{review.body}</p>
+                  </Grid>
+                )
+            })
+
+            let carouselImages = [];                    //Initiate carousel data 
+            imageGallery.forEach(imageURL =>  
+            {
+                carouselImages.push({
+                  original: imageURL, 
+                  thumbnail: imageURL
+                })
+            })
+
+            let chips = []; 
+            tags.forEach(tag =>
+            {
+                chips.push
+                (
+                    <Chip 
+                    className="chip-padding" 
+                    color="primary" 
+                    label={tag}
+                    style={{ fontSize: '1rem' }}/>
+                )
+            })
+
             fullProfile =
-            <Grid container spacing={3}>
+            <Grid container>
                 {/* First Row */}
-                <Grid item className="grid-item-userinfo" sm={2} xs={4} align="center">
-                    <img className="profile-image" src={userProfileImage} />
-                </Grid>
-                <Grid item className="grid-item-userinfo" sm={8} xs={8}>
-                    <p className="company-name">{userDisplay}</p>
-                    <p className="user-handle">@{userHandle}</p>
-                </Grid>
-                <Grid item className="grid-item-messagebutton" align="center" sm={2} xs={12}>
-                    <Button
-                    variant="contained"
-                    color="primary"
-                    startIcon={<MessageIcon />}
-                    >
-                            Message
-                    </Button>
+                <Grid container className="row">
+                  <Grid item className="grid-item-userinfo" sm={2} xs={12} align="right">
+                      <img className="profile-image" src={userProfileImageURL} />
+                  </Grid>
+                  <Grid item className="grid-item-title" sm={8} xs={12} align="left">
+                      <p className="company-name">{userDisplay}</p>
+                      <p className="user-handle">@{userHandle}</p>
+                  </Grid>
+                  <Grid item className="grid-item-messagebutton" align="center" sm={2} xs={12}>
+                      <Button
+                      variant="contained"
+                      color="primary"
+                      startIcon={<MessageIcon />}
+                      >
+                              Message
+                      </Button>
+                  </Grid>
                 </Grid>
 
                 {/* Second Row */}
-                <Grid item className="grid-item-bigpicture" sm={6} xs={12}>
-                    <img className="bigpicture-section" src={imageGallery[0]}></img>
-                </Grid>
-                <Grid container className="grid-item-smallpictures" sm={6} xs={12} alignItems="center" justify="center">
-                  <Grid item className="grid-item-smallpictures" sm={6} xs={3}>
-                    <img className="smallpicture-section" src={imageGallery[1]}></img>
+                <Grid container className="row">
+                  <Grid container className="image-gallery" sm={6} xs={12}>
+                    <ImageGallery items={carouselImages} autoPlay="true" slideDuration="1000" />
                   </Grid>
-                  <Grid item className="grid-item-smallpictures" sm={6} xs={3}>
-                    <img className="smallpicture-section" src={imageGallery[2]}></img>
-                  </Grid>
-                  <Grid item className="grid-item-smallpictures" sm={6} xs={3}>
-                    <img className="smallpicture-section" src={imageGallery[3]}></img>
-                  </Grid>
-                  <Grid item className="grid-item-smallpictures" sm={6} xs={3}>
-                    <img className="smallpicture-section" src={imageGallery[4]}></img>
+                  
+                  <Grid item className="grid-item-description" sm={6} xs={12}>
+                    <div className="bio-container">
+                      <p className="bio">{bio}</p>
+                        {chips}
+                    </div>
                   </Grid>
                 </Grid>
-
-
-                {/* Third Row */}
-                <Grid item className="grid-item-description" sm={6} xs={12}>
-                  <div className="reviews-section">
-                    <p>Description</p>
-                  </div>
-                </Grid>
-                <Grid item className="grid-item-request" sm={6} xs={12}>
-                  <p>REQUEST QUOTE DROPDOWN</p>
-                </Grid>
-
-                {/* Fourth Row */}
-                <Grid item className="grid-item-reviews" sm={12} xs={12}>
-                  <div className="reviews-section">
-                    <h1 className="banner">Review</h1>
-                    <hr></hr>
-                    <p>This is placeholder for a review</p>
-                    <p>This is second review</p>
-                  </div>
-                </Grid>
+                
+                <div className="reviews-section">
+                  <Grid item sm={12} xs={12}>
+                      <hr></hr>
+                      <p className="banner">Reviews</p>
+                  </Grid>
+                  <Grid container>
+                    {reviewCards}
+                  </Grid>
+                  {/* Below is ghetto spacing */}
+                  <br></br> 
+                </div>
             </Grid>
         } else {
-
-            // fullProfile =
-            // <Redirect to="/404" />
+            circularProgress = <CircularProgress />
         }
 
-
         return(
-            <div className="userContainer">
+            <div className="user-container">
+              {circularProgress}
               {fullProfile}
             </div>
         )
