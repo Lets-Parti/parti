@@ -8,7 +8,6 @@ ReactDOM.render(
         <Favicon url='./favicon.ico' />
         <App />
     </div>
-
     , 
     document.getElementById('root')
 );
