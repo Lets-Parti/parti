@@ -1,4 +1,4 @@
-import {SET_EVENTS, LOADING_DATA, CREATE_EVENT, DISCOVER, CREATE_FEEDBACK, SET_USER_DATA} from '../types'
+import {SET_EVENTS, LOADING_DATA, CREATE_EVENT, DISCOVER, CREATE_FEEDBACK, SET_USER_DATA, DISCOVER_EVENTS} from '../types'
 
 const initialState = {
     events: [], 
@@ -35,6 +35,12 @@ export default function(state = initialState, action) {
             return {
                 ...state, 
                 discover: action.payload, 
+                isLoading: false
+            }
+        case DISCOVER_EVENTS: 
+            return {
+                ...state, 
+                discoverEvents: action.payload, 
                 isLoading: false
             }
         case SET_USER_DATA: 

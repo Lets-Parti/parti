@@ -9,6 +9,7 @@ import Login from '../src/pages/login'
 import CreateEvent from '../src/pages/create-event/create-event'
 import Events from './pages/user/events'
 import Discover from './pages/discover/discover'
+import DiscoverEvents from './pages/discover/discover-events'
 import User from './pages/user'
 import Feedback from './pages/feedback'
 //Components
@@ -62,10 +63,11 @@ class App extends React.Component
               <Route exact path="/about" component={About} />
               <Route exact path="/feedback" component={Feedback} />
               <Route exact path="/404" component={ErrorNotFound} />
-              <Route exact path="/user/:userhandle" component={User} />
+              <ProtectedRoute exact path="/user/:userhandle" component={User} />
               <ProtectedRoute exact path="/create-event" component={CreateEvent} />
               <ProtectedRoute exact path="/events" component={Events} />
               <Route exact path="/discover" component={Discover} />
+              <Route exact path="/discover-events" component={DiscoverEvents} />
               <AuthRoute exact path="/signup" component={SignUp} />
               <AuthRoute exact path="/login" component={Login} />
               <Redirect to="/404"></Redirect>
