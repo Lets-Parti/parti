@@ -11,7 +11,7 @@ import Events from './pages/user/events'
 import Discover from './pages/discover/discover'
 import User from './pages/user'
 import Feedback from './pages/feedback'
-import AccountEdit from './pages/user/edit'
+import AccountEdit from './pages/user/accountedit'
 //Components
 import Navbar from '../src/components/navbar'
 //Theme

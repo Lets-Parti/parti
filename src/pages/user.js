@@ -123,7 +123,6 @@ class User extends React.Component
             <div className="userContainer">
               {fullProfile}
             </div>
-
         )
     }
 }

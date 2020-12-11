@@ -48,6 +48,14 @@ class AccountEdit extends React.Component
         this.onDeleteMediaImage = this.onDeleteMediaImage.bind(this); 
     }   
 
+    onUpdateProfile()
+    {
+        this.setState({
+            onUpdateProfile: true, 
+            user: this.props.user.user
+        });
+    }
+
     eventChange(event)
     {
         let user = this.state.user; 
@@ -55,55 +63,6 @@ class AccountEdit extends React.Component
         this.setState({
             user
         })
-    }
-
-    onClickProfile(event)
-    {
-        const fileInput = document.getElementById('imageInput');
-        fileInput.click(); 
-    }
-
-    onClickUploadMedia(event)
-    {
-        const fileInput = document.getElementById('imageGalleryInput'); 
-        fileInput.click(); 
-    }
-    
-    async handleProfileImageChange(event)
-    {
-        const image = event.target.files[0]; 
-        let newImage = await resizeProfileImage(image); 
-        const formData = new FormData(); 
-        formData.append('image', newImage, image.name); 
-        this.props.uploadProfileImage(formData); 
-    }
-
-    async handleMediaImageChange(event)
-    {
-        console.log(this.props.user.user.mediaImages.length)
-        if(this.props.user.user.mediaImages.length >= StaticData.MAX_MEDIA_IMAGES)
-        {
-            alert(`Cannot have more than ${StaticData.MAX_MEDIA_IMAGES} images in gallery`);
-        }
-        const image = event.target.files[0]; 
-        let newImage = await resizeMediaImage(image); 
-        const formData = new FormData(); 
-        formData.append('image', newImage, image.name); 
-        this.props.uploadMediaImage(formData); 
-    }
-
-    onDeleteMediaImage(event)
-    {
-        let targetIndex = event.target.getAttribute("data-index");
-        this.props.deleteMediaImage(targetIndex); 
-    }
-
-    onUpdateProfile()
-    {
-        this.setState({
-            onUpdateProfile: true, 
-            user: this.props.user.user
-        });
     }
 
     onSubmitProfile()
@@ -118,6 +77,50 @@ class AccountEdit extends React.Component
         this.setState({
             user
         })
+    }
+
+    //------ Handle Profile Image Change --------
+    onClickProfile(event)
+    {
+        const fileInput = document.getElementById('imageInput');
+        fileInput.click(); 
+    }
+
+    async handleProfileImageChange(event)
+    {
+        const image = event.target.files[0]; 
+        let newImage = await resizeProfileImage(image); 
+        const formData = new FormData(); 
+        formData.append('image', newImage, image.name); 
+        this.props.uploadProfileImage(formData); 
+    }
+
+    //------Handle Media Gallery Change
+    onClickUploadMedia(event)
+    {
+        const fileInput = document.getElementById('imageGalleryInput'); 
+        fileInput.click(); 
+    }
+    
+    async handleMediaImageChange(event)
+    {
+        console.log(this.props.user.user.mediaImages.length)
+        if(this.props.user.user.mediaImages.length >= StaticData.MAX_MEDIA_IMAGES)
+        {
+            alert(`Cannot have more than ${StaticData.MAX_MEDIA_IMAGES} images in gallery`);
+            return; 
+        }
+        const image = event.target.files[0]; 
+        let newImage = await resizeMediaImage(image); 
+        const formData = new FormData(); 
+        formData.append('image', newImage, image.name); 
+        this.props.uploadMediaImage(formData); 
+    }
+
+    onDeleteMediaImage(event)
+    {
+        let targetIndex = event.target.getAttribute("data-index");
+        this.props.deleteMediaImage(targetIndex); 
     }
 
     componentWillReceiveProps(nextProps)
@@ -138,7 +141,11 @@ class AccountEdit extends React.Component
         let userDataForm = null
         let imageGallery = null
         let galleryContent = null
-        let buttonDisplay = this.state.onUpdateProfile ? 
+        let buttonDisplay = null; 
+        
+        if(!isLoading)
+        {
+            buttonDisplay = this.state.onUpdateProfile ? 
             <Button
                 variant="contained"
                 color="primary"
@@ -146,16 +153,17 @@ class AccountEdit extends React.Component
                 >
                 Save Profile
             </Button>
-        :
-        <Button
-            variant="outlined"
-            color="primary"
-            onClick={this.onUpdateProfile}
-            >
-            Update Profile
-        </Button>
+            :
+            <Button
+                variant="outlined"
+                color="primary"
+                onClick={this.onUpdateProfile}
+                >
+                Update Profile
+            </Button>
+        }
 
-        if(this.props.user.user)
+        if(this.props.user.user && !isLoading)
         {
             let user = this.props.user.user
             if(user.type === 'client')
@@ -235,7 +243,7 @@ class AccountEdit extends React.Component
         }
 
         //Conditional Rendering for the update profile form: 
-        if(this.state.onUpdateProfile)
+        if(this.state.onUpdateProfile && !isLoading)
         {
             if(this.state.user.type === 'client')
             {

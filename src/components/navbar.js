@@ -311,7 +311,6 @@ class Navbar extends React.Component {
         </div>
     )
 
-
     const renderMobileMenu = (
       <Menu
         anchorEl={this.state.mobileMoreAnchorEl}
