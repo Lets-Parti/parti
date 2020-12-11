@@ -4,6 +4,7 @@
   margin-right: 3rem;
   margin-top: 3rem;
   font-family: Roboto, sans-serif;
+
 }
 .firstRow {
   margin: 1rem;
@@ -12,8 +13,6 @@
 .grid-item-userinfo {
   /* This is for testing */
   border: 1px solid black;
-
-  height: 9rem;
 }
 
 .grid-item-messagebutton {
@@ -33,9 +32,9 @@
   color: grey;
 }
 
-.profile-image {
-  height: 100%;
+.profile-image img {
   border-radius: 50%;
+  box-shadow: 0 0 0 1pt #e3dee2;
 }
 
 .grid-item-bigpicture {

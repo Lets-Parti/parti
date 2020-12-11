@@ -1,4 +1,6 @@
 import React from 'react';
+import { Redirect } from 'react-router';
+
 
 //Stylesheets
 import '../stylesheets/common.css'
@@ -26,93 +28,100 @@ class User extends React.Component
     {
         super()
         this.state = {
-
+          errors: {},
         }
     }
 
-    // componentDidMount()
-    // {
-    //     const handle = this.props.match.params.userhandle
-    //     this.props.getUserByHandle(handle);
-    // }
+    componentDidMount()
+    {
+        const handle = this.props.match.params.userhandle
+        this.props.getUserByHandle(handle);
+    }
 
     render()
     {
-        // const {user, isLoading} = this.props.data;
-        // let userDisplay = null
+        const {user, isLoading} = this.props.data;
+        let userDisplay = null
+        let userHandle = null
+        let userProfileImage = null
+        let fullProfile = null
+        let imageGallery = null
 
-        // if(user && !isLoading)
-        // {
-        //     userDisplay = user.userHandle
-        // }else
-        // {
-        //     userDisplay = <CircularProgress />
-        // }
+        if(user && !isLoading) {
+            userDisplay = user.fullName
+            userHandle = user.userHandle
+            userProfileImage = user.imageUrl
+            imageGallery = user.mediaImages
+            fullProfile =
+            <Grid container spacing={3}>
+                {/* First Row */}
+                <Grid item className="grid-item-userinfo" sm={2} xs={4} align="center">
+                    <img className="profile-image" src={userProfileImage} />
+                </Grid>
+                <Grid item className="grid-item-userinfo" sm={8} xs={8}>
+                    <p className="company-name">{userDisplay}</p>
+                    <p className="user-handle">@{userHandle}</p>
+                </Grid>
+                <Grid item className="grid-item-messagebutton" align="center" sm={2} xs={12}>
+                    <Button
+                    variant="contained"
+                    color="primary"
+                    startIcon={<MessageIcon />}
+                    >
+                            Message
+                    </Button>
+                </Grid>
+
+                {/* Second Row */}
+                <Grid item className="grid-item-bigpicture" sm={6} xs={12}>
+                    <img className="bigpicture-section" src={imageGallery[0]}></img>
+                </Grid>
+                <Grid container className="grid-item-smallpictures" sm={6} xs={12} alignItems="center" justify="center">
+                  <Grid item className="grid-item-smallpictures" sm={6} xs={3}>
+                    <img className="smallpicture-section" src={imageGallery[1]}></img>
+                  </Grid>
+                  <Grid item className="grid-item-smallpictures" sm={6} xs={3}>
+                    <img className="smallpicture-section" src={imageGallery[2]}></img>
+                  </Grid>
+                  <Grid item className="grid-item-smallpictures" sm={6} xs={3}>
+                    <img className="smallpicture-section" src={imageGallery[3]}></img>
+                  </Grid>
+                  <Grid item className="grid-item-smallpictures" sm={6} xs={3}>
+                    <img className="smallpicture-section" src={imageGallery[4]}></img>
+                  </Grid>
+                </Grid>
+
+
+                {/* Third Row */}
+                <Grid item className="grid-item-description" sm={6} xs={12}>
+                  <div className="reviews-section">
+                    <p>Description</p>
+                  </div>
+                </Grid>
+                <Grid item className="grid-item-request" sm={6} xs={12}>
+                  <p>REQUEST QUOTE DROPDOWN</p>
+                </Grid>
+
+                {/* Fourth Row */}
+                <Grid item className="grid-item-reviews" sm={12} xs={12}>
+                  <div className="reviews-section">
+                    <h1 className="banner">Review</h1>
+                    <hr></hr>
+                    <p>This is placeholder for a review</p>
+                    <p>This is second review</p>
+                  </div>
+                </Grid>
+            </Grid>
+        } else {
+
+            // fullProfile =
+            // <Redirect to="/404" />
+        }
+
 
         return(
             <div className="userContainer">
-                    <Grid container spacing={3}>
-                        {/* First Row */}
-                        <Grid item className="grid-item-userinfo" sm={2} xs={4} align="center">
-                            <img className="profile-image" src={profileImage} />
-                        </Grid>
-                        <Grid item className="grid-item-userinfo" sm={6} xs={8}>
-                            <p className="company-name">808Hertz Entertainment</p>
-                            <p className="user-handle">@808hertz</p>
-                        </Grid>
-                        <Grid item className="grid-item-messagebutton" align="center" sm={4} xs={12}>
-                            <Button
-                            variant="contained"
-                            color="primary"
-                            startIcon={<MessageIcon />}
-                            >
-                                    Message
-                            </Button>
-                        </Grid>
-
-                        {/* Second Row */}
-                        <Grid item className="grid-item-bigpicture" sm={6} xs={12}>
-                            <img className="bigpicture-section" src={testImage}></img>
-                        </Grid>
-                        <Grid container className="grid-item-smallpictures" sm={6} xs={12} alignItems="center" justify="center">
-                          <Grid item className="grid-item-smallpictures" sm={6} xs={3}>
-                            <img className="smallpicture-section" src={testImage}></img>
-                          </Grid>
-                          <Grid item className="grid-item-smallpictures" sm={6} xs={3}>
-                            <img className="smallpicture-section" src={testImage}></img>
-                          </Grid>
-                          <Grid item className="grid-item-smallpictures" sm={6} xs={3}>
-                            <img className="smallpicture-section" src={testImage}></img>
-                          </Grid>
-                          <Grid item className="grid-item-smallpictures" sm={6} xs={3}>
-                            <img className="smallpicture-section" src={testImage}></img>
-                          </Grid>
-                        </Grid>
-
-
-                        {/* Third Row */}
-                        <Grid item className="grid-item-description" sm={6} xs={12}>
-                          <div className="reviews-section">
-                            <h1 className="banner">Review</h1>
-                            <hr></hr>
-                            <p>This is placeholder for a review</p>
-                            <p>This is second review</p>
-                          </div>
-                        </Grid>
-                        <Grid item className="grid-item-request" sm={6} xs={12}>
-                          <p>REQUEST QUOTE DROPDOWN</p>
-                        </Grid>
-
-                        {/* Fourth Row */}
-                        <Grid item className="grid-item-reviews" sm={12} xs={12}>
-                          <div className="reviews-section">
-                            <h1 className="banner">Review</h1>
-                            <hr></hr>
-                            <p>This is placeholder for a review</p>
-                            <p>This is second review</p>
-                          </div>
-                        </Grid>
-                    </Grid>
+              {fullProfile}
             </div>
 
         )
