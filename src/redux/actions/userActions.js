@@ -1,4 +1,4 @@
-import {SET_USER, SET_ERRORS, CLEAR_ERRORS, LOADING_UI, SET_UNAUTHENTICATED} from '../types'
+import {SET_USER, SET_ERRORS, CLEAR_ERRORS, LOADING_UI, SET_UNAUTHENTICATED, EDIT_ACCOUNT} from '../types'
 import axios from 'axios'
 
 export const loginUser = (userData, history) => (dispatch) =>
@@ -74,6 +74,119 @@ export const logoutUser = () => (dispatch) =>
     delete axios.defaults.headers.common['Authorization'];
     dispatch({type: SET_UNAUTHENTICATED});
     window.location.href = "/"                                                      
+}
+
+export const updateUserProfile = (userData, userType) => (dispatch) =>
+{
+    dispatch({type: LOADING_UI});
+    let dataSentToDB = {}
+    if(userType === 'client')
+    {
+        dataSentToDB = {
+            zipcode: userData.zipcode, 
+            fullName: userData.fullName
+        }
+
+        axios.post('/account/edit', JSON.stringify(dataSentToDB),
+        {            
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(res =>
+        {
+            dispatch({type: CLEAR_ERRORS});
+            window.location.href = "/account/edit"
+        })
+        .catch(err => 
+        {
+            dispatch({
+                type: SET_ERRORS, 
+                payload: err.response.data
+            })
+        })
+
+    }else if(userType === 'service')
+    {
+        dataSentToDB = {
+            zipcode: userData.zipcode, 
+            fullName: userData.fullName, 
+            tags: userData.tags, 
+            bio: userData.bio, 
+        }
+
+        axios.post('/account/edit', JSON.stringify(dataSentToDB),
+        {            
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(res =>
+        {
+            dispatch({type: CLEAR_ERRORS});
+            window.location.href = "/account/edit"
+        })
+        .catch(err => 
+        {
+            dispatch({
+                type: SET_ERRORS, 
+                payload: err.response.data
+            })
+        })
+    }
+}
+
+export const uploadProfileImage = (formData) => (dispatch) =>
+{
+    dispatch({type: LOADING_UI})
+    axios.post('/user/image', formData)
+    .then(res => {
+        dispatch(getUserData()); 
+        dispatch({type: CLEAR_ERRORS});
+        window.location.href = "/account/edit";
+    })
+    .catch(err =>
+    {
+        alert(`Something went wrong: ${err}`);
+    })
+}
+
+export const uploadMediaImage = (formData) => (dispatch) =>
+{
+    dispatch({type: LOADING_UI})
+    axios.post('/user/services/media', formData)
+    .then(res =>{
+        dispatch(getUserData()); 
+        dispatch({type: CLEAR_ERRORS});
+        window.location.href = "/account/edit";
+    })
+    .catch(err =>
+    {
+        alert(`Something went wrong: ${err}`);
+    })
+}
+
+export const deleteMediaImage = (indexValue) => (dispatch) =>
+{
+    dispatch({type: LOADING_UI})
+    let axiosData = {
+        index: indexValue
+    }
+    axios.post('/user/services/media/delete', JSON.stringify(axiosData), 
+    {            
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(res =>
+    {
+        dispatch(getUserData()); 
+        dispatch({type: CLEAR_ERRORS})
+    })
+    .catch(err =>
+    {
+        console.error(err); 
+    })
 }
 
 const setAuthorizationHeader = (token) => {
