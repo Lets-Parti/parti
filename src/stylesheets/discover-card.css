@@ -81,13 +81,14 @@
     font-size: 1.25rem;
     margin-top: 0px;
     margin-bottom: 0px;
-    padding-left: 20px;
+    padding-left: 40px;
   }
 
   .discover-card-handle {
+    margin-bottom: 0px;
     margin-top: 10px;
-    font-size: 0.8rem;
+    font-size: 1rem;
     color: gray;
-    padding-left: 25px;
+    padding-left: 40px;
   }
 }

@@ -8,9 +8,10 @@ import '../stylesheets/user.css'
 //MaterialUI Imports
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Chip from '@material-ui/core/Chip';
+import IconButton from '@material-ui/core/IconButton';
+import ChatIcon from '@material-ui/icons/Chat';
 
 //Material UI Icons
 import MessageIcon from '@material-ui/icons/Message';
@@ -96,21 +97,29 @@ class User extends React.Component
             <Grid container>
                 {/* First Row */}
                 <Grid container className="row">
-                  <Grid item className="grid-item-userinfo" sm={2} xs={12} align="right">
+                  <Grid item className="grid-item" sm={1} xs={1} align="left">
                       <img className="user-profile-image" src={userProfileImageURL} />
                   </Grid>
-                  <Grid item className="grid-item-title" sm={8} xs={12} align="left">
-                      <p className="company-name">{userDisplay}</p>
+                  <Grid item className="grid-item" sm={9} xs={9} align="left">
+                      <p className="user-company-name">{userDisplay}</p>
                       <p className="user-handle">@{userHandle}</p>
                   </Grid>
-                  <Grid item className="grid-item-messagebutton" align="center" sm={2} xs={12}>
-                      <Button
-                      variant="contained"
-                      color="primary"
-                      startIcon={<MessageIcon />}
-                      >
-                              Message
-                      </Button>
+                  <Grid item className="grid-item" align="center" sm={2} xs={2}>
+                      <div className="message-button-large">
+                        <Button
+                        variant="contained"
+                        color="primary"
+                        startIcon={<MessageIcon />}
+                        display='none'
+                        >
+                                Message
+                        </Button>
+                      </div>
+                      <div className="message-button-small">
+                        <IconButton aria-label="delete" color="primary">
+                            <ChatIcon />
+                        </IconButton>
+                      </div>
                   </Grid>
                 </Grid>
 
