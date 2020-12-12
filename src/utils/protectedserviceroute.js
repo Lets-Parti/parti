@@ -1,0 +1,23 @@
+import React from 'react';
+import { Route, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
+const ProtectedServiceRoute = ({ component: Component, user, ...rest }) => (
+  <Route
+    {...rest}
+    render={(props) =>
+      (user.authenticated === false || (user.authenticated === true && user.user.type === 'client')) ? <Redirect to="/login" /> : <Component {...props} />
+    }
+  />
+);
+
+const mapStateToProps = (state) => ({
+  user: state.user, 
+});
+
+ProtectedServiceRoute.propTypes = {
+  user: PropTypes.object
+};
+
+export default connect(mapStateToProps)(ProtectedServiceRoute);
