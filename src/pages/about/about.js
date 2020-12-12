@@ -43,9 +43,9 @@ function AboutParti(){
       <h1 className={classes.banner}>About the Founders</h1>
       <hr></hr>
       <div className={classes.aboutsection}>
-        <AboutAnish />
-        <br></br>
         <AboutMatthew />
+        <br></br>
+        <AboutAnish />
         <br></br>
         <AboutJake />
         <br></br>
