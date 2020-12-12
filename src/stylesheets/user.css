@@ -80,6 +80,11 @@
   max-height: 100vh;
 }
 
+.image-gallery-slide img {
+  width: 400px;
+  height: 300px;
+}
+
 .bio {
   font-size: 1.25rem;
   margin-top: 0px;
