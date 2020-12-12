@@ -165,151 +165,215 @@ class Navbar extends React.Component {
     this.props.logoutUser(); 
   }
 
-  render() {
+  render() 
+  {
     const {authenticated, user} = this.props.user
     const { classes } = this.props;
     const isMobileMenuOpen = Boolean(this.state.mobileMoreAnchorEl);
     const mobileMenuId = "primary-search-account-menu-mobile";
 
-    const mobileMenuOptions = authenticated ? 
-    (
-        <div>
-            <Link href="/home">
-                <MenuItem name="home">
-                <IconButton aria-label="" color="inherit">
-                    <HomeIcon />
-                </IconButton>
-                <p>Home</p>
-                </MenuItem>
-            </Link>
-
-            <Link href="/events">
-                <MenuItem id="events">
-                <IconButton aria-label="" color="inherit">
-                    <EventIcon />
-                </IconButton>
-                <p>Events</p>
-                </MenuItem>
-            </Link>
-
-            <Link href="/contracts">
-                <MenuItem>
-                <IconButton aria-label="" color="inherit">
-                    <ReceiptIcon />
-                </IconButton>
-                <p>Contracts</p>
-            </MenuItem>
-            </Link>
-
-            <Link href="/discover">
-                <MenuItem>
-                <IconButton aria-label="" color="inherit">
-                    <SearchIcon />
-                </IconButton>
-                <p>Discover</p>
-                </MenuItem>
-            </Link>
-
-            <Link href="/messages">
-                <MenuItem>
-                <IconButton aria-label="show 11 new notifications" color="inherit">
-                    <Badge badgeContent={0} color="secondary">
-                    <MailIcon />
-                    </Badge>
-                </IconButton>
-                <p>Messages</p>
-                </MenuItem>
-            </Link>
-
-            <Link href="/notifications">
+    let mobileMenuOptions = null; 
+    if(!authenticated)
+    {
+      mobileMenuOptions = 
+      <div>
+        <Link href="/about">
             <MenuItem>
-            <IconButton aria-label="show 11 new notifications" color="inherit">
-                <Badge badgeContent={0} color="secondary">
-                <NotificationsIcon />
-                </Badge>
+            <IconButton color="inherit">
+                <HomeIcon />
             </IconButton>
-            <p>Notifications</p>
+            <p>Home</p>
             </MenuItem>
-            </Link>
+        </Link>
+        <Link href="/about">
+            <MenuItem name="about" onClick={this.onClick}>
+            <IconButton color="inherit" >
+                <InfoIcon />
+            </IconButton>
+            <p>About</p>
+            </MenuItem>
+        </Link>
+        <Link href="/discover">  
+            <MenuItem>
+            <IconButton color="inherit">
+                <SearchIcon />
+            </IconButton>
+            <p>Discover</p>
+            </MenuItem>
+        </Link>
+        <Link href="/login">
+            <MenuItem>
+            <IconButton color="inherit">
+                <AccountCircle />
+            </IconButton>
+            <p>Log In</p>
+            </MenuItem>
+        </Link>
+        <Link href="/signup">
+            <MenuItem>
+            <IconButton color="inherit">
+                <AccountCircle />
+            </IconButton>
+            <p>Sign Up</p>
+            </MenuItem>
+        </Link>
+      </div>
+    }else if(authenticated && user.type === 'client')
+    {
+      mobileMenuOptions = 
+      <div>
+      <Link href="/home">
+          <MenuItem name="home">
+          <IconButton aria-label="" color="inherit">
+              <HomeIcon />
+          </IconButton>
+          <p>Home</p>
+          </MenuItem>
+      </Link>
+      <Link href="/events">
+          <MenuItem id="events">
+          <IconButton aria-label="" color="inherit">
+              <EventIcon />
+          </IconButton>
+          <p>Events</p>
+          </MenuItem>
+      </Link>
+      <Link href="/contracts">
+          <MenuItem>
+          <IconButton aria-label="" color="inherit">
+              <ReceiptIcon />
+          </IconButton>
+          <p>Contracts</p>
+      </MenuItem>
+      </Link>
 
-            <Link href="/account/edit">
-                <MenuItem>
-                <IconButton
-                    aria-label="account of current user"
-                    aria-controls="primary-search-account-menu"
-                    aria-haspopup="true"
-                    color="inherit"
-                >
-                    <AccountCircle />
-                </IconButton>
-                <p>Profile</p>
-                </MenuItem> 
-            </Link>
+      <Link href="/discover">
+          <MenuItem>
+          <IconButton aria-label="" color="inherit">
+              <SearchIcon />
+          </IconButton>
+          <p>Discover</p>
+          </MenuItem>
+      </Link>
 
-            <Link onClick={this.logOut}>
-              <MenuItem>
-                  <IconButton
-                      aria-label="Log Out"
-                      aria-controls="primary-search-account-menu"
-                      aria-haspopup="true"
-                      color="inherit"
-                  >
-                  <ExitToAppIcon />
-                  </IconButton>
-                  <p>Log Out</p>
-                </MenuItem> 
-            </Link>
-        </div>
-    )
-    :
-    (
-        <div>
-            <Link href="/about">
-                <MenuItem>
-                <IconButton color="inherit">
-                    <HomeIcon />
-                </IconButton>
-                <p>Home</p>
-                </MenuItem>
-            </Link>
+      <Link href="/messages">
+          <MenuItem>
+          <IconButton aria-label="show 11 new notifications" color="inherit">
+              <Badge badgeContent={0} color="secondary">
+              <MailIcon />
+              </Badge>
+          </IconButton>
+          <p>Messages</p>
+          </MenuItem>
+      </Link>
 
-            <Link href="/about">
-                <MenuItem name="about" onClick={this.onClick}>
-                <IconButton color="inherit" >
-                    <InfoIcon />
-                </IconButton>
-                <p>About</p>
-                </MenuItem>
-            </Link>
+      <Link href="/notifications">
+      <MenuItem>
+      <IconButton aria-label="show 11 new notifications" color="inherit">
+          <Badge badgeContent={0} color="secondary">
+          <NotificationsIcon />
+          </Badge>
+      </IconButton>
+      <p>Notifications</p>
+      </MenuItem>
+      </Link>
 
-            <Link href="/discover">  
-                <MenuItem>
-                <IconButton color="inherit">
-                    <SearchIcon />
-                </IconButton>
-                <p>Discover</p>
-                </MenuItem>
-            </Link>
+      <Link href="/account/edit">
+          <MenuItem>
+          <IconButton
+              aria-label="account of current user"
+              aria-controls="primary-search-account-menu"
+              aria-haspopup="true"
+              color="inherit"
+          >
+              <AccountCircle />
+          </IconButton>
+          <p>Profile</p>
+          </MenuItem> 
+      </Link>
 
-            <Link href="/login">
-                <MenuItem>
-                <IconButton color="inherit">
-                    <AccountCircle />
-                </IconButton>
-                <p>Log In</p>
-                </MenuItem>
-            </Link>
-
-            <Link href="/signup">
-                <MenuItem>
-                <IconButton color="inherit">
-                    <AccountCircle />
-                </IconButton>
-                <p>Sign Up</p>
-                </MenuItem>
-            </Link>
-        </div>
-    )
+      <Link onClick={this.logOut}>
+        <MenuItem>
+            <IconButton
+                aria-label="Log Out"
+                aria-controls="primary-search-account-menu"
+                aria-haspopup="true"
+                color="inherit"
+            >
+            <ExitToAppIcon />
+            </IconButton>
+            <p>Log Out</p>
+          </MenuItem> 
+      </Link>
+      </div>
+    }else if(authenticated && user.type === 'service')
+    {
+      mobileMenuOptions = 
+      <div>
+      <Link href="/home">
+          <MenuItem name="home">
+          <IconButton aria-label="" color="inherit">
+              <HomeIcon />
+          </IconButton>
+          <p>Home</p>
+          </MenuItem>
+      </Link>
+      <Link href="/contracts">
+          <MenuItem>
+          <IconButton aria-label="" color="inherit">
+              <ReceiptIcon />
+          </IconButton>
+          <p>Contracts</p>
+      </MenuItem>
+      </Link>
+      <Link href="/messages">
+          <MenuItem>
+          <IconButton aria-label="show 11 new notifications" color="inherit">
+              <Badge badgeContent={0} color="secondary">
+              <MailIcon />
+              </Badge>
+          </IconButton>
+          <p>Messages</p>
+          </MenuItem>
+      </Link>
+      <Link href="/notifications">
+      <MenuItem>
+      <IconButton aria-label="show 11 new notifications" color="inherit">
+          <Badge badgeContent={0} color="secondary">
+          <NotificationsIcon />
+          </Badge>
+      </IconButton>
+      <p>Notifications</p>
+      </MenuItem>
+      </Link>
+      <Link href="/account/edit">
+          <MenuItem>
+          <IconButton
+              aria-label="account of current user"
+              aria-controls="primary-search-account-menu"
+              aria-haspopup="true"
+              color="inherit"
+          >
+              <AccountCircle />
+          </IconButton>
+          <p>Profile</p>
+          </MenuItem> 
+      </Link>
+      <Link onClick={this.logOut}>
+        <MenuItem>
+            <IconButton
+                aria-label="Log Out"
+                aria-controls="primary-search-account-menu"
+                aria-haspopup="true"
+                color="inherit"
+            >
+            <ExitToAppIcon />
+            </IconButton>
+            <p>Log Out</p>
+          </MenuItem> 
+      </Link>
+    </div>
+    }
 
     const renderMobileMenu = (
       <Menu
@@ -325,41 +389,56 @@ class Navbar extends React.Component {
       </Menu>
     );
 
-    const renderNavbarButtons = authenticated ? 
-    (
-        <div className={classes.sectionDesktop}>
-            <div className={classes.buttonGroup}>
-                <Link href="/">
-                <Button className={classes.menuButton}>Home</Button>
-                </Link> 
-                <Link href="/events">
-                <Button className={classes.menuButton}>Events</Button>
-                </Link> 
-                <Link href="/contracts">
-                <Button className={classes.menuButton}>Contracts</Button>
-                </Link> 
-                <Link href="/discover">
-                <Button className={classes.menuButton}>Discover</Button>
-                </Link> 
-            </div>
+    let renderNavbarButtons = null; 
+    if(!authenticated)
+    {
+      renderNavbarButtons = 
+      <div className={classes.sectionDesktop}>
+        <div className={classes.buttonGroup}>
+            <Link href="/">
+            <Button className={classes.menuButton}>Home</Button>
+            </Link> 
+            <Link href="/about">
+            <Button className={classes.menuButton}>About</Button>
+            </Link> 
+            <Link href="/discover">
+            <Button className={classes.menuButton}>Discover</Button>
+            </Link> 
         </div>
-    )
-    :
-    (
-        <div className={classes.sectionDesktop}>
-            <div className={classes.buttonGroup}>
-                <Link href="/">
-                <Button className={classes.menuButton}>Home</Button>
-                </Link> 
-                <Link href="/about">
-                <Button className={classes.menuButton}>About</Button>
-                </Link> 
-                <Link href="/discover">
-                <Button className={classes.menuButton}>Discover</Button>
-                </Link> 
-            </div>
-        </div>
-    )
+      </div>
+    }else if(authenticated && user.type === 'client')
+    {
+      renderNavbarButtons = 
+      <div className={classes.sectionDesktop}>
+          <div className={classes.buttonGroup}>
+              <Link href="/">
+              <Button className={classes.menuButton}>Home</Button>
+              </Link> 
+              <Link href="/events">
+              <Button className={classes.menuButton}>Events</Button>
+              </Link> 
+              <Link href="/contracts">
+              <Button className={classes.menuButton}>Contracts</Button>
+              </Link> 
+              <Link href="/discover">
+              <Button className={classes.menuButton}>Discover</Button>
+              </Link> 
+          </div>
+      </div>
+    }else if(authenticated && user.type === 'service')
+    {
+      renderNavbarButtons = 
+      <div className={classes.sectionDesktop}>
+          <div className={classes.buttonGroup}>
+            <Link href="/">
+            <Button className={classes.menuButton}>Home</Button>
+            </Link> 
+            <Link href="/contracts">
+            <Button className={classes.menuButton}>Contracts</Button>
+            </Link> 
+          </div>
+      </div>
+    }
 
     const renderRightSideButtons = authenticated ? 
     (            
@@ -445,15 +524,21 @@ class Navbar extends React.Component {
         </div>
     </div>
     )
-
-    const newEventButton = authenticated ? 
-    (
+    
+    let rightSideButton = null; 
+    if(authenticated && user.type === 'client')
+    {
+      rightSideButton =       
       <Link href="/create-event">
-      <Button className={classes.menuButton} variant="contained" color="primary">New Event</Button>
+        <Button className={classes.menuButton} variant="contained" color="primary">New Event</Button>
       </Link> 
-    )
-    :
-    null; 
+    }else if(authenticated && user.type === 'service')
+    {
+      rightSideButton = 
+      <Link href="/discover-events">
+        <Button className={classes.menuButton} variant="contained" color="primary">Find Events</Button>
+      </Link> 
+    }
 
     return (
         <div className={classes.grow}>
@@ -467,7 +552,7 @@ class Navbar extends React.Component {
 
             <div className={classes.grow} />
 
-            {newEventButton}
+            {rightSideButton}
 
             <div className={classes.sectionMobile}>
                 <IconButton

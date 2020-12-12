@@ -26,7 +26,8 @@ class Discover extends React.Component {
         }
     }
 
-    componentDidMount() {
+    componentDidMount() 
+    {
         const query = {
             service: ''
         }
@@ -44,7 +45,7 @@ class Discover extends React.Component {
     }
 
     render() {
-        console.log(this.state.service);
+
         const { discover, isLoading } = this.props.data;
 
         let dataDisplay
