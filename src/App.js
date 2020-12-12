@@ -66,7 +66,7 @@ class App extends React.Component
               <Route exact path="/about" component={About} />
               <Route exact path="/feedback" component={Feedback} />
               <Route exact path="/404" component={ErrorNotFound} />
-              <ProtectedRoute exact path="/user/:userhandle" component={User} />
+              <Route exact path="/user/:userhandle" component={User} />
               <ProtectedClientRoute exact path="/create-event" component={CreateEvent} />
               <ProtectedRoute exact path="/events" component={Events} />
               <ProtectedRoute exact path="/account/edit" component={AccountEdit} />
