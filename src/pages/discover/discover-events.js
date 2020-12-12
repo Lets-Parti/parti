@@ -5,22 +5,13 @@ import Grid from '@material-ui/core/Grid';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 //Components
-import DiscoverCard from '../../components/discover-components/discover-card'
-import EventCard from '../../components/events-components/event-card'
 import EventCardBView from '../../components/events-components/event-card-businessView'
-import ServiceCardBView from '../../components/events-components/service-card-businessView'
 
 //Redux
 import { connect } from 'react-redux'
-import { discover } from '../../redux/actions/dataActions'
-import { discoverEventsActions } from '../../redux/actions/dataActions'
-import { getEventsForDiscover } from '../../redux/actions/dataActions'
+import { discoverEvents } from '../../redux/actions/dataActions'
 import PropTypes from 'prop-types'
 
-//Select
-import Select from 'react-select'
-import StaticData from '../../static/static-data'
-import StaticDataZip from '../../static/static-data-for-zip'
 
 class DiscoverEvents extends React.Component
 {
@@ -35,30 +26,22 @@ class DiscoverEvents extends React.Component
     }
     componentDidMount()
     {
-        this.props.getEventsForDiscover(); 
+        this.props.discoverEvents(); 
     }
 
-    // componentDidMount() {
-    //     const query = {
-    //         service: ''
-    //     }
-    //     this.props.discover(query);
-    // }
+    handleChangeSelect(name, value) {
+        this.setState({
+            [name]: value
+        })
+        const query = {
+            service: value.value
+        }
+        this.props.discover(query);
+    }
 
-    // handleChangeSelect(name, value) {
-    //     this.setState({
-    //         [name]: value
-    //     })
-    //     const query = {
-    //         service: value.value
-    //     }
-    //     this.props.discover(query);
-    // }
-
-// remove
     render() {
         console.log(this.state);
-        const {events, isLoading} = this.props.data; 
+        const {discover, isLoading} = this.props.data; 
 
         let dataDisplay = null
         if(isLoading)
@@ -67,7 +50,7 @@ class DiscoverEvents extends React.Component
         }else
         {
             dataDisplay = []
-            events.forEach(event => 
+            discover.forEach(event => 
             {
                 dataDisplay.push(<EventCardBView key={event.eventID} data={event}/>)    
             });
@@ -79,13 +62,6 @@ class DiscoverEvents extends React.Component
                     <p className="title">Discover Events</p>
                     <p className="lightText">Here is a listing of events near you that are looking for your services!</p>
                     <div className="discoverSelect">
-                          {/* <Select
-                            options={StaticData.options}
-                            styles="width:100px;"
-                            id="select"
-                            value={this.state.service}
-                            onChange={this.handleChangeSelect.bind(this, "service")}
-                        />   */}
                     </div>
                     {dataDisplay}
                 </div>
@@ -95,7 +71,7 @@ class DiscoverEvents extends React.Component
 }
 
 DiscoverEvents.propTypes = {
-    getEventsForDiscover: PropTypes.func.isRequired,
+    discoverEvents: PropTypes.func.isRequired,
     data: PropTypes.object.isRequired
 }
 
@@ -104,7 +80,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapActionsToProps = {
-    getEventsForDiscover
+    discoverEvents
 }
 
 

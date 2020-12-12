@@ -1,15 +1,10 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-
-import Navbar from '../components/navbar';
 import Footer from '../components/footer'
-
 import bgwavy from '../resources/backgrounds/bgwavy.png'
 import graphicdemo from '../resources/backgrounds/demos.png'
-
 import Button from '@material-ui/core/Button';
-
 
 const useStyles = makeStyles((theme) => ({
   intro: {

@@ -30,6 +30,8 @@ import axios from 'axios';
 //utils
 import AuthRoute from './utils/authroute'                                 
 import ProtectedRoute from './utils/protectedroute'
+import ProtectedServiceRoute from './utils/protectedserviceroute'
+import ProtectedClientRoute from './utils/protectedclientroute'
 
 axios.defaults.baseURL = 'https://us-central1-lets-parti.cloudfunctions.net/api'
 
@@ -65,11 +67,11 @@ class App extends React.Component
               <Route exact path="/feedback" component={Feedback} />
               <Route exact path="/404" component={ErrorNotFound} />
               <ProtectedRoute exact path="/user/:userhandle" component={User} />
-              <ProtectedRoute exact path="/create-event" component={CreateEvent} />
+              <ProtectedClientRoute exact path="/create-event" component={CreateEvent} />
               <ProtectedRoute exact path="/events" component={Events} />
               <ProtectedRoute exact path="/account/edit" component={AccountEdit} />
               <Route exact path="/discover" component={Discover} />
-              <Route exact path="/discover-events" component={DiscoverEvents} />
+              <ProtectedServiceRoute exact path="/discover-events" component={DiscoverEvents} />
               <AuthRoute exact path="/signup" component={SignUp} />
               <AuthRoute exact path="/login" component={Login} />
               <Redirect to="/404"></Redirect>

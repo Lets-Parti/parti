@@ -22,48 +22,6 @@ export const getEvents = () => (dispatch) =>
     })
 }
 
-export const getEventsForDiscover = () => (dispatch) =>                        
-{
-    dispatch({type: LOADING_DATA});
-
-    axios.get('/discover/events')
-    .then(res => 
-    {
-        dispatch({
-            type: SET_EVENTS, 
-            payload: res.data
-        })
-    })
-    .catch(err => 
-    {
-        dispatch({
-            type: SET_EVENTS, 
-            payload: []
-        })
-    })
-}
-
-// export const getEventss = () => (dispatch) =>                        
-// {
-//     dispatch({type: LOADING_DATA});
-
-//     axios.get('/events')
-//     .then(res => 
-//     {
-//         dispatch({
-//             type: SET_EVENTS, 
-//             payload: res.data
-//         })
-//     })
-//     .catch(err => 
-//     {
-//         dispatch({
-//             type: SET_EVENTS, 
-//             payload: []
-//         })
-//     })
-// }
-
 export const createEvent = (eventData, history) => (dispatch) =>
 {
     dispatch({type: LOADING_UI});
@@ -140,28 +98,23 @@ export const discover = (queryData) => (dispatch) =>
     })
 }
 
-export const discoverEventsActions = (queryData) => (dispatch) =>
+export const discoverEvents = () => (dispatch) =>                        
 {
     dispatch({type: LOADING_DATA});
 
-    axios.get('/discover-events', {
-        headers: {
-           'service': queryData.service
-        }
-    })
-    .then(res =>
-        {
-            console.log(res); 
-            dispatch({
-                type: DISCOVER_EVENTS, 
-                payload: res.data
-            })
+    axios.get('/discover/events')
+    .then(res => 
+    {
+        dispatch({
+            type: DISCOVER, 
+            payload: res.data
         })
-    .catch(err =>
+    })
+    .catch(err => 
     {
         dispatch({
             type: SET_ERRORS, 
-            payload: err.response.data
+            payload: []
         })
     })
 }
