@@ -2,7 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 
-import jakeportrait from './imgs/aaricportrait.jpg';
+import jakeportrait from './imgs/jakeportrait.jpg';
 
 const useStyles = makeStyles((theme) => ({
   intro: {

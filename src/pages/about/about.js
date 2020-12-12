@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   },
   banner: {
     fontSize: '3rem',
-    color: '#505F98'
+    color: '#CD72B4'
   },
   text: {
     marginTop: '1rem',
@@ -43,13 +43,13 @@ function AboutParti(){
       <h1 className={classes.banner}>About the Founders</h1>
       <hr></hr>
       <div className={classes.aboutsection}>
-        <AboutAaric />
-        <br></br>
         <AboutAnish />
+        <br></br>
+        <AboutMatthew />
         <br></br>
         <AboutJake />
         <br></br>
-        <AboutMatthew />
+        <AboutAaric />
         <br></br>
         <AboutMax />
         <br></br>
