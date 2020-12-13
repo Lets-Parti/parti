@@ -326,6 +326,14 @@ class Navbar extends React.Component {
           <p>Contracts</p>
       </MenuItem>
       </Link>
+      <Link href="/discover">  
+            <MenuItem>
+            <IconButton color="inherit">
+                <SearchIcon />
+            </IconButton>
+            <p>Discover</p>
+            </MenuItem>
+        </Link>
       <Link href="/messages">
           <MenuItem>
           <IconButton aria-label="show 11 new notifications" color="inherit">
@@ -436,6 +444,9 @@ class Navbar extends React.Component {
             <Link href="/contracts">
             <Button className={classes.menuButton}>Contracts</Button>
             </Link> 
+            <Link href="/discover">
+              <Button className={classes.menuButton}>Discover</Button>
+              </Link> 
           </div>
       </div>
     }

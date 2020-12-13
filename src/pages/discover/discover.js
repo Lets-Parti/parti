@@ -4,8 +4,14 @@ import '../../stylesheets/discover.css'
 import Grid from '@material-ui/core/Grid';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
+
 //Components
 import DiscoverCard from '../../components/discover-components/discover-card'
+import Chips from 'react-chips'; // added
+import Tooltip from '@material-ui/core/Tooltip';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+
 
 //Redux
 import { connect } from 'react-redux'
@@ -24,6 +30,7 @@ class Discover extends React.Component {
             discover_cards: [],
             isLoading: false
         }
+      this.onChangeChips = this.onChangeChips.bind(this); // added from accountedit.js 
     }
 
     componentDidMount() 
@@ -35,16 +42,29 @@ class Discover extends React.Component {
     }
 
     handleChangeSelect(name, value) {
+         this.setState({
+             [name]: value
+         })
+         const query = {
+             service: value.value
+         }
+         this.props.discover(query);
+     }
+
+    // added from accountedit.js 
+    onChangeChips(chips)
+    {
+        let user = this.state.user; 
+        user.tags = chips
         this.setState({
-            [name]: value
+            user
         })
-        const query = {
-            service: value.value
-        }
-        this.props.discover(query);
     }
+    // added from accountedit.js 
 
     render() {
+
+        let chipfield = null
 
         const { discover, isLoading } = this.props.data;
 
@@ -58,19 +78,35 @@ class Discover extends React.Component {
             })
         }
 
+        let chip_options = [];
+        StaticData.options.forEach(option =>
+        {
+            chip_options.push(option.value);
+        });
+
+        // added from accountedit.js
+        chipfield =
+        <Chips
+        value={this.state.user.tags}
+        onChange={this.onChangeChips}
+        suggestions={chip_options}
+        /> 
+        // added from accountedit.js
+
         return (
             <Grid align="center">
                 <div className="page-content">
                     <p className="title">Discover</p>
                     <p className="lightText">What service are you looking for?</p>
                     <div className="discoverSelect">
-                        <Select
+                        {/* <Select
                             options={StaticData.options}
                             styles="width:100px;"
                             id="select"
                             value={this.state.service}
                             onChange={this.handleChangeSelect.bind(this, "service")}
-                        />
+                        />  */}
+                        {chipfield}  
                     </div>
                     {dataDisplay}
                 </div>
@@ -81,7 +117,8 @@ class Discover extends React.Component {
 
 Discover.propTypes = {
     discover: PropTypes.func.isRequired,
-    data: PropTypes.object.isRequired
+    data: PropTypes.object.isRequired,
+ //   user: PropTypes.object.isRequired // add
 }
 
 const mapStateToProps = (state) => ({
