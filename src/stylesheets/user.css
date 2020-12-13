@@ -61,26 +61,15 @@
   padding-bottom: 0px;
 }
 
-.image-gallery {
-  width: 100%;
-  height: auto;
-}
-
 .image-gallery-slide img {
-  width: 100%;
-  height: 60vh;
+  height: 400px;
   object-fit: cover;
   overflow-y: hidden;
   object-position: center center;
 }
 
 .fullscreen .image-gallery-slide img {
-  max-height: 100vh;
-}
-
-.image-gallery-slide img {
-  width: 400px;
-  height: 300px;
+  height: 100%;
 }
 
 .bio {
