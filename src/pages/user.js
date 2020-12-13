@@ -101,8 +101,10 @@ class User extends React.Component
                       <img className="user-profile-image" src={userProfileImageURL} />
                   </Grid>
                   <Grid item className="grid-item" sm={9} xs={9} align="left">
-                      <p className="user-company-name">{userDisplay}</p>
-                      <p className="user-handle">@{userHandle}</p>
+                      <div className="user-page-title">
+                        <p className="user-company-name">{userDisplay}</p>
+                        <p className="user-handle">@{userHandle}</p>
+                      </div>
                   </Grid>
                   <Grid item className="grid-item" align="center" sm={2} xs={2}>
                       <div className="message-button-large">

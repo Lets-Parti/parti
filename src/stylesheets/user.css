@@ -20,7 +20,6 @@
 
 .user-company-name {
   padding-top: 10px;
-  padding-left: 30px;
   font-size: 1.75rem;
   margin-top: 0px;
   margin-bottom: 0px;
@@ -28,8 +27,11 @@
 
 .user-handle {
   margin-top: 10px;
-  padding-left: 30px;
   color: grey;
+}
+
+.user-page-title {
+  padding-left: 15px;
 }
 
 .user-profile-image {
@@ -122,7 +124,6 @@
 
   .user-company-name {
     padding-top: 10px;
-    padding-left: 70px;
     font-size: 1.5rem;
     margin-top: 0px;
     margin-bottom: 0px;
@@ -130,10 +131,11 @@
 
   .user-handle {
     margin-top: 10px;
-    margin-bottom: 0px;
-    padding-left: 70px;
-    font-size: 1rem;
     color: grey;
+  }
+
+  .user-page-title {
+    padding-left: 70px;
   }
 
   .user-profile-image {
