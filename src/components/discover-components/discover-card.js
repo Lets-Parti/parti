@@ -73,7 +73,7 @@ class DiscoverCard extends Component
                                 </a>
                             </Grid>
                             <Grid sm={4} xs={1} className="grid-object" align="right">
-                            <IconButton aria-label="delete" color="primary">
+                            <IconButton aria-label="message" color="primary">
                                 <ChatIcon />
                             </IconButton>
                             </Grid>
