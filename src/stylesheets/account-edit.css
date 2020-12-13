@@ -1,12 +1,13 @@
 .profile-image {
-  height: 5rem;
-  width: 5rem;
+  height: 8rem;
+  width: 8rem;
   border-radius: 50%;
   box-shadow: 0 0 0 1pt #e3dee2;
   object-fit: cover;
 }
 
 .full-name {
+  margin-top: 15px;
   font-size: 1.5rem;
   margin-bottom: 5px;
 }
@@ -15,9 +16,9 @@
   border: 1px solid #cd72b4;
   border-radius: 5px;
   margin-top: 50px;
+  margin-right: 0px;
   padding: 25px;
   padding-bottom: 50px;
-  width: 60%;
 }
 
 .edit-form {
@@ -30,8 +31,14 @@
   height: 25px;
 }
 
+.page-content {
+  width: 50%;
+}
+
 .user-handle {
   color: gray;
+  margin-bottom: 15px;
+  padding: 0px;
 }
 
 .gallery-image {
@@ -48,4 +55,11 @@
 .heading {
   color: grey;
   font-size: 1.5rem;
+}
+
+@media (max-width: 800px) {
+  .page-content {
+    width: 95%;
+    font-family: Roboto, sans-serif;
+  }
 }
