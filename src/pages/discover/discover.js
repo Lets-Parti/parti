@@ -30,7 +30,7 @@ class Discover extends React.Component {
             discover_cards: [],
             isLoading: false
         }
-      this.onChangeChips = this.onChangeChips.bind(this); // added from accountedit.js 
+      this.handleChangeSelect = this.handleChangeSelect.bind(this); // added from accountedit.js 
     }
 
     componentDidMount() 
@@ -43,7 +43,7 @@ class Discover extends React.Component {
 
     handleChangeSelect(name, value) {
          this.setState({
-             [name]: value
+             [name]: value,
          })
          const query = {
              service: value.value
@@ -54,18 +54,17 @@ class Discover extends React.Component {
     // added from accountedit.js 
     onChangeChips(chips)
     {
-        let user = this.state.user; 
-        user.tags = chips
-        this.setState({
-            user
-        })
+         let tags1 = this.state.service; 
+         tags1.tags = chips
+         this.setState({
+             tags1
+         })
     }
     // added from accountedit.js 
 
     render() {
 
         let chipfield = null
-
         const { discover, isLoading } = this.props.data;
 
         let dataDisplay
@@ -87,8 +86,9 @@ class Discover extends React.Component {
         // added from accountedit.js
         chipfield =
         <Chips
-        value={this.state.user.tags}
-        onChange={this.onChangeChips}
+        // value={this.state.service}
+        // options={StaticData.options}
+        onChange={this.handleChangeSelect.bind(this, "service"), this.onChangeChips}
         suggestions={chip_options}
         /> 
         // added from accountedit.js
@@ -105,8 +105,8 @@ class Discover extends React.Component {
                             id="select"
                             value={this.state.service}
                             onChange={this.handleChangeSelect.bind(this, "service")}
-                        />  */}
-                        {chipfield}  
+                        /> */}
+                        {chipfield}   
                     </div>
                     {dataDisplay}
                 </div>
@@ -118,10 +118,10 @@ class Discover extends React.Component {
 Discover.propTypes = {
     discover: PropTypes.func.isRequired,
     data: PropTypes.object.isRequired,
- //   user: PropTypes.object.isRequired // add
 }
 
 const mapStateToProps = (state) => ({
+    // tags1: state.tags1,
     data: state.data
 })
 
