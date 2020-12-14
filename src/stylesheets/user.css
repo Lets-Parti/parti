@@ -110,6 +110,13 @@
 .message-button-small {
   display: none;
 }
+.review-button-large {
+  display: block;
+}
+
+.review-button-small {
+  display: none;
+}
 
 @media (max-width: 800px) {
   .user-container {
@@ -158,6 +165,14 @@
     display: block;
   }
 
+  .review-button-large {
+    display: none;
+  }
+
+  .review-button-small {
+    display: block;
+  }
+
   .bio-container {
     height: 100%;
     padding: 10px;
@@ -174,4 +189,9 @@
     margin-right: 5px;
     font-size: 1rem;
   }
+}
+
+.hrmargin {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
 }
