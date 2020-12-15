@@ -17,6 +17,8 @@ import Tooltip from '@material-ui/core/Tooltip';
 //Icons
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import EventIcon from '@material-ui/icons/Event';
+import PhoneIcon from '@material-ui/icons/Phone';
+import EmailIcon from '@material-ui/icons/Email';
 
 //Redux
 import { connect } from 'react-redux'
@@ -135,6 +137,7 @@ class AccountEdit extends React.Component
 
     render()
     {   
+        console.log(this.state)
         let {isLoading} = this.props.UI; 
         let circularProgress = isLoading ? <CircularProgress /> : null; 
         let userData = null
@@ -179,6 +182,8 @@ class AccountEdit extends React.Component
                     <input type="file" id="imageInput" onChange={this.handleProfileImageChange} hidden="hidden"/>
                     <p className="user-handle">@{user.userHandle}</p>
                     <p className="full-name">{user.fullName}</p>
+                    <p className="user-info"><EmailIcon fontSize="small" />{user.email}</p>
+                    <p className="user-info"><PhoneIcon fontSize="small" />{user.phone}</p>
                     <p className="user-info"><LocationOnIcon fontSize="small" />{user.zipcode}</p>
                     <p className="user-info"><EventIcon fontSize="small" />Joined {joinedDate}</p>
                 </div>
@@ -193,8 +198,10 @@ class AccountEdit extends React.Component
                         </a>
                     </Tooltip>
                     <input type="file" id="imageInput" onChange={this.handleProfileImageChange} hidden="hidden"/>
-                    <a href={`/user/${user.userHandle}`}><p className="user-handle">@{user.userHandle}</p></a> 
-                    <p className="full-name">{user.fullName}</p>
+                    <a href={`/user/${user.userHandle}`} className="invisible-link"><p className="full-name">{user.fullName}</p></a>
+                    <a href={`/user/${user.userHandle}`} ><p className="user-handle">@{user.userHandle}</p></a> 
+                    <p className="user-info"><EmailIcon fontSize="small" />{user.email}</p>
+                    <p className="user-info"><PhoneIcon fontSize="small" />{user.phone}</p>
                     <p className="user-info"><LocationOnIcon fontSize="small" />{user.zipcode}</p>
                     <p className="user-info"><EventIcon fontSize="small" />Joined {joinedDate}</p>
                 </div>
@@ -231,6 +238,7 @@ class AccountEdit extends React.Component
 
                     <div class="divider" />
                     <input type="file" id="imageGalleryInput" onChange={this.handleMediaImageChange} hidden="hidden"/>
+                    <p className="lightText">Preferred Photo Ratio: (3:2)</p>
                     <Button
                         variant="contained"
                         color="primary"
@@ -259,6 +267,18 @@ class AccountEdit extends React.Component
                         value={this.state.user.fullName}
                         helperText={this.state.errors.fullName}
                         error={this.state.errors.fullName ? true : false}
+                        />
+                    <div className="divider" />
+                    <TextField
+                        label="Phone" 
+                        variant="outlined" 
+                        size="small" 
+                        fullWidth='true'
+                        name='phone'
+                        onChange={this.eventChange}
+                        value={this.state.user.phone}
+                        helperText={this.state.errors.phone}
+                        error={this.state.errors.phone ? true : false}
                         />
                     <div className="divider" />
                     <TextField
@@ -293,6 +313,18 @@ class AccountEdit extends React.Component
                         value={this.state.user.fullName}
                         helperText={this.state.errors.fullName}
                         error={this.state.errors.fullName ? true : false}
+                        />
+                    <div className="divider" />
+                    <TextField
+                        label="Phone" 
+                        variant="outlined" 
+                        size="small" 
+                        fullWidth='true'
+                        name='phone'
+                        onChange={this.eventChange}
+                        value={this.state.user.phone}
+                        helperText={this.state.errors.phone}
+                        error={this.state.errors.phone ? true : false}
                         />
                     <div className="divider" />
                     <TextField
@@ -333,15 +365,15 @@ class AccountEdit extends React.Component
 
         return(
             <Grid align="center">
-            <div className="page-content">
-                <div className="profile-container" >
-                    {circularProgress}
-                    {userData}
-                    {userDataForm}
-                    {buttonDisplay}
-                    {galleryContent}
+                <div className="page-content">
+                    <div className="profile-container" >
+                        {circularProgress}
+                        {userData}
+                        {userDataForm}
+                        {buttonDisplay}
+                        {galleryContent}
+                    </div>
                 </div>
-            </div>
             </Grid>
         )
     }

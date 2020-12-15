@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import '../../stylesheets/common.css'
 import '../../stylesheets/discover.css'
 import Grid from '@material-ui/core/Grid';
@@ -7,11 +7,6 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 
 //Components
 import DiscoverCard from '../../components/discover-components/discover-card'
-import Chips from 'react-chips'; // added
-import Tooltip from '@material-ui/core/Tooltip';
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
-
 
 //Redux
 import { connect } from 'react-redux'
@@ -26,17 +21,16 @@ class Discover extends React.Component {
     constructor() {
         super()
         this.state = {
-            service: '',
+            serviceTag: [],
             discover_cards: [],
             isLoading: false
         }
-      this.handleChangeSelect = this.handleChangeSelect.bind(this); // added from accountedit.js 
     }
 
     componentDidMount() 
     {
         const query = {
-            service: ''
+            serviceTags: ''
         }
         this.props.discover(query);
     }
@@ -45,25 +39,23 @@ class Discover extends React.Component {
          this.setState({
              [name]: value,
          })
-         const query = {
-             service: value.value
+         
+         if(value)
+         {
+            let tagsArray = []
+            value.forEach(val =>
+           {
+               tagsArray.push(val.value); 
+           })
+            const query = {
+                serviceTags: tagsArray.join()
+            }
+           this.props.discover(query);
          }
-         this.props.discover(query);
      }
 
-    // added from accountedit.js 
-    onChangeChips(chips)
-    {
-         let tags1 = this.state.service; 
-         tags1.tags = chips
-         this.setState({
-             tags1
-         })
-    }
-    // added from accountedit.js 
-
     render() {
-
+        console.log(this.state); 
         let chipfield = null
         const { discover, isLoading } = this.props.data;
 
@@ -72,42 +64,25 @@ class Discover extends React.Component {
             dataDisplay = <CircularProgress />
         } else {
             dataDisplay = []
-            discover.forEach(service => {
-                dataDisplay.push(<DiscoverCard data={service} />);
+            discover.forEach(serviceTag => {
+                dataDisplay.push(<DiscoverCard data={serviceTag} />);
             })
         }
-
-        let chip_options = [];
-        StaticData.options.forEach(option =>
-        {
-            chip_options.push(option.value);
-        });
-
-        // added from accountedit.js
-        chipfield =
-        <Chips
-        // value={this.state.service}
-        // options={StaticData.options}
-        onChange={this.handleChangeSelect.bind(this, "service"), this.onChangeChips}
-        suggestions={chip_options}
-        /> 
-        // added from accountedit.js
 
         return (
             <Grid align="center">
                 <div className="page-content">
                     <p className="title">Discover</p>
-                    <p className="lightText">What service are you looking for?</p>
+                    <p className="lightText">What service(s) are you looking for?</p>
                     <div className="discoverSelect">
-                        {/* <Select
+                        <Select 
+                            isMulti
                             options={StaticData.options}
                             styles="width:100px;"
                             id="select"
-                            value={this.state.service}
-                            onChange={this.handleChangeSelect.bind(this, "service")}
-                        /> */}
-                        {chipfield}   
-                    </div>
+                            onChange={this.handleChangeSelect.bind(this, "serviceTag")}
+                        /> 
+                        </div>
                     {dataDisplay}
                 </div>
             </Grid>

@@ -75,10 +75,10 @@ export const createFeedback = (feedbackData, history) => (dispatch) =>
 export const discover = (queryData) => (dispatch) =>
 {
     dispatch({type: LOADING_DATA});
-
+console.log(queryData.serviceTags)
     axios.get('/discover', {
         headers: {
-            'service': queryData.service
+            'service': queryData.serviceTags
         }
     })
     .then(res =>

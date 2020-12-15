@@ -84,9 +84,10 @@ export const updateUserProfile = (userData, userType) => (dispatch) =>
     {
         dataSentToDB = {
             zipcode: userData.zipcode, 
-            fullName: userData.fullName
+            fullName: userData.fullName,
+            phone: userData.phone
         }
-
+        
         axios.post('/account/edit', JSON.stringify(dataSentToDB),
         {            
             headers: {
@@ -109,6 +110,7 @@ export const updateUserProfile = (userData, userType) => (dispatch) =>
     }else if(userType === 'service')
     {
         dataSentToDB = {
+            phone: userData.phone,
             zipcode: userData.zipcode, 
             fullName: userData.fullName, 
             tags: userData.tags, 

@@ -28,6 +28,7 @@ class SignUp extends React.Component
             userHandle: '',
             fullName: '',
             email: '',
+            phone: '', 
             password: '',
             confirmPassword: '',
             type: 'client',
@@ -60,6 +61,7 @@ class SignUp extends React.Component
             userHandle: this.state.userHandle,
             fullName: this.state.fullName,
             email: this.state.email, 
+            phone: this.state.phone, 
             password: this.state.password,
             confirmPassword: this.state.confirmPassword,
             bio: this.state.bio, 
@@ -100,7 +102,6 @@ class SignUp extends React.Component
 
     render()
     {
-        console.log(this.state); 
         let ButtonDisplay = this.state.isLoading ? 
         <CircularProgress color="primary" /> 
         :                                 
@@ -124,6 +125,18 @@ class SignUp extends React.Component
             value={this.state.email}
             helperText={this.state.errors.email}
             error={this.state.errors.email ? true : false}
+            />
+        <div className="form-seperator" />
+        <TextField
+            label="Phone" 
+            variant="outlined" 
+            size="small" 
+            fullWidth='true'
+            name='phone'
+            onChange={this.eventChange}
+            value={this.state.phone}
+            helperText={this.state.errors.phone}
+            error={this.state.errors.phone ? true : false}
             />
         <div className="form-seperator" />
         <TextField
@@ -217,6 +230,18 @@ class SignUp extends React.Component
             value={this.state.email}
             helperText={this.state.errors.email}
             error={this.state.errors.email ? true : false}
+            />
+        <div className="form-seperator" />
+        <TextField
+            label="Phone" 
+            variant="outlined" 
+            size="small" 
+            fullWidth='true'
+            name='phone'
+            onChange={this.eventChange}
+            value={this.state.phone}
+            helperText={this.state.errors.phone}
+            error={this.state.errors.phone ? true : false}
             />
         <div className="form-seperator" />
         <TextField
