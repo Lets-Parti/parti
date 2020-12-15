@@ -66,8 +66,7 @@ class CreateEvent extends React.Component
                 {
                     serviceType: service.service.value, 
                     description: service.description, 
-                    vendorFound: false, 
-                    service: {}
+                    service: null
                 }
             )
         }
