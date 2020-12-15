@@ -25,7 +25,7 @@ export const getEvents = () => (dispatch) =>
 export const createEvent = (eventData, history) => (dispatch) =>
 {
     dispatch({type: LOADING_UI});
-
+    
     axios.post('/events', eventData,
     {
         headers: {

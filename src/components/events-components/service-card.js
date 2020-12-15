@@ -9,6 +9,7 @@ import Link from '@material-ui/core/Link'
 
 //Icons 
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
+import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
 
 class ServiceCard extends React.Component
 {
@@ -18,21 +19,27 @@ class ServiceCard extends React.Component
         this.state = {
             serviceType: this.props.data.serviceType, 
             description: this.props.data.description, 
-            vendorFound: this.props.data.vendorFound, 
-            service: JSON.stringify(this.props.data.service)
+            service: this.props.data.service
         }
     }
 
     render()
     {
-        let statusText = this.state.vendorFound ? 
-        <p className="vendorFoundText">Confirmed</p>
+        let statusText = this.state.service !== null ? 
+        <div className="vendorFoundIcon"><CheckCircleOutlineIcon /></div>
         :
         <div className="vendorNotFoundIcon"><HelpOutlineIcon /></div>
-
-
-        let buttonGroup = this.state.vendorFound ? 
-        null
+        
+        let serviceDetail = this.state.service !== null ? 
+        <div>
+            <img src={this.state.service.imageURL} />
+            <p>Confirmed with
+                <a href={`/user/${this.state.service.userHandle}`} className="invisible-link"> @{this.state.service.userHandle}</a>
+            </p>
+            <Link href={`/contract/${this.state.service.contractID}`} >
+                <Button variant="contained" color="primary">See Contract</Button>
+            </Link> 
+        </div>
         :
         <div>
             <p>Discover local {this.state.serviceType} services</p>
@@ -56,18 +63,11 @@ class ServiceCard extends React.Component
 
                         <p className="serviceCardDescription">{this.state.description}</p>
                         <Grid align="center">
-                            {buttonGroup}
+                            {serviceDetail}
                         </Grid>
                     </div>
                 </Card>
             </div>
-
-            // <div className="serviceCard">
-            //     <p>{this.state.serviceType}</p>
-            //     <p>{this.state.description}</p>
-            //     <p>Status: {serviceStatus}</p>
-            // </div>
-            
         )
     }
 }
