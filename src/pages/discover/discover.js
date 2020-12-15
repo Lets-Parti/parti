@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {useState} from 'react';
 import '../../stylesheets/common.css'
 import '../../stylesheets/discover.css'
 import Grid from '@material-ui/core/Grid';
 import CircularProgress from '@material-ui/core/CircularProgress';
+
 
 //Components
 import DiscoverCard from '../../components/discover-components/discover-card'
@@ -20,7 +21,7 @@ class Discover extends React.Component {
     constructor() {
         super()
         this.state = {
-            service: '',
+            serviceTag: [],
             discover_cards: [],
             isLoading: false
         }
@@ -29,23 +30,33 @@ class Discover extends React.Component {
     componentDidMount() 
     {
         const query = {
-            service: ''
+            serviceTags: ''
         }
         this.props.discover(query);
     }
 
     handleChangeSelect(name, value) {
-        this.setState({
-            [name]: value
-        })
-        const query = {
-            service: value.value
-        }
-        this.props.discover(query);
-    }
+         this.setState({
+             [name]: value,
+         })
+         
+         if(value)
+         {
+            let tagsArray = []
+            value.forEach(val =>
+           {
+               tagsArray.push(val.value); 
+           })
+            const query = {
+                serviceTags: tagsArray.join()
+            }
+           this.props.discover(query);
+         }
+     }
 
     render() {
-
+        console.log(this.state); 
+        let chipfield = null
         const { discover, isLoading } = this.props.data;
 
         let dataDisplay
@@ -53,8 +64,8 @@ class Discover extends React.Component {
             dataDisplay = <CircularProgress />
         } else {
             dataDisplay = []
-            discover.forEach(service => {
-                dataDisplay.push(<DiscoverCard data={service} />);
+            discover.forEach(serviceTag => {
+                dataDisplay.push(<DiscoverCard data={serviceTag} />);
             })
         }
 
@@ -62,16 +73,16 @@ class Discover extends React.Component {
             <Grid align="center">
                 <div className="page-content">
                     <p className="title">Discover</p>
-                    <p className="lightText">What service are you looking for?</p>
+                    <p className="lightText">What service(s) are you looking for?</p>
                     <div className="discoverSelect">
-                        <Select
+                        <Select 
+                            isMulti
                             options={StaticData.options}
                             styles="width:100px;"
                             id="select"
-                            value={this.state.service}
-                            onChange={this.handleChangeSelect.bind(this, "service")}
-                        />
-                    </div>
+                            onChange={this.handleChangeSelect.bind(this, "serviceTag")}
+                        /> 
+                        </div>
                     {dataDisplay}
                 </div>
             </Grid>
@@ -81,10 +92,11 @@ class Discover extends React.Component {
 
 Discover.propTypes = {
     discover: PropTypes.func.isRequired,
-    data: PropTypes.object.isRequired
+    data: PropTypes.object.isRequired,
 }
 
 const mapStateToProps = (state) => ({
+    // tags1: state.tags1,
     data: state.data
 })
 
