@@ -51,6 +51,12 @@ class Discover extends React.Component {
                 serviceTags: tagsArray.join()
             }
            this.props.discover(query);
+         }else
+         {
+             const query = {
+                 serviceTags: ''
+             }
+             this.props.discover(query);
          }
      }
 
