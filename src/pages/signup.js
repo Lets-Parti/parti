@@ -327,6 +327,8 @@ class SignUp extends React.Component
             name='bio'
             onChange={this.eventChange}
             value={this.state.bio}
+            helperText={this.state.errors.bio}
+            error={this.state.errors.bio ? true : false}
         />
         <div className="form-seperator" />
         <div className="form-seperator" />
