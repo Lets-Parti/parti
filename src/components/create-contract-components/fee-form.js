@@ -5,18 +5,9 @@ import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Input from '@material-ui/core/Input';
-import FilledInput from '@material-ui/core/FilledInput';
-import OutlinedInput from '@material-ui/core/OutlinedInput';
 import InputLabel from '@material-ui/core/InputLabel';
 import InputAdornment from '@material-ui/core/InputAdornment';
-import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
-import Select from 'react-select'
-
-//Utils
-import {isInt, isFloat} from '../../utils/validators'
-
-import StaticData from '../../static/static-data'
 
 class FeeForm extends React.Component
 {
@@ -30,7 +21,6 @@ class FeeForm extends React.Component
             errors: {},
         }
         this.eventChange = this.eventChange.bind(this)
-        // this.handleChangeSelect = this.handleChangeSelect.bind(this)
     }
 
     eventChange(event)
@@ -115,8 +105,6 @@ class FeeForm extends React.Component
                             <p className="error">{this.state.errors.cost}</p>
                         </FormControl>
                         </Grid>
-
-
                     </Grid>
             </div>
         )

@@ -13,11 +13,6 @@ import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import IconButton from '@material-ui/core/IconButton';
 import TextField from '@material-ui/core/TextField';
-import {
-    MuiPickersUtilsProvider,
-    KeyboardDatePicker,
-  } from '@material-ui/pickers';
-import DateFnsUtils from '@date-io/date-fns'
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Select from 'react-select'
 
@@ -27,14 +22,6 @@ import PropTypes from 'prop-types'
 
 class NewContract extends React.Component
 {
-    // "clientHandle": "matt8p",
-    // "eventID": "14GJ9yOUFbTQwwny6Iee",
-    // "fees": [
-    //     {"name": "DJ Services", "cost": 800},
-    //     {"name": "Service Fee", "cost": 325}
-    // ],
-    // "tags": ["DJ", "Photography"],
-    // "body": "We will provide a lot "
     constructor()
     {
         super(); 
@@ -79,7 +66,7 @@ class NewContract extends React.Component
                 }
                 fees.push({
                     name: fee.name, 
-                    cost: fee.cost
+                    cost: parseFloat(fee.cost)
                 })
             }
         })
@@ -193,7 +180,6 @@ class NewContract extends React.Component
                 <Grid align="center">
                     <div className="page-content">
                         <p className="title">Create Contract</p>
-
                         <p className="question">1. Who's event?</p>
                         <TextField
                             label="Client Username" 
@@ -247,7 +233,6 @@ class NewContract extends React.Component
                         {SubmitButton}
                     </div>
                 </Grid>
-
             </div>
         )
     }
