@@ -27,14 +27,6 @@ import PropTypes from 'prop-types'
 
 class NewContract extends React.Component
 {
-    // "clientHandle": "matt8p",
-    // "eventID": "14GJ9yOUFbTQwwny6Iee",
-    // "fees": [
-    //     {"name": "DJ Services", "cost": 800},
-    //     {"name": "Service Fee", "cost": 325}
-    // ],
-    // "tags": ["DJ", "Photography"],
-    // "body": "We will provide a lot "
     constructor()
     {
         super(); 
