@@ -60,7 +60,7 @@ export const createContract = (contractData, history) => (dispatch) =>
     {
         console.log(res); 
         dispatch({type: CLEAR_ERRORS})
-        history.push('/events')
+        history.push('/contracts')
     })
     .catch(err =>
     {

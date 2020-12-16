@@ -236,8 +236,8 @@ class NewContract extends React.Component
                             name="body"
                             onChange={this.eventChange}
                             value={this.state.body}
-                            helperText={this.state.errors.body}
-                            error={this.state.errors.body ? true : false}
+                            helperText={this.state.errors.contractBody}
+                            error={this.state.errors.contractBody ? true : false}
                         />
                         <p className="question">5. What are you fees?</p>
                         {this.state.FeeFormComponents}
