@@ -66,7 +66,7 @@ class NewContract extends React.Component
                 }
                 fees.push({
                     name: fee.name, 
-                    cost: fee.cost
+                    cost: parseFloat(fee.cost)
                 })
             }
         })

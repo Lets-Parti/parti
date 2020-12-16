@@ -30,7 +30,6 @@ class FeeForm extends React.Component
             errors: {},
         }
         this.eventChange = this.eventChange.bind(this)
-        // this.handleChangeSelect = this.handleChangeSelect.bind(this)
     }
 
     eventChange(event)
@@ -115,8 +114,6 @@ class FeeForm extends React.Component
                             <p className="error">{this.state.errors.cost}</p>
                         </FormControl>
                         </Grid>
-
-
                     </Grid>
             </div>
         )
