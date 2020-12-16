@@ -180,7 +180,6 @@ class NewContract extends React.Component
                 <Grid align="center">
                     <div className="page-content">
                         <p className="title">Create Contract</p>
-
                         <p className="question">1. Who's event?</p>
                         <TextField
                             label="Client Username" 
@@ -234,7 +233,6 @@ class NewContract extends React.Component
                         {SubmitButton}
                     </div>
                 </Grid>
-
             </div>
         )
     }
