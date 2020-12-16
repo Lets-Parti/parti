@@ -7,13 +7,13 @@ const ProtectedServiceRoute = ({ component: Component, user, ...rest }) => (
   <Route
     {...rest}
     render={(props) =>
-      (user.authenticated === false || (user.authenticated === true && user.user.type === 'client')) ? <Redirect to="/login" /> : <Component {...props} />
+      (user.authenticated === false || user.user.type === 'client') ? <Redirect to="/404" /> : <Component {...props} />
     }
   />
 );
 
 const mapStateToProps = (state) => ({
-  user: state.user, 
+  user: state.user
 });
 
 ProtectedServiceRoute.propTypes = {

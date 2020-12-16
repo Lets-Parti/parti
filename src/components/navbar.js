@@ -540,7 +540,7 @@ class Navbar extends React.Component {
     if(authenticated && user.type === 'client')
     {
       rightSideButton =       
-      <Link href="/create-event">
+      <Link href="/events/new">
         <Button className={classes.menuButton} variant="contained" color="primary">New Event</Button>
       </Link> 
     }else if(authenticated && user.type === 'service')
