@@ -4,8 +4,7 @@ import '../../stylesheets/common.css'
 import StaticData from '../../static/static-data'
 
 //SubComponents 
-import Navbar from '../../components/navbar'
-import ServiceForm from '../../components//create-event-components/service-form'
+import ServiceForm from '../../components/create-event-components/service-form'
 
 //Material UI components 
 import Grid from '@material-ui/core/Grid';
@@ -26,10 +25,7 @@ import { connect } from 'react-redux'
 import { createEvent } from '../../redux/actions/dataActions'
 import PropTypes from 'prop-types'
 
-//API 
-import axios from 'axios'
-
-class CreateEvent extends React.Component
+class NewEvent extends React.Component
 {
     constructor()
     {
@@ -163,11 +159,6 @@ class CreateEvent extends React.Component
         let servicesCounter = this.state.services_count > 0 ? `(${this.state.services_count})` : null
         let missingService = this.state.errors.serviceType ? <p className="errorMessage">{this.state.errors.serviceType}</p> : null
 
-        if(this.state.isLoading)
-        {
-            SubmitButton = <CircularProgress />
-        }
-
         if(this.state.isLoading)                                    
         {
             SubmitButton = <CircularProgress color="primary" />
@@ -290,18 +281,15 @@ class CreateEvent extends React.Component
                             <p className="question">Services {servicesCounter} {missingService}</p>
                             {this.state.serviceComponents}
                         </div>
-                        
                         {AddServiceButton}
                         {SubmitButton}
-
-
                     </div>
                 </Grid>
             </div>
         )
     }
 }
-CreateEvent.propTypes = {
+NewEvent.propTypes = {
     createEvent: PropTypes.func.isRequired, 
     data: PropTypes.object.isRequired,
     UI: PropTypes.object.isRequired
@@ -316,5 +304,4 @@ const mapActionsToProps = {
     createEvent
 }
 
-
-export default connect(mapStateToProps, mapActionsToProps)(CreateEvent)
+export default connect(mapStateToProps, mapActionsToProps)(NewEvent)

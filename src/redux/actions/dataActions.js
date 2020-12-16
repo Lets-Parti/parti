@@ -47,6 +47,30 @@ export const createEvent = (eventData, history) => (dispatch) =>
     })
 }
 
+export const createContract = (contractData, history) => (dispatch) =>
+{
+    dispatch({type: LOADING_UI});
+    axios.post('/contracts', contractData,
+    {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(res =>
+    {
+        console.log(res); 
+        dispatch({type: CLEAR_ERRORS})
+        history.push('/events')
+    })
+    .catch(err =>
+    {
+        dispatch({
+            type: SET_ERRORS, 
+            payload: err.response.data
+        })
+    })
+}
+
 export const createFeedback = (feedbackData, history) => (dispatch) =>
 {
     dispatch({type: LOADING_UI});
