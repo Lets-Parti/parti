@@ -72,6 +72,32 @@ export const deleteContract = (contractID) => (dispatch) =>
     })
 }
 
+export const signContract = (contractID) => (dispatch) =>
+{
+    dispatch({type: LOADING_UI})
+    let dataSentToDB = {
+        contractID
+    }
+    axios.post('/contracts/sign', dataSentToDB,
+    {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(res =>
+    {
+        dispatch({type: CLEAR_ERRORS})
+        window.location.href = "/contracts"     
+    })
+    .catch(err =>
+    {
+        dispatch({
+            type: SET_ERRORS, 
+            payload: err.response.data
+        })
+    })
+}
+
 export const getContracts = () => (dispatch) =>                        
 {
     dispatch({type: LOADING_DATA});
