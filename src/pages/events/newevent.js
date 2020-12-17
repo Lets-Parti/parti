@@ -199,7 +199,6 @@ class NewEvent extends React.Component
             </IconButton>
         }
 
-
         return(
             <div>
                 <Grid align="center">

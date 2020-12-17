@@ -1,4 +1,4 @@
-import {SET_EVENTS, LOADING_DATA, CREATE_EVENT, SET_ERRORS, LOADING_UI, CLEAR_ERRORS, DISCOVER, SET_USER_DATA, DISCOVER_EVENTS} from '../types'
+import {SET_EVENTS, LOADING_DATA, SET_ERRORS, LOADING_UI, CLEAR_ERRORS, DISCOVER, SET_USER_DATA, SET_CONTRACTS} from '../types'
 import axios from 'axios'
 
 export const getEvents = () => (dispatch) =>                        
@@ -25,7 +25,6 @@ export const getEvents = () => (dispatch) =>
 export const createEvent = (eventData, history) => (dispatch) =>
 {
     dispatch({type: LOADING_UI});
-    
     axios.post('/events', eventData,
     {
         headers: {
@@ -43,6 +42,53 @@ export const createEvent = (eventData, history) => (dispatch) =>
         dispatch({
             type: SET_ERRORS, 
             payload: err.response.data
+        })
+    })
+}
+
+export const deleteContract = (contractID) => (dispatch) =>
+{
+    dispatch({type: LOADING_UI})
+    let dataSentToDB = {
+        contractID
+    }
+    axios.post('/contracts/delete', dataSentToDB,
+    {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(res =>
+    {
+        dispatch({type: CLEAR_ERRORS})
+        window.location.href = "/contracts"     
+    })
+    .catch(err =>
+    {
+        dispatch({
+            type: SET_ERRORS, 
+            payload: err.response.data
+        })
+    })
+}
+
+export const getContracts = () => (dispatch) =>                        
+{
+    dispatch({type: LOADING_DATA});
+
+    axios.get('/contracts')
+    .then(res => 
+    {
+        dispatch({
+            type: SET_CONTRACTS, 
+            payload: res.data
+        })
+    })
+    .catch(err => 
+    {
+        dispatch({
+            type: SET_CONTRACTS, 
+            payload: []
         })
     })
 }
