@@ -7,13 +7,14 @@ import ErrorNotFound from '../src/pages/404'
 import SignUp from '../src/pages/signup'
 import Login from '../src/pages/login'
 import NewEvent from './pages/events/newevent'
-import Events from './pages/user/events'
+import Events from './pages/events/events'
 import Discover from './pages/discover/discover'
 import DiscoverEvents from './pages/discover/discover-events'
 import User from './pages/user'
 import Feedback from './pages/feedback'
 import AccountEdit from './pages/user/accountedit'
 import NewContract from './pages/contracts/newcontract'
+import Contracts from './pages/contracts/contracts'
 //Components
 import Navbar from '../src/components/navbar'
 //Theme
@@ -70,6 +71,7 @@ class App extends React.Component
               <Route exact path="/user/:userhandle" component={User} />
               <ProtectedClientRoute exact path="/events/new" component={NewEvent} />
               <ProtectedRoute exact path="/events" component={Events} />
+              <ProtectedRoute exact path="/contracts" component={Contracts} />
               <ProtectedRoute exact path="/account/edit" component={AccountEdit} />
               <Route exact path="/discover" component={Discover} />
               <ProtectedServiceRoute exact path="/discover-events" component={DiscoverEvents} />

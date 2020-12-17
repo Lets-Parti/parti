@@ -28,6 +28,25 @@
   color: #cd72b4;
 }
 
+.code {
+  background-color: gray;
+  color: white;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.greenText {
+  color: green;
+}
+
+.redText {
+  color: red;
+}
+
+.orangeText {
+  color: orange; 
+}
+
 @media (max-width: 800px) {
   .page-content {
     width: 95%;
