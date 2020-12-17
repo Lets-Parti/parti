@@ -3,6 +3,7 @@ import '../../stylesheets/common.css'
 import EventCard from '../../components/events-components/event-card'
 import Grid from '@material-ui/core/Grid';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import { Button } from '@material-ui/core';
 import ContractCard from '../../components/contracts-components/contract-card'
 
 //Redux
@@ -25,9 +26,15 @@ class Contracts extends React.Component
         this.props.getContracts(); 
     }
 
+    createNewContract()
+    {
+        window.location.href = "/contracts/new"
+    }
+
     render()
     {
         const {contracts, isLoading} = this.props.data; 
+        const {authenticated, user} = this.props.user
 
         let dataDisplay = null
         if(isLoading)
@@ -42,11 +49,23 @@ class Contracts extends React.Component
             });
         }
         
+        let newContractsButton = (authenticated && user.type === 'service') ?
+        <Button
+            variant="contained"
+            onClick={this.createNewContract}
+            color="primary"
+        >
+            Create Contract   
+        </Button>
+        : 
+        null
+
         return(
             <div>
                 <Grid align="center">
                     <div className="page-content">
                         <p className="title">My Contracts</p>
+                        {newContractsButton}
                         {dataDisplay}
                     </div>
                 </Grid>
@@ -57,11 +76,13 @@ class Contracts extends React.Component
 
 Contracts.propTypes = {
     getContracts: PropTypes.func.isRequired, 
-    data: PropTypes.object.isRequired
+    data: PropTypes.object.isRequired,
+    user: PropTypes.object.isRequired,
 }
 
 const mapStateToProps = (state) => ({
-    data: state.data
+    data: state.data,
+    user: state.user
 })
 
 const mapActionsToProps = {
