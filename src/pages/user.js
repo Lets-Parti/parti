@@ -11,6 +11,8 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import Chip from '@material-ui/core/Chip';
 import IconButton from '@material-ui/core/IconButton';
 import ChatIcon from '@material-ui/icons/Chat';
+import TextField from '@material-ui/core/TextField';
+import { Rating } from '@material-ui/lab';
 
 //Material UI Icons
 import MessageIcon from '@material-ui/icons/Message';
@@ -19,7 +21,7 @@ import ReviewIcon from '@material-ui/icons/RateReview';
 
 //Redux
 import { connect } from 'react-redux'
-import { getUserByHandle } from '../redux/actions/dataActions'
+import { getUserByHandle, addTheReview } from '../redux/actions/dataActions'
 import PropTypes from 'prop-types'
 
 //Image Gallery (From Online) {https://www.npmjs.com/package/react-image-gallery}
@@ -30,6 +32,42 @@ class User extends React.Component {
     super()
     this.state = {
       errors: {},
+      toggleAddReviewComp: false,
+      reviewBody: '',
+      stars: 0
+    };
+    this.handleTextChange = this.handleTextChange.bind(this)
+    this.handleStarsChange = this.handleStarsChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+  }
+
+  handleTextChange(event) {
+    this.setState({reviewBody: event.target.value});
+  }
+
+  handleStarsChange(event) {
+    this.setState({stars: event.target.value})
+  }
+
+  handleSubmit() {
+    const company = this.props.data.user.userHandle
+    const stars = this.state.stars
+    const body = this.state.reviewBody
+    const client = this.props.user.user.userHandle
+    console.log(`${company}`)
+    console.log(`${stars}`)
+    console.log(`${body}`)
+    console.log(`${client}`)
+    if (body === "") {
+      alert("The review cannot be empty")
+    }
+    else {
+      let everything = {
+        userHandle: company,
+        stars: parseFloat(stars),
+        body: body
+      }
+      this.props.addTheReview(everything)
     }
   }
 
@@ -37,8 +75,16 @@ class User extends React.Component {
     const handle = this.props.match.params.userhandle
     this.props.getUserByHandle(handle)
   }
+  
+  toggleAddReview() {
+    this.setState({ toggleAddReviewComp: !this.state.toggleAddReviewComp });
+    // Below 2 lines for testing remove
+    let company = this.props.data.user.fullName
+    console.log(company)  
+  }
 
   render() {
+    const { toggleAddReviewComp } = this.state;
     const { user, isLoading } = this.props.data;
     const { authenticated } = this.props.user;
     let authenticatedUser;
@@ -62,7 +108,20 @@ class User extends React.Component {
       let numberOfReviews = reviewData.numberOfReviews
       let reviews = reviewData.reviews
 
-      let ratingDisplay = <span>Average Rating: {averageStars}/5 <br></br> Number of Reviews: {numberOfReviews}</span>
+      let averageStarsDisplay = 
+        <Rating 
+          value={averageStars}
+          readOnly
+        />
+      let ratingDisplay
+      if (averageStars === 0) {
+        ratingDisplay = <span>Average Rating: No Ratings Yet <br></br> Number of Reviews: No Reviews Yet</span>
+      }
+      else {
+        ratingDisplay = <span>Average Rating: {averageStarsDisplay} <br></br> Number of Reviews: {numberOfReviews}</span>
+      }
+
+
 
       let reviewCards = [];
       reviews.forEach(review => {
@@ -74,6 +133,54 @@ class User extends React.Component {
         )
       })
 
+      let createReview =
+      <Grid container sm={12} xs={12} spacing={1}>
+        <Grid item sm={12} xs={12}>
+          <h2>Add Your Review</h2>
+        </Grid>
+        <Grid item sm={12} xs={12}>
+          <Rating 
+            value={this.state.stars}
+            onChange={this.handleStarsChange}
+          />
+        </Grid>
+        <Grid item sm={12} xs={12}>
+          <TextField
+            label="Please enter your review here" 
+            variant="outlined" 
+            size="large" 
+            value={this.state.reviewBody}
+            onChange={this.handleTextChange}
+            fullWidth
+            multiline
+            rows={4}
+          />
+        </Grid>
+        <Grid item sm={2} xs={2}>
+          <Button
+            variant="contained"
+            color="primary"
+            startIcon={<ReviewIcon />}
+            display='none'
+            onClick= {this.handleSubmit}
+          >
+            Submit
+          </Button>
+        </Grid>
+        <Grid item sm={2} xs={2}>
+          <Button
+            variant="contained"
+            color="secondary"
+            startIcon={<ReviewIcon />}
+            display='none'
+            onClick= {() => this.toggleAddReview()}
+          >
+            Cancel
+          </Button>
+        </Grid>
+      </Grid>
+      
+
       let carouselImages = [];                    //Initiate carousel data 
       imageGallery.forEach(imageURL => {
         carouselImages.push({
@@ -81,6 +188,7 @@ class User extends React.Component {
           thumbnail: imageURL
         })
       })
+        
 
       let chips = [];
       tags.forEach(tag => {
@@ -93,6 +201,8 @@ class User extends React.Component {
               style={{ fontSize: '1rem' }} />
           )
       })
+
+      
       if (authenticated && authenticatedUser.type === "client") { // Fix this part
         fullProfile =
           <Grid container>
@@ -154,18 +264,19 @@ class User extends React.Component {
                       color="primary"
                       startIcon={<ReviewIcon />}
                       display='none'
+                      onClick= {() => this.toggleAddReview()}
                     >
-                      Review
-                          </Button>
+                      Add Review
+                    </Button>
                   </div>
                   <div className="review-button-small">
-                    <IconButton aria-label="delete" color="primary">
+                    <IconButton aria-label="delete" color="primary"> 
                       <ReviewIcon />
                     </IconButton>
                   </div>
                 </Grid>
+                {toggleAddReviewComp && createReview}
               </Grid>
-
               <Grid container>
                 {reviewCards}
               </Grid>
@@ -256,6 +367,7 @@ class User extends React.Component {
 
 User.propTypes = {
   getUserByHandle: PropTypes.func.isRequired,
+  addTheReview: PropTypes.func.isRequired,
   user: PropTypes.object.isRequired,
 }
 
@@ -265,7 +377,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapActionsToProps = {
-  getUserByHandle
+  getUserByHandle, addTheReview
 }
 
 export default connect(mapStateToProps, mapActionsToProps)(User)

@@ -141,3 +141,24 @@ export const getUserByHandle = (userHandle) => (dispatch) =>
         })
     })
 }
+
+export const addTheReview = (theData) => (dispatch) =>
+{
+  dispatch({type: LOADING_UI})
+  axios.post('/review', JSON.stringify(theData),
+  {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  .then(res => 
+  {
+    console.log(res)
+    dispatch({type: CLEAR_ERRORS})
+    window.location.reload()
+  })
+  .catch(err => 
+  {
+    console.error(err);
+  })
+}
