@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import Grid from '@material-ui/core/Grid';
 import EventIcon from '@material-ui/icons/Event';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
+import { Button } from '@material-ui/core';
+import Tooltip from '@material-ui/core/Tooltip';
 
 import ServiceCard from './service-card'
 import ServiceCardBView from './service-card-businessView'
@@ -26,6 +28,11 @@ class EventCardBView extends Component
         }
     }
 
+    offer()
+    {
+
+    }
+
     render(props)
     {
         let date = new Date(this.state.eventDate)
@@ -44,20 +51,38 @@ class EventCardBView extends Component
         return(
             <div className="eventCard">
                 <div className="eventWrapper">
-                    <Grid align="left">
-                        <p className="eventCardTitle">{this.state.title}</p>
+                    <Grid container align="left">
+                        <Grid item sm={10} xs={10}>
+                            <p className="eventCardTitle">{this.state.title}</p>
+                            <div class="eventInfo"> 
+                                <p class="subInfo"> Hosted by <b>@{this.state.userHandle}</b></p>
+                                <div className="seperator" />
+                                <p class="subInfo"> <EventIcon fontSize="small"/>{date.toString()}</p>
+                                <p class="subInfo"> <LocationOnIcon fontSize="small"/>{this.state.zipcode}</p>
+                            </div>
+                        </Grid>
+                        <Grid item sm={2} xs={2}>
+                            <Tooltip title="Reach out to client">
+                                <Button
+                                    variant="contained"
+                                    onClick={this.offer}
+                                    color="primary"
+                                >
+                                    Poke   
+                                </Button>
+                            </Tooltip>
+                        </Grid>
 
-                        <div class="eventInfo"> 
-                            <p class="subInfo"> <EventIcon fontSize="small"/>{date.toString()}</p>
-                            <p class="subInfo"> <LocationOnIcon fontSize="small"/>{this.state.zipcode}</p>
-                        </div>
-                        <div className="seperator" />
-                        
-                        <hr></hr>
-                        <p>{this.state.description}</p>
+                        <Grid sm={12} xs={12}>
+                            <div className="seperator" />
+                        </Grid>
 
-                        <p className="eventCardSubtitle">Services ({services.length})</p>
-                        <hr></hr>
+                        <Grid sm={12} xs={12}>
+                            <hr />
+                            <p>{this.state.description}</p>
+                            <p className="eventCardSubtitle">Services ({services.length})</p>
+                            <hr />
+                        </Grid>
 
                         <Grid container>
                             {serviceCards}

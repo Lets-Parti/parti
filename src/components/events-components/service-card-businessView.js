@@ -5,10 +5,11 @@ import '../../stylesheets/event.css'
 import Card from '@material-ui/core/Card';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
-import Link from '@material-ui/core/Link'
+import Tooltip from '@material-ui/core/Tooltip';
 
 //Icons 
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
+import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
 
 class ServiceCardBView extends React.Component
 {
@@ -19,26 +20,23 @@ class ServiceCardBView extends React.Component
             serviceType: this.props.data.serviceType, 
             description: this.props.data.description, 
             vendorFound: this.props.data.vendorFound, 
-            service: JSON.stringify(this.props.data.service)
+            service: this.props.data.service
         }
     }
 
     render()
     {
-        let statusText = this.state.vendorFound ? 
-        <p className="vendorFoundText">Confirmed</p>
+        let statusText = this.state.service !== null ? 
+        <div className="vendorFoundIcon">
+            <Tooltip title="Vendor Already Found">
+                <CheckCircleOutlineIcon />
+            </Tooltip>
+        </div>
         :
-        <div className="vendorNotFoundIcon"><HelpOutlineIcon /></div>
-
-
-        let buttonGroup = this.state.vendorFound ? 
-        null
-        :
-        <div>
-            <p>Offer your {this.state.serviceType} service</p>
-            <Link href="/contracts">
-                <Button variant="contained" color="primary">Offer</Button>
-            </Link> 
+        <div className="vendorNotFoundIcon">
+            <Tooltip title="Vendor Not Found">
+                <HelpOutlineIcon />
+            </Tooltip>
         </div>
 
         return(
@@ -55,19 +53,9 @@ class ServiceCardBView extends React.Component
                         </Grid>
 
                         <p className="serviceCardDescription">{this.state.description}</p>
-                        <Grid align="center">
-                            {buttonGroup}
-                        </Grid>
                     </div>
                 </Card>
             </div>
-
-            // <div className="serviceCard">
-            //     <p>{this.state.serviceType}</p>
-            //     <p>{this.state.description}</p>
-            //     <p>Status: {serviceStatus}</p>
-            // </div>
-            
         )
     }
 }
