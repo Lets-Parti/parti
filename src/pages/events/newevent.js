@@ -270,6 +270,8 @@ class NewEvent extends React.Component
                                         name="description"
                                         onChange={this.eventChange}
                                         value={this.state.description}
+                                        helperText={this.state.errors.description}
+                                        error={this.state.errors.description ? true : false}
                                     />
                                 </Grid>
                             </Grid>
