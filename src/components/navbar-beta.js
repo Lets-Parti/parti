@@ -18,7 +18,6 @@ import EventIcon from '@material-ui/icons/Event';
 import ReceiptIcon from '@material-ui/icons/Receipt';
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import NotificationsIcon from "@material-ui/icons/Notifications";
-import DehazeIcon from '@material-ui/icons/Dehaze';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 //Logo
@@ -98,7 +97,7 @@ const styles = theme => ({
     padding: theme.spacing(1)
   },
   logo: {
-    height: 50,
+    height: 70,
   }, 
   buttonGroup: {
     marginLeft: 20, 
@@ -106,7 +105,7 @@ const styles = theme => ({
   }
 });
 
-class Navbar extends React.Component {
+class NavbarBeta extends React.Component {
   constructor()
   {
     super(); 
@@ -560,34 +559,14 @@ class Navbar extends React.Component {
             <a href="/" className={classes.logo}>
                 <img src={logoBeta} className={classes.logo} alt="partilogo"></img>
             </a>
-            {renderNavbarButtons}
-
-            <div className={classes.grow} />
-
-            {rightSideButton}
-
-            <div className={classes.sectionMobile}>
-                <IconButton
-                aria-label="show more"
-                aria-haspopup="true"
-                onClick={this.handleMobileMenuOpen}
-                color="inherit"
-                >
-                <DehazeIcon />
-                </IconButton>
-            </div>
-
-            {renderRightSideButtons}
             </Toolbar>
         </AppBar>
-        
-        {renderMobileMenu}
         </div>
     );
   }
 }
 
-Navbar.propTypes = {
+NavbarBeta.propTypes = {
     user: PropTypes.object.isRequired,
     logoutUser: PropTypes.func.isRequired
 }
@@ -600,5 +579,4 @@ const mapActionsToProps = {
   logoutUser
 }
 
-export default connect(mapStateToProps, mapActionsToProps)(withStyles(styles)(Navbar))
-
+export default connect(mapStateToProps, mapActionsToProps)(withStyles(styles)(NavbarBeta))

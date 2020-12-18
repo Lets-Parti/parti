@@ -66,7 +66,7 @@ class DiscoverCard extends Component {
 
         return (
             <div className="discover-card">
-                <ConnectModal open={this.state.modalOpen} userHandle={this.state.userHandle} closeModal={this.closeModal} />
+                <ConnectModal open={this.state.modalOpen} handleClose={this.closeModal}/>
                 <div className="discover-container">
                     <Grid container>
                         <Grid sm={1} xs={1} className="grid-object">
