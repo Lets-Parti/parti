@@ -21,6 +21,7 @@ class EventCard extends Component
             services: JSON.stringify(this.props.data.services), 
             userHandle: this.props.data.userHandle, 
             zipcode: this.props.data.zipcode, 
+            eventID: this.props.data.eventID
         }
     }
 
@@ -44,7 +45,8 @@ class EventCard extends Component
                 <div className="eventWrapper">
                     <Grid align="left">
                         <p className="eventCardTitle">{this.state.title}</p>
-
+                        <p class="subInfo"> Event ID: <span className="code">{this.props.data.eventID}</span></p>
+                        <div className="seperator" />
                         <div class="eventInfo"> 
                             <p class="subInfo"> <EventIcon fontSize="small"/>{date.toString()}</p>
                             <p class="subInfo"> <LocationOnIcon fontSize="small"/>{this.state.zipcode}</p>
