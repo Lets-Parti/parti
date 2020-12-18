@@ -54,10 +54,6 @@ class User extends React.Component {
     const stars = this.state.stars
     const body = this.state.reviewBody
     const client = this.props.user.user.userHandle
-    console.log(`${company}`)
-    console.log(`${stars}`)
-    console.log(`${body}`)
-    console.log(`${client}`)
     if (body === "") {
       alert("The review cannot be empty")
     }
@@ -78,9 +74,6 @@ class User extends React.Component {
   
   toggleAddReview() {
     this.setState({ toggleAddReviewComp: !this.state.toggleAddReviewComp });
-    // Below 2 lines for testing remove
-    let company = this.props.data.user.fullName
-    console.log(company)  
   }
 
   render() {
@@ -115,19 +108,24 @@ class User extends React.Component {
         />
       let ratingDisplay
       if (averageStars === 0) {
-        ratingDisplay = <span>Average Rating: No Ratings Yet <br></br> Number of Reviews: No Reviews Yet</span>
+        ratingDisplay = <span>{averageStarsDisplay}({numberOfReviews})</span>
       }
       else {
-        ratingDisplay = <span>Average Rating: {averageStarsDisplay} <br></br> Number of Reviews: {numberOfReviews}</span>
+        ratingDisplay = <span>{averageStarsDisplay}({numberOfReviews})</span>
       }
 
 
-
+      let starsDisplay
       let reviewCards = [];
       reviews.forEach(review => {
+        starsDisplay = 
+        <Rating 
+          value={review.stars}
+          readOnly
+        />
         reviewCards.push(
           <Grid item sm={4} xs={12} className="review-card">
-            <p className="review-handle">@{review.userHandle} - ({review.stars}/5)</p>
+            <p className="review-handle">@{review.userHandle} <br></br>{starsDisplay}</p>
             <p className="review-body">{review.body}</p>
           </Grid>
         )
