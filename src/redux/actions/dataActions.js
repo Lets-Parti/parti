@@ -22,6 +22,26 @@ export const getEvents = () => (dispatch) =>
     })
 }
 
+export const getEventByID = (eventID) => (dispatch) =>                        
+{
+    dispatch({type: LOADING_DATA});
+    axios.get(`/events/${eventID}`)
+    .then(res => 
+    {
+        dispatch({
+            type: SET_EVENTS, 
+            payload: res.data
+        })
+    })
+    .catch(err => 
+    {
+        dispatch({
+            type: SET_EVENTS, 
+            payload: []
+        })
+    })
+}
+
 export const createEvent = (eventData, history) => (dispatch) =>
 {
     dispatch({type: LOADING_UI});

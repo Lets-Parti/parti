@@ -7,6 +7,7 @@ import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 import CancelIcon from '@material-ui/icons/Cancel';
 import Chip from '@material-ui/core/Chip';
 import Tooltip from '@material-ui/core/Tooltip';
+import Link from '@material-ui/core/Link';
 
 import '../../stylesheets/contract.css'
 import '../../stylesheets/common.css'
@@ -163,7 +164,16 @@ class ContractCard extends Component
                         <Grid item sm={9} xs={9}>
                             {signedStatus}
                             <p>Event Host: @{this.state.clientHandle}</p>
-                            <p>Event ID: <span className="code">{this.state.eventID}</span></p>
+                            <p>Event ID: <span className="code"><a href={`/events/${this.state.eventID}`} className="invisible-link">{this.state.eventID}</a></span></p>
+                            <Link href={`/events/${this.state.eventID}`}>
+                                <Button
+                                    variant="outlined"
+                                    onClick={this.deleteContract}
+                                    color="primary"
+                                >
+                                    View Event Details
+                                </Button>
+                            </Link>
                         </Grid>
                         <Grid item sm={3} xs={3} align="right">
                             {signButton}
