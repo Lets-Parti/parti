@@ -90,6 +90,7 @@
   height: 25vh;
   line-height: 1.5;
   padding: 20px;
+
 }
 
 .review-handle {
@@ -109,6 +110,18 @@
 
 .message-button-small {
   display: none;
+}
+.review-button-large {
+  display: block;
+}
+
+.review-button-small {
+  display: none;
+}
+
+.hrmargin {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
 }
 
 @media (max-width: 800px) {
@@ -155,6 +168,14 @@
   }
 
   .message-button-small {
+    display: block;
+  }
+
+  .review-button-large {
+    display: none;
+  }
+
+  .review-button-small {
     display: block;
   }
 
