@@ -35,8 +35,9 @@ import AuthRoute from './utils/authroute'
 import ProtectedRoute from './utils/protectedroute'
 import ProtectedServiceRoute from './utils/protectedserviceroute'
 import ProtectedClientRoute from './utils/protectedclientroute'
+import FunctionsConfig from './static/config';
 
-axios.defaults.baseURL = 'https://us-central1-lets-parti.cloudfunctions.net/api'
+axios.defaults.baseURL = FunctionsConfig.FUNCTIONS_DEVELOPMENT_URL; 
 
 const token = localStorage.FBIdToken; 
 if(token)
