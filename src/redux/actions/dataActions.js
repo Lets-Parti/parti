@@ -188,6 +188,30 @@ export const createFeedback = (feedbackData, history) => (dispatch) =>
     })
 }
 
+export const createConnect = (connectInfo) => (dispatch) =>
+{
+    dispatch({type: LOADING_UI});
+
+    axios.post('/connect', connectInfo,
+    {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(res =>
+    {
+        console.log(res); 
+        dispatch({type: CLEAR_ERRORS})
+    })
+    .catch(err =>
+    {
+        dispatch({
+            type: SET_ERRORS, 
+            payload: err.response.data
+        })
+    })
+}
+
 export const discover = (queryData) => (dispatch) =>
 {
     dispatch({type: LOADING_DATA});

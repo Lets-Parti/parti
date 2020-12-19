@@ -5,10 +5,12 @@ import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
 import ChatIcon from '@material-ui/icons/Chat';
 import Chip from '@material-ui/core/Chip';
-
 import ConnectModal from '../modal-component/connectmodal'
-
 import '../../stylesheets/discover-card.css';
+
+//redux
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 
 
 class DiscoverCard extends Component {
@@ -41,6 +43,8 @@ class DiscoverCard extends Component {
     }
 
     render(props) {
+        const { authenticated } = this.props.user; 
+
         let tags = []
         this.state.tags.forEach(tag => {
             tags.push(<p>{tag}</p>);
@@ -64,9 +68,24 @@ class DiscoverCard extends Component {
                 )
         })
 
+        //MODAL STUFF
+        let connectModal = authenticated ? 
+        <ConnectModal open={this.state.modalOpen} handleClose={this.closeModal} userHandle={this.state.userHandle}/> 
+        : 
+        null
+
+        let chatButton = authenticated ? 
+        <IconButton aria-label="message" color="primary" onClick={this.openModal}>
+            <ChatIcon />
+        </IconButton>
+        : 
+        <IconButton aria-label="message" color="primary">
+            <ChatIcon />
+        </IconButton>
+
         return (
             <div className="discover-card">
-                <ConnectModal open={this.state.modalOpen} handleClose={this.closeModal}/>
+                {connectModal}
                 <div className="discover-container">
                     <Grid container>
                         <Grid sm={1} xs={1} className="grid-object">
@@ -83,9 +102,7 @@ class DiscoverCard extends Component {
                             </a>
                         </Grid>
                         <Grid sm={4} xs={1} className="grid-object" align="right">
-                            <IconButton aria-label="message" color="primary" onClick={this.openModal}>
-                                <ChatIcon />
-                            </IconButton>
+                            {chatButton}
                         </Grid>
 
                         <Grid sm={12} xs={12} className="separator" />
@@ -108,4 +125,17 @@ class DiscoverCard extends Component {
     }
 }
 
-export default DiscoverCard
+DiscoverCard.propTypes = {
+    user: PropTypes.object.isRequired
+}
+
+const mapStateToProps = (state) => ({
+    user: state.user
+})
+
+const mapActionsToProps = {
+
+}
+
+
+export default connect(mapStateToProps, mapActionsToProps)(DiscoverCard)
