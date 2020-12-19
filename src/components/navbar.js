@@ -98,7 +98,7 @@ const styles = theme => ({
     padding: theme.spacing(1)
   },
   logo: {
-    height: 50,
+    height: 70,
   }, 
   buttonGroup: {
     marginLeft: 20, 
