@@ -16,8 +16,11 @@ import AccountEdit from './pages/user/accountedit'
 import NewContract from './pages/contracts/newcontract'
 import Contracts from './pages/contracts/contracts'
 import EventByID from './pages/events/event-by-id'
+import Beta from './pages/beta'
+
 //Components
 import Navbar from '../src/components/navbar'
+import NavbarBeta from '../src/components/navbar-beta'
 //Theme
 import {ThemeProvider} from '@material-ui/core/styles'
 import theme from './theme'
@@ -67,9 +70,10 @@ class App extends React.Component
           <div className="container">
             <Switch>
               <Route exact path="/" component={Home} />
+              {/* <Route exact path="/" component={Beta} /> */}
+              
               <Route exact path="/about" component={About} />
               <Route exact path="/feedback" component={Feedback} />
-              <Route exact path="/404" component={ErrorNotFound} />
               <Route exact path="/user/:userhandle" component={User} />
               <ProtectedClientRoute exact path="/events/new" component={NewEvent} />
               <ProtectedRoute exact path="/events" component={Events} />
@@ -81,6 +85,8 @@ class App extends React.Component
               <ProtectedServiceRoute exact path="/contracts/new" component={NewContract} />
               <AuthRoute exact path="/signup" component={SignUp} />
               <AuthRoute exact path="/login" component={Login} />
+
+              <Route exact path="/404" component={ErrorNotFound} />
               <Redirect to="/404"></Redirect>
             </Switch>
             </div>

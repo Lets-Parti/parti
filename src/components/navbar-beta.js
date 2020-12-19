@@ -18,7 +18,6 @@ import EventIcon from '@material-ui/icons/Event';
 import ReceiptIcon from '@material-ui/icons/Receipt';
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import NotificationsIcon from "@material-ui/icons/Notifications";
-import DehazeIcon from '@material-ui/icons/Dehaze';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 //Logo
@@ -98,7 +97,7 @@ const styles = theme => ({
     padding: theme.spacing(1)
   },
   logo: {
-    height: 50,
+    height: 70,
   }, 
   buttonGroup: {
     marginLeft: 20, 
@@ -106,7 +105,7 @@ const styles = theme => ({
   }
 });
 
-class Navbar extends React.Component {
+class NavbarBeta extends React.Component {
   constructor()
   {
     super(); 
@@ -256,7 +255,7 @@ class Navbar extends React.Component {
           <p>Discover</p>
           </MenuItem>
       </Link>
-{/* 
+
       <Link href="/messages">
           <MenuItem>
           <IconButton aria-label="show 11 new notifications" color="inherit">
@@ -266,9 +265,9 @@ class Navbar extends React.Component {
           </IconButton>
           <p>Messages</p>
           </MenuItem>
-      </Link> */}
+      </Link>
 
-      {/* <Link href="/notifications">
+      <Link href="/notifications">
       <MenuItem>
       <IconButton aria-label="show 11 new notifications" color="inherit">
           <Badge badgeContent={0} color="secondary">
@@ -277,7 +276,7 @@ class Navbar extends React.Component {
       </IconButton>
       <p>Notifications</p>
       </MenuItem>
-      </Link> */}
+      </Link>
 
       <Link href="/account/edit">
           <MenuItem>
@@ -335,7 +334,7 @@ class Navbar extends React.Component {
             <p>Discover</p>
             </MenuItem>
         </Link>
-      {/* <Link href="/messages">
+      <Link href="/messages">
           <MenuItem>
           <IconButton aria-label="show 11 new notifications" color="inherit">
               <Badge badgeContent={0} color="secondary">
@@ -344,8 +343,8 @@ class Navbar extends React.Component {
           </IconButton>
           <p>Messages</p>
           </MenuItem>
-      </Link> */}
-      {/* <Link href="/notifications">
+      </Link>
+      <Link href="/notifications">
       <MenuItem>
       <IconButton aria-label="show 11 new notifications" color="inherit">
           <Badge badgeContent={0} color="secondary">
@@ -354,7 +353,7 @@ class Navbar extends React.Component {
       </IconButton>
       <p>Notifications</p>
       </MenuItem>
-      </Link> */}
+      </Link>
       <Link href="/account/edit">
           <MenuItem>
           <IconButton
@@ -455,15 +454,15 @@ class Navbar extends React.Component {
     const renderRightSideButtons = authenticated ? 
     (            
     <div className={classes.sectionDesktop}>
-        {/* <Link href="/messages">
+        <Link href="/messages">
             <IconButton aria-label="show 4 new mails" color="inherit">
             <Badge badgeContent={0} color="primary">
                 <MailIcon />
             </Badge>
             </IconButton>
-        </Link> */}
+        </Link>
 
-        {/* <Link href="/notifications">
+        <Link href="/notifications">
             <IconButton
             aria-label="show 17 new notifications"
             color="inherit"
@@ -472,7 +471,7 @@ class Navbar extends React.Component {
                 <NotificationsIcon />
             </Badge>
             </IconButton>
-        </Link> */}
+        </Link>
 
         <div className="accountIcon">
         <Link>
@@ -560,34 +559,14 @@ class Navbar extends React.Component {
             <a href="/" className={classes.logo}>
                 <img src={logoBeta} className={classes.logo} alt="partilogo"></img>
             </a>
-            {renderNavbarButtons}
-
-            <div className={classes.grow} />
-
-            {rightSideButton}
-
-            <div className={classes.sectionMobile}>
-                <IconButton
-                aria-label="show more"
-                aria-haspopup="true"
-                onClick={this.handleMobileMenuOpen}
-                color="inherit"
-                >
-                <DehazeIcon />
-                </IconButton>
-            </div>
-
-            {renderRightSideButtons}
             </Toolbar>
         </AppBar>
-        
-        {renderMobileMenu}
         </div>
     );
   }
 }
 
-Navbar.propTypes = {
+NavbarBeta.propTypes = {
     user: PropTypes.object.isRequired,
     logoutUser: PropTypes.func.isRequired
 }
@@ -600,5 +579,4 @@ const mapActionsToProps = {
   logoutUser
 }
 
-export default connect(mapStateToProps, mapActionsToProps)(withStyles(styles)(Navbar))
-
+export default connect(mapStateToProps, mapActionsToProps)(withStyles(styles)(NavbarBeta))
