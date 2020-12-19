@@ -255,7 +255,7 @@ class Navbar extends React.Component {
           <p>Discover</p>
           </MenuItem>
       </Link>
-
+{/* 
       <Link href="/messages">
           <MenuItem>
           <IconButton aria-label="show 11 new notifications" color="inherit">
@@ -265,9 +265,9 @@ class Navbar extends React.Component {
           </IconButton>
           <p>Messages</p>
           </MenuItem>
-      </Link>
+      </Link> */}
 
-      <Link href="/notifications">
+      {/* <Link href="/notifications">
       <MenuItem>
       <IconButton aria-label="show 11 new notifications" color="inherit">
           <Badge badgeContent={0} color="secondary">
@@ -276,7 +276,7 @@ class Navbar extends React.Component {
       </IconButton>
       <p>Notifications</p>
       </MenuItem>
-      </Link>
+      </Link> */}
 
       <Link href="/account/edit">
           <MenuItem>
@@ -334,7 +334,7 @@ class Navbar extends React.Component {
             <p>Discover</p>
             </MenuItem>
         </Link>
-      <Link href="/messages">
+      {/* <Link href="/messages">
           <MenuItem>
           <IconButton aria-label="show 11 new notifications" color="inherit">
               <Badge badgeContent={0} color="secondary">
@@ -343,8 +343,8 @@ class Navbar extends React.Component {
           </IconButton>
           <p>Messages</p>
           </MenuItem>
-      </Link>
-      <Link href="/notifications">
+      </Link> */}
+      {/* <Link href="/notifications">
       <MenuItem>
       <IconButton aria-label="show 11 new notifications" color="inherit">
           <Badge badgeContent={0} color="secondary">
@@ -353,7 +353,7 @@ class Navbar extends React.Component {
       </IconButton>
       <p>Notifications</p>
       </MenuItem>
-      </Link>
+      </Link> */}
       <Link href="/account/edit">
           <MenuItem>
           <IconButton
@@ -454,15 +454,15 @@ class Navbar extends React.Component {
     const renderRightSideButtons = authenticated ? 
     (            
     <div className={classes.sectionDesktop}>
-        <Link href="/messages">
+        {/* <Link href="/messages">
             <IconButton aria-label="show 4 new mails" color="inherit">
             <Badge badgeContent={0} color="primary">
                 <MailIcon />
             </Badge>
             </IconButton>
-        </Link>
+        </Link> */}
 
-        <Link href="/notifications">
+        {/* <Link href="/notifications">
             <IconButton
             aria-label="show 17 new notifications"
             color="inherit"
@@ -471,7 +471,7 @@ class Navbar extends React.Component {
                 <NotificationsIcon />
             </Badge>
             </IconButton>
-        </Link>
+        </Link> */}
 
         <div className="accountIcon">
         <Link>

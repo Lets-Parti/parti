@@ -36,7 +36,7 @@ class ServiceCard extends React.Component
             <p>Confirmed with
                 <a href={`/user/${this.state.service.userHandle}`} className="invisible-link"> @{this.state.service.userHandle}</a>
             </p>
-            <Link href={`/contract/${this.state.service.contractID}`} >
+            <Link href="/contracts">
                 <Button variant="contained" color="primary">See Contract</Button>
             </Link> 
         </div>
