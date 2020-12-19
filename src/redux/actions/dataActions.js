@@ -191,8 +191,7 @@ export const createFeedback = (feedbackData, history) => (dispatch) =>
 export const createConnect = (connectInfo) => (dispatch) =>
 {
     dispatch({type: LOADING_UI});
-
-    axios.post('/connect', connectInfo,
+    axios.post('/connect', JSON.stringify(connectInfo),
     {
         headers: {
             'Content-Type': 'application/json'

@@ -66,7 +66,7 @@ class App extends React.Component
       <ThemeProvider theme={theme}>
       <Provider store={store}>
         <Router>
-        <NavbarBeta />
+        <Navbar />
           <div className="container">
             <Switch>
               <Route exact path="/" component={Home} />

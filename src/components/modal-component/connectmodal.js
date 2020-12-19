@@ -18,6 +18,7 @@ class ConnectModal extends React.Component
         super(props); 
         this.state = {
             userHandle: this.props.userHandle,
+            body: '',
             errors: {},
             isLoading: false
         }
@@ -68,7 +69,7 @@ class ConnectModal extends React.Component
                                     variant="filled"
                                     size="large" 
                                     fullWidth='true'
-                                    name='info'
+                                    name='body'
                                     onChange={this.eventChange}
                                     value={this.state.body}
                                     multiline
