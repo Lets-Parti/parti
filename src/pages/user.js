@@ -14,31 +14,38 @@ import ChatIcon from '@material-ui/icons/Chat';
 import TextField from '@material-ui/core/TextField';
 import { Rating } from '@material-ui/lab';
 
+import ConnectModal from '../components/modal-component/connectmodal'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
+
+
 //Material UI Icons
 import MessageIcon from '@material-ui/icons/Message';
 import ReviewIcon from '@material-ui/icons/RateReview';
 
 
 //Redux
-import { connect } from 'react-redux'
 import { getUserByHandle, addTheReview } from '../redux/actions/dataActions'
-import PropTypes from 'prop-types'
 
 //Image Gallery (From Online) {https://www.npmjs.com/package/react-image-gallery}
 import ImageGallery from 'react-image-gallery';
 
 class User extends React.Component {
-  constructor() {
+  constructor(props) {
     super()
     this.state = {
       errors: {},
       toggleAddReviewComp: false,
       reviewBody: '',
-      stars: 0
+      stars: 0,
+      modalOpen: false,
+      // userHandle: this.props.data.userHandle
     };
     this.handleTextChange = this.handleTextChange.bind(this)
     this.handleStarsChange = this.handleStarsChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.openModal = this.openModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
 
   handleTextChange(event) {
@@ -67,6 +74,22 @@ class User extends React.Component {
     }
   }
 
+  openModal() {
+    this.setState({
+        modalOpen: true
+    })
+}
+
+  closeModal() {
+      this.setState({
+          modalOpen: false
+      })
+  }
+
+  redirect() {
+      window.location.href = '/login'
+  }
+
   componentDidMount() {
     const handle = this.props.match.params.userhandle
     this.props.getUserByHandle(handle)
@@ -77,6 +100,7 @@ class User extends React.Component {
   }
 
   render() {
+
     const { toggleAddReviewComp } = this.state;
     const { user, isLoading } = this.props.data;
     const { authenticated } = this.props.user;
@@ -84,6 +108,36 @@ class User extends React.Component {
     if (authenticated) {
       authenticatedUser = this.props.user.user;
     }
+
+    let connectModal = authenticated ? 
+        <ConnectModal open={this.state.modalOpen} handleClose={this.closeModal} userHandle={this.state.userHandle}/> 
+        : 
+        null
+
+        let chatButton = authenticated ? 
+        <Button aria-label="message" color="primary" variant="contained" onClick={this.openModal}
+                    startIcon={<MessageIcon />}
+                    display='none'>
+                    Message
+        </Button>
+        : 
+        <Button aria-label="message" color="primary" variant="contained"  onClick={this.redirect}
+                            startIcon={<MessageIcon />}
+                    display='none'>
+                    Message
+        </Button>
+
+let smallChatButton = authenticated ? 
+<Button aria-label="message" color="primary" variant="contained" onClick={this.openModal}
+            startIcon={<MessageIcon />}
+            display='none'>
+</Button>
+: 
+<Button aria-label="message" color="primary" variant="contained"  onClick={this.redirect}
+                    startIcon={<MessageIcon />}
+            display='none'>
+</Button>
+
 
     let fullProfile = null;
     let circularProgress = null;
@@ -217,19 +271,18 @@ class User extends React.Component {
               </Grid>
               <Grid item className="grid-item" align="center" sm={2} xs={2}>
                 <div className="message-button-large">
-                  <Button
+                  {/* <Button
                     variant="contained"
                     color="primary"
                     startIcon={<MessageIcon />}
                     display='none'
                   >
                     Message
-                          </Button>
+                          </Button> */}
+                          {chatButton}
                 </div>
                 <div className="message-button-small">
-                  <IconButton aria-label="delete" color="primary">
-                    <ChatIcon />
-                  </IconButton>
+                {smallChatButton}
                 </div>
               </Grid>
             </Grid>
@@ -299,19 +352,10 @@ class User extends React.Component {
               </Grid>
               <Grid item className="grid-item" align="center" sm={2} xs={2}>
                 <div className="message-button-large">
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    startIcon={<MessageIcon />}
-                    display='none'
-                  >
-                    Message
-                          </Button>
+                {chatButton}
                 </div>
                 <div className="message-button-small">
-                  <IconButton aria-label="delete" color="primary">
-                    <ChatIcon />
-                  </IconButton>
+                {smallChatButton}
                 </div>
               </Grid>
             </Grid>
@@ -355,7 +399,9 @@ class User extends React.Component {
     }
 
     return (
+
       <div className="user-container">
+        {connectModal}
         {circularProgress}
         {fullProfile}
       </div>

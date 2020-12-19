@@ -61,8 +61,8 @@ class ConnectModal extends React.Component
                 <Grid align="center">
                     <div className="page-content">
                         <div className="sign-up-form">
-                        <p className="title">Connect with {this.props.userHandle}</p>
-                        <p className="lightText">Send Connect to {this.props.userHandle}</p>
+                        <p className="title">Connect with @{this.props.userHandle}</p>
+                        <p className="lightText">Send a connect request to {this.props.userHandle}. Your phone number and email address will automatically be sent to {this.props.userHandle}.</p>
                             <div className="feedback-form-container">
                                 <TextField
                                     label="Please write your first message" 

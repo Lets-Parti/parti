@@ -5,12 +5,18 @@ import EventIcon from '@material-ui/icons/Event';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import { Button } from '@material-ui/core';
 import Tooltip from '@material-ui/core/Tooltip';
+import IconButton from '@material-ui/core/IconButton';
+
 
 import ServiceCard from './service-card'
 import ServiceCardBView from './service-card-businessView'
-
+import ConnectModal from '../modal-component/connectmodal'
 import '../../stylesheets/event.css'
 import '../../stylesheets/common.css'
+
+//redux
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 
 class EventCardBView extends Component
 {
@@ -25,7 +31,10 @@ class EventCardBView extends Component
             services: JSON.stringify(this.props.data.services), 
             userHandle: this.props.data.userHandle, 
             zipcode: this.props.data.zipcode, 
+            modalOpen: false
         }
+        this.openModal = this.openModal.bind(this);
+        this.closeModal = this.closeModal.bind(this);
     }
 
     offer()
@@ -33,8 +42,26 @@ class EventCardBView extends Component
 
     }
 
+    openModal() {
+        this.setState({
+            modalOpen: true
+        })
+    }
+
+    closeModal() {
+        this.setState({
+            modalOpen: false
+        })
+    }
+
+    redirect() {
+        window.location.href = '/login'
+    }
+
     render(props)
     {
+        const { authenticated } = this.props.user; 
+        
         let date = new Date(this.state.eventDate)
         let services = JSON.parse(this.state.services)
 
@@ -48,8 +75,23 @@ class EventCardBView extends Component
             )
         })
 
+        let connectModal = authenticated ? 
+        <ConnectModal open={this.state.modalOpen} handleClose={this.closeModal} userHandle={this.state.userHandle}/> 
+        : 
+        null
+
+        let chatButton = authenticated ? 
+        <Button aria-label="message" color="primary" variant="contained" onClick={this.openModal}>
+            POKE
+        </Button>
+        : 
+        <Button aria-label="message" color="primary" variant="contained"  onClick={this.redirect}>
+        POKE
+        </Button>
+
         return(
             <div className="eventCard">
+                {connectModal}
                 <div className="eventWrapper">
                     <Grid container align="left">
                         <Grid item sm={10} xs={10}>
@@ -63,13 +105,8 @@ class EventCardBView extends Component
                         </Grid>
                         <Grid item sm={2} xs={2}>
                             <Tooltip title="Reach out to client">
-                                <Button
-                                    variant="contained"
-                                    onClick={this.offer}
-                                    color="primary"
-                                >
-                                    Poke   
-                                </Button>
+                            {chatButton}
+
                             </Tooltip>
                         </Grid>
 
@@ -94,4 +131,17 @@ class EventCardBView extends Component
     }
 }
 
-export default EventCardBView
+EventCardBView.propTypes = {
+    user: PropTypes.object.isRequired
+}
+
+const mapStateToProps = (state) => ({
+    user: state.user
+})
+
+const mapActionsToProps = {
+
+}
+
+
+export default connect(mapStateToProps, mapActionsToProps)(EventCardBView)

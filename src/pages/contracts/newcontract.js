@@ -225,7 +225,7 @@ class NewContract extends React.Component
                             helperText={this.state.errors.contractBody}
                             error={this.state.errors.contractBody ? true : false}
                         />
-                        <p className="question">5. What are you fees?</p>
+                        <p className="question">5. What are your fees?</p>
                         {this.state.FeeFormComponents}
                         {AddFeeButton}
 
