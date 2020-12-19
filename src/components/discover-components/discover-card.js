@@ -42,6 +42,10 @@ class DiscoverCard extends Component {
         })
     }
 
+    redirect() {
+        window.location.href = '/login'
+    }
+
     render(props) {
         const { authenticated } = this.props.user; 
 
@@ -79,7 +83,7 @@ class DiscoverCard extends Component {
             <ChatIcon />
         </IconButton>
         : 
-        <IconButton aria-label="message" color="primary">
+        <IconButton aria-label="message" color="primary" onClick={this.redirect}>
             <ChatIcon />
         </IconButton>
 
