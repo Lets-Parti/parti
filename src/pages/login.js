@@ -88,7 +88,7 @@ class Login extends React.Component
                     <div className="page-content">
                         <div className="sign-up-form">
                         <p className="title">Log In</p>
-                        <p className="lightText">Insert punchline</p>
+                        <p className="lightText">Log in to your Parti profile</p>
                             <div className="sign-up-form-container">
                                 <TextField
                                     label="Username or Email" 

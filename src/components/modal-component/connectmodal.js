@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Modal from '@material-ui/core/Modal';
 import Grid from '@material-ui/core/Grid';
@@ -11,11 +10,9 @@ import { connect } from 'react-redux'
 import { createConnect } from '../../redux/actions/dataActions'
 import PropTypes from 'prop-types'
 
-class ConnectModal extends React.Component 
-{
-    constructor(props)
-    {
-        super(props); 
+class ConnectModal extends React.Component {
+    constructor(props) {
+        super(props);
         this.state = {
             userHandle: this.props.userHandle,
             body: '',
@@ -24,18 +21,15 @@ class ConnectModal extends React.Component
         }
         this.eventChange = this.eventChange.bind(this)
         this.onSubmitForm = this.onSubmitForm.bind(this)
-
     }
 
-    eventChange(event)
-    {
+    eventChange(event) {
         this.setState({
             [event.target.name]: event.target.value
         })
     }
 
-    onSubmitForm()
-    {
+    onSubmitForm() {
         this.setState({                                                 //When submit, set isLoading to true and reset errors
             isLoading: true,
             errors: {}
@@ -45,11 +39,12 @@ class ConnectModal extends React.Component
             userHandle: this.state.userHandle
         }
         this.props.createConnect(data)
+        alert('Message sent');
+        this.props.handleClose();
     }
 
-    render(props)
-    {
-        return(
+    render(props) {
+        return (
             <Modal
                 open={this.props.open}
                 onClose={this.props.handleClose}
@@ -57,46 +52,46 @@ class ConnectModal extends React.Component
                 aria-describedby="simple-modal-description"
             >
                 <Card>
-                <div>
-                <Grid align="center">
-                    <div className="page-content">
-                        <div className="sign-up-form">
-                        <p className="title">Connect with @{this.props.userHandle}</p>
-                        <p className="lightText">Send a connect request to {this.props.userHandle}. Your phone number and email address will automatically be sent to {this.props.userHandle}.</p>
-                            <div className="feedback-form-container">
-                                <TextField
-                                    label="Please write your first message" 
-                                    variant="filled"
-                                    size="large" 
-                                    fullWidth='true'
-                                    name='body'
-                                    onChange={this.eventChange}
-                                    value={this.state.body}
-                                    multiline
-                                    rows={15}
-                                
-                                    
-                                    helperText={this.state.errors.body}
-                                    error={this.state.errors.body ? true : false}
-                                    />
-                                <div className="form-seperator"  />  
-                                <div className="form-seperator" />
-                            
-                                {/* {ButtonDisplay} */}
+                    <div>
+                        <Grid align="center">
+                            <div className="page-content">
+                                <div className="sign-up-form">
+                                    <p className="title">Connect with @{this.props.userHandle}</p>
+                                    <p className="lightText">Send a connect request to {this.props.userHandle}. Your phone number and email address will automatically be sent to {this.props.userHandle}.</p>
+                                    <div className="feedback-form-container">
+                                        <TextField
+                                            label="Please write your first message"
+                                            variant="filled"
+                                            size="large"
+                                            fullWidth='true'
+                                            name='body'
+                                            onChange={this.eventChange}
+                                            value={this.state.body}
+                                            multiline
+                                            rows={15}
 
-                                <Button
-                                    variant="contained"
-                                    color="primary"
-                                    onClick={this.onSubmitForm}
-                                    >
-                                    Submit 
-                                </Button>
-                                <div className="form-seperator" />
+
+                                            helperText={this.state.errors.body}
+                                            error={this.state.errors.body ? true : false}
+                                        />
+                                        <div className="form-seperator" />
+                                        <div className="form-seperator" />
+
+                                        {/* {ButtonDisplay} */}
+
+                                        <Button
+                                            variant="contained"
+                                            color="primary"
+                                            onClick={this.onSubmitForm}
+                                        >
+                                            Submit
+                                        </Button>
+                                        <div className="form-seperator" />
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                        </Grid>
                     </div>
-                </Grid>
-            </div>
                 </Card>
             </Modal>
         )
@@ -104,7 +99,7 @@ class ConnectModal extends React.Component
 }
 
 ConnectModal.propTypes = {
-    createConnect: PropTypes.func.isRequired, 
+    createConnect: PropTypes.func.isRequired,
     user: PropTypes.object.isRequired
 }
 

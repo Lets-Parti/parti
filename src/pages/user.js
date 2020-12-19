@@ -49,11 +49,11 @@ class User extends React.Component {
   }
 
   handleTextChange(event) {
-    this.setState({reviewBody: event.target.value});
+    this.setState({ reviewBody: event.target.value });
   }
 
   handleStarsChange(event) {
-    this.setState({stars: event.target.value})
+    this.setState({ stars: event.target.value })
   }
 
   handleSubmit() {
@@ -76,25 +76,25 @@ class User extends React.Component {
 
   openModal() {
     this.setState({
-        modalOpen: true
+      modalOpen: true
     })
-}
+  }
 
   closeModal() {
-      this.setState({
-          modalOpen: false
-      })
+    this.setState({
+      modalOpen: false
+    })
   }
 
   redirect() {
-      window.location.href = '/login'
+    window.location.href = '/login'
   }
 
   componentDidMount() {
     const handle = this.props.match.params.userhandle
     this.props.getUserByHandle(handle)
   }
-  
+
   toggleAddReview() {
     this.setState({ toggleAddReviewComp: !this.state.toggleAddReviewComp });
   }
@@ -109,34 +109,34 @@ class User extends React.Component {
       authenticatedUser = this.props.user.user;
     }
 
-    let connectModal = authenticated ? 
-        <ConnectModal open={this.state.modalOpen} handleClose={this.closeModal} userHandle={this.state.userHandle}/> 
-        : 
-        null
+    let connectModal = authenticated && user && !isLoading ?
+      <ConnectModal open={this.state.modalOpen} handleClose={this.closeModal} userHandle={user.userHandle} />
+      :
+      null
 
-        let chatButton = authenticated ? 
-        <Button aria-label="message" color="primary" variant="contained" onClick={this.openModal}
-                    startIcon={<MessageIcon />}
-                    display='none'>
-                    Message
+    let chatButton = authenticated ?
+      <Button aria-label="message" color="primary" variant="contained" onClick={this.openModal}
+        startIcon={<MessageIcon />}
+        display='none'>
+        Message
         </Button>
-        : 
-        <Button aria-label="message" color="primary" variant="contained"  onClick={this.redirect}
-                            startIcon={<MessageIcon />}
-                    display='none'>
-                    Message
+      :
+      <Button aria-label="message" color="primary" variant="contained" onClick={this.redirect}
+        startIcon={<MessageIcon />}
+        display='none'>
+        Message
         </Button>
 
-let smallChatButton = authenticated ? 
-<Button aria-label="message" color="primary" variant="contained" onClick={this.openModal}
-            startIcon={<MessageIcon />}
-            display='none'>
-</Button>
-: 
-<Button aria-label="message" color="primary" variant="contained"  onClick={this.redirect}
-                    startIcon={<MessageIcon />}
-            display='none'>
-</Button>
+    let smallChatButton = authenticated ?
+      <Button aria-label="message" color="primary" variant="contained" onClick={this.openModal}
+        startIcon={<MessageIcon />}
+        display='none'>
+      </Button>
+      :
+      <Button aria-label="message" color="primary" variant="contained" onClick={this.redirect}
+        startIcon={<MessageIcon />}
+        display='none'>
+      </Button>
 
 
     let fullProfile = null;
@@ -155,8 +155,8 @@ let smallChatButton = authenticated ?
       let numberOfReviews = reviewData.numberOfReviews
       let reviews = reviewData.reviews
 
-      let averageStarsDisplay = 
-        <Rating 
+      let averageStarsDisplay =
+        <Rating
           value={averageStars}
           readOnly
         />
@@ -172,11 +172,11 @@ let smallChatButton = authenticated ?
       let starsDisplay
       let reviewCards = [];
       reviews.forEach(review => {
-        starsDisplay = 
-        <Rating 
-          value={review.stars}
-          readOnly
-        />
+        starsDisplay =
+          <Rating
+            value={review.stars}
+            readOnly
+          />
         reviewCards.push(
           <Grid item sm={4} xs={12} className="review-card">
             <p className="review-handle">@{review.userHandle} <br></br>{starsDisplay}</p>
@@ -186,52 +186,52 @@ let smallChatButton = authenticated ?
       })
 
       let createReview =
-      <Grid container sm={12} xs={12} spacing={1}>
-        <Grid item sm={12} xs={12}>
-          <h2>Add Your Review</h2>
-        </Grid>
-        <Grid item sm={12} xs={12}>
-          <Rating 
-            value={this.state.stars}
-            onChange={this.handleStarsChange}
-          />
-        </Grid>
-        <Grid item sm={12} xs={12}>
-          <TextField
-            label="Please enter your review here" 
-            variant="outlined" 
-            size="large" 
-            value={this.state.reviewBody}
-            onChange={this.handleTextChange}
-            fullWidth
-            multiline
-            rows={4}
-          />
-        </Grid>
-        <Grid item sm={2} xs={2}>
-          <Button
-            variant="contained"
-            color="primary"
-            startIcon={<ReviewIcon />}
-            display='none'
-            onClick= {this.handleSubmit}
-          >
-            Submit
+        <Grid container sm={12} xs={12} spacing={1}>
+          <Grid item sm={12} xs={12}>
+            <h2>Add Your Review</h2>
+          </Grid>
+          <Grid item sm={12} xs={12}>
+            <Rating
+              value={this.state.stars}
+              onChange={this.handleStarsChange}
+            />
+          </Grid>
+          <Grid item sm={12} xs={12}>
+            <TextField
+              label="Please enter your review here"
+              variant="outlined"
+              size="large"
+              value={this.state.reviewBody}
+              onChange={this.handleTextChange}
+              fullWidth
+              multiline
+              rows={4}
+            />
+          </Grid>
+          <Grid item sm={2} xs={2}>
+            <Button
+              variant="contained"
+              color="primary"
+              startIcon={<ReviewIcon />}
+              display='none'
+              onClick={this.handleSubmit}
+            >
+              Submit
           </Button>
-        </Grid>
-        <Grid item sm={2} xs={2}>
-          <Button
-            variant="contained"
-            color="secondary"
-            startIcon={<ReviewIcon />}
-            display='none'
-            onClick= {() => this.toggleAddReview()}
-          >
-            Cancel
+          </Grid>
+          <Grid item sm={2} xs={2}>
+            <Button
+              variant="contained"
+              color="secondary"
+              startIcon={<ReviewIcon />}
+              display='none'
+              onClick={() => this.toggleAddReview()}
+            >
+              Cancel
           </Button>
+          </Grid>
         </Grid>
-      </Grid>
-      
+
 
       let carouselImages = [];                    //Initiate carousel data 
       imageGallery.forEach(imageURL => {
@@ -240,7 +240,7 @@ let smallChatButton = authenticated ?
           thumbnail: imageURL
         })
       })
-        
+
 
       let chips = [];
       tags.forEach(tag => {
@@ -254,7 +254,7 @@ let smallChatButton = authenticated ?
           )
       })
 
-      
+
       if (authenticated && authenticatedUser.type === "client") { // Fix this part
         fullProfile =
           <Grid container>
@@ -279,10 +279,10 @@ let smallChatButton = authenticated ?
                   >
                     Message
                           </Button> */}
-                          {chatButton}
+                  {chatButton}
                 </div>
                 <div className="message-button-small">
-                {smallChatButton}
+                  {smallChatButton}
                 </div>
               </Grid>
             </Grid>
@@ -315,13 +315,13 @@ let smallChatButton = authenticated ?
                       color="primary"
                       startIcon={<ReviewIcon />}
                       display='none'
-                      onClick= {() => this.toggleAddReview()}
+                      onClick={() => this.toggleAddReview()}
                     >
                       Add Review
                     </Button>
                   </div>
                   <div className="review-button-small">
-                    <IconButton aria-label="delete" color="primary"> 
+                    <IconButton aria-label="delete" color="primary">
                       <ReviewIcon />
                     </IconButton>
                   </div>
@@ -352,10 +352,10 @@ let smallChatButton = authenticated ?
               </Grid>
               <Grid item className="grid-item" align="center" sm={2} xs={2}>
                 <div className="message-button-large">
-                {chatButton}
+                  {chatButton}
                 </div>
                 <div className="message-button-small">
-                {smallChatButton}
+                  {smallChatButton}
                 </div>
               </Grid>
             </Grid>
