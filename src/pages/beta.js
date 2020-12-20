@@ -19,6 +19,12 @@ import frame_six from '../resources/cards/frame6.png'
 
 import ScrollContainer from 'react-indiana-drag-scroll'
 
+import AboutAaricnobio from './about/about-aaricnobio';
+import AboutAnishnobio from './about/about-anishnobio';
+import AboutJakenobio from './about/about-jakenobio';
+import AboutMatthewnobio from './about/about-matthewnobio';
+import AboutMaxnobio from './about/about-maxnobio';
+
 import axios from 'axios';
 
 class Beta extends React.Component
@@ -93,8 +99,8 @@ class Beta extends React.Component
                 <Grid align="center">
                     <div className="page-content-beta">
                         <div className="beta-section-one"> 
-                            <p className="beta-title">Effortless Event Planning</p>
-                            <p className="lightText">Arizona Beta available <b>January 4th, 2021</b></p>
+                            <p className="beta-title">A platform for all your event needs</p>
+                            <p className="lightText">Beta available <b>January 4th, 2021</b></p>
                             <div className="seperator" />
                             <div className="seperator" />
                             <div className="beta-form">
@@ -111,13 +117,13 @@ class Beta extends React.Component
                             {button}
                             </div>     
                         </div> 
-                        <Grid className="intro" align="left">
-                            <h1>What's Parti?</h1>
+                        <Grid className="indiana-scroll" align="center">
+                            <h1>What is Parti?</h1>
                             <p className="description">Parti will help you find the most suitable professionals for your upcoming event. Our platform will connect you with the best professionals and organize all of your event needs. </p>
                         </Grid>
                         
-                        <Grid className="indiana-scroll" align="left">
-                            <ScrollContainer className="scroll-container" horizontal hideScrollbars>
+                        <Grid className="indiana-scroll" align="center">
+                            <ScrollContainer className="scroll-container" horizontal hideScrollbars >
                             {frames_clients.map(frame => 
                             (
                                 <div className="indiana-frame">
@@ -128,7 +134,7 @@ class Beta extends React.Component
                             </ScrollContainer>
                         </Grid>
 
-                        <Grid className="indiana-scroll" align="left">
+                        <Grid className="indiana-scroll" align="center">
                             <h1>Parti for Professionals</h1>
                             <p className="description">We help professionals like you build a brand, market, and grow your business. Parti allows you to discover events looking for your service and initiate communication with clients.</p>
                             <div className="indiana-scroll">
@@ -143,6 +149,27 @@ class Beta extends React.Component
                                 </ScrollContainer>
                             </div>
                         </Grid>
+
+                        <Grid className="indiana-scroll" align="center">
+                            <h1>About the Parti Team</h1>
+                            <p className="description">As college students and young entreprenuers, we plan to reshape the event management process at Parti. We used our small business experience in the event entertainment industry as motivation to make the event management process as streamlined and fluid as possible.</p>
+
+                        </Grid>
+                    </div>
+
+                    <div>
+                    <Grid>
+                    <AboutMatthewnobio />
+                    </Grid>
+                    <br></br>
+                    <AboutAnishnobio />
+                    <br></br>
+                    <AboutJakenobio />
+                    <br></br>
+                    <AboutAaricnobio />
+                    <br></br>
+                    <AboutMaxnobio />
+                    <br></br>
                     </div>
 
 
