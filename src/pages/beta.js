@@ -152,11 +152,7 @@ class Beta extends React.Component
 
                         <Grid className="indiana-scroll" align="center">
                             <h1>About the Parti Team</h1>
-<<<<<<< HEAD
-                            <p className="description">As college students and young entrepreneurs, we plan to reshape the event management process at Parti. We used our small business experience in the event entertainment industry as motivation to make the event management process as streamlined and fluid as possible.</p>
-=======
                             <p className="description">As college students and young entrepreneurs, we plan to reshape the event planning process at Parti. We used our experience in the event entertainment industry as inspiration to make the event planning process as streamlined as possible.</p>
->>>>>>> 213995fd8b6d6960c4a75511c0d9a9dc0c3a2fda
 
                         </Grid>
                     </div>

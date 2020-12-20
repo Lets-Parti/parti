@@ -28,7 +28,7 @@ function AboutMaxnobio() {
             <img className={classes.portrait} src={maxportrait}></img>
           </Grid>
           <Grid item sm={9} xs={12}>
-          Co-Founder, Business Strategist & Design
+          Co-Founder, Design & Business Strategist
           <Grid item sm={9} xs={12}>
           Chandler, AZ
           </Grid>
