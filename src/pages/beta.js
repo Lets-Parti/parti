@@ -117,7 +117,7 @@ class Beta extends React.Component
                             {button}
                             </div>     
                         </div> 
-                        <Grid className="indiana-scroll" align="center">
+                        <Grid align="center">
                             <h1>What is Parti?</h1>
                             <p className="description">Parti will help you find the most suitable professionals for your upcoming event. Our platform will connect you with the best professionals and organize all of your event needs in an all-in-one dashboard. </p>
                         </Grid>
@@ -134,7 +134,7 @@ class Beta extends React.Component
                             </ScrollContainer>
                         </Grid>
 
-                        <Grid className="indiana-scroll" align="center">
+                        <Grid align="center">
                             <h1>Parti for Professionals</h1>
                             <p className="description">We help professionals like you build a brand, market, and grow your event entertainment business. Parti enables direct market outreach and allows you to discover events that are looking for your service and initiate communication with potential clients.</p>
                         </Grid>
@@ -150,7 +150,7 @@ class Beta extends React.Component
                                 </ScrollContainer>
                         </Grid>
 
-                        <Grid className="indiana-scroll" align="center">
+                        <Grid align="center">
                             <h1>About the Parti Team</h1>
                             <p className="description">As college students and young entrepreneurs, we plan to reshape the event planning process at Parti. We used our experience in the event entertainment industry as inspiration to make the event planning process as streamlined as possible.</p>
 
@@ -158,9 +158,9 @@ class Beta extends React.Component
                     </div>
 
                     <div>
-                        <Grid>
+                    <div className="seperator" />
+                    <Grid>
                             <AboutMatthewnobio />
-                        </Grid>
                         <br></br>
                             <AboutAnishnobio />
                         <br></br>
@@ -170,6 +170,7 @@ class Beta extends React.Component
                         <br></br>
                             <AboutMaxnobio />
                         <br></br>
+                    </Grid>
                     </div>
                 </Grid>
             </div>

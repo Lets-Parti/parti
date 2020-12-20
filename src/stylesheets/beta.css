@@ -10,10 +10,10 @@
 .scroll-container {
   display: flex;
   margin: auto;
-  padding-bottom: 15px;
-  padding-top: 25px;
+  padding-bottom: 2px;
+  padding-top: 2px;
   cursor: grab;
-  padding-left: 15px;
+  padding-left: 2px;
   align-items: center;
   align-content: center;
 }
@@ -26,6 +26,7 @@
 
 .indiana-scroll {
   margin-bottom: 80px;
+  background-color: white;
 }
 
 .indiana-frame-picture {
