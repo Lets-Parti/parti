@@ -43,8 +43,7 @@
 
 .page-content-beta {
   font-family: Roboto, sans-serif;
-  padding-left: 100px;
-  padding-right: 100px;
+  width: 70%;
 }
 
 .beta-section-one {
@@ -68,6 +67,6 @@
   }
 }
 
-body{
+body {
   background-color: whitesmoke;
 }
