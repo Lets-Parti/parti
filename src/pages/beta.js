@@ -151,7 +151,7 @@ class Beta extends React.Component
                     <div className="page-content-beta">
                         <div className="beta-section-one"> 
                             <p className="beta-title">A platform for all your event needs</p>
-                            <p className="lightText">Beta available <b>January 4th, 2021</b></p>
+                            <p className="lightText">Arizona Beta available <b>January 4th, 2021</b></p>
                             <div className="seperator" />
                             <div className="seperator" />
                             <div className="beta-form">

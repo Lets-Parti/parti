@@ -70,6 +70,10 @@
     margin-bottom: 50px;
     padding-right: 100%;
   }
+
+  .beta-form {
+    width: 80%;
+  }
 }
 
 body {
