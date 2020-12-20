@@ -39,8 +39,9 @@ import ProtectedRoute from './utils/protectedroute'
 import ProtectedServiceRoute from './utils/protectedserviceroute'
 import ProtectedClientRoute from './utils/protectedclientroute'
 import FunctionsConfig from './static/config';
+import Footer from './components/footer';
 
-axios.defaults.baseURL = FunctionsConfig.FUNCTIONS_DEVELOPMENT_URL; 
+axios.defaults.baseURL = FunctionsConfig.FUNCTIONS_PRODUCTION_URL; 
 
 const token = localStorage.FBIdToken; 
 if(token)
@@ -90,6 +91,7 @@ class App extends React.Component
               <Redirect to="/404"></Redirect>
             </Switch>
             </div>
+            {/* <Footer /> */}
         </Router>
       </Provider>
       </ThemeProvider>

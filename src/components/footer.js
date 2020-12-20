@@ -6,17 +6,10 @@ import BottomNavigation from '@material-ui/core/BottomNavigation';
 
 const useStyles = makeStyles((theme) => ({
     footer: {
-        backgroundColor: '#BAC4E7'
+        backgroundColor: '#BAC4E7',
+        height: 100
     }
 }));
-
-// function FooterContent()
-// {
-//     const classes = useStyles(); 
-//     return(
-//         <div>hi</div>
-//     )
-// }
 
 function Footer()
 {
@@ -24,7 +17,7 @@ function Footer()
     return (
         <div>
             <BottomNavigation className={classes.footer}>
-                
+                <p>Contact us at funpartiapp@gmail.com</p>
 
             </BottomNavigation>
         </div>

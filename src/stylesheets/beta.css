@@ -17,6 +17,7 @@
   align-items: center;
   align-content: center;
 }
+
 .indiana-frame {
   width: 400px;
   margin-right: 15px;
@@ -26,7 +27,10 @@
 
 .indiana-scroll {
   margin-bottom: 80px;
-  background-color: whitesmoke;
+}
+
+.indiana-scroll-about {
+  height: 500px;
 }
 
 .indiana-frame-picture {
@@ -69,5 +73,5 @@
 }
 
 body {
-  background-color: #F8F1F7;
+  background-color: #f8f1f7;
 }

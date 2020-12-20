@@ -24,13 +24,13 @@ function AboutAaricnobio() {
     <div>
       <div className={classes.intro}>
         <Grid container>
-          <Grid item sm={3} xs={12}>
+          <Grid item sm={12} xs={12} spacing={4}>
             <img className={classes.portrait} src={aaricportrait}></img>
           </Grid>
           <Grid item sm={9} xs={12}>
           Co-Founder & Full-Stack Engineer
           <Grid item sm={9} xs={12}>
-          ..., NC
+          Cary, NC
           </Grid>
           </Grid>
         </Grid>
