@@ -40,7 +40,7 @@ import ProtectedServiceRoute from './utils/protectedserviceroute'
 import ProtectedClientRoute from './utils/protectedclientroute'
 import FunctionsConfig from './static/config';
 
-axios.defaults.baseURL = FunctionsConfig.FUNCTIONS_PRODUCTION_URL; 
+axios.defaults.baseURL = FunctionsConfig.FUNCTIONS_DEVELOPMENT_URL; 
 
 const token = localStorage.FBIdToken; 
 if(token)
