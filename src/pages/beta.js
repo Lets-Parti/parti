@@ -19,11 +19,14 @@ import frame_six from '../resources/cards/frame6.png'
 
 import ScrollContainer from 'react-indiana-drag-scroll'
 
+import aaricportrait from './about/imgs/aaricportrait.jpg';
+
 import AboutAaricnobio from './about/about-aaricnobio';
 import AboutAnishnobio from './about/about-anishnobio';
 import AboutJakenobio from './about/about-jakenobio';
 import AboutMatthewnobio from './about/about-matthewnobio';
 import AboutMaxnobio from './about/about-maxnobio';
+import AboutNoBio from './about/about-nobio';
 
 import axios from 'axios';
 
@@ -82,6 +85,62 @@ class Beta extends React.Component
         console.log(this.state); 
         const frames_services = [frame_one, frame_two, frame_three];
         const frames_clients = [frame_four, frame_five, frame_six]; 
+
+        const Matthew_Card = (
+            <div className="indiana-frame">
+                <AboutNoBio 
+                    name="Matthew Wang"
+                    title="Co-Founder & Full-Stack Engineer"
+                    from="Chandler, AZ"
+                    num={0}
+                    />
+            </div>
+        );
+
+        const Anish_Card = (
+            <div className="indiana-frame">
+                <AboutNoBio 
+                    name="Anish Agarwal"
+                    title="Co-Founder & Full-Stack Engineer"
+                    from="Chandler, AZ"
+                    num={1}
+                    />
+            </div>
+        );
+        
+        const Jake_Card = (
+            <div className="indiana-frame">
+                <AboutNoBio 
+                    name="Jake Heller"
+                    title="Co-Founder & Full-Stack Engineer"
+                    from="Miami, FL"
+                    num={2}
+                    />
+            </div>
+        )
+
+        const Aaric_Card = (
+            <div className="indiana-frame">
+                <AboutNoBio 
+                    name="Aaric Han"
+                    title="Co-Founder & Full-Stack Engineer"
+                    from="Cary, NC"
+                    num={3}
+                    />
+            </div>
+        )
+        const Max_Card = (
+            <div className="indiana-frame">
+                <AboutNoBio 
+                    name="Max Bregman"
+                    title="Co-Founder, Design & Business Strategist"
+                    from="Chandler, AZ"
+                    num={4}
+                    />
+            </div>
+        )
+
+        const frames_founders = [Matthew_Card, Anish_Card, Jake_Card, Aaric_Card, Max_Card]; // _h for headshot
 
         let button = this.state.isSubmitted ? 
         <p>Thank you for joining Parti!</p> 
@@ -153,23 +212,12 @@ class Beta extends React.Component
                         <Grid className="indiana-scroll" align="center">
                             <h1>About the Parti Team</h1>
                             <p className="description">As college students and young entrepreneurs, we plan to reshape the event planning process at Parti. We used our experience in the event entertainment industry as inspiration to make the event planning process as streamlined as possible.</p>
-
+                            <div className="indiana-scroll">
+                                <ScrollContainer className="scroll-container" horizontal hideScrollbars>
+                                {frames_founders}
+                                </ScrollContainer>
+                            </div>
                         </Grid>
-                    </div>
-
-                    <div>
-                        <Grid>
-                            <AboutMatthewnobio />
-                        </Grid>
-                        <br></br>
-                            <AboutAnishnobio />
-                        <br></br>
-                            <AboutJakenobio />
-                        <br></br>
-                            <AboutAaricnobio />
-                        <br></br>
-                            <AboutMaxnobio />
-                        <br></br>
                     </div>
                 </Grid>
             </div>

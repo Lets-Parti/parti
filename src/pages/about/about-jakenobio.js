@@ -30,7 +30,7 @@ function AboutJakenobio() {
           <Grid item sm={9} xs={12}>
           Co-Founder & Full-Stack Engineer
           <Grid item sm={9} xs={12}>
-          ..., FL
+          Miami, FL
           </Grid>
           </Grid>
         </Grid>
