@@ -137,7 +137,8 @@ class Beta extends React.Component
                         <Grid className="indiana-scroll" align="center">
                             <h1>Parti for Professionals</h1>
                             <p className="description">We help professionals like you build a brand, market, and grow your event entertainment business. Parti enables direct market outreach and allows you to discover events that are looking for your service and initiate communication with potential clients.</p>
-                            <div className="indiana-scroll">
+                        </Grid>
+                        <Grid className="indiana-scroll" align="center">
                                 <ScrollContainer className="scroll-container" horizontal hideScrollbars>
                                 {frames_services.map(frame => 
                                 (
@@ -147,7 +148,6 @@ class Beta extends React.Component
                                 ))
                                 }
                                 </ScrollContainer>
-                            </div>
                         </Grid>
 
                         <Grid className="indiana-scroll" align="center">
