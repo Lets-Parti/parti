@@ -8,7 +8,6 @@ import '../stylesheets/beta.css'
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-import CircularProgress from '@material-ui/core/CircularProgress';
 
 //Cards for Indiana Scroll
 import frame_one from '../resources/cards/frame1.png'
@@ -32,7 +31,7 @@ class Beta extends React.Component
             email: '', 
             phone: '', 
             company: '',
-            isLoading: false
+            isSubmitted: false, 
         }
         this.eventChange = this.eventChange.bind(this)
         this.onSubmitForm = this.onSubmitForm.bind(this)
@@ -53,6 +52,7 @@ class Beta extends React.Component
             phone: this.state.phone, 
             company: this.state.company
         }
+
         axios.post('/beta', JSON.stringify(dataSentToDB),
         {
             headers: {
@@ -61,19 +61,32 @@ class Beta extends React.Component
         })
         .then(res =>
         {
-            alert('Welcome to Parti!');
+            this.setState({
+                isSubmitted: true
+            })
         })
         .catch(err =>
         {
             alert('Oops. Something went wrong ;(');
         })
-
     }
 
     render()
     {
+        console.log(this.state); 
         const frames_services = [frame_one, frame_two, frame_three];
         const frames_clients = [frame_four, frame_five, frame_six]; 
+
+        let button = this.state.isSubmitted ? 
+        <p>Thank you for joining Parti!</p> 
+        : 
+        <Button
+            variant="contained"
+            color="primary"
+            onClick={this.onSubmitForm}
+            >
+            Join Beta
+        </Button>
 
         return(
             <div>
@@ -95,24 +108,15 @@ class Beta extends React.Component
                                     value={this.state.email}
                                     />
                                 <div className="seperator" />
-                                <Button
-                                    variant="contained"
-                                    color="primary"
-                                    onClick={this.onSubmitForm}
-                                    >
-                                    Join Beta
-                                </Button>
+                            {button}
                             </div>     
                         </div> 
                         <Grid className="intro" align="left">
                             <h1>What's Parti?</h1>
                             <p className="description">Parti will help you find the most suitable professionals for your upcoming event. Our platform will connect you with the best professionals and organize all of your event needs. </p>
-                            <p className="description">We are excited to launch Parti Beta shortly. Sign up to get notified as early as <b>January 4th, 2021.</b></p>
                         </Grid>
                         
                         <Grid className="indiana-scroll" align="left">
-                            <h1>Parti for Hosts</h1>
-                            <p></p>
                             <ScrollContainer className="scroll-container" horizontal hideScrollbars>
                             {frames_clients.map(frame => 
                             (
