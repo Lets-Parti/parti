@@ -23,6 +23,7 @@
   text-decoration: none;
   color: inherit;
 }
+
 .invisible-link:hover {
   text-decoration: none;
   color: #cd72b4;
@@ -44,7 +45,7 @@
 }
 
 .orangeText {
-  color: orange; 
+  color: orange;
 }
 
 @media (max-width: 800px) {
