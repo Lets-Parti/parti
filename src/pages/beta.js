@@ -47,6 +47,10 @@ class Beta extends React.Component
 
     onSubmitForm()
     {
+        this.setState({
+            isSubmitted: true
+        })
+
         let dataSentToDB = {
             fullName: this.state.fullName, 
             email: this.state.email, 
@@ -62,9 +66,7 @@ class Beta extends React.Component
         })
         .then(res =>
         {
-            this.setState({
-                isSubmitted: true
-            })
+
         })
         .catch(err =>
         {
