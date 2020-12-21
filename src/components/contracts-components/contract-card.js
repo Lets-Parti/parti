@@ -168,7 +168,6 @@ class ContractCard extends Component
                             <Link href={`/events/${this.state.eventID}`}>
                                 <Button
                                     variant="outlined"
-                                    onClick={this.deleteContract}
                                     color="primary"
                                 >
                                     View Event Details
