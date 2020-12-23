@@ -75,7 +75,7 @@ function IntroText(){
 
 function createEventButtonClick()
 {
-  window.location.href = '/create-event'
+  window.location.href = '/events/new'
 }
 
 function GraphicDemo(){
