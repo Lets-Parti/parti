@@ -93,7 +93,7 @@ const styles = theme => ({
   },
   navbar: {
     color: 'black',
-    backgroundColor: '#f8f1f7',
+    backgroundColor: '#FFFFFF',
     boxShadow: 'None',
     padding: theme.spacing(1)
   },
