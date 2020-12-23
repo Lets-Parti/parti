@@ -184,6 +184,8 @@ class Beta extends React.Component
                             <h1>What is Parti?</h1>
                             <p className="description">Parti will help you find the most suitable professionals for your upcoming event. Our platform will connect you with the best professionals and organize all of your event needs in an all-in-one dashboard. </p>
                         </Grid>
+
+                        <iframe className="youtube-demo" src="https://www.youtube.com/embed/R6jInZUZuKI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         
                         <Grid className="indiana-scroll" align="center">
                             <ScrollContainer className="scroll-container" horizontal hideScrollbars >
@@ -201,6 +203,9 @@ class Beta extends React.Component
                             <h1>Parti for Professionals</h1>
                             <p className="description">We help professionals like you build a brand, market, and grow your event entertainment business. Parti enables direct market outreach and allows you to discover events that are looking for your service.</p>
                         </Grid>
+
+                        <iframe className="youtube-demo" src="https://www.youtube.com/embed/ijRfHZt87EI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
                         <Grid className="indiana-scroll" align="center">
                                 <ScrollContainer className="scroll-container" horizontal hideScrollbars>
                                 {frames_services.map(frame => 
