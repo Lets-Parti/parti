@@ -23,7 +23,7 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 //Logo
 import logo from '../resources/logos/main.svg'
 import logoBeta from '../resources/logos/main-beta.svg'
-import logobluebeta from '../resources/logos/PartiLogotranmsparnet.png'
+import logobluebeta from '../resources/logos/wowblue.jpeg'
 
 //Redux
 import { connect } from 'react-redux'
