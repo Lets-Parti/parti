@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   },
   banner: {
     fontSize: '3rem',
-    color: '#CD72B4'
+    color: '#31B6EC'
   },
   text: {
     marginTop: '1rem',

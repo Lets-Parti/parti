@@ -23,6 +23,7 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 //Logo
 import logo from '../resources/logos/main.svg'
 import logoBeta from '../resources/logos/main-beta.svg'
+import logobluebeta from '../resources/logos/PartiLogotranmsparnet.png'
 
 //Redux
 import { connect } from 'react-redux'
@@ -557,7 +558,7 @@ class NavbarBeta extends React.Component {
             <Toolbar>
 
             <a href="/" className={classes.logo}>
-                <img src={logoBeta} className={classes.logo} alt="partilogo"></img>
+                <img src={logobluebeta} className={classes.logo} alt="partilogo"></img>
             </a>
             </Toolbar>
         </AppBar>
