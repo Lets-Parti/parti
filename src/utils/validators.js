@@ -5,3 +5,7 @@ export function isInt(n){
 export function isFloat(n){
     return Number(n) === n && n % 1 !== 0;
 }
+
+export function isEmpty(str) {
+    return !str || str.length === 0; 
+}

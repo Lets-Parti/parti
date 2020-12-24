@@ -109,12 +109,19 @@ export const updateUserProfile = (userData, userType) => (dispatch) =>
 
     }else if(userType === 'service')
     {
+        let website = userData.website ? userData.website : ''; 
+        let instagram = userData.instagram ? userData.instagram : ''; 
+        let facebook = userData.facebook ? userData.facebook : ''; 
+
         dataSentToDB = {
             phone: userData.phone,
             zipcode: userData.zipcode, 
             fullName: userData.fullName, 
             tags: userData.tags, 
             bio: userData.bio, 
+            website, 
+            instagram, 
+            facebook
         }
 
         axios.post('/account/edit', JSON.stringify(dataSentToDB),

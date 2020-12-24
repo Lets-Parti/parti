@@ -106,7 +106,6 @@
   height: 25vh;
   line-height: 1.5;
   padding: 20px;
-
 }
 
 .review-handle {
@@ -161,6 +160,7 @@
   .user-handle {
     margin-top: 10px;
     color: grey;
+    margin-bottom: 0px;
   }
 
   .user-page-title {
