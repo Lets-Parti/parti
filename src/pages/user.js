@@ -22,6 +22,9 @@ import PropTypes from 'prop-types'
 //Material UI Icons
 import MessageIcon from '@material-ui/icons/Message';
 import ReviewIcon from '@material-ui/icons/RateReview';
+import PhoneIcon from '@material-ui/icons/Phone';
+import EmailIcon from '@material-ui/icons/Email';
+import AddIcon from '@material-ui/icons/Add';
 
 
 //Redux
@@ -116,25 +119,25 @@ class User extends React.Component {
 
     let chatButton = authenticated ?
       <Button aria-label="message" color="primary" variant="contained" onClick={this.openModal}
-        startIcon={<MessageIcon />}
+        startIcon={<AddIcon />}
         display='none'>
         Message
         </Button>
       :
       <Button aria-label="message" color="primary" variant="contained" onClick={this.redirect}
-        startIcon={<MessageIcon />}
+        startIcon={<AddIcon />}
         display='none'>
         Message
         </Button>
 
     let smallChatButton = authenticated ?
       <Button aria-label="message" color="primary" variant="contained" onClick={this.openModal}
-        startIcon={<MessageIcon />}
+        startIcon={<AddIcon />}
         display='none'>
       </Button>
       :
       <Button aria-label="message" color="primary" variant="contained" onClick={this.redirect}
-        startIcon={<MessageIcon />}
+        startIcon={<AddIcon />}
         display='none'>
       </Button>
 
@@ -149,6 +152,8 @@ class User extends React.Component {
       let imageGallery = user.mediaImages
       let bio = user.bio
       let tags = user.tags
+      let userPhone = user.phone
+      let userEmail = user.email
 
       let reviewData = user.reviews
       let averageStars = reviewData.averageStars
@@ -287,6 +292,17 @@ class User extends React.Component {
               </Grid>
             </Grid>
 
+            <Grid className="row">
+              <PhoneIcon className="fontSizeSmall"
+              fontSize='small'
+              />
+              <span> {userPhone}</span>
+              <br></br>
+              <EmailIcon className="fontSizeSmall" fontSize='small'/>
+              <span> {userEmail}</span>
+            </Grid>
+
+
             {/* Second Row */}
             <Grid container className="row">
               <Grid container className="image-gallery" sm={6} xs={12}>
@@ -347,7 +363,6 @@ class User extends React.Component {
               <Grid item className="grid-item" sm={9} xs={9} align="left">
                 <div className="user-page-title">
                   <p className="user-company-name">{userDisplay}</p>
-                  <p className="user-handle">@{userHandle}</p>
                 </div>
               </Grid>
               <Grid item className="grid-item" align="center" sm={2} xs={2}>
@@ -358,6 +373,16 @@ class User extends React.Component {
                   {smallChatButton}
                 </div>
               </Grid>
+            </Grid>
+
+            <Grid className="row">
+              <PhoneIcon className="fontSizeSmall"
+              fontSize='small'
+              />
+              <span> {userPhone}</span>
+              <br></br>
+              <EmailIcon className="fontSizeSmall" fontSize='small'/>
+              <span> {userEmail}</span>
             </Grid>
 
             {/* Second Row */}
