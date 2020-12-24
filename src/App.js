@@ -70,10 +70,10 @@ class App extends React.Component
         <NavbarBeta />
           <div className="container">
             <Switch>
-              {/* <Route exact path="/" component={Home} /> */}
-              <Route exact path="/" component={Beta} />
+              <Route exact path="/" component={Home} />
+              {/* <Route exact path="/" component={Beta} /> */}
               
-              {/* <Route exact path="/about" component={About} />
+              <Route exact path="/about" component={About} />
               <Route exact path="/feedback" component={Feedback} />
               <Route exact path="/user/:userhandle" component={User} />
               <ProtectedClientRoute exact path="/events/new" component={NewEvent} />
@@ -85,7 +85,7 @@ class App extends React.Component
               <ProtectedServiceRoute exact path="/discover-events" component={DiscoverEvents} />
               <ProtectedServiceRoute exact path="/contracts/new" component={NewContract} />
               <AuthRoute exact path="/signup" component={SignUp} />
-              <AuthRoute exact path="/login" component={Login} /> */}
+              <AuthRoute exact path="/login" component={Login} />
 
               <Route exact path="/404" component={ErrorNotFound} />
               <Redirect to="/404"></Redirect>
