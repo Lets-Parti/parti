@@ -359,6 +359,37 @@ class AccountEdit extends React.Component
                         onChange={this.onChangeChips}
                         suggestions={chip_options}
                     />
+                    <div className="divider" />
+                    <p className="lightText">Social Media Links</p>
+                    <TextField
+                        label="Website Full URL" 
+                        variant="outlined" 
+                        size="small" 
+                        fullWidth='true'
+                        name='website'
+                        onChange={this.eventChange}
+                        value={this.state.user.website}
+                    />
+                    <div className="divider" />
+                    <TextField
+                        label="Instagram Username" 
+                        variant="outlined" 
+                        size="small" 
+                        fullWidth='true'
+                        name='instagram'
+                        onChange={this.eventChange}
+                        value={this.state.user.instagram}
+                    />
+                    <div className="divider" />
+                    <TextField
+                        label="Facebook Full URL" 
+                        variant="outlined" 
+                        size="small" 
+                        fullWidth='true'
+                        name='facebook'
+                        onChange={this.eventChange}
+                        value={this.state.user.facebook}
+                    />
                 </div>
             }
         }
