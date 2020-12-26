@@ -16,6 +16,7 @@ import TextField from '@material-ui/core/TextField';
 import {
     MuiPickersUtilsProvider,
     KeyboardDatePicker,
+    KeyboardTimePicker
   } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns'
 import CircularProgress from '@material-ui/core/CircularProgress';
@@ -154,6 +155,7 @@ class NewEvent extends React.Component
 
     render()
     {
+        console.log(this.state); 
         let AddServiceButton
         let SubmitButton
         let servicesCounter = this.state.services_count > 0 ? `(${this.state.services_count})` : null
@@ -207,8 +209,8 @@ class NewEvent extends React.Component
 
                         <div className='general-info-form'>
                             <p className="question">Event Information</p>
-                            <Grid container>
-                                <Grid item sm="6" xs="12" align="left" >
+                            <Grid container justify="space-around">
+                                <Grid item sm="7" xs="7" align="left" >
                                     <TextField
                                     label="Event Name" 
                                     variant="outlined" 
@@ -222,7 +224,7 @@ class NewEvent extends React.Component
                                     />
                                 </Grid>
 
-                                <Grid item sm="6" xs="12" align="right">
+                                <Grid item sm="5" xs="5" align="right">
                                     <TextField
                                         label="Zipcode" 
                                         variant="outlined" 
@@ -235,7 +237,7 @@ class NewEvent extends React.Component
                                         />
                                 </Grid>
 
-                                <Grid item sm="12" xs="12" align="left">
+                                <Grid item sm="7" xs="7" align="left">
                                 <MuiPickersUtilsProvider utils={DateFnsUtils}>
                                     <KeyboardDatePicker
                                         disableToolbar
@@ -254,6 +256,26 @@ class NewEvent extends React.Component
                                         helperText={this.state.errors.eventDate}
                                         error={this.state.errors.eventDate ? true : false}
                                         />
+                                    </MuiPickersUtilsProvider>
+                                </Grid>
+
+                                <Grid item sm="5" xs="5" align="right">
+                                    <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                                        <KeyboardTimePicker
+                                            value={this.state.eventdate}
+                                            onChange={this.calendarChange}
+                                            variant="inline"
+                                            name="date"
+                                            margin="normal"
+                                            id="time-picker"
+                                            label="Event Time"
+                                            KeyboardButtonProps={{
+                                                'aria-label': 'change time',
+                                            }}
+                                            style={{marginTop: 25}}
+                                            helperText={this.state.errors.eventDate}
+                                            error={this.state.errors.eventDate ? true : false}
+                                            />
                                     </MuiPickersUtilsProvider>
                                 </Grid>
 
