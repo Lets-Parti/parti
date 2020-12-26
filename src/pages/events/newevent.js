@@ -155,7 +155,6 @@ class NewEvent extends React.Component
 
     render()
     {
-        console.log(this.state); 
         let AddServiceButton
         let SubmitButton
         let servicesCounter = this.state.services_count > 0 ? `(${this.state.services_count})` : null
@@ -298,7 +297,6 @@ class NewEvent extends React.Component
                                 </Grid>
                             </Grid>
                         </div>
-                        
                         
                         <div className="services-form">
                             <p className="question">Services {servicesCounter} {missingService}</p>
