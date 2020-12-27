@@ -316,18 +316,11 @@ class User extends React.Component {
                 <div className="user-page-title">
                   <p className="user-company-name">{userDisplay}</p>
                   <p className="user-handle">@{userHandle}</p>
+                  {socialButtons}
                 </div>
               </Grid>
               <Grid item className="grid-item" align="center" sm={2} xs={2}>
                 <div className="message-button-large">
-                  {/* <Button
-                    variant="contained"
-                    color="primary"
-                    startIcon={<MessageIcon />}
-                    display='none'
-                  >
-                    Message
-                          </Button> */}
                   {chatButton}
                 </div>
                 <div className="message-button-small">
