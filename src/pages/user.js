@@ -132,7 +132,7 @@ class User extends React.Component {
         startIcon={<MessageIcon />}
         display='none'>
         Message
-        </Button>
+      </Button>
 
     let smallChatButton = authenticated ?
       <IconButton aria-label="message" color="primary" onClick={this.modalOpen}>
