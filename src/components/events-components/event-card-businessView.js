@@ -7,8 +7,8 @@ import { Button } from '@material-ui/core';
 import Tooltip from '@material-ui/core/Tooltip';
 import IconButton from '@material-ui/core/IconButton';
 
+import MessageIcon from '@material-ui/icons/Message';
 
-import ServiceCard from './service-card'
 import ServiceCardBView from './service-card-businessView'
 import ConnectModal from '../modal-component/connectmodal'
 import '../../stylesheets/event.css'
@@ -81,20 +81,33 @@ class EventCardBView extends Component
         null
 
         let chatButton = authenticated ? 
-        <Button aria-label="message" color="primary" variant="contained" onClick={this.openModal}>
-            POKE
+        <Button aria-label="message" color="primary" variant="contained" onClick={this.openModal}
+            startIcon={<MessageIcon />}
+            display='none'>
+            Message
         </Button>
-        : 
-        <Button aria-label="message" color="primary" variant="contained"  onClick={this.redirect}>
-        POKE
+        :
+        <Button aria-label="message" color="primary" variant="contained" onClick={this.redirect}
+            startIcon={<MessageIcon />}
+            display='none'>
+            Message
         </Button>
+
+        let smallChatButton = authenticated ?
+        <IconButton aria-label="message" color="primary" onClick={this.modalOpen}>
+            <MessageIcon />
+        </IconButton>
+        :
+        <IconButton aria-label="message" color="primary" onClick={this.redirect}>
+            <MessageIcon />
+        </IconButton>
 
         return(
             <div className="eventCard">
                 {connectModal}
                 <div className="eventWrapper">
                     <Grid container align="left">
-                        <Grid item sm={10} xs={10}>
+                        <Grid item sm={9} xs={9}>
                             <p className="eventCardTitle">{this.state.title}</p>
                             <div class="eventInfo"> 
                                 <p class="subInfo"> Hosted by <b>@{this.state.userHandle}</b></p>
@@ -103,11 +116,17 @@ class EventCardBView extends Component
                                 <p class="subInfo"> <LocationOnIcon fontSize="small"/>{this.state.zipcode}</p>
                             </div>
                         </Grid>
-                        <Grid item sm={2} xs={2}>
-                            <Tooltip title="Reach out to client">
-                            {chatButton}
-
-                            </Tooltip>
+                        <Grid item sm={3} xs={3} align="right">
+                            <div className="message-button-large">
+                                <Tooltip title="Reach out to client">
+                                    {chatButton}
+                                </Tooltip>
+                            </div>
+                            <div className="message-button-small">
+                                <Tooltip title="Reach out to client">
+                                    {smallChatButton}
+                                </Tooltip>
+                            </div>
                         </Grid>
 
                         <Grid sm={12} xs={12}>
