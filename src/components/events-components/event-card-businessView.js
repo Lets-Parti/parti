@@ -64,7 +64,7 @@ class EventCardBView extends Component
     {
         const { authenticated } = this.props.user; 
         
-        let date = new Date(this.state.eventDate)
+        let date = new Date(this.state.eventDate).toString();
         date = cleanDate(date);                             //Clean up what is displayed as the event date & time
         let services = JSON.parse(this.state.services)
 
