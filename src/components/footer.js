@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: 'center',
         },
     footerContact: {
-        color: '#FFFFFF'
+        color: 'black'
     },
     footerTM: {
 
@@ -44,6 +44,9 @@ const useStyles = makeStyles((theme) => ({
         alignContent: "center",
         alignItems: "center",
         VerticalAlignCenter: "center"
+    },
+    footerSeparator: {
+        height: 100
     }
 })
 );
@@ -56,13 +59,15 @@ function Footer()
             <BottomNavigation className={classes.footer}>
 
             <div className={classes.footerContact}>
-            <p>Contact us at wearepartiapp@gmail.com</p>
+            {/* <p>Contact us at wearepartiapp@gmail.com</p> */}
             </div>
-
+            <div className={classes.footerSeparator}/>
             <div className={classes.footerLinks}>
                 <a href="/feedback"> Feedback </a>
-                <a href="/feedback"> Privacy Policy </a>
                 <a href="/about"> About Us </a>
+                <a href = "mailto: wearepartiapp@gmail.com">Contact Us</a>
+                <a href="/privacy-policy"> Privacy Policy </a>
+                <a href="/terms-and-conditions"> Terms and Conditions</a>
             </div>
                 <div className={classes.footerTM}>
                 <p>&copy; 2020 Parti LLC. All Rights Reserved.</p>

@@ -17,6 +17,8 @@ import NewContract from './pages/contracts/newcontract'
 import Contracts from './pages/contracts/contracts'
 import EventByID from './pages/events/event-by-id'
 import Beta from './pages/beta'
+import PrivacyPolicy from './pages/privacypolicy'
+import TermsAndConditions from './pages/termsandconditions'
 
 //Components
 import Navbar from '../src/components/navbar'
@@ -80,6 +82,8 @@ class App extends React.Component
               
               <Route exact path="/about" component={About} />
               <Route exact path="/feedback" component={Feedback} />
+              <Route exact path="/privacy-policy" component={PrivacyPolicy} />
+              <Route exact path="/terms-and-conditions" component={TermsAndConditions} />
               <Route exact path="/user/:userhandle" component={User} />
               <ProtectedClientRoute exact path="/events/new" component={NewEvent} />
               <ProtectedRoute exact path="/events" component={Events} />
