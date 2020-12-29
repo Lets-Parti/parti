@@ -22,6 +22,9 @@ const useStyles = makeStyles((theme) => ({
     footer: {
         backgroundColor: '#708090',
         height: 100,
+    },
+    footerStyle: {
+        color: '#FFFFFF'
     }
 }));
 
@@ -42,7 +45,7 @@ function Footer()
 {/* 
                 <SocialIcon url="https://www.facebook.com/officialpartiapp" />
                 <SocialIcon url="https://www.instagram.com/parti.app/" /> */}
-                <div className={footerStyle}>
+                <div className={classes.footerStyle}>
                 <p>&copy; 2020 Parti LLC. All Rights Reserved.</p>
                 </div>
 
