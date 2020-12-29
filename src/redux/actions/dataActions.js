@@ -211,6 +211,29 @@ export const createConnect = (connectInfo) => (dispatch) =>
     })
 }
 
+export const getConnects = (idk) => dispatch =>
+{
+    dispatch({type: LOADING_UI});
+    axios.get('/connect', JSON.stringify(connectInfo),
+    {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(res =>
+    {
+        console.log(res); 
+        dispatch({type: CLEAR_ERRORS})
+    })
+    .catch(err =>
+    {
+        dispatch({
+            type: SET_ERRORS, 
+            payload: err.response.data
+        })
+    })
+}
+
 export const discover = (queryData) => (dispatch) =>
 {
     dispatch({type: LOADING_DATA});
