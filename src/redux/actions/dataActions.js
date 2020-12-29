@@ -214,10 +214,11 @@ export const createConnect = (connectInfo) => (dispatch) =>
 export const discover = (queryData) => (dispatch) =>
 {
     dispatch({type: LOADING_DATA});
-console.log(queryData.serviceTags)
+    console.log(queryData.serviceTags)
     axios.get('/discover', {
         headers: {
-            'service': queryData.serviceTags
+            'service': queryData.serviceTags,
+            'limit': 2
         }
     })
     .then(res =>

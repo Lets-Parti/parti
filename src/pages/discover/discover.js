@@ -21,8 +21,9 @@ class Discover extends React.Component {
     constructor() {
         super()
         this.state = {
-            serviceTag: [],
+            serviceTag: [], 
             discover_cards: [],
+            page: 0, 
             isLoading: false
         }
     }
@@ -44,9 +45,9 @@ class Discover extends React.Component {
          {
             let tagsArray = []
             value.forEach(val =>
-           {
-               tagsArray.push(val.value); 
-           })
+            {
+                tagsArray.push(val.value); 
+            })
             const query = {
                 serviceTags: tagsArray.join()
             }
@@ -60,9 +61,13 @@ class Discover extends React.Component {
          }
      }
 
+    incrementPage()
+    {
+        
+    }
+
     render() {
         console.log(this.state); 
-        let chipfield = null
         const { discover, isLoading } = this.props.data;
 
         let dataDisplay
