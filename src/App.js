@@ -21,6 +21,13 @@ import Beta from './pages/beta'
 //Components
 import Navbar from '../src/components/navbar'
 import NavbarBeta from '../src/components/navbar-beta'
+import Footer from '../src/components/footer'
+import Footer1 from '../src/components/footer1'
+import Footer2 from '../src/components/footer2'
+import Footer3 from '../src/components/footer3'
+import Footer4 from '../src/components/footer4'
+
+
 //Theme
 import {ThemeProvider} from '@material-ui/core/styles'
 import theme from './theme'
@@ -39,7 +46,6 @@ import ProtectedRoute from './utils/protectedroute'
 import ProtectedServiceRoute from './utils/protectedserviceroute'
 import ProtectedClientRoute from './utils/protectedclientroute'
 import FunctionsConfig from './static/config';
-import Footer from './components/footer';
 
 axios.defaults.baseURL = FunctionsConfig.FUNCTIONS_DEVELOPMENT_URL; 
 
@@ -91,7 +97,12 @@ class App extends React.Component
               <Redirect to="/404"></Redirect>
             </Switch>
             </div>
-            {/* <Footer /> */}
+            <Footer /> 
+            {/* <Footer1 />
+            <Footer2 />
+            <Footer3 />
+            <Footer4 /> */}
+
         </Router>
       </Provider>
       </ThemeProvider>

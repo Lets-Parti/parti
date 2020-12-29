@@ -12,7 +12,6 @@ import FacebookIcon from '@material-ui/icons/Facebook';
 import IconButton from '@material-ui/core/IconButton';
 import Link from '@material-ui/core/Link';
 import Tooltip from '@material-ui/core/Tooltip';
-import {footerStyle} from '../stylesheets/footer.css'
 
 
 
@@ -25,43 +24,18 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-function Footer()
+function Footer1()
 {
     const classes = useStyles();
     return (
         <div>
             <BottomNavigation className={classes.footer}>
-            <div>
-            <p>Contact us at wearepartiapp@gmail.com</p>
-            </div>
+
             <div>
                 <a href="/feedback"> Feedback </a>
                 <a href="/feedback"> Privacy Policy </a>
                 <a href="/about">About Us </a>
                 </div>
-{/* 
-                <SocialIcon url="https://www.facebook.com/officialpartiapp" />
-                <SocialIcon url="https://www.instagram.com/parti.app/" /> */}
-                <div className={footerStyle}>
-                <p>&copy; 2020 Parti LLC. All Rights Reserved.</p>
-                </div>
-
-
-                <Link href={`https://www.instagram.com/parti.app/`}>
-            <Tooltip title="Instagram">
-              <IconButton aria-label="delete" color="primary">
-                <InstagramIcon />
-              </IconButton>
-            </Tooltip>
-          </Link>
-
-          <Link href={`https://www.facebook.com/officialpartiapp`}>
-            <Tooltip title="Facebook">
-            <IconButton aria-label="delete" color="primary">
-              <FacebookIcon />
-            </IconButton>
-          </Tooltip>
-        </Link>
 
             </BottomNavigation>
         </div>
@@ -69,4 +43,4 @@ function Footer()
 }
 
 
-export default Footer
+export default Footer1

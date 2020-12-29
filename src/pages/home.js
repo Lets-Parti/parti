@@ -102,8 +102,6 @@ function Home() {
         </Grid>
       </Grid>
       </div>
-
-      <Footer />
     </div>
   )
 }
