@@ -22,10 +22,9 @@ import Beta from './pages/beta'
 import Navbar from '../src/components/navbar'
 import NavbarBeta from '../src/components/navbar-beta'
 import Footer from '../src/components/footer'
-import Footer1 from '../src/components/footer1'
-import Footer2 from '../src/components/footer2'
-import Footer3 from '../src/components/footer3'
-import Footer4 from '../src/components/footer4'
+import FooterPage from '../src/components/footercomp'
+
+
 
 
 //Theme
@@ -98,10 +97,7 @@ class App extends React.Component
             </Switch>
             </div>
             <Footer /> 
-            {/* <Footer1 />
-            <Footer2 />
-            <Footer3 />
-            <Footer4 /> */}
+
 
         </Router>
       </Provider>
