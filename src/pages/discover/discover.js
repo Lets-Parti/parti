@@ -3,7 +3,8 @@ import '../../stylesheets/common.css'
 import '../../stylesheets/discover.css'
 import Grid from '@material-ui/core/Grid';
 import CircularProgress from '@material-ui/core/CircularProgress';
-
+import Button from '@material-ui/core/Button';
+import Pagination from '@material-ui/lab/Pagination';
 
 //Components
 import DiscoverCard from '../../components/discover-components/discover-card'
@@ -21,10 +22,12 @@ class Discover extends React.Component {
     constructor() {
         super()
         this.state = {
-            serviceTag: [],
+            serviceTag: [], 
             discover_cards: [],
+            page: 1, 
             isLoading: false
         }
+        this.handlePageChange = this.handlePageChange.bind(this); 
     }
 
     componentDidMount() 
@@ -32,7 +35,7 @@ class Discover extends React.Component {
         const query = {
             serviceTags: ''
         }
-        this.props.discover(query);
+        this.props.discover(query, this.state.page);
     }
 
     handleChangeSelect(name, value) {
@@ -44,25 +47,50 @@ class Discover extends React.Component {
          {
             let tagsArray = []
             value.forEach(val =>
-           {
-               tagsArray.push(val.value); 
-           })
+            {
+                tagsArray.push(val.value); 
+            })
             const query = {
                 serviceTags: tagsArray.join()
             }
-           this.props.discover(query);
+           this.props.discover(query, this.state.page);
          }else
          {
              const query = {
                  serviceTags: ''
              }
-             this.props.discover(query);
+             this.props.discover(query, this.state.page);
          }
      }
 
+    handlePageChange(event, page)
+    {
+        let value = this.state.serviceTag; 
+        if(value && value.length > 0)
+        {
+           let tagsArray = []
+           value.forEach(val =>
+           {
+               tagsArray.push(val.value); 
+           })
+           const query = {
+               serviceTags: tagsArray.join()
+           }
+          this.props.discover(query, page);
+        }else
+        {
+            const query = {
+                serviceTags: ''
+            }
+            this.props.discover(query, page);
+        }
+        this.setState({
+            page: page
+        })  
+    }
+
     render() {
         console.log(this.state); 
-        let chipfield = null
         const { discover, isLoading } = this.props.data;
 
         let dataDisplay
@@ -90,8 +118,19 @@ class Discover extends React.Component {
                         /> 
                         </div>
                     {dataDisplay}
+                    <div className="pagination">
+                        <Pagination count={10} 
+                            page={this.state.page} 
+                            onChange={this.handlePageChange} 
+                            size="large"
+                            color="primary"
+                        />
+                    </div>
                 </div>
+
             </Grid>
+
+
         )
     }
 }

@@ -48,9 +48,20 @@
   color: orange;
 }
 
+.pagination {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  padding-left: 10rem;
+}
+
 @media (max-width: 800px) {
   .page-content {
     width: 95%;
     font-family: Roboto, sans-serif;
+  }
+  .pagination {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding-left: 1rem;
   }
 }
