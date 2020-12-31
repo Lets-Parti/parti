@@ -27,11 +27,11 @@ class Beta extends React.Component
         super()
         this.state = {description: ''}
         this.eventChange = this.eventChange.bind(this)
-        this.expandMatthew = this.expandMatthew.bind(this)
-        this.expandAnish = this.expandAnish.bind(this)
-        this.expandJake = this.expandJake.bind(this)
-        this.expandAaric = this.expandAaric.bind(this)
-        this.expandMax = this.expandMax.bind(this)
+        // this.expandMatthew = this.expandMatthew.bind(this)
+        // this.expandAnish = this.expandAnish.bind(this)
+        // this.expandJake = this.expandJake.bind(this)
+        // this.expandAaric = this.expandAaric.bind(this)
+        // this.expandMax = this.expandMax.bind(this)
     }   
 
     eventChange(event)
@@ -41,36 +41,36 @@ class Beta extends React.Component
         })
     }
 
-    expandMatthew() {
-      console.log("Matthew");
-      this.setState({
-        description: 'Matthew description'
-      })
-    }
-    expandAnish() {
-      console.log("Anish");
-      this.setState({
-        description: "Anish Agarwal is an original co-founder of Parti. He is currently studying Computer Science at Arizona State Univerity (Barrett, the Honors College) and will graduate in May 2023. He grew up and went to high school in Chandler, Arizona, where he became good friends with some of the other co-founders, Max and Matthew. He gained inspiration to create Parti as a service that simplifies event planning as well as client management within the event entertainment industry from his own experiences running a DJ company in the Arizona valley. He started DJing professionally, co-founded his own company, 808Hertz Entertainment LLC, along with Matthew, and began his entrepreneurial experience as early as high school. Anish platformed 808Hertz Entertainment LLC to become Parti's first registered entertainment service. Aside from DJing, his hobbies include producing music, playing the guitar, working out, gaming, playing sports with friends, and following sporting events. He is also experienced in data science and machine learning and has worked on several data science projects at both a corporate and university research level. At Parti, Anish works across the board as a software developer, marketer, and operations director to help grow Parti to the next level!"
-      })
-    }
-    expandJake() {
-      console.log("Jake");
-      this.setState({
-        description: 'Jake description'
-      })
-    }
-    expandAaric() {
-      console.log("Aaric");
-      this.setState({
-        description: 'Aaric description'
-      })
-    }
-    expandMax() {
-      console.log("Max");
-      this.setState({
-        description: 'Max description'
-      })
-    }
+    // expandMatthew() {
+    //   console.log("Matthew");
+    //   this.setState({
+    //     description: 'Matthew description'
+    //   })
+    // }
+    // expandAnish() {
+    //   console.log("Anish");
+    //   this.setState({
+    //     description: "Anish Agarwal is an original co-founder of Parti. He is currently studying Computer Science at Arizona State Univerity (Barrett, the Honors College) and will graduate in May 2023. He grew up and went to high school in Chandler, Arizona, where he became good friends with some of the other co-founders, Max and Matthew. He gained inspiration to create Parti as a service that simplifies event planning as well as client management within the event entertainment industry from his own experiences running a DJ company in the Arizona valley. He started DJing professionally, co-founded his own company, 808Hertz Entertainment LLC, along with Matthew, and began his entrepreneurial experience as early as high school. Anish platformed 808Hertz Entertainment LLC to become Parti's first registered entertainment service. Aside from DJing, his hobbies include producing music, playing the guitar, working out, gaming, playing sports with friends, and following sporting events. He is also experienced in data science and machine learning and has worked on several data science projects at both a corporate and university research level. At Parti, Anish works across the board as a software developer, marketer, and operations director to help grow Parti to the next level!"
+    //   })
+    // }
+    // expandJake() {
+    //   console.log("Jake");
+    //   this.setState({
+    //     description: 'Jake description'
+    //   })
+    // }
+    // expandAaric() {
+    //   console.log("Aaric");
+    //   this.setState({
+    //     description: 'Aaric description'
+    //   })
+    // }
+    // expandMax() {
+    //   console.log("Max");
+    //   this.setState({
+    //     description: 'Max description'
+    //   })
+    // }
 
     render()
     {   
@@ -78,10 +78,10 @@ class Beta extends React.Component
         console.log(this.state); 
         const frames_services = [frame_one, frame_two, frame_three];
         const frames_clients = [frame_four, frame_five, frame_six]; 
-        let description;
+        // let description;
 
         const Matthew_Card = (
-            <div className="indiana-frame" onClick={this.expandMatthew}>
+            <div className="indiana-frame" /*onClick={this.expandMatthew}*/>
                 <AboutNoBio 
                     name="Matthew Wang"
                     title="Co-Founder & Full-Stack Engineer"
@@ -92,7 +92,7 @@ class Beta extends React.Component
         );
 
         const Anish_Card = (
-            <div className="indiana-frame" onClick={this.expandAnish}>
+            <div className="indiana-frame" /*onClick={this.expandAnish}*/>
                 <AboutNoBio 
                     name="Anish Agarwal"
                     title="Co-Founder & Full-Stack Engineer"
@@ -103,7 +103,7 @@ class Beta extends React.Component
         );
         
         const Jake_Card = (
-            <div className="indiana-frame" onClick={this.expandJake}>
+            <div className="indiana-frame" /*onClick={this.expandJake}*/>
                 <AboutNoBio 
                     name="Jake Heller"
                     title="Co-Founder & Full-Stack Engineer"
@@ -114,7 +114,7 @@ class Beta extends React.Component
         )
 
         const Aaric_Card = (
-            <div className="indiana-frame" onClick={this.expandAaric}>
+            <div className="indiana-frame" /*onClick={this.expandAaric}*/>
                 <AboutNoBio 
                     name="Aaric Han"
                     title="Co-Founder & Full-Stack Engineer"
@@ -124,7 +124,7 @@ class Beta extends React.Component
             </div>
         )
         const Max_Card = (
-            <div className="indiana-frame" onClick={this.expandMax}>
+            <div className="indiana-frame" /*onClick={this.expandMax}*/>
                 <AboutNoBio 
                     name="Max Bregman"
                     title="Co-Founder, Design & Business Strategist"
@@ -189,9 +189,9 @@ class Beta extends React.Component
                             {frames_founders}
                             </ScrollContainer>
                         </div>
-                        <Grid align="center" border={1} sm={8} xs={12}>
+                        {/* <Grid align="center" border={1} sm={8} xs={12}>
                           <p className="description">{this.state.description}</p>
-                        </Grid>
+                        </Grid> */}
                     </div>
                 </Grid>
             </div>
