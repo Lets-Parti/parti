@@ -47,7 +47,7 @@
 }
 
 .page-content-beta {
-  font-family: Roboto, sans-serif;
+  font-family: "Nunito", sans-serif;
   width: 70%;
 }
 
@@ -70,7 +70,7 @@
 @media (max-width: 800px) {
   .page-content-beta {
     width: 95%;
-    font-family: Roboto, sans-serif;
+    font-family: "Nunito", sans-serif;
   }
 
   .intro {

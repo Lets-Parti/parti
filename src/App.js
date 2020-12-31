@@ -84,7 +84,8 @@ class App extends React.Component
               <Route exact path="/discover" component={Discover} />
               <ProtectedServiceRoute exact path="/discover-events" component={DiscoverEvents} />
               <ProtectedServiceRoute exact path="/contracts/new" component={NewContract} />
-              <AuthRoute exact path="/signup" component={SignUp} />
+              <AuthRoute exact path="/signup/:userType" component={SignUp} />
+              <AuthRoute exact path="/signup/" component={SignUp} />
               <AuthRoute exact path="/login" component={Login} />
 
               <Route exact path="/404" component={ErrorNotFound} />

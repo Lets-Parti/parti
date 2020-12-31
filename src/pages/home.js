@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundSize: '100%',
     width: '100%',
     height: '1000px', 
-    fontFamily: '"Roboto", sans-serif',
+    fontFamily: '"Nunito", sans-serif',
   }, 
   graphicdemo: {
     backgroundImage: `url(${graphicdemo})`,
@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundSize: '100%',
     width: '100%',
     height: '1000px', 
-    fontFamily: '"Roboto", sans-serif',
+    fontFamily: '"Nunito", sans-serif',
   },
   introtext: {
     paddingTop: theme.spacing(5), 
