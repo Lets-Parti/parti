@@ -2,7 +2,7 @@ import React from 'react';
 import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
 //Pages
 import Home from '../src/pages/home'
-import About from '../src/pages/about/about'
+import AboutUs from './pages/aboutus'
 import ErrorNotFound from '../src/pages/404'
 import SignUp from '../src/pages/signup'
 import Login from '../src/pages/login'
@@ -73,7 +73,7 @@ class App extends React.Component
               <Route exact path="/" component={Home} />
               {/* <Route exact path="/" component={Beta} /> */}
               
-              <Route exact path="/about" component={About} />
+              <Route exact path="/about" component={AboutUs} />
               <Route exact path="/feedback" component={Feedback} />
               <Route exact path="/user/:userhandle" component={User} />
               <ProtectedClientRoute exact path="/events/new" component={NewEvent} />

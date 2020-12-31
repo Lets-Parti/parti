@@ -34,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
 function AboutNoBio(props) {
   const classes = useStyles(); 
 
+
   return (
     <div>
       <div className={classes.intro}>
@@ -56,5 +57,7 @@ function AboutNoBio(props) {
     </div>
   )
 }
+
+
 
 export default AboutNoBio;
