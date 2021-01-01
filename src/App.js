@@ -82,6 +82,7 @@ class App extends React.Component
               <ProtectedRoute exact path="/contracts" component={Contracts} />
               <ProtectedRoute exact path="/account/edit" component={AccountEdit} />
               <Route exact path="/discover" component={Discover} />
+              <Route exact path="/discover/:query" component={Discover} />
               <ProtectedServiceRoute exact path="/discover-events" component={DiscoverEvents} />
               <ProtectedServiceRoute exact path="/contracts/new" component={NewContract} />
               <AuthRoute exact path="/signup/:userType" component={SignUp} />
@@ -92,7 +93,7 @@ class App extends React.Component
               <Redirect to="/404"></Redirect>
             </Switch>
             </div>
-            {/* <Footer /> */}
+            <Footer />
         </Router>
       </Provider>
       </ThemeProvider>

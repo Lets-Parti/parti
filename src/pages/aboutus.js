@@ -41,37 +41,6 @@ class Beta extends React.Component
         })
     }
 
-    // expandMatthew() {
-    //   console.log("Matthew");
-    //   this.setState({
-    //     description: 'Matthew description'
-    //   })
-    // }
-    // expandAnish() {
-    //   console.log("Anish");
-    //   this.setState({
-    //     description: "Anish Agarwal is an original co-founder of Parti. He is currently studying Computer Science at Arizona State Univerity (Barrett, the Honors College) and will graduate in May 2023. He grew up and went to high school in Chandler, Arizona, where he became good friends with some of the other co-founders, Max and Matthew. He gained inspiration to create Parti as a service that simplifies event planning as well as client management within the event entertainment industry from his own experiences running a DJ company in the Arizona valley. He started DJing professionally, co-founded his own company, 808Hertz Entertainment LLC, along with Matthew, and began his entrepreneurial experience as early as high school. Anish platformed 808Hertz Entertainment LLC to become Parti's first registered entertainment service. Aside from DJing, his hobbies include producing music, playing the guitar, working out, gaming, playing sports with friends, and following sporting events. He is also experienced in data science and machine learning and has worked on several data science projects at both a corporate and university research level. At Parti, Anish works across the board as a software developer, marketer, and operations director to help grow Parti to the next level!"
-    //   })
-    // }
-    // expandJake() {
-    //   console.log("Jake");
-    //   this.setState({
-    //     description: 'Jake description'
-    //   })
-    // }
-    // expandAaric() {
-    //   console.log("Aaric");
-    //   this.setState({
-    //     description: 'Aaric description'
-    //   })
-    // }
-    // expandMax() {
-    //   console.log("Max");
-    //   this.setState({
-    //     description: 'Max description'
-    //   })
-    // }
-
     render()
     {   
         
@@ -139,7 +108,7 @@ class Beta extends React.Component
         return(
             <div>
                 <Grid align="center">
-                    <div className="page-content-beta">
+                    <div className="page-content">
                         <Grid align="center">
                             <h1>What is Parti?</h1>
                             <p className="description">Parti will help you find the most suitable professionals for your upcoming event. Our platform will connect you with the best professionals and organize all of your event needs in an all-in-one dashboard. </p>
@@ -160,8 +129,8 @@ class Beta extends React.Component
                         </Grid>
 
                         <Grid align="center">
-                            <h1>Parti for Professionals</h1>
-                            <p className="description">We help professionals like you build a brand, market, and grow your event entertainment business. Parti enables direct market outreach and allows you to discover events that are looking for your service.</p>
+                            <h1>Parti for Vendors</h1>
+                            <p className="description">We help vendors build a brand, market, and grow. Parti enables you to reach out to events that are looking for your service. Expand your business with our direct market outreach system.</p>
                         </Grid>
 
                         <iframe className="youtube-demo" src="https://www.youtube.com/embed/ijRfHZt87EI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
