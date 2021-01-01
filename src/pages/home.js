@@ -97,6 +97,7 @@ class Home extends React.Component {
                   <p className="subBannerTitle">
                     <b>DISCOVER</b>
                   </p>
+                  <p>Find services for your upcoming event.</p>
                 </Grid>
 
                 <Grid container align="center">
@@ -106,12 +107,11 @@ class Home extends React.Component {
                         item
                         sm={3}
                         xs={6}
+                        className="home-discover-item"
                       >   
                       <Link href={`/discover/${cat[0]}`}>
                         <Grid item>
-                            <Avatar variant="rounded">
                               {cat[1]}
-                            </Avatar>
                           </Grid>
                           <Grid item>
                             <p>{cat[0]}</p>
@@ -136,22 +136,27 @@ class Home extends React.Component {
             <Grid container align="center">
               <div className="home-sub-white">
                 <p className="subBannerTitle">
-                  <b>ABOUT US</b>
+                  <b>ABOUT PARTI</b>
                 </p>
 
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Netus
-                  laoreet velit tempus nam ullamcorper vulputate. Varius ligula
-                  bibendum cursus urna luctus velit ullamcorper etiam egestas.
-                  Donec ultricies interdum lorem ac quis orci porta egestas.
-                  Ligula eget aliquam orci, feugiat velit nisi dictumst cras
-                  malesuada.
+                <p className="home-about-parti">
+                  Hosting an event is stressful. Parti will assist you in finding professional 
+                  services and make the event planning process easy. 
+
                 </p>
 
                 <div className="subBannerButton">
                   <Link href="/about">
                     <Button variant="contained" color="primary">
-                      More About Us
+                      Learn More
+                    </Button>
+                  </Link>
+                </div>
+
+                <div className="subBannerButton">
+                  <Link href="/faq">
+                    <Button variant="outlined" color="primary">
+                      FAQ
                     </Button>
                   </Link>
                 </div>

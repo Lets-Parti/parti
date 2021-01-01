@@ -53,15 +53,15 @@
 .subBannerTitle {
   font-size: 2.5rem;
   text-align: center;
-  margin-bottom: 100px;
+  margin-bottom: 10px;
 }
 
 .subBannerButton {
-  margin-top: 100px;
+  margin-top: 50px;
 }
 
 .home-discover-item {
-  padding: 10px;
+  padding-top: 25px;
 }
 
 @media (max-width: 800px) {
