@@ -66,7 +66,7 @@ function Footer()
                 
                 <Grid item alignItems="center">
                     <Link href="https://www.instagram.com/parti.app/">
-                      <InstagramIcon style={{ color: "black" }}/>
+                      <InstagramIcon style={{ color: "black",  }}/>
                     </Link>
                     <Link href="https://www.facebook.com/officialpartiapp">
                       <FacebookIcon style={{ color: "black" }}/>
