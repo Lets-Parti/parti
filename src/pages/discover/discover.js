@@ -1,9 +1,8 @@
-import React, {useState} from 'react';
+import React from 'react';
 import '../../stylesheets/common.css'
 import '../../stylesheets/discover.css'
 import Grid from '@material-ui/core/Grid';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import Button from '@material-ui/core/Button';
 import Pagination from '@material-ui/lab/Pagination';
 //Components
 import DiscoverCard from '../../components/discover-components/discover-card'
@@ -31,8 +30,18 @@ class Discover extends React.Component {
 
     componentDidMount() 
     {
-        const query = {
-            serviceTags: ''
+        let URLQuery = this.props.match.params.query;
+        let query; 
+        if(URLQuery)
+        {
+            query = {
+                serviceTags: URLQuery
+            }
+        }else
+        {
+            query = {
+                serviceTags: ''
+            }
         }
         this.props.discover(query, this.state.page);
     }

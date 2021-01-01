@@ -1,36 +1,34 @@
 import "../stylesheets/common.css";
 import "../stylesheets/home.css";
-import {
-  createMuiTheme,
-  makeStyles,
-  ThemeProvider,
-} from "@material-ui/core/styles";
-import { Typography } from "@material-ui/core";
+
 import Avatar from "@material-ui/core/Avatar";
-import bgwavy from "../resources/backgrounds/bgwavy.png";
-import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import Carousel from "react-material-ui-carousel";
-import Footer from "../components/footer";
-import graphicdemo from "../resources/backgrounds/demos.png";
 import Grid from "@material-ui/core/Grid";
 import Link from "@material-ui/core/Link";
 import PhotoIcon from "@material-ui/icons/Photo";
-import FacebookIcon from "@material-ui/icons/Facebook";
-import InstagramIcon from "@material-ui/icons/Instagram";
-import { Paper } from "@material-ui/core";
 import React from "react";
 
+import PhotoCameraIcon from '@material-ui/icons/PhotoCamera';
+import AlbumIcon from '@material-ui/icons/Album';
+import PetsIcon from '@material-ui/icons/Pets';
+import EmojiEmotionsIcon from '@material-ui/icons/EmojiEmotions';
+import LocalDiningIcon from '@material-ui/icons/LocalDining';
+import PaletteIcon from '@material-ui/icons/Palette';
+import BrushIcon from '@material-ui/icons/Brush';
+import LocalFloristIcon from '@material-ui/icons/LocalFlorist';
+
 const discoverCategories = [
-  "Photographer",
-  "Wedding Planner",
-  "Birthday Party",
-  "Singer",
-  "DJ",
-  "Henna/Tatoo Artists",
-  "Dancers",
-  "All Events",
+  ["Photography", <PhotoCameraIcon />],
+  ["DJ", <AlbumIcon />],
+  ["Florist", <LocalFloristIcon />],
+  ["Food Catering", <LocalDiningIcon />],
+  ["Petting Zoo", <PetsIcon />],
+  ["Comedian", <EmojiEmotionsIcon />],
+  ["Magician", <BrushIcon />],
+  ["Decorator", <PaletteIcon />]
 ];
+
 
 const testimonials = [
   {
@@ -45,50 +43,23 @@ const testimonials = [
   },
 ];
 
-const footer_links = [
-  {
-    text: "About Us",
-    link: "/about",
-  },
-  {
-    text: "Terms and Conditions",
-    link: "/terms-and-conditions",
-  },
-  {
-    text: "Privacy Policy",
-    link: "/privacy",
-  },
-  {
-    text: "Feedback",
-    link: "/feedback",
-  },
-  {
-    text: "FAQ",
-    link: "/faq",
-  },
-  {
-    text: "Contact Us",
-    link: "/contact",
-  },
-];
-
 class Home extends React.Component {
   constructor() {
     super();
     this.state = {};
   }
-
+  
   render() {
+    
     return (
       <div>
         <div className="homePage">
           <Grid container spacing={0}>
             {/*Introduction*/}
 
-            <Grid item sm={12} xs={12}>
-              <div className="home-introduction">
+            <Grid item sm={12} xs={12} className="home-introduction">
                 <div className="banners">
-                  <p className="bannerTitle">
+                  <p className="bannerTitle" >
                     <b>Effortless Event Planning</b>
                   </p>
                   <p className="bannerPitch">
@@ -116,38 +87,37 @@ class Home extends React.Component {
                     </Link>
                   </div>
                 </div>
-
-                <div></div>
-              </div>
             </Grid>
 
             {/*Discover*/}
 
-            <Grid container item sm={12} xs={12}>
+            <Grid container align="center">
               <div className="home-sub-black">
-                <p className="subBannerTitle">
-                  <b>DISCOVER</b>
-                </p>
+                <Grid item sm={12} xs={12}>
+                  <p className="subBannerTitle">
+                    <b>DISCOVER</b>
+                  </p>
+                </Grid>
 
-                <Grid container item justify="space-evenly" spacing={1}>
-                  {discoverCategories.map((cat) => (
-                    <Grid
-                      container
-                      item
-                      xs={3}
-                      wrap="nowrap"
-                      spacing={2}
-                      alignItems="center"
-                    >
-                      <Grid item>
-                        <Avatar variant="rounded">
-                          <PhotoIcon />
-                        </Avatar>
+                <Grid container align="center">
+                  {discoverCategories.map((cat) => 
+                  (
+                      <Grid
+                        item
+                        sm={3}
+                        xs={6}
+                      >   
+                      <Link href={`/discover/${cat[0]}`}>
+                        <Grid item>
+                            <Avatar variant="rounded">
+                              {cat[1]}
+                            </Avatar>
+                          </Grid>
+                          <Grid item>
+                            <p>{cat[0]}</p>
+                          </Grid>
+                          </Link>
                       </Grid>
-                      <Grid item>
-                        <p>{cat}</p>
-                      </Grid>
-                    </Grid>
                   ))}
                 </Grid>
 
@@ -163,7 +133,7 @@ class Home extends React.Component {
 
             {/*About Us*/}
 
-            <Grid container item sm={12} xs={12}>
+            <Grid container align="center">
               <div className="home-sub-white">
                 <p className="subBannerTitle">
                   <b>ABOUT US</b>
@@ -188,7 +158,9 @@ class Home extends React.Component {
               </div>
             </Grid>
 
-            <Grid container item sm={12} xs={12}>
+            {/* Testimonials */}
+
+            {/* <Grid container item sm={12} xs={12}>
               <div className="home-sub-black">
                 <p className="subBannerTitle">
                   <b>TESTIMONIALS</b>
@@ -206,39 +178,9 @@ class Home extends React.Component {
                   ))}
                 </Carousel>
               </div>
-            </Grid>
+            </Grid> */}
 
-            <Grid container item sm={12} xs={12}>
-              <div className="home-footer">
-                <Grid container item justify="space-evenly">
-                  {footer_links.map((item) => (
-                    <Grid item>
-                      <Link href={item.link} color="inherit">
-                        <p className="footer-text">{item.text}</p>
-                      </Link>
-                    </Grid>
-                  ))}
-                </Grid>
-                <Box mt={1}/>
-                
-                <Grid container item justify="space-evenly" alignItems="center">
-                  <Grid item>
-                    <p className="footer-text">
-                      &copy; 2020 Parti LLC. All Rights Reserved.
-                    </p>
-                  </Grid>
-                  
-                  <Grid item>
-                    <Link href="https://www.instagram.com/parti.app/">
-                      <InstagramIcon style={{ color: "black" }}/>
-                    </Link>
-                    <Link href="https://www.facebook.com/officialpartiapp">
-                      <FacebookIcon style={{ color: "black" }}/>
-                    </Link>
-                  </Grid>
-                </Grid>
-              </div>
-            </Grid>
+            
           </Grid>
         </div>
       </div>
