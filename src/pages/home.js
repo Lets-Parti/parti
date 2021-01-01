@@ -1,298 +1,249 @@
-import React from "react";
+import "../stylesheets/common.css";
+import "../stylesheets/home.css";
 import {
-  makeStyles,
   createMuiTheme,
+  makeStyles,
   ThemeProvider,
 } from "@material-ui/core/styles";
-import Grid from "@material-ui/core/Grid";
-import Box from "@material-ui/core/Box";
-import Footer from "../components/footer";
-import bgwavy from "../resources/backgrounds/bgwavy.png";
-import graphicdemo from "../resources/backgrounds/demos.png";
-import Button from "@material-ui/core/Button";
-import Avatar from "@material-ui/core/Avatar";
-import PhotoIcon from "@material-ui/icons/Photo";
-import Link from "@material-ui/core/Link";
 import { Typography } from "@material-ui/core";
+import Avatar from "@material-ui/core/Avatar";
+import bgwavy from "../resources/backgrounds/bgwavy.png";
+import Box from "@material-ui/core/Box";
+import Button from "@material-ui/core/Button";
+import Carousel from "react-material-ui-carousel";
+import Footer from "../components/footer";
+import graphicdemo from "../resources/backgrounds/demos.png";
+import Grid from "@material-ui/core/Grid";
+import Link from "@material-ui/core/Link";
+import PhotoIcon from "@material-ui/icons/Photo";
+import FacebookIcon from "@material-ui/icons/Facebook";
+import InstagramIcon from "@material-ui/icons/Instagram";
+import { Paper } from "@material-ui/core";
+import React from "react";
 
-const useStyles = makeStyles((theme) => ({
-  intro: {
-    backgroundImage: `url(${bgwavy})`,
-    backgroundPosition: "left",
-    backgroundPositionY: 40,
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "100%",
-    width: "100%",
-    height: "1000px",
-    fontFamily: '"Nunito", sans-serif',
-  },
-  graphicdemo: {
-    backgroundImage: `url(${graphicdemo})`,
-    backgroundPosition: "left",
-    backgroundPositionY: 0,
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "100%",
-    width: "100%",
-    height: "1000px",
-    fontFamily: '"Nunito", sans-serif',
-  },
-  introtext: {
-    paddingTop: theme.spacing(5),
-    paddingLeft: theme.spacing(10),
-  },
-  banner: {
-    fontSize: "3rem",
-    margin: 0,
-  },
-  banner_pitch: {
-    fontSize: "1.25rem",
-    marginTop: 15,
-    color: "#505F98",
-  },
-  banner_description: {
-    marginTop: 20,
-    color: "#505F98",
-    lineHeight: 2,
-  },
-  buttons: {
-    marginTop: "50px",
-  },
-  rounded: {
-    backgroundColor: "#E9E9E9",
-  },
-}));
+const discoverCategories = [
+  "Photographer",
+  "Wedding Planner",
+  "Birthday Party",
+  "Singer",
+  "DJ",
+  "Henna/Tatoo Artists",
+  "Dancers",
+  "All Events",
+];
 
-const theme = createMuiTheme({
-  typography: {
-    h1: {
-      fontFamily: "Nunito",
-      fontWeight: 700,
-      fontStyle: "normal",
-      fontSize: "40px",
-      lineHeight: "30px",
-    },
-    body1: {
-      fontFamily: "Nunito",
-      fontWeight: 700,
-      fontStyle: "normal",
-      fontSize: "16px",
-      lineHeight: "30px",
-    },
-    body2: {
-      fontFamily: "Nunito",
-      fontWeight: 400,
-      fontStyle: "normal",
-      fontSize: "16px",
-      lineHeight: "26px",
-    },
+const testimonials = [
+  {
+    name: "Person 1",
+    description:
+      '"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Netus laoreet velit tempus nam ullamcorper vulputate. Varius ligula bibendum cursus urna luctus velit ullamcorper etiam egestas."',
   },
-});
+  {
+    name: "Person 2",
+    description:
+      '"Borem ipsum dolor sit amet, consectetur adipiscing elit. Netus laoreet velit tempus nam ullamcorper vulputate. Varius ligula bibendum cursus urna luctus velit ullamcorper etiam egestas."',
+  },
+];
 
-function IntroText() {
-  const classes = useStyles();
+const footer_links = [
+  {
+    text: "About Us",
+    link: "/about",
+  },
+  {
+    text: "Terms and Conditions",
+    link: "/terms-and-conditions",
+  },
+  {
+    text: "Privacy Policy",
+    link: "/privacy",
+  },
+  {
+    text: "Feedback",
+    link: "/feedback",
+  },
+  {
+    text: "FAQ",
+    link: "/faq",
+  },
+  {
+    text: "Contact Us",
+    link: "/contact",
+  },
+];
 
-  return (
-    <div className={classes.introtext}>
-      <h1 className={classes.banner}>Effortless Event Planning</h1>
+class Home extends React.Component {
+  constructor() {
+    super();
+    this.state = {};
+  }
 
-      <p className={classes.banner_pitch}>
-        Manage all of your event's needs in 1 app
-      </p>
-      <p className={classes.banner_description}>
-        Need a DJ for your party? A photographer for your wedding? Parti will
-        help you find the perfect services. Start by creating your first event!
-      </p>
+  render() {
+    return (
+      <div>
+        <div className="homePage">
+          <Grid container spacing={0}>
+            {/*Introduction*/}
 
-      <div className={classes.buttons}>
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={createEventButtonClick}
-        >
-          Create Event
-        </Button>
+            <Grid item sm={12} xs={12}>
+              <div className="home-introduction">
+                <div className="banners">
+                  <p className="bannerTitle">
+                    <b>Effortless Event Planning</b>
+                  </p>
+                  <p className="bannerPitch">
+                    Manage all of your event's needs in 1 app
+                  </p>
+                  <p>
+                    Need a DJ for your party? A photographer for your wedding?
+                    Parti will help you find the perfect services. Start by
+                    creating your first event!
+                  </p>
+
+                  <div className="bannerButton">
+                    <Link href="/events/new">
+                      <Button variant="contained" color="primary">
+                        Create an Event
+                      </Button>
+                    </Link>
+                  </div>
+
+                  <div className="bannerButton">
+                    <Link href="/about">
+                      <Button variant="outlined" color="primary">
+                        Learn More
+                      </Button>
+                    </Link>
+                  </div>
+                </div>
+
+                <div></div>
+              </div>
+            </Grid>
+
+            {/*Discover*/}
+
+            <Grid container item sm={12} xs={12}>
+              <div className="home-sub-black">
+                <p className="subBannerTitle">
+                  <b>DISCOVER</b>
+                </p>
+
+                <Grid container item justify="space-evenly" spacing={1}>
+                  {discoverCategories.map((cat) => (
+                    <Grid
+                      container
+                      item
+                      xs={3}
+                      wrap="nowrap"
+                      spacing={2}
+                      alignItems="center"
+                    >
+                      <Grid item>
+                        <Avatar variant="rounded">
+                          <PhotoIcon />
+                        </Avatar>
+                      </Grid>
+                      <Grid item>
+                        <p>{cat}</p>
+                      </Grid>
+                    </Grid>
+                  ))}
+                </Grid>
+
+                <div className="subBannerButton">
+                  <Link href="/discover">
+                    <Button variant="contained" color="primary">
+                      Discover More
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+            </Grid>
+
+            {/*About Us*/}
+
+            <Grid container item sm={12} xs={12}>
+              <div className="home-sub-white">
+                <p className="subBannerTitle">
+                  <b>ABOUT US</b>
+                </p>
+
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Netus
+                  laoreet velit tempus nam ullamcorper vulputate. Varius ligula
+                  bibendum cursus urna luctus velit ullamcorper etiam egestas.
+                  Donec ultricies interdum lorem ac quis orci porta egestas.
+                  Ligula eget aliquam orci, feugiat velit nisi dictumst cras
+                  malesuada.
+                </p>
+
+                <div className="subBannerButton">
+                  <Link href="/about">
+                    <Button variant="contained" color="primary">
+                      More About Us
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+            </Grid>
+
+            <Grid container item sm={12} xs={12}>
+              <div className="home-sub-black">
+                <p className="subBannerTitle">
+                  <b>TESTIMONIALS</b>
+                </p>
+
+                <Carousel
+                  navButtonsAlwaysInvisible="false"
+                  interval="5000"
+                  timeout="1000"
+                >
+                  {testimonials.map((testimonial) => (
+                    <p>
+                      {testimonial.description} -{testimonial.name}
+                    </p>
+                  ))}
+                </Carousel>
+              </div>
+            </Grid>
+
+            <Grid container item sm={12} xs={12}>
+              <div className="home-footer">
+                <Grid container item justify="space-evenly">
+                  {footer_links.map((item) => (
+                    <Grid item>
+                      <Link href={item.link} color="inherit">
+                        <p className="footer-text">{item.text}</p>
+                      </Link>
+                    </Grid>
+                  ))}
+                </Grid>
+                <Box mt={1}/>
+                
+                <Grid container item justify="space-evenly" alignItems="center">
+                  <Grid item>
+                    <p className="footer-text">
+                      &copy; 2020 Parti LLC. All Rights Reserved.
+                    </p>
+                  </Grid>
+                  
+                  <Grid item>
+                    <Link href="https://www.instagram.com/parti.app/">
+                      <InstagramIcon style={{ color: "black" }}/>
+                    </Link>
+                    <Link href="https://www.facebook.com/officialpartiapp">
+                      <FacebookIcon style={{ color: "black" }}/>
+                    </Link>
+                  </Grid>
+                </Grid>
+              </div>
+            </Grid>
+          </Grid>
+        </div>
       </div>
-    </div>
-  );
-}
-
-function Discover() {
-  const classes = useStyles();
-  return (
-    <Box bgcolor="#FFFFFF" p={2} mb="90px">
-      {/* <Grid container> */}
-      {/* <Box m={8}/> */}
-      <Grid container alignItems="center" justify="center">
-        <Box mt="106px" mb="97px">
-          <ThemeProvider theme={theme}>
-            <Typography variant="h1">DISCOVER</Typography>
-          </ThemeProvider>
-        </Box>
-      </Grid>
-
-      <Grid container direction="column" spacing={3} alignContent="flex-start">
-        <Grid container item justify="space-evenly">
-          <Grid container item xs={3} wrap="nowrap" spacing={2}>
-            <Grid item>
-              <Avatar variant="rounded" className={classes.rounded}>
-                <PhotoIcon color="primary" />
-              </Avatar>
-            </Grid>
-            <Grid item>
-              <ThemeProvider theme={theme}>
-                <Typography variant="body1">Photographer</Typography>
-              </ThemeProvider>
-            </Grid>
-          </Grid>
-
-          <Grid container item xs={3} wrap="nowrap" spacing={2}>
-            <Grid item>
-              <Avatar variant="rounded" className={classes.rounded}>
-                <PhotoIcon color="primary" />
-              </Avatar>
-            </Grid>
-            <Grid item>
-              <ThemeProvider theme={theme}>
-                <Typography variant="body1">Wedding Planner</Typography>
-              </ThemeProvider>
-            </Grid>
-          </Grid>
-
-          <Grid container item xs={3} wrap="nowrap" spacing={2}>
-            <Grid item>
-              <Avatar variant="rounded" className={classes.rounded}>
-                <PhotoIcon color="primary" />
-              </Avatar>
-            </Grid>
-            <Grid item>
-              <ThemeProvider theme={theme}>
-                <Typography variant="body1">Birthday Party</Typography>
-              </ThemeProvider>
-            </Grid>
-          </Grid>
-
-          <Grid container item xs={3} wrap="nowrap" spacing={2}>
-            <Grid item>
-              <Avatar variant="rounded" className={classes.rounded}>
-                <PhotoIcon color="primary" />
-              </Avatar>
-            </Grid>
-            <Grid item>
-              <ThemeProvider theme={theme}>
-                <Typography variant="body1">Singer</Typography>
-              </ThemeProvider>
-            </Grid>
-          </Grid>
-        </Grid>
-
-        {/*Row 2 */}
-
-        <Grid container item justify="space-evenly">
-          <Grid container item xs={3} wrap="nowrap" spacing={2}>
-            <Grid item>
-              <Avatar variant="rounded" className={classes.rounded}>
-                <PhotoIcon color="primary" />
-              </Avatar>
-            </Grid>
-            <Grid item>
-              <ThemeProvider theme={theme}>
-                <Typography variant="body1">DJ</Typography>
-              </ThemeProvider>
-            </Grid>
-          </Grid>
-
-          <Grid container item xs={3} wrap="nowrap" spacing={2}>
-            <Grid item>
-              <Avatar variant="rounded" className={classes.rounded}>
-                <PhotoIcon color="primary" />
-              </Avatar>
-            </Grid>
-            <Grid item>
-              <ThemeProvider theme={theme}>
-                <Typography variant="body1">Henna/Tatoo Artists</Typography>
-              </ThemeProvider>
-            </Grid>
-          </Grid>
-
-          <Grid container item xs={3} wrap="nowrap" spacing={2}>
-            <Grid item>
-              <Avatar variant="rounded" className={classes.rounded}>
-                <PhotoIcon color="primary" />
-              </Avatar>
-            </Grid>
-            <Grid item>
-              <ThemeProvider theme={theme}>
-                <Typography variant="body1">Dancers</Typography>
-              </ThemeProvider>
-            </Grid>
-          </Grid>
-
-          <Grid container item xs={3} wrap="nowrap" spacing={2}>
-            <Grid item>
-              <Avatar variant="rounded" className={classes.rounded}>
-                <PhotoIcon color="primary" />
-              </Avatar>
-            </Grid>
-            <Grid item>
-              <ThemeProvider theme={theme}>
-                <Typography variant="body1">All Events</Typography>
-              </ThemeProvider>
-            </Grid>
-          </Grid>
-        </Grid>
-
-        
-        <Box mt="60px" />
-        <Grid container item xs={3} justify="space-between">
-          
-          <Link href="/discover">
-            <Button variant="outlined">
-              <ThemeProvider theme={theme}>
-                <Typography variant="body2">Discover More</Typography>
-              </ThemeProvider>
-            </Button>
-          </Link>
-
-          {/* </Box> */}
-        </Grid>
-      </Grid>
-
-      {/* </Grid> */}
-    </Box>
-  );
-}
-
-function createEventButtonClick() {
-  window.location.href = "/events/new";
-}
-
-function GraphicDemo() {
-  const classes = useStyles();
-
-  return <div className={classes.graphicdemo}></div>;
-}
-
-function Home() {
-  const classes = useStyles();
-
-  return (
-    <div>
-      <div className={classes.intro}>
-        <Grid container spacing={3}>
-          <Grid item sm={6} xs={12}>
-            <IntroText />
-          </Grid>
-          <Grid item sm={6} xs={12}>
-            <GraphicDemo />
-          </Grid>
-        </Grid>
-      </div>
-
-      <Discover />
-
-      <Footer />
-    </div>
-  );
+    );
+  }
 }
 
 export default Home;
