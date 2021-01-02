@@ -140,9 +140,13 @@ class Home extends React.Component {
                 </p>
 
                 <p className="home-about-parti">
-                  Hosting an event is stressful. Parti will assist you in finding professional 
-                  services and make the event planning process easy. Are you an event service provider? List yourself
-                  as a vendor, and directly find upcoming events near you.
+                  <b>Hosting an event is stressful.</b> Parti will assist you in finding professional 
+                  services and make the event planning process easy. 
+                </p>
+
+                <p className="home-about-parti">
+                  Are you a vendor? Parti enables you to <b>directly seek customers</b>. See who is in 
+                  need of your services nearby.
                 </p>
 
                 <div className="subBannerButton">
