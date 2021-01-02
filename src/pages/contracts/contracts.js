@@ -11,6 +11,9 @@ import { connect } from 'react-redux'
 import { getContracts } from '../../redux/actions/dataActions'
 import PropTypes from 'prop-types'
 
+//Resources
+import nothing_img from '../../resources/images/nothing_found.png'
+
 class Contracts extends React.Component
 {
     constructor()
@@ -36,6 +39,12 @@ class Contracts extends React.Component
         const {contracts, isLoading} = this.props.data; 
         const {authenticated, user} = this.props.user
 
+        const nothingFound = 
+        <div>
+            <img src={nothing_img} className="nothingImg"/>
+            <p>None found.</p>
+        </div>
+
         let dataDisplay = null
         if(isLoading)
         {
@@ -43,10 +52,16 @@ class Contracts extends React.Component
         }else
         {
             dataDisplay = []
-            contracts.forEach(contract => 
+            if(contracts.length === 0)
             {
-                dataDisplay.push(<ContractCard key={contract.contractID} data={contract}/>)    
-            });
+                dataDisplay.push(nothingFound); 
+            }else
+            {
+                contracts.forEach(contract => 
+                {
+                    dataDisplay.push(<ContractCard key={contract.contractID} data={contract}/>)    
+                });
+            }
         }
         
         let newContractsButton = (authenticated && user.type === 'service') ?

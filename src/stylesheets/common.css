@@ -30,6 +30,10 @@
   color: #31b6ec;
 }
 
+.nothingImg {
+  height: 250px;
+}
+
 .code {
   background-color: gray;
   color: white;
