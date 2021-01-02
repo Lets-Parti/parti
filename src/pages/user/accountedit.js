@@ -1,6 +1,4 @@
 import React from 'react';
-//Components
-import Chips from 'react-chips';
 
 //Stylesheets
 import '../../stylesheets/common.css'
@@ -10,7 +8,6 @@ import '../../stylesheets/account-edit.css'
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-import IconButton from '@material-ui/core/IconButton';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Tooltip from '@material-ui/core/Tooltip';
 
@@ -25,7 +22,8 @@ import { connect } from 'react-redux'
 import { updateUserProfile, uploadProfileImage, uploadMediaImage, deleteMediaImage } from '../../redux/actions/userActions'
 import PropTypes from 'prop-types'
 
-//Static Data
+//Select
+import Select from 'react-select'
 import StaticData from '../../static/static-data'
 
 //Utils
@@ -44,17 +42,26 @@ class AccountEdit extends React.Component
         this.onUpdateProfile = this.onUpdateProfile.bind(this); 
         this.eventChange = this.eventChange.bind(this); 
         this.onSubmitProfile = this.onSubmitProfile.bind(this); 
-        this.onChangeChips = this.onChangeChips.bind(this); 
         this.handleProfileImageChange = this.handleProfileImageChange.bind(this); 
         this.handleMediaImageChange = this.handleMediaImageChange.bind(this); 
         this.onDeleteMediaImage = this.onDeleteMediaImage.bind(this); 
+        this.handleChangeSelect = this.handleChangeSelect.bind(this); 
     }   
 
     onUpdateProfile()
     {
+        let tags = this.props.user.user.tags; 
+        let serviceTag = []; 
+
+        tags.forEach(tag =>
+        {
+            serviceTag.push({value: tag, label: tag});
+        })
+
         this.setState({
             onUpdateProfile: true, 
-            user: this.props.user.user
+            user: this.props.user.user, 
+            serviceTag
         });
     }
 
@@ -72,11 +79,16 @@ class AccountEdit extends React.Component
         this.props.updateUserProfile(this.state.user, this.state.user.type); 
     }
 
-    onChangeChips(chips)
-    {
+    handleChangeSelect(name, value) {
         let user = this.state.user; 
-        user.tags = chips
+        let tags = []; 
+        value.forEach(val =>
+        {
+            tags.push(val.value); 
+        })
+        user.tags = tags; 
         this.setState({
+            [name]: value,
             user
         })
     }
@@ -354,11 +366,14 @@ class AccountEdit extends React.Component
                         />
                     <div className="divider" />
                     <p className="lightText">Tags (what services do you provide?)</p>
-                    <Chips
-                        value={this.state.user.tags}
-                        onChange={this.onChangeChips}
-                        suggestions={chip_options}
-                    />
+                    <Select 
+                        isMulti
+                        options={StaticData.options}
+                        styles="width:100px; background-color: white"
+                        id="select"
+                        value={this.state.serviceTag}
+                        onChange={this.handleChangeSelect.bind(this, "serviceTag")}
+                    /> 
                     <div className="divider" />
                     <p className="lightText">Social Media Links</p>
                     <TextField

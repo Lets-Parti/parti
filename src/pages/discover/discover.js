@@ -32,11 +32,15 @@ class Discover extends React.Component {
     {
         let URLQuery = this.props.match.params.query;
         let query; 
+        
         if(URLQuery)
         {
             query = {
                 serviceTags: URLQuery
             }
+            let serviceTag = []; 
+            serviceTag.push({value: URLQuery, label: URLQuery}); 
+            this.setState({serviceTag});
         }else
         {
             query = {
@@ -122,6 +126,7 @@ class Discover extends React.Component {
                             options={StaticData.options}
                             styles="width:100px;"
                             id="select"
+                            value={this.state.serviceTag}
                             onChange={this.handleChangeSelect.bind(this, "serviceTag")}
                         /> 
                         </div>

@@ -1,11 +1,11 @@
 const StaticData = 
 {
     options: [
-      { value: 'AV', label: `Audio Visual Equipment (AV)`},
+      { value: 'Audio Visual Equipment (AV)', label: `Audio Visual Equipment (AV)`},
       { value: 'Bounce House', label: `Bounce House`},
       { value: 'Boutique', label: `Boutique`},
       { value: 'Casino Rental', label: `Casino`},
-      { value: 'Circus', label: `Circus / Acrobat`},
+      { value: 'Circus / Acrobat', label: `Circus / Acrobat`},
       { value: 'Clown', label: `Clown`},
       { value: 'Comedian', label: `Comedian`},
       { value: 'Dancer', label: `Dancer`},
@@ -22,7 +22,7 @@ const StaticData =
       { value: 'Limo Rental', label: `Limo Rental`},
       { value: 'Live Band', label: `Live Band`},
       { value: 'Magician', label: `Magician`},
-      { value: 'Mariachi', label: `Mariachi Band`},
+      { value: 'Mariachi', label: `Mariachi`},
       { value: 'Petting Zoo', label: `Petting Zoo`},
       { value: 'Photography', label: 'Photography'},
       { value: 'Photo Booth', label: `Photo Booth`},  
