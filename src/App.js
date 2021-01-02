@@ -16,6 +16,8 @@ import AccountEdit from './pages/user/accountedit'
 import NewContract from './pages/contracts/newcontract'
 import Contracts from './pages/contracts/contracts'
 import EventByID from './pages/events/event-by-id'
+import PrivacyPolicy from './pages/legal/privacy'
+import Terms_Conditions from './pages/legal/terms'
 import Beta from './pages/beta'
 
 //Components
@@ -88,6 +90,8 @@ class App extends React.Component
               <AuthRoute exact path="/signup/:userType" component={SignUp} />
               <AuthRoute exact path="/signup/" component={SignUp} />
               <AuthRoute exact path="/login" component={Login} />
+              <Route exact path="/privacy" component={PrivacyPolicy} />
+              <Route exact path="/terms-and-conditions" component={Terms_Conditions} />
 
               <Route exact path="/404" component={ErrorNotFound} />
               <Redirect to="/404"></Redirect>
