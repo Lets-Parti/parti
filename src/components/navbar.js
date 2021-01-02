@@ -99,18 +99,51 @@ const styles = theme => ({
     color: 'black',
     backgroundColor: 'white',
     boxShadow: 'None',
-    padding: theme.spacing(1)
+    padding: theme.spacing(1),
+    fontFamily: '"Nunito", sans-serif',
   },
   logo: {
     height: 70,
   }, 
-  buttonGroup: {
-    marginLeft: 20, 
-    paddingTop: 30
+  menuItem: {
+    color: 'black'
   }
 });
 
+const StyledMenu = withStyles({
+  paper: {
+    border: '1px solid #d3d4d5',
+  },
+})((props) => (
+  <Menu
+    elevation={0}
+    getContentAnchorEl={null}
+    anchorOrigin={{
+      vertical: 'bottom',
+      horizontal: 'center',
+    }}
+    transformOrigin={{
+      vertical: 'top',
+      horizontal: 'center',
+    }}
+    {...props}
+  />
+));
+
+const StyledMenuItem = withStyles((theme) => ({
+  root: {
+    '&:focus': {
+      '& .MuiListItemIcon-root, & .MuiListItemText-primary': {
+        color: theme.palette.common.white,
+      },
+    },
+    width: '200px',
+    height: '50px'
+  },
+}))(MenuItem);
+
 class Navbar extends React.Component {
+
   constructor()
   {
     super(); 
@@ -182,109 +215,66 @@ class Navbar extends React.Component {
     {
       mobileMenuOptions = 
       <div>
-        <Link href="/about">
-            <MenuItem>
-            <IconButton color="inherit">
-                <HomeIcon />
-            </IconButton>
-            <p>Home</p>
-            </MenuItem>
+        <Link href="/">
+            <StyledMenuItem className={classes.menuItem}>
+              <p>Home</p>
+            </StyledMenuItem>
         </Link>
         <Link href="/about">
-            <MenuItem name="about" onClick={this.onClick}>
-            <IconButton color="inherit" >
-                <InfoIcon />
-            </IconButton>
-            <p>About</p>
-            </MenuItem>
+            <StyledMenuItem className={classes.menuItem}>
+              <p>About</p>
+            </StyledMenuItem>
         </Link>
-        <Link href="/discover">  
-            <MenuItem>
-            <IconButton color="inherit">
-                <SearchIcon />
-            </IconButton>
-            <p>Discover</p>
-            </MenuItem>
+        <Link href="/discover">
+            <StyledMenuItem className={classes.menuItem}>
+              <p>Discover</p>
+            </StyledMenuItem>
+        </Link>
+        <hr></hr>
+        <Link href="/signup">
+              <StyledMenuItem className={classes.menuItem}>
+                <p>Sign Up</p>
+              </StyledMenuItem>
         </Link>
         <Link href="/login">
-            <MenuItem>
-            <IconButton color="inherit">
-                <AccountCircle />
-            </IconButton>
-            <p>Log In</p>
-            </MenuItem>
+            <StyledMenuItem className={classes.menuItem}>
+              <p>Log In</p>
+            </StyledMenuItem>
         </Link>
-        <Link href="/signup">
-            <MenuItem>
-            <IconButton color="inherit">
-                <AccountCircle />
-            </IconButton>
-            <p>Sign Up</p>
-            </MenuItem>
+        <hr></hr>
+        <Link href="/faq">
+            <StyledMenuItem className={classes.menuItem}>
+              <p>Help</p>
+            </StyledMenuItem>
         </Link>
       </div>
     }else if(authenticated && user.type === 'client')
     {
       mobileMenuOptions = 
       <div>
-      <Link href="/home">
-          <MenuItem name="home">
-          <IconButton aria-label="" color="inherit">
-              <HomeIcon />
-          </IconButton>
+      <Link href="/">
+          <StyledMenuItem name="home" className={classes.menuItem}>
           <p>Home</p>
-          </MenuItem>
+          </StyledMenuItem>
       </Link>
       <Link href="/events">
-          <MenuItem id="events">
-          <IconButton aria-label="" color="inherit">
-              <EventIcon />
-          </IconButton>
+          <StyledMenuItem name="home" className={classes.menuItem}>
           <p>Events</p>
-          </MenuItem>
+          </StyledMenuItem>
       </Link>
       <Link href="/contracts">
-          <MenuItem>
-          <IconButton aria-label="" color="inherit">
-              <ReceiptIcon />
-          </IconButton>
+          <StyledMenuItem name="home" className={classes.menuItem}>
           <p>Contracts</p>
-      </MenuItem>
+          </StyledMenuItem>
       </Link>
-
       <Link href="/discover">
-          <MenuItem>
-          <IconButton aria-label="" color="inherit">
-              <SearchIcon />
-          </IconButton>
+          <StyledMenuItem name="home" className={classes.menuItem}>
           <p>Discover</p>
-          </MenuItem>
+          </StyledMenuItem>
       </Link>
-{/* 
-      <Link href="/messages">
-          <MenuItem>
-          <IconButton aria-label="show 11 new notifications" color="inherit">
-              <Badge badgeContent={0} color="secondary">
-              <MailIcon />
-              </Badge>
-          </IconButton>
-          <p>Messages</p>
-          </MenuItem>
-      </Link> */}
-
-      {/* <Link href="/notifications">
-      <MenuItem>
-      <IconButton aria-label="show 11 new notifications" color="inherit">
-          <Badge badgeContent={0} color="secondary">
-          <NotificationsIcon />
-          </Badge>
-      </IconButton>
-      <p>Notifications</p>
-      </MenuItem>
-      </Link> */}
-
+      <hr></hr>
       <Link href="/account/edit">
-          <MenuItem>
+          <StyledMenuItem name="home" className={classes.menuItem}>
           <IconButton
               aria-label="account of current user"
               aria-controls="primary-search-account-menu"
@@ -294,11 +284,10 @@ class Navbar extends React.Component {
               <AccountCircle />
           </IconButton>
           <p>Profile</p>
-          </MenuItem> 
+          </StyledMenuItem>
       </Link>
-
       <Link onClick={this.logOut}>
-        <MenuItem>
+        <StyledMenuItem className={classes.menuItem}>
             <IconButton
                 aria-label="Log Out"
                 aria-controls="primary-search-account-menu"
@@ -308,59 +297,38 @@ class Navbar extends React.Component {
             <ExitToAppIcon />
             </IconButton>
             <p>Log Out</p>
-          </MenuItem> 
+          </StyledMenuItem> 
+      </Link>
+      <hr></hr>
+      <Link href="/faq">
+          <StyledMenuItem name="home" className={classes.menuItem}>
+          <p>Help</p>
+          </StyledMenuItem>
       </Link>
       </div>
     }else if(authenticated && user.type === 'service')
     {
       mobileMenuOptions = 
       <div>
-      <Link href="/home">
-          <MenuItem name="home">
-          <IconButton aria-label="" color="inherit">
-              <HomeIcon />
-          </IconButton>
+      <Link href="/">
+          <StyledMenuItem name="home" className={classes.menuItem}>
           <p>Home</p>
-          </MenuItem>
+          </StyledMenuItem>
       </Link>
       <Link href="/contracts">
-          <MenuItem>
-          <IconButton aria-label="" color="inherit">
-              <ReceiptIcon />
-          </IconButton>
+          <StyledMenuItem name="home" className={classes.menuItem}>
           <p>Contracts</p>
-      </MenuItem>
+          </StyledMenuItem>
       </Link>
-      <Link href="/discover">  
-            <MenuItem>
-            <IconButton color="inherit">
-                <SearchIcon />
-            </IconButton>
-            <p>Discover</p>
-            </MenuItem>
-        </Link>
-      {/* <Link href="/messages">
-          <MenuItem>
-          <IconButton aria-label="show 11 new notifications" color="inherit">
-              <Badge badgeContent={0} color="secondary">
-              <MailIcon />
-              </Badge>
-          </IconButton>
-          <p>Messages</p>
-          </MenuItem>
-      </Link> */}
-      {/* <Link href="/notifications">
-      <MenuItem>
-      <IconButton aria-label="show 11 new notifications" color="inherit">
-          <Badge badgeContent={0} color="secondary">
-          <NotificationsIcon />
-          </Badge>
-      </IconButton>
-      <p>Notifications</p>
-      </MenuItem>
-      </Link> */}
+      <Link href="/discover">
+          <StyledMenuItem name="home" className={classes.menuItem}>
+          <p>Discover</p>
+          </StyledMenuItem>
+      </Link>
+
+      <hr></hr>
       <Link href="/account/edit">
-          <MenuItem>
+          <StyledMenuItem name="home" className={classes.menuItem}>
           <IconButton
               aria-label="account of current user"
               aria-controls="primary-search-account-menu"
@@ -370,10 +338,10 @@ class Navbar extends React.Component {
               <AccountCircle />
           </IconButton>
           <p>Profile</p>
-          </MenuItem> 
+          </StyledMenuItem>
       </Link>
       <Link onClick={this.logOut}>
-        <MenuItem>
+        <StyledMenuItem className={classes.menuItem}>
             <IconButton
                 aria-label="Log Out"
                 aria-controls="primary-search-account-menu"
@@ -383,13 +351,19 @@ class Navbar extends React.Component {
             <ExitToAppIcon />
             </IconButton>
             <p>Log Out</p>
-          </MenuItem> 
+          </StyledMenuItem> 
+      </Link>
+      <hr></hr>
+      <Link href="/faq">
+          <StyledMenuItem name="home" className={classes.menuItem}>
+          <p>Help</p>
+          </StyledMenuItem>
       </Link>
     </div>
     }
 
     const renderMobileMenu = (
-      <Menu
+      <StyledMenu
         anchorEl={this.state.mobileMoreAnchorEl}
         anchorOrigin={{ vertical: "top", horizontal: "right" }}
         id={mobileMenuId}
@@ -399,7 +373,7 @@ class Navbar extends React.Component {
         onClose={this.handleMobileMenuClose}
       >
       {mobileMenuOptions}
-      </Menu>
+      </StyledMenu>
     );
 
     let renderNavbarButtons = null; 
@@ -459,25 +433,6 @@ class Navbar extends React.Component {
     const renderRightSideButtons = authenticated ? 
     (            
     <div className={classes.sectionDesktop}>
-        {/* <Link href="/messages">
-            <IconButton aria-label="show 4 new mails" color="inherit">
-            <Badge badgeContent={0} color="primary">
-                <MailIcon />
-            </Badge>
-            </IconButton>
-        </Link> */}
-
-        {/* <Link href="/notifications">
-            <IconButton
-            aria-label="show 17 new notifications"
-            color="inherit"
-            >
-            <Badge badgeContent={0} color="primary">
-                <NotificationsIcon />
-            </Badge>
-            </IconButton>
-        </Link> */}
-
         <div className="accountIcon">
         <Link>
           <IconButton
@@ -485,11 +440,11 @@ class Navbar extends React.Component {
               aria-label="account of current user"
               aria-haspopup="true"
               onClick={this.handleClick}
-              color="inherit"
+              color="black"
               >
               <AccountCircle />
             </IconButton>
-            <Menu
+            <StyledMenu
               id="simple-menu"
               anchorEl={this.state.anchorEl}
               keepMounted
@@ -497,7 +452,7 @@ class Navbar extends React.Component {
               onClose={this.handleClose}
               >
                 <Link href="/account/edit">
-                    <MenuItem>
+                    <StyledMenuItem className={classes.menuItem}>
                     <IconButton
                         aria-label="account of current user"
                         aria-controls="primary-search-account-menu"
@@ -507,10 +462,11 @@ class Navbar extends React.Component {
                         <AccountCircle />
                     </IconButton>
                     <p>Profile</p>
-                    </MenuItem> 
+                    </StyledMenuItem> 
                 </Link>
+
                 <Link>
-                  <MenuItem onClick={this.logOut}>
+                  <StyledMenuItem onClick={this.logOut} className={classes.menuItem}>
                       <IconButton
                           aria-label="account of current user"
                           aria-controls="primary-search-account-menu"
@@ -520,26 +476,73 @@ class Navbar extends React.Component {
                           <ExitToAppIcon />
                       </IconButton>
                       <p>Log Out</p>
-                  </MenuItem> 
+                  </StyledMenuItem> 
                 </Link>
-            </Menu>
+            </StyledMenu>
         </Link>
         </div>
     </div>
     )
     :
-    (
-    <div className={classes.sectionDesktop}>
-        <div className={classes.buttonGroup}>
-            <Link href="/login">
-            <Button className={classes.menuButton} variant="outlined" color="primary">Log In</Button>
-            </Link> 
-            <Link href="/signup">
-            <Button className={classes.menuButton} variant="contained" color="primary">Sign Up</Button>
-            </Link> 
-        </div>
-    </div>
-    )
+    (            
+      <div className={classes.sectionDesktop}>
+          <div className="accountIcon">
+          <Link>
+            <IconButton
+                aria-label="Profile Icon Button"
+                aria-haspopup="true"
+                onClick={this.handleClick}
+                color="black"
+                >
+                <AccountCircle />
+              </IconButton>
+              <StyledMenu
+                id="customized-menu"
+                anchorEl={this.state.anchorEl}
+                keepMounted
+                open={Boolean(this.state.anchorEl)}
+                onClose={this.handleClose}
+                >
+
+                <Link href="/signup" className={classes.menuItem}>
+                  <StyledMenuItem>
+                    <p>Sign Up</p>
+                  </StyledMenuItem> 
+                </Link>
+
+                <Link href="/login" className={classes.menuItem}>
+                  <StyledMenuItem>
+                      <p>Log In</p>
+                  </StyledMenuItem> 
+                </Link>
+
+                <hr></hr>
+
+                <Link href="/signup/vendor" className={classes.menuItem}>
+                  <StyledMenuItem>
+                      <p>Join as a Vendor</p>
+                  </StyledMenuItem> 
+                </Link>
+
+                <Link href="/events/new" className={classes.menuItem}>
+                  <StyledMenuItem>
+                      <p>Create an Event</p>
+                  </StyledMenuItem> 
+                </Link>
+
+                <hr></hr>
+
+                <Link href="/faq" className={classes.menuItem}>
+                  <StyledMenuItem>
+                      <p>Help</p>
+                  </StyledMenuItem> 
+                </Link>
+
+              </StyledMenu>
+          </Link>
+          </div>
+      </div>
+      )
     
     let rightSideButton = null; 
     if(authenticated && user.type === 'client')
@@ -564,10 +567,10 @@ class Navbar extends React.Component {
             <a href="/" className={classes.logo}>
                 <img src={logobluebeta} className={classes.logo} alt="partilogo"></img>
             </a>
-            {renderNavbarButtons}
+
 
             <div className={classes.grow} />
-
+            {renderNavbarButtons}
             {rightSideButton}
 
             <div className={classes.sectionMobile}>

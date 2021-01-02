@@ -232,13 +232,14 @@ export const getConnects = () => dispatch =>
     })
 }
 
-export const discover = (queryData) => (dispatch) =>
+export const discover = (queryData, page) => (dispatch) =>
 {
     dispatch({type: LOADING_DATA});
     console.log(queryData.serviceTags)
     axios.get('/discover', {
         headers: {
-            'service': queryData.serviceTags
+            'service': queryData.serviceTags,
+            'page': page
         }
     })
     .then(res =>

@@ -7,8 +7,10 @@ import maxportrait from './imgs/maxportrait.jpg';
 import jakeportrait from './imgs/jakeportrait.jpg';
 import matthewportrait from './imgs/matthewportrait.jpg';
 import anishportrait from './imgs/anishportrait.jpg';
+import prachiportrait from './imgs/prachi.jpeg';
+import fiyiportrait from './imgs/fiyiportrait.jpeg';
 
-const portraits = [matthewportrait, anishportrait, jakeportrait, aaricportrait, maxportrait];
+const portraits = [matthewportrait, anishportrait, jakeportrait, aaricportrait, prachiportrait, fiyiportrait];
 
 const useStyles = makeStyles((theme) => ({
   intro: {
@@ -34,6 +36,7 @@ const useStyles = makeStyles((theme) => ({
 function AboutNoBio(props) {
   const classes = useStyles(); 
 
+
   return (
     <div>
       <div className={classes.intro}>
@@ -51,10 +54,16 @@ function AboutNoBio(props) {
             <Grid item sm={12} xs={12}>
               {props.from}
             </Grid>
+            <br></br>
+            <Grid item sm={12} xs={12}>
+              {props.college}
+            </Grid>
         </Grid>
       </div>
     </div>
   )
 }
+
+
 
 export default AboutNoBio;

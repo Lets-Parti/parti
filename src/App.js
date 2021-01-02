@@ -2,7 +2,7 @@ import React from 'react';
 import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
 //Pages
 import Home from '../src/pages/home'
-import About from '../src/pages/about/about'
+import AboutUs from './pages/aboutus'
 import ErrorNotFound from '../src/pages/404'
 import SignUp from '../src/pages/signup'
 import Login from '../src/pages/login'
@@ -17,6 +17,9 @@ import NewContract from './pages/contracts/newcontract'
 import Contracts from './pages/contracts/contracts'
 import EventByID from './pages/events/event-by-id'
 import Connections from './pages/connections.js'
+import PrivacyPolicy from './pages/legal/privacy'
+import Terms_Conditions from './pages/legal/terms'
+
 import Beta from './pages/beta'
 
 //Components
@@ -68,13 +71,13 @@ class App extends React.Component
       <ThemeProvider theme={theme}>
       <Provider store={store}>
         <Router>
-        <NavbarBeta />
+        <Navbar />
           <div className="container">
             <Switch>
               <Route exact path="/" component={Home} />
               {/* <Route exact path="/" component={Beta} /> */}
               
-              <Route exact path="/about" component={About} />
+              <Route exact path="/about" component={AboutUs} />
               <Route exact path="/feedback" component={Feedback} />
               <Route exact path="/user/:userhandle" component={User} />
               <ProtectedClientRoute exact path="/events/new" component={NewEvent} />
@@ -83,17 +86,22 @@ class App extends React.Component
               <ProtectedRoute exact path="/contracts" component={Contracts} />
               <ProtectedRoute exact path="/account/edit" component={AccountEdit} />
               <Route exact path="/discover" component={Discover} />
+              <Route exact path="/discover/:query" component={Discover} />
               <ProtectedServiceRoute exact path="/discover-events" component={DiscoverEvents} />
               <ProtectedServiceRoute exact path="/contracts/new" component={NewContract} />
               <ProtectedRoute exact path="/connections" component={Connections} />
-              <AuthRoute exact path="/signup" component={SignUp} />
+              <AuthRoute exact path="/signup/:userType" component={SignUp} />
+              <AuthRoute exact path="/signup/" component={SignUp} />
               <AuthRoute exact path="/login" component={Login} />
+              <Route exact path="/privacy" component={PrivacyPolicy} />
+              <Route exact path="/terms-and-conditions" component={Terms_Conditions} />
+
 
               <Route exact path="/404" component={ErrorNotFound} />
               <Redirect to="/404"></Redirect>
             </Switch>
             </div>
-            {/* <Footer /> */}
+            <Footer />
         </Router>
       </Provider>
       </ThemeProvider>

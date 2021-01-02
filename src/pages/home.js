@@ -1,111 +1,200 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import Footer from '../components/footer'
-import bgwavy from '../resources/backgrounds/bgwavy.png'
-import graphicdemo from '../resources/backgrounds/demos.png'
-import Button from '@material-ui/core/Button';
+import "../stylesheets/common.css";
+import "../stylesheets/home.css";
 
-const useStyles = makeStyles((theme) => ({
-  intro: {
-    backgroundImage: `url(${bgwavy})`,
-    backgroundPosition: 'left',
-    backgroundPositionY: 40,
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: '100%',
-    width: '100%',
-    height: '1000px', 
-    fontFamily: '"Roboto", sans-serif',
-  }, 
-  graphicdemo: {
-    backgroundImage: `url(${graphicdemo})`,
-    backgroundPosition: 'left',
-    backgroundPositionY: 0,
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: '100%',
-    width: '100%',
-    height: '1000px', 
-    fontFamily: '"Roboto", sans-serif',
+import Avatar from "@material-ui/core/Avatar";
+import Button from "@material-ui/core/Button";
+import Carousel from "react-material-ui-carousel";
+import Grid from "@material-ui/core/Grid";
+import Link from "@material-ui/core/Link";
+import PhotoIcon from "@material-ui/icons/Photo";
+import React from "react";
+
+import PhotoCameraIcon from '@material-ui/icons/PhotoCamera';
+import AlbumIcon from '@material-ui/icons/Album';
+import PetsIcon from '@material-ui/icons/Pets';
+import EmojiEmotionsIcon from '@material-ui/icons/EmojiEmotions';
+import LocalDiningIcon from '@material-ui/icons/LocalDining';
+import PaletteIcon from '@material-ui/icons/Palette';
+import BrushIcon from '@material-ui/icons/Brush';
+import LocalFloristIcon from '@material-ui/icons/LocalFlorist';
+import BusinessIcon from '@material-ui/icons/Business';
+
+const discoverCategories = [
+  ["Comedian", <EmojiEmotionsIcon />],
+  ["Decorator", <PaletteIcon />],
+  ["DJ", <AlbumIcon />],
+  ["Event Venue", <BusinessIcon />],
+  ["Food Catering", <LocalDiningIcon />],
+  ["Magician", <BrushIcon />],
+  ["Petting Zoo", <PetsIcon />],
+  ["Photography", <PhotoCameraIcon />]
+];
+
+
+const testimonials = [
+  {
+    name: "Person 1",
+    description:
+      '"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Netus laoreet velit tempus nam ullamcorper vulputate. Varius ligula bibendum cursus urna luctus velit ullamcorper etiam egestas."',
   },
-  introtext: {
-    paddingTop: theme.spacing(5), 
-    paddingLeft: theme.spacing(10)
+  {
+    name: "Person 2",
+    description:
+      '"Borem ipsum dolor sit amet, consectetur adipiscing elit. Netus laoreet velit tempus nam ullamcorper vulputate. Varius ligula bibendum cursus urna luctus velit ullamcorper etiam egestas."',
   },
-  banner: {
-    fontSize: '3rem', 
-    margin: 0
-  },
-  banner_pitch: {
-    fontSize: '1.25rem', 
-    marginTop: 15,
-    color: '#505F98'
-  }, 
-  banner_description: {
-    marginTop: 20,
-    color: '#505F98', 
-    lineHeight: 2
-  },
-  buttons: {
-    marginTop: '50px'
+];
+
+class Home extends React.Component {
+  constructor() {
+    super();
+    this.state = {};
   }
-}));
-
-function IntroText(){
-  const classes = useStyles(); 
-
-  return(
-    <div className={classes.introtext}>
-      <h1 className={classes.banner}>Effortless Event Planning</h1>
-
-      <p className={classes.banner_pitch}>Manage all of your event's needs in 1 app</p> 
-      <p className={classes.banner_description}>Need a DJ for your party? A photographer for your wedding? Parti will help you find the perfect services. Start by creating your first event!</p>
-
-      <div className={classes.buttons}>
-        <Button
-            variant="contained"
-            color="primary"
-            onClick={createEventButtonClick}
-            >
-            Create Event
-        </Button>
-      </div>
-    </div>
-  )
-}
-
-function createEventButtonClick()
-{
-  window.location.href = '/events/new'
-}
-
-function GraphicDemo(){
-  const classes = useStyles(); 
   
-  return(
-    <div className={classes.graphicdemo}></div>
-  )
-}
+  render() {
+    
+    return (
+      <div>
+        <div className="homePage">
+          <Grid container spacing={0}>
+            {/*Introduction*/}
 
+            <Grid item sm={12} xs={12} className="home-introduction">
+                <div className="banners">
+                  <p className="bannerTitle" >
+                    <b>Effortless Event Planning</b>
+                  </p>
+                  <p className="bannerPitch">
+                    Manage all of your event's needs in 1 app
+                  </p>
+                  <p>
+                    Need a DJ for your party? A photographer for your wedding?
+                    Parti will help you find the perfect services.  Start by creating your first event!
+                  </p>
 
-function Home() {
-  const classes = useStyles(); 
+                  <div className="bannerButton">
+                    <Link href="/events/new">
+                      <Button variant="contained" color="primary">
+                        Create an Event
+                      </Button>
+                    </Link>
+                  </div>
 
-  return (
-    <div>
-      <div className={classes.intro}>
-      <Grid container spacing={3}>
-        <Grid item sm={6} xs={12}>
-          <IntroText />
-        </Grid>
-        <Grid item sm={6} xs={12}>
-          <GraphicDemo />
-        </Grid>
-      </Grid>
+                  <div className="bannerButton">
+                    <Link href="/about">
+                      <Button variant="outlined" color="primary">
+                        Learn More
+                      </Button>
+                    </Link>
+                  </div>
+                </div>
+            </Grid>
+
+            {/*Discover*/}
+
+            <Grid container align="center">
+              <div className="home-sub-black">
+                <Grid item sm={12} xs={12}>
+                  <p className="subBannerTitle">
+                    <b>DISCOVER</b>
+                  </p>
+                  <p>Find services for your upcoming event.</p>
+                </Grid>
+
+                <Grid container align="center">
+                  {discoverCategories.map((cat) => 
+                  (
+                      <Grid
+                        item
+                        sm={3}
+                        xs={6}
+                        className="home-discover-item"
+                      >   
+                      <Link href={`/discover/${cat[0]}`}>
+                        <Grid item>
+                              {cat[1]}
+                          </Grid>
+                          <Grid item>
+                            <p>{cat[0]}</p>
+                          </Grid>
+                          </Link>
+                      </Grid>
+                  ))}
+                </Grid>
+
+                <div className="subBannerButton">
+                  <Link href="/discover">
+                    <Button variant="contained" color="primary">
+                      Discover More
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+            </Grid>
+
+            {/*About Us*/}
+
+            <Grid container align="center">
+              <div className="home-sub-white">
+                <p className="subBannerTitle">
+                  <b>ABOUT PARTI</b>
+                </p>
+
+                <p className="home-about-parti">
+                  <b>Hosting an event is stressful.</b> Parti will assist you in finding professional 
+                  services and make the event planning process easy. 
+                </p>
+
+                <p className="home-about-parti">
+                  Are you a vendor? Parti enables you to <b>directly seek customers</b>. See who is in 
+                  need of your services nearby.
+                </p>
+
+                <div className="subBannerButton">
+                  <Link href="/about">
+                    <Button variant="contained" color="primary">
+                      Learn More
+                    </Button>
+                  </Link>
+                </div>
+
+                <div className="subBannerButton">
+                  <Link href="/faq">
+                    <Button variant="outlined" color="primary">
+                      FAQ
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+            </Grid>
+
+            {/* Testimonials */}
+
+            {/* <Grid container item sm={12} xs={12}>
+              <div className="home-sub-black">
+                <p className="subBannerTitle">
+                  <b>TESTIMONIALS</b>
+                </p>
+
+                <Carousel
+                  navButtonsAlwaysInvisible="false"
+                  interval="5000"
+                  timeout="1000"
+                >
+                  {testimonials.map((testimonial) => (
+                    <p>
+                      {testimonial.description} -{testimonial.name}
+                    </p>
+                  ))}
+                </Carousel>
+              </div>
+            </Grid> */}
+
+            
+          </Grid>
+        </div>
       </div>
-
-      <Footer />
-    </div>
-  )
+    );
+  }
 }
 
 export default Home;

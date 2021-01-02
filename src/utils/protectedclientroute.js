@@ -7,7 +7,7 @@ const ProtectedClientRoute = ({ component: Component, user, ...rest }) => (
   <Route
     {...rest}
     render={(props) =>
-      (user.authenticated === false || user.user.type === 'service') ? <Redirect to="/404" /> : <Component {...props} />
+      (user.user.type === 'service' || user.authenticated === false) ? <Redirect to="/login" /> : <Component {...props} />
     }
   />
 );

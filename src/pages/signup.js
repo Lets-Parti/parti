@@ -87,6 +87,21 @@ class SignUp extends React.Component
         })
     }
 
+    componentDidMount()
+    {
+        let type = this.props.match.params.userType;
+        if(!type || type === '')
+        {
+            type = 'client'
+        }else
+        {
+            type = 'service';
+        }
+        this.setState({
+            type
+        })
+    }
+
     componentWillReceiveProps(nextProps)
     {
         if(nextProps.UI.errors)
@@ -110,7 +125,7 @@ class SignUp extends React.Component
             color="primary"
             onClick={this.onSubmitForm}
             >
-            Join the Parti
+            Join Parti
         </Button>
 
         let signUpForm = this.state.type === 'client' ? 
@@ -211,7 +226,7 @@ class SignUp extends React.Component
             color="primary"
             onClick={this.switchToServiceSignUp}
             >
-            Join as a Service
+            Join as a Vendor
         </Button>
 
         <div className="form-seperator" />
@@ -334,7 +349,7 @@ class SignUp extends React.Component
         <div className="form-seperator" />
         {ButtonDisplay}
         <div className="form-seperator" />
-        <p>Part of the Parti? <a href="/login">Sign in</a></p>
+        <p>Have an account? <a href="/login">Sign in</a></p>
     </div>
         return(
             <div>
@@ -342,7 +357,7 @@ class SignUp extends React.Component
                     <div className="page-content">
                         <div className="sign-up-form">
                         <p className="title">Sign Up</p>
-                        <p className="lightText">One step closer to joining the Parti</p>
+                        <p className="lightText">One step closer to joining Parti</p>
                         {signUpForm}
                         </div>
                     </div>

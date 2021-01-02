@@ -1,12 +1,21 @@
 import React from 'react';
-import Navbar from '../components/navbar';
+import nothing_img from '../resources/images/nothing_found.png'
+import '../stylesheets/common.css'
 
 function ErrorNotFound() {
 
+  const nothingFound = 
+  <div>
+      <img src={nothing_img} className="nothingImg"/>
+  </div>
+
   return (
-    <div>
-        <p>404 Page not found error!</p>
-    </div>
+    <center>
+      <div className="page-content">
+          {nothingFound}
+          <p>404 Page Not Found.</p>
+      </div>
+    </center>
   )
 }
 

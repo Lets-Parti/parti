@@ -1,0 +1,19 @@
+.home-footer {
+  background-color: #f4f4f4;
+  color: black;
+  height: 150px;
+  width: 100%;
+  padding-top: 50px;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-bottom: 25px;
+  font-family: "Nunito", sans-serif;
+}
+
+.footer-social {
+  padding-left: 25px;
+}
+
+.footer-text {
+  font-size: 0.75rem;
+}

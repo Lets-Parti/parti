@@ -13,15 +13,22 @@ import IconButton from '@material-ui/core/IconButton';
 import ChatIcon from '@material-ui/icons/Chat';
 import TextField from '@material-ui/core/TextField';
 import { Rating } from '@material-ui/lab';
+import Link from '@material-ui/core/Link';
+import Tooltip from '@material-ui/core/Tooltip';
 
 import ConnectModal from '../components/modal-component/connectmodal'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
-
 //Material UI Icons
 import MessageIcon from '@material-ui/icons/Message';
 import ReviewIcon from '@material-ui/icons/RateReview';
+import PhoneIcon from '@material-ui/icons/Phone';
+import EmailIcon from '@material-ui/icons/Email';
+import AddIcon from '@material-ui/icons/Add';
+import InstagramIcon from '@material-ui/icons/Instagram';
+import FacebookIcon from '@material-ui/icons/Facebook';
+import WebIcon from '@material-ui/icons/Web';
 
 
 //Redux
@@ -125,19 +132,16 @@ class User extends React.Component {
         startIcon={<MessageIcon />}
         display='none'>
         Message
-        </Button>
+      </Button>
 
     let smallChatButton = authenticated ?
-      <Button aria-label="message" color="primary" variant="contained" onClick={this.openModal}
-        startIcon={<MessageIcon />}
-        display='none'>
-      </Button>
+      <IconButton aria-label="message" color="primary" onClick={this.modalOpen}>
+        <MessageIcon />
+      </IconButton>
       :
-      <Button aria-label="message" color="primary" variant="contained" onClick={this.redirect}
-        startIcon={<MessageIcon />}
-        display='none'>
-      </Button>
-
+      <IconButton aria-label="message" color="primary" onClick={this.redirect}>
+        <MessageIcon />
+      </IconButton>
 
     let fullProfile = null;
     let circularProgress = null;
@@ -149,6 +153,52 @@ class User extends React.Component {
       let imageGallery = user.mediaImages
       let bio = user.bio
       let tags = user.tags
+      let userPhone = user.phone
+      let userEmail = user.email
+
+      let instagram = user.instagram
+      let facebook = user.facebook
+      let website = user.website
+
+      let socialButtons = []; 
+      if(instagram)
+      {
+        socialButtons.push(
+          <Link href={`https://www.instagram.com/${instagram}`}>
+            <Tooltip title="Instagram">
+              <IconButton aria-label="delete" color="primary">
+                <InstagramIcon />
+              </IconButton>
+            </Tooltip>
+          </Link>
+        )
+      }
+
+      if(facebook)
+      {
+        socialButtons.push(
+          <Link href={facebook}>
+            <Tooltip title="Facebook">
+            <IconButton aria-label="delete" color="primary">
+              <FacebookIcon />
+            </IconButton>
+          </Tooltip>
+        </Link>
+        )
+      }
+
+      if(website)
+      {
+        socialButtons.push(
+          <Link href={website}>
+          <Tooltip title="Website">
+            <IconButton aria-label="delete" color="primary">
+              <WebIcon />
+            </IconButton>
+          </Tooltip>
+        </Link>
+        )
+      }
 
       let reviewData = user.reviews
       let averageStars = reviewData.averageStars
@@ -169,7 +219,7 @@ class User extends React.Component {
       }
 
 
-      let starsDisplay
+      let starsDisplay;
       let reviewCards = [];
       reviews.forEach(review => {
         starsDisplay =
@@ -254,7 +304,6 @@ class User extends React.Component {
           )
       })
 
-
       if (authenticated && authenticatedUser.type === "client") { // Fix this part
         fullProfile =
           <Grid container>
@@ -267,18 +316,11 @@ class User extends React.Component {
                 <div className="user-page-title">
                   <p className="user-company-name">{userDisplay}</p>
                   <p className="user-handle">@{userHandle}</p>
+                  {socialButtons}
                 </div>
               </Grid>
               <Grid item className="grid-item" align="center" sm={2} xs={2}>
                 <div className="message-button-large">
-                  {/* <Button
-                    variant="contained"
-                    color="primary"
-                    startIcon={<MessageIcon />}
-                    display='none'
-                  >
-                    Message
-                          </Button> */}
                   {chatButton}
                 </div>
                 <div className="message-button-small">
@@ -348,6 +390,7 @@ class User extends React.Component {
                 <div className="user-page-title">
                   <p className="user-company-name">{userDisplay}</p>
                   <p className="user-handle">@{userHandle}</p>
+                  {socialButtons}
                 </div>
               </Grid>
               <Grid item className="grid-item" align="center" sm={2} xs={2}>
@@ -392,14 +435,13 @@ class User extends React.Component {
             </div>
           </Grid>
       }
-
-
-    } else {
+    } 
+    else 
+    {
       circularProgress = <CircularProgress />
     }
 
     return (
-
       <div className="user-container">
         {connectModal}
         {circularProgress}

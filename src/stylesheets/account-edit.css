@@ -37,7 +37,7 @@
 
 .user-handle {
   color: gray;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
   padding: 0px;
 }
 
@@ -60,6 +60,6 @@
 @media (max-width: 800px) {
   .page-content {
     width: 95%;
-    font-family: Roboto, sans-serif;
+    font-family: "Nunito", sans-serif;
   }
 }
