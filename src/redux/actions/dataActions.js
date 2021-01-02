@@ -1,4 +1,4 @@
-import {SET_EVENTS, LOADING_DATA, SET_ERRORS, LOADING_UI, CLEAR_ERRORS, DISCOVER, SET_USER_DATA, SET_CONTRACTS} from '../types'
+import {SET_EVENTS, LOADING_DATA, SET_ERRORS, LOADING_UI, CLEAR_ERRORS, DISCOVER, SET_USER_DATA, SET_CONTRACTS, SET_CONNECTS} from '../types'
 import axios from 'axios'
 
 export const getEvents = () => (dispatch) =>                        
@@ -211,19 +211,17 @@ export const createConnect = (connectInfo) => (dispatch) =>
     })
 }
 
-export const getConnects = (idk) => dispatch =>
+export const getConnects = () => dispatch =>
 {
     dispatch({type: LOADING_UI});
-    axios.get('/connect', JSON.stringify(connectInfo),
-    {
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    })
+    axios.get('/connect')
     .then(res =>
     {
         console.log(res); 
-        dispatch({type: CLEAR_ERRORS})
+        dispatch({
+            type: SET_CONNECTS,
+            payload: res.data
+        })
     })
     .catch(err =>
     {
@@ -237,7 +235,7 @@ export const getConnects = (idk) => dispatch =>
 export const discover = (queryData) => (dispatch) =>
 {
     dispatch({type: LOADING_DATA});
-console.log(queryData.serviceTags)
+    console.log(queryData.serviceTags)
     axios.get('/discover', {
         headers: {
             'service': queryData.serviceTags

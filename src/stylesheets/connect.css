@@ -1,0 +1,36 @@
+.connectCard {
+    border-top: 1px solid #202020;
+    padding: 10px;
+  }
+
+.connect-messages {
+    border: 2px solid #202020;
+    text-align: left;
+    margin-bottom: 50px;
+    margin-left: 100px;
+    margin-right: 100px;
+    max-width: 1000px;
+}
+
+.connect-to {
+  color: #31b6ec;
+}
+
+.connect-from {
+  color: red;
+}
+
+.connect-tag {
+  font-size: large;
+  font-weight: bold;
+}
+
+.connect-date {
+
+  text-align: right;
+  font-size: large;
+}
+
+.connect-body {
+  font-size: medium;
+}

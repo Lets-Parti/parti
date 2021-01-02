@@ -16,6 +16,7 @@ import AccountEdit from './pages/user/accountedit'
 import NewContract from './pages/contracts/newcontract'
 import Contracts from './pages/contracts/contracts'
 import EventByID from './pages/events/event-by-id'
+import Connections from './pages/connections.js'
 import Beta from './pages/beta'
 
 //Components
@@ -84,6 +85,7 @@ class App extends React.Component
               <Route exact path="/discover" component={Discover} />
               <ProtectedServiceRoute exact path="/discover-events" component={DiscoverEvents} />
               <ProtectedServiceRoute exact path="/contracts/new" component={NewContract} />
+              <ProtectedRoute exact path="/connections" component={Connections} />
               <AuthRoute exact path="/signup" component={SignUp} />
               <AuthRoute exact path="/login" component={Login} />
 
