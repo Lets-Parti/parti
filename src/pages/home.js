@@ -17,11 +17,12 @@ import LocalDiningIcon from '@material-ui/icons/LocalDining';
 import PaletteIcon from '@material-ui/icons/Palette';
 import BrushIcon from '@material-ui/icons/Brush';
 import LocalFloristIcon from '@material-ui/icons/LocalFlorist';
+import BusinessIcon from '@material-ui/icons/Business';
 
 const discoverCategories = [
   ["Photography", <PhotoCameraIcon />],
   ["DJ", <AlbumIcon />],
-  ["Florist", <LocalFloristIcon />],
+  ["Event Venue", <BusinessIcon />],
   ["Food Catering", <LocalDiningIcon />],
   ["Petting Zoo", <PetsIcon />],
   ["Comedian", <EmojiEmotionsIcon />],
