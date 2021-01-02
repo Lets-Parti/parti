@@ -76,7 +76,7 @@ function Footer()
                 <Grid item justify="space-evenly" alignItems="center">
                   <Grid item>
                     <p className="footer-text">
-                      &copy; 2020 Parti LLC. All Rights Reserved.
+                    2020 Parti LLC
                     </p>
                   </Grid>
                   
