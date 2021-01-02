@@ -41,7 +41,7 @@ const footer_links = [
     },
     {
       text: "Contact Us",
-      link: "/contact",
+      link: "mailto: wearepartiapp@gmail.com",
     },
   ];
 
