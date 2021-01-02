@@ -53,6 +53,7 @@ class Discover extends React.Component {
     handleChangeSelect(name, value) {
          this.setState({
              [name]: value,
+             page: 1
          })
          
          if(value)
