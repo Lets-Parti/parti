@@ -1,4 +1,4 @@
-import {SET_EVENTS, LOADING_DATA, SET_ERRORS, LOADING_UI, CLEAR_ERRORS, DISCOVER, SET_USER_DATA, SET_CONTRACTS} from '../types'
+import {SET_EVENTS, LOADING_DATA, SET_ERRORS, LOADING_UI, CLEAR_ERRORS, DISCOVER, SET_USER_DATA, SET_CONTRACTS, SET_CONNECTS} from '../types'
 import axios from 'axios'
 
 export const getEvents = () => (dispatch) =>                        
@@ -201,6 +201,27 @@ export const createConnect = (connectInfo) => (dispatch) =>
     {
         console.log(res); 
         dispatch({type: CLEAR_ERRORS})
+    })
+    .catch(err =>
+    {
+        dispatch({
+            type: SET_ERRORS, 
+            payload: err.response.data
+        })
+    })
+}
+
+export const getConnects = () => dispatch =>
+{
+    dispatch({type: LOADING_UI});
+    axios.get('/connect')
+    .then(res =>
+    {
+        console.log(res); 
+        dispatch({
+            type: SET_CONNECTS,
+            payload: res.data
+        })
     })
     .catch(err =>
     {

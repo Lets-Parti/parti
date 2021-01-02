@@ -16,8 +16,10 @@ import AccountEdit from './pages/user/accountedit'
 import NewContract from './pages/contracts/newcontract'
 import Contracts from './pages/contracts/contracts'
 import EventByID from './pages/events/event-by-id'
+import Connections from './pages/connections.js'
 import PrivacyPolicy from './pages/legal/privacy'
 import Terms_Conditions from './pages/legal/terms'
+
 import Beta from './pages/beta'
 
 //Components
@@ -87,11 +89,13 @@ class App extends React.Component
               <Route exact path="/discover/:query" component={Discover} />
               <ProtectedServiceRoute exact path="/discover-events" component={DiscoverEvents} />
               <ProtectedServiceRoute exact path="/contracts/new" component={NewContract} />
+              <ProtectedRoute exact path="/connections" component={Connections} />
               <AuthRoute exact path="/signup/:userType" component={SignUp} />
               <AuthRoute exact path="/signup/" component={SignUp} />
               <AuthRoute exact path="/login" component={Login} />
               <Route exact path="/privacy" component={PrivacyPolicy} />
               <Route exact path="/terms-and-conditions" component={Terms_Conditions} />
+
 
               <Route exact path="/404" component={ErrorNotFound} />
               <Redirect to="/404"></Redirect>
