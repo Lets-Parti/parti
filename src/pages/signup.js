@@ -357,7 +357,7 @@ class SignUp extends React.Component
                     <div className="page-content">
                         <div className="sign-up-form">
                         <p className="title">Sign Up</p>
-                        <p className="lightText">One step closer to joining Parti</p>
+                        <p className="lightText">Join the Arizona Beta</p>
                         {signUpForm}
                         </div>
                     </div>
