@@ -33,6 +33,9 @@ const StaticData =
         { value: 'Limo Rental', label: `Hairdresser`},
         { value: 'Video Game Truck', label: `Video Game Truck`},
 
+        { value: 'Floral', label: `Floral`},
+        { value: 'Event Venue', label: `Event Venue`},
+
 
 
       ],
