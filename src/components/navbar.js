@@ -440,7 +440,7 @@ class Navbar extends React.Component {
               aria-label="account of current user"
               aria-haspopup="true"
               onClick={this.handleClick}
-              color="inherit"
+              color="black"
               >
               <AccountCircle />
             </IconButton>
@@ -492,7 +492,7 @@ class Navbar extends React.Component {
                 aria-label="Profile Icon Button"
                 aria-haspopup="true"
                 onClick={this.handleClick}
-                color="inherit"
+                color="black"
                 >
                 <AccountCircle />
               </IconButton>
@@ -555,7 +555,7 @@ class Navbar extends React.Component {
     {
       rightSideButton = 
       <Link href="/discover-events">
-        <Button className={classes.menuButton} variant="contained" color="primary">Find Events</Button>
+        <Button className={classes.menuButton}>Find Events</Button>
       </Link> 
     }
 
