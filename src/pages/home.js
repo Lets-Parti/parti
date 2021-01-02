@@ -20,14 +20,14 @@ import LocalFloristIcon from '@material-ui/icons/LocalFlorist';
 import BusinessIcon from '@material-ui/icons/Business';
 
 const discoverCategories = [
-  ["Photography", <PhotoCameraIcon />],
+  ["Comedian", <EmojiEmotionsIcon />],
+  ["Decorator", <PaletteIcon />],
   ["DJ", <AlbumIcon />],
   ["Event Venue", <BusinessIcon />],
   ["Food Catering", <LocalDiningIcon />],
-  ["Petting Zoo", <PetsIcon />],
-  ["Comedian", <EmojiEmotionsIcon />],
   ["Magician", <BrushIcon />],
-  ["Decorator", <PaletteIcon />]
+  ["Petting Zoo", <PetsIcon />],
+  ["Photography", <PhotoCameraIcon />]
 ];
 
 
