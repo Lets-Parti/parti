@@ -153,13 +153,13 @@ class Home extends React.Component {
                   </Link>
                 </div>
 
-                {/* <div className="subBannerButton">
+                <div className="subBannerButton">
                   <Link href="/faq">
                     <Button variant="outlined" color="primary">
                       FAQ
                     </Button>
                   </Link>
-                </div> */}
+                </div>
               </div>
             </Grid>
 
