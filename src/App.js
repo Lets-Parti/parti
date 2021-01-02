@@ -16,7 +16,7 @@ import AccountEdit from './pages/user/accountedit'
 import NewContract from './pages/contracts/newcontract'
 import Contracts from './pages/contracts/contracts'
 import EventByID from './pages/events/event-by-id'
-import Connections from './pages/connections.js'
+import Connections from './pages/connections/connections'
 import PrivacyPolicy from './pages/legal/privacy'
 import Terms_Conditions from './pages/legal/terms'
 

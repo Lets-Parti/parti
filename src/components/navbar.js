@@ -267,6 +267,11 @@ class Navbar extends React.Component {
           <p>Contracts</p>
           </StyledMenuItem>
       </Link>
+      <Link href="/connections">
+          <StyledMenuItem name="home" className={classes.menuItem}>
+          <p>Connects</p>
+          </StyledMenuItem>
+      </Link>
       <Link href="/discover">
           <StyledMenuItem name="home" className={classes.menuItem}>
           <p>Discover</p>
@@ -320,12 +325,17 @@ class Navbar extends React.Component {
           <p>Contracts</p>
           </StyledMenuItem>
       </Link>
+      <Link href="/connections">
+          <StyledMenuItem name="home" className={classes.menuItem}>
+          <p>Connects</p>
+          </StyledMenuItem>
+      </Link>
       <Link href="/discover">
           <StyledMenuItem name="home" className={classes.menuItem}>
           <p>Discover</p>
           </StyledMenuItem>
       </Link>
-
+      
       <hr></hr>
       <Link href="/account/edit">
           <StyledMenuItem name="home" className={classes.menuItem}>
@@ -407,6 +417,9 @@ class Navbar extends React.Component {
               <Link href="/contracts">
               <Button className={classes.menuButton}>Contracts</Button>
               </Link> 
+              <Link href="/connections">
+              <Button className={classes.menuButton}>Connects</Button>
+              </Link> 
               <Link href="/discover">
               <Button className={classes.menuButton}>Discover</Button>
               </Link> 
@@ -422,6 +435,9 @@ class Navbar extends React.Component {
             </Link> 
             <Link href="/contracts">
             <Button className={classes.menuButton}>Contracts</Button>
+            </Link> 
+            <Link href="/connections">
+              <Button className={classes.menuButton}>Connects</Button>
             </Link> 
             <Link href="/discover">
               <Button className={classes.menuButton}>Discover</Button>

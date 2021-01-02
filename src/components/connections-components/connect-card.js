@@ -3,19 +3,14 @@ import '../../stylesheets/connect.css'
 
 //MaterialUI
 import Card from '@material-ui/core/Card';
-import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link'
-
-//Icons 
-import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
-import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
 
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { getUserByHandle } from '../../redux/actions/dataActions'
 
-
+import {cleanDate} from '../../utils/validators';
 
 class ConnectCard extends React.Component {
     constructor(props) {
@@ -28,36 +23,7 @@ class ConnectCard extends React.Component {
         }
     }
 
-    // componentDidMount() {
-    //     this.props.getUserByHandle();
-    // }
-
     render() {
-        /*
-        let statusText = this.state.service !== null ? 
-        <div className="vendorFoundIcon"><CheckCircleOutlineIcon /></div>
-        :
-        <div className="vendorNotFoundIcon"><HelpOutlineIcon /></div>
-        
-        let serviceDetail = this.state.service !== null ? 
-        <div>
-            <img src={this.state.service.imageURL} />
-            <p>Confirmed with
-                <a href={`/user/${this.state.service.userHandle}`} className="invisible-link"> @{this.state.service.userHandle}</a>
-            </p>
-            <Link href="/contracts">
-                <Button variant="contained" color="primary">See Contract</Button>
-            </Link> 
-        </div>
-        :
-        <div>
-            <p>Discover local {this.state.serviceType} services</p>
-            <Link href="/discover">
-                <Button variant="contained" color="primary">Discover</Button>
-            </Link> 
-        </div>
-        */
-        
         const { authenticated, user } = this.props.user;
         let userType;
         if (authenticated && user) {
@@ -66,28 +32,38 @@ class ConnectCard extends React.Component {
         
         console.log(this.state);
         let tag = this.state.sent ? (
-            <span className="connect-to">To: </span>) : (
-                <span className="connect-from">From: </span>)
-            ;
+        <span className="connect-to">To: </span>) : (
+            <span className="connect-from">From: </span>)
+        ;
         let userTag = (userType === 'client') ? (
-            <a href={`/user/${this.state.connectHandle}`}>{this.state.connectHandle}</a>
+            <Link href={`/user/${this.state.connectHandle}`}>{this.state.connectHandle}</Link>
         ) : (
             <span>{this.state.connectHandle}</span>
         );
+
+        let date = new Date(this.state.date).toString(); 
+        date = cleanDate(date);                                     //Clean up what is displayed as the event date & time
+
         return (
-            <Grid className="connectCard">
-                <div>
-                    <span className="connect-tag">
-                        {tag}{userTag}
-                    </span>
-                    <div className="connect-date">
-                        {this.state.date}
-                    </div>
-                    <body className="connect-body">
-                        {this.state.body}
-                    </body>           
-                </div>
-            </Grid>
+            <Card variant="outlined" className="connect-card">
+                <Grid container align="left">
+                    <Grid item sm={6} xs={6}>
+                        <span className="connect-tag">
+                            {tag}{userTag}
+                        </span>
+                    </Grid>
+                    <Grid item sm={6} xs = {6}>
+                        <div className="connect-date">
+                            {date.toString()}
+                        </div>
+                    </Grid>
+                    <Grid item sm={12} xs={12}>
+                        <p className="connect-body">
+                            {this.state.body}
+                        </p>   
+                    </Grid>
+                </Grid>
+            </Card>
         )
     }
 }
