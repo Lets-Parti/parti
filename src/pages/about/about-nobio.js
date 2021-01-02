@@ -54,6 +54,10 @@ function AboutNoBio(props) {
             <Grid item sm={12} xs={12}>
               {props.from}
             </Grid>
+            <br></br>
+            <Grid item sm={12} xs={12}>
+              {props.college}
+            </Grid>
         </Grid>
       </div>
     </div>

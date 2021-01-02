@@ -55,6 +55,7 @@ class Beta extends React.Component
                     name="Matthew Wang"
                     title="Co-Founder & Full-Stack Software Engineer"
                     from="Chandler, AZ"
+                    college="Duke University"
                     num={0}
                     />
             </div>
@@ -66,6 +67,7 @@ class Beta extends React.Component
                     name="Anish Agarwal"
                     title="Co-Founder & Full-Stack Software Engineer"
                     from="Chandler, AZ"
+                    college="Arizona State University"
                     num={1}
                     />
             </div>
@@ -77,6 +79,7 @@ class Beta extends React.Component
                     name="Jake Heller"
                     title="Co-Founder & Full-Stack Software Engineer"
                     from="Miami, FL"
+                    college="Duke University"
                     num={2}
                     />
             </div>
@@ -88,6 +91,7 @@ class Beta extends React.Component
                     name="Aaric Han"
                     title="Co-Founder & Full-Stack Software Engineer"
                     from="Cary, NC"
+                    college="Duke University"
                     num={3}
                     />
             </div>
@@ -98,6 +102,7 @@ class Beta extends React.Component
                     name="Prachi Agarwal"
                     title="Product (UI/UX) & Graphic Designer"
                     from="San Francisco, CA"
+                    college="[blank]"
                     num={4}
                     />
             </div>
@@ -108,6 +113,7 @@ class Beta extends React.Component
                     name="Fiyi Adebekun"
                     title="Full-Stack Software Developer"
                     from="Gilbert, AZ"
+                    college="MIT"
                     num={5}
                     />
             </div>
