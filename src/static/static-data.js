@@ -9,15 +9,32 @@ const StaticData =
         { value: 'Bounce House', label: `Bounce House`},
         { value: 'AV', label: `Audio Visual Equipment (AV)`},
         { value: 'Food Truck', label: `Food Truck`},
-        { value: 'Casino', label: `Casino`},
+        { value: 'Casino Rental', label: `Casino`},
         { value: 'Petting Zoo', label: `Petting Zoo`},
-        { value: 'Live Performance', label: `Live Performance`},
-        { value: 'Clowns', label: `Clowns`},
+        { value: 'Clown', label: `Clown`},
         { value: 'Magician', label: `Magician`},
         { value: 'Comedian', label: `Comedian`},
         { value: 'Circus', label: `Circus/Acrobat`},
         { value: 'Live Band', label: `Live Band`},
         { value: 'Mariachi', label: `Mariachi Band`},
+
+        { value: 'Dancer', label: `Dancer`},
+        { value: 'Singer', label: `Singer`},
+        { value: 'Acrobat', label: `Acrobat`},
+        { value: 'Visual Artist', label: `Visual Artist`},
+
+
+        { value: 'Furniture Rental', label: `Furniture Rental`},
+        { value: 'Boutique', label: `Boutique`},
+        { value: 'Hairdresser', label: `Hairdresser`},
+        { value: 'Henna/Tattoo Artist', label: `Henna/Tattoo Artist`},
+
+        { value: 'Dress/Tux Rental', label: `Boutique`},
+        { value: 'Limo Rental', label: `Hairdresser`},
+        { value: 'Video Game Truck', label: `Video Game Truck`},
+
+
+
       ],
     MAX_NUM_SERVICES: 5, 
     MAX_MEDIA_IMAGES: 5
