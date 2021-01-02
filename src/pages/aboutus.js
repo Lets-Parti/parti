@@ -102,7 +102,7 @@ class Beta extends React.Component
                     name="Prachi Agarwal"
                     title="Product (UI/UX) & Graphic Designer"
                     from="San Francisco, CA"
-                    college="[blank]"
+                    college="Visual Arts Graduate"
                     num={4}
                     />
             </div>
