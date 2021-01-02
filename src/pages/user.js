@@ -10,7 +10,6 @@ import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Chip from '@material-ui/core/Chip';
 import IconButton from '@material-ui/core/IconButton';
-import ChatIcon from '@material-ui/icons/Chat';
 import TextField from '@material-ui/core/TextField';
 import { Rating } from '@material-ui/lab';
 import Link from '@material-ui/core/Link';
@@ -23,9 +22,6 @@ import PropTypes from 'prop-types'
 //Material UI Icons
 import MessageIcon from '@material-ui/icons/Message';
 import ReviewIcon from '@material-ui/icons/RateReview';
-import PhoneIcon from '@material-ui/icons/Phone';
-import EmailIcon from '@material-ui/icons/Email';
-import AddIcon from '@material-ui/icons/Add';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import WebIcon from '@material-ui/icons/Web';
