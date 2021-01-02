@@ -16,6 +16,9 @@ import PropTypes from 'prop-types'
 import Select from 'react-select'
 import StaticData from '../../static/static-data'
 
+//images 
+import nothing_img from '../../resources/images/nothing_found.png'
+
 class Discover extends React.Component {
     constructor() {
         super()
@@ -105,15 +108,27 @@ class Discover extends React.Component {
     render() {
         console.log(this.state); 
         const { discover, isLoading } = this.props.data;
+        
+        const nothingFound = 
+        <div>
+            <img src={nothing_img} className="nothingImg"/>
+            <p>None found.</p>
+        </div>
 
         let dataDisplay
         if (isLoading) {
             dataDisplay = <CircularProgress />
         } else {
             dataDisplay = []
-            discover.forEach(serviceTag => {
-                dataDisplay.push(<DiscoverCard data={serviceTag} />);
-            })
+            if(discover.length === 0)
+            {
+                dataDisplay.push(nothingFound); 
+            }else
+            {
+                discover.forEach(serviceTag => {
+                    dataDisplay.push(<DiscoverCard data={serviceTag} />);
+                })
+            }
         }
 
         return (

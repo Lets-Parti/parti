@@ -12,6 +12,9 @@ import { connect } from 'react-redux'
 import { discoverEvents } from '../../redux/actions/dataActions'
 import PropTypes from 'prop-types'
 
+//Resources 
+import nothing_img from '../../resources/images/nothing_found.png'
+
 
 class DiscoverEvents extends React.Component
 {
@@ -43,6 +46,12 @@ class DiscoverEvents extends React.Component
         console.log(this.state);
         const {discover, isLoading} = this.props.data; 
 
+        const nothingFound = 
+        <div>
+            <img src={nothing_img} className="nothingImg"/>
+            <p>None found.</p>
+        </div>
+
         let dataDisplay = null
         if(isLoading)
         {
@@ -50,10 +59,16 @@ class DiscoverEvents extends React.Component
         }else
         {
             dataDisplay = []
-            discover.forEach(event => 
+            if(discover.length === 0)
             {
-                dataDisplay.push(<EventCardBView key={event.eventID} data={event}/>)    
-            });
+                dataDisplay.push(nothingFound); 
+            }else
+            {
+                discover.forEach(event => 
+                {
+                    dataDisplay.push(<EventCardBView key={event.eventID} data={event}/>)    
+                });
+            }
         }
 
         return (
