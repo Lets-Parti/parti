@@ -65,13 +65,13 @@ function Footer()
                 <Box mt={1}/>
                 
                 <Grid item alignItems="center">
-                    <Link href="https://www.instagram.com/parti.app/">
+                    <Link href="https://www.instagram.com/parti.app/" className="footer-social">
                       <InstagramIcon style={{ color: "black" }}/>
                     </Link>
-                    <Link href="https://www.facebook.com/officialpartiapp">
+                    <Link href="https://www.facebook.com/officialpartiapp" className="footer-social">
                       <FacebookIcon style={{ color: "black" }}/>
                     </Link>
-                  </Grid>
+                </Grid>
 
                 <Grid item justify="space-evenly" alignItems="center">
                   <Grid item>
