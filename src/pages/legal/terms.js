@@ -434,8 +434,7 @@ class Terms_Conditions extends React.Component {
           <p>
             These Terms of Service and any separate agreements whereby we
             provide you Services shall be governed by and construed in
-            accordance with the laws of 2713 S Beverly Pl, Chandler, AZ, 85286,
-            United States.
+            accordance with the laws of the state of Arizona.
           </p>
 
           <b>SECTION 19 - CHANGES TO TERMS OF SERVICE</b>

@@ -180,9 +180,7 @@ class PrivacyPolicy extends React.Component {
           </p>
           For more information about our privacy practices, if you have
           questions, or if you would like to make a complaint, please contact us
-          by e-mail at wearepartiapp@gmail.com or by mail using the details
-          provided below:
-          <p>2713 S Beverly Pl, Chandler, AZ, 85286, United States</p>
+          by e-mail at wearepartiapp@gmail.com.
         </div>
       </div>
     );
