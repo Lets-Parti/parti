@@ -5,7 +5,7 @@ import App from './App';
 
 ReactDOM.render(
     <div>
-        <Favicon url='./favicon.ico' />
+        <Favicon url='./favicon.png' />
         <App />
     </div>
     , 
