@@ -202,10 +202,9 @@ class Home extends React.Component {
     } else {
       conditional_discover = client_discover;
     }
-    
-    return (
-      <div>
-        <div className="homePage">
+
+    let homepage_contents = (
+      <div className="homePage">
           <Grid container spacing={0}>
             {/*Introduction*/}
             {conditional_introduction}
@@ -273,6 +272,19 @@ class Home extends React.Component {
             
           </Grid>
         </div>
+    )
+    let nothing;
+    let homePage;
+    if (!isLoading) {
+      homePage = homepage_contents
+    }
+    else {
+      homePage = nothing
+    }
+    
+    return (
+      <div>
+        {homePage}
       </div>
     );
   }
