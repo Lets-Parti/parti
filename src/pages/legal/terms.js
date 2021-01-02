@@ -14,7 +14,7 @@ class Terms_Conditions extends React.Component {
         </div>
 
         <div className="legal-desc">
-          <b>TERMS OF SERVICE</b>
+          <p><b>TERMS OF SERVICE</b></p>
 
           <p>----</p>
 
