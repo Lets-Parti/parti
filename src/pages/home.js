@@ -19,14 +19,14 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
 const discoverCategories = [
-  ["Comedian", <EmojiEmotionsIcon />],
-  ["Decorator", <PaletteIcon />],
-  ["DJ", <AlbumIcon />],
-  ["Event Venue", <BusinessIcon />],
-  ["Food Catering", <LocalDiningIcon />],
-  ["Magician", <BrushIcon />],
-  ["Petting Zoo", <PetsIcon />],
-  ["Photography", <PhotoCameraIcon />]
+  ["Comedian", <EmojiEmotionsIcon fontSize="large"/>],
+  ["Decorator", <PaletteIcon fontSize="large"/>],
+  ["DJ", <AlbumIcon fontSize="large"/>],
+  ["Event Venue", <BusinessIcon fontSize="large"/>],
+  ["Food Catering", <LocalDiningIcon fontSize="large"/>],
+  ["Magician", <BrushIcon fontSize="large"/>],
+  ["Petting Zoo", <PetsIcon fontSize="large"/>],
+  ["Photography", <PhotoCameraIcon fontSize="large"/>]
 ];
 
 
