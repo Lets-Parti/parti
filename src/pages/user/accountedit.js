@@ -50,13 +50,17 @@ class AccountEdit extends React.Component
 
     onUpdateProfile()
     {
+
         let tags = this.props.user.user.tags; 
         let serviceTag = []; 
 
-        tags.forEach(tag =>
+        if(this.props.user.user.type === 'service')
         {
-            serviceTag.push({value: tag, label: tag});
-        })
+            tags.forEach(tag =>
+            {
+                serviceTag.push({value: tag, label: tag});
+            })
+        }
 
         this.setState({
             onUpdateProfile: true, 
