@@ -67,8 +67,7 @@ class Home extends React.Component {
                   </p>
                   <p>
                     Need a DJ for your party? A photographer for your wedding?
-                    Parti will help you find the perfect services. Start by
-                    creating your first event!
+                    Parti will help you find the perfect services.  Start by creating your first event!
                   </p>
 
                   <div className="bannerButton">

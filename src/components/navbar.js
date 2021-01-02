@@ -520,7 +520,7 @@ class Navbar extends React.Component {
 
                 <Link href="/signup/vendor" className={classes.menuItem}>
                   <StyledMenuItem>
-                      <p>Join as Vendor</p>
+                      <p>Join as a Vendor</p>
                   </StyledMenuItem> 
                 </Link>
 
