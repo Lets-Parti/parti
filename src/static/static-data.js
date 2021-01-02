@@ -13,7 +13,7 @@ const StaticData =
       { value: 'DJ', label: 'DJ' },
       { value: 'Dress / Tux Rental', label: `Dress / Tux Rental`},
       { value: 'Event Venue', label: `Event Venue`},
-      { value: 'Floral', label: `Floral`},
+      { value: 'Florist', label: `Florist`},
       { value: 'Food Catering', label: `Food Catering`},
       { value: 'Food Truck', label: `Food Truck`},
       { value: 'Furniture Rental', label: `Furniture Rental`},
