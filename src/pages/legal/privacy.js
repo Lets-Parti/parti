@@ -56,18 +56,12 @@ class PrivacyPolicy extends React.Component {
                 “Web beacons,” “tags,” and “pixels” are electronic files used to
                 record information about how you browse the Site.
               </li>
-              <li>
-                [[INSERT DESCRIPTIONS OF OTHER TYPES OF TRACKING TECHNOLOGIES
-                USED]]
-              </li>
             </ul>
             Additionally when you make a purchase or attempt to make a purchase
             through the Site, we collect certain information from you, including
             your name, billing address, shipping address, payment information
-            (including credit card numbers [[INSERT ANY OTHER PAYMENT TYPES
-            ACCEPTED]]), email address, and phone number. We refer to this
-            information as “Order Information.” [[INSERT ANY OTHER INFORMATION
-            YOU COLLECT: OFFLINE DATA, PURCHASED MARKETING DATA/LISTS]]
+            (including credit card numbers, email address, and phone number. We refer to this
+            information as “Order Information.”
           </p>
           <p>
             When we talk about “Personal Information” in this Privacy Policy, we
@@ -84,39 +78,24 @@ class PrivacyPolicy extends React.Component {
             Order Information to: Communicate with you; Screen our orders for
             potential risk or fraud; and When in line with the preferences you
             have shared with us, provide you with information or advertising
-            relating to our products or services. [[INSERT OTHER USES OF ORDER
-            INFORMATION]] We use the Device Information that we collect to help
+            relating to our products or services. We use the Device Information that we collect to help
             us screen for potential risk and fraud (in particular, your IP
             address), and more generally to improve and optimize our Site (for
             example, by generating analytics about how our customers browse and
             interact with the Site, and to assess the success of our marketing
-            and advertising campaigns). [[INSERT OTHER USES OF DEVICE
-            INFORMATION, INCLUDING: ADVERTISING/RETARGETING]]
+            and advertising campaigns). 
           </p>
           <p>
             <b>SHARING YOUR PERSONAL INFORMATION</b>
           </p>
           <p>
-            We share your Personal Information with third parties to help us use
-            your Personal Information, as described above. For example, we use
-            Shopify to power our online store--you can read more about how
-            Shopify uses your Personal Information here:
-            https://www.shopify.com/legal/privacy. We also use Google Analytics
-            to help us understand how our customers use the Site--you can read
-            more about how Google uses your Personal Information here:
-            https://www.google.com/intl/en/policies/privacy/. You can also
-            opt-out of Google Analytics here:
-            https://tools.google.com/dlpage/gaoptout.
-          </p>
-          <p>
-            Finally, we may also share your Personal Information to comply with
+            We may also share your Personal Information to comply with
             applicable laws and regulations, to respond to a subpoena, search
             warrant or other lawful request for information we receive, or to
             otherwise protect our rights.
           </p>
           <p>
-            [[INCLUDE IF USING REMARKETING OR TARGETED ADVERTISING]] BEHAVIOURAL
-            ADVERTISING As described above, we use your Personal Information to
+            BEHAVIOURAL ADVERTISING As described above, we use your Personal Information to
             provide you with targeted advertisements or marketing communications
             we believe may be of interest to you. For more information about how
             targeted advertising works, you can visit the Network Advertising
@@ -124,31 +103,10 @@ class PrivacyPolicy extends React.Component {
             http://www.networkadvertising.org/understanding-online-advertising/how-does-it-work.
           </p>
           <p>
-            You can opt out of targeted advertising by: [[ INCLUDE OPT-OUT LINKS
-            FROM WHICHEVER SERVICES BEING USED. COMMON LINKS INCLUDE: FACEBOOK -
-            https://www.facebook.com/settings/?tab=ads GOOGLE -
-            https://www.google.com/settings/ads/anonymous BING -
-            https://advertise.bingads.microsoft.com/en-us/resources/policies/personalized-ads
-            ]]
-          </p>
-          <p>
-            Additionally, you can opt out of some of these services by visiting
-            the Digital Advertising Alliance’s opt-out portal at:
-            http://optout.aboutads.info/.
-          </p>
-          <p>
             <b>DO NOT TRACK</b>
           </p>
           Please note that we do not alter our Site’s data collection and use
           practices when we see a Do Not Track signal from your browser.
-          <p>
-            [[INCLUDE IF LOCATED IN OR IF STORE HAS CUSTOMERS IN EUROPE]] YOUR
-            RIGHTS If you are a European resident, you have the right to access
-            personal information we hold about you and to ask that your personal
-            information be corrected, updated, or deleted. If you would like to
-            exercise this right, please contact us through the contact
-            information below.
-          </p>
           <p>
             Additionally, if you are a European resident we note that we are
             processing your information in order to fulfill contracts we might
@@ -163,12 +121,7 @@ class PrivacyPolicy extends React.Component {
           </p>
           When you place an order through the Site, we will maintain your Order
           Information for our records unless and until you ask us to delete this
-          information. [[INSERT IF AGE RESTRICTION IS REQUIRED]]
-          <p>
-            <b>MINORS</b>
-          </p>
-          The Site is not intended for individuals under the age of [[INSERT
-          AGE]].
+          information. 
           <p>
             <b>CHANGES</b>
           </p>
