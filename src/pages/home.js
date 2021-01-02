@@ -1,12 +1,9 @@
 import "../stylesheets/common.css";
 import "../stylesheets/home.css";
 
-import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
-import Carousel from "react-material-ui-carousel";
 import Grid from "@material-ui/core/Grid";
 import Link from "@material-ui/core/Link";
-import PhotoIcon from "@material-ui/icons/Photo";
 import React from "react";
 
 import PhotoCameraIcon from '@material-ui/icons/PhotoCamera';
@@ -16,8 +13,10 @@ import EmojiEmotionsIcon from '@material-ui/icons/EmojiEmotions';
 import LocalDiningIcon from '@material-ui/icons/LocalDining';
 import PaletteIcon from '@material-ui/icons/Palette';
 import BrushIcon from '@material-ui/icons/Brush';
-import LocalFloristIcon from '@material-ui/icons/LocalFlorist';
 import BusinessIcon from '@material-ui/icons/Business';
+
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 
 const discoverCategories = [
   ["Comedian", <EmojiEmotionsIcon />],
@@ -51,88 +50,169 @@ class Home extends React.Component {
   }
   
   render() {
+    // Deal with checking if user is logged in and which user it is.
+    //
+    // Important variables are:
+    // authenticated = (true or false depending on if someone is logged in)
+    // authenticatedUser = (service or client logged in with their own sub-variables)
+    //
+    const { authenticated } = this.props.user;
+    const { isLoading } = this.props.data;
+    let authenticatedUser;
+    if (authenticated) {
+      authenticatedUser = this.props.user.user;
+    }
+
+    // Conditional Introduction Section of Homepage
+    const client_introduction = (
+      <Grid item sm={12} xs={12} className="home-introduction">
+        <div className="banners">
+          <p className="bannerTitle" >
+            <b>Effortless Event Planning</b>
+          </p>
+          <p className="bannerPitch">
+            Manage all of your event's needs in 1 app
+          </p>
+          <p>
+            Need a DJ for your party? A photographer for your wedding?
+            Parti will help you find the perfect services. Start by creating your first event!
+          </p>
     
-    return (
-      <div>
-        <div className="homePage">
+          <div className="bannerButton">
+            <Link href="/events/new">
+              <Button variant="contained" color="primary">
+                Create an Event
+              </Button>
+            </Link>
+          </div>
+    
+          <div className="bannerButton">
+            <Link href="/about">
+              <Button variant="outlined" color="primary">
+                Learn More
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </Grid>
+    )
+    const service_introduction = (
+      <Grid item sm={12} xs={12} className="home-introduction">
+        <div className="banners">
+          <p className="bannerTitle" >
+            <b>Effortless Event Planning</b>
+          </p>
+          <p className="bannerPitch">
+            Manage all of your client's needs in 1 app
+          </p>
+          <p>
+            Looking for events to DJ? Provide photography for events?
+            Parti will help you connect with clients and build your brand. Start by browsing local events!
+          </p>
+    
+          <div className="bannerButton">
+            <Link href="/discover-events">
+              <Button variant="contained" color="primary">
+                Find Events
+              </Button>
+            </Link>
+          </div>
+    
+          <div className="bannerButton">
+            <Link href="/about">
+              <Button variant="outlined" color="primary">
+                Learn More
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </Grid>
+    )
+    let conditional_introduction = null;
+    if (authenticated && authenticatedUser.type === "service") {
+      conditional_introduction = service_introduction;
+    } else {
+      conditional_introduction = client_introduction;
+    }
+
+    // Conditional Discover Section of Homepage
+    const client_discover = (
+      <Grid container align="center">
+        <div className="home-sub-black">
+          <Grid item sm={12} xs={12}>
+            <p className="subBannerTitle">
+              <b>DISCOVER</b>
+            </p>
+            <p>Find services for your upcoming event.</p>
+          </Grid>
+
+          <Grid container align="center">
+            {discoverCategories.map((cat) => 
+            (
+                <Grid
+                  item
+                  sm={3}
+                  xs={6}
+                  className="home-discover-item"
+                >   
+                <Link href={`/discover/${cat[0]}`}>
+                  <Grid item>
+                        {cat[1]}
+                    </Grid>
+                    <Grid item>
+                      <p>{cat[0]}</p>
+                    </Grid>
+                    </Link>
+                </Grid>
+            ))}
+          </Grid>
+
+          <div className="subBannerButton">
+            <Link href="/discover">
+              <Button variant="contained" color="primary">
+                Discover More
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </Grid>
+    )
+    const service_discover = (
+      <Grid container align="center">
+        <div className="home-sub-black">
+          <Grid item sm={12} xs={12}>
+            <p className="subBannerTitle">
+              <b>DISCOVER</b>
+            </p>
+            <p>Find events near you.</p>
+          </Grid>
+          <div className="subBannerButton">
+            <Link href="/discover-events">
+              <Button variant="contained" color="primary">
+                Discover More
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </Grid>
+    )
+    let conditional_discover = null;
+    if (authenticated && authenticatedUser.type === "service") {
+      conditional_discover = service_discover;
+    } else {
+      conditional_discover = client_discover;
+    }
+
+    let homepage_contents = (
+      <div className="homePage">
           <Grid container spacing={0}>
             {/*Introduction*/}
-
-            <Grid item sm={12} xs={12} className="home-introduction">
-                <div className="banners">
-                  <p className="bannerTitle" >
-                    <b>Effortless Event Planning</b>
-                  </p>
-                  <p className="bannerPitch">
-                    Manage all of your event's needs in 1 app
-                  </p>
-                  <p>
-                    Need a DJ for your party? A photographer for your wedding?
-                    Parti will help you find the perfect services.  Start by creating your first event!
-                  </p>
-
-                  <div className="bannerButton">
-                    <Link href="/events/new">
-                      <Button variant="contained" color="primary">
-                        Create an Event
-                      </Button>
-                    </Link>
-                  </div>
-
-                  <div className="bannerButton">
-                    <Link href="/about">
-                      <Button variant="outlined" color="primary">
-                        Learn More
-                      </Button>
-                    </Link>
-                  </div>
-                </div>
-            </Grid>
-
-            {/*Discover*/}
-
-            <Grid container align="center">
-              <div className="home-sub-black">
-                <Grid item sm={12} xs={12}>
-                  <p className="subBannerTitle">
-                    <b>DISCOVER</b>
-                  </p>
-                  <p>Find services for your upcoming event.</p>
-                </Grid>
-
-                <Grid container align="center">
-                  {discoverCategories.map((cat) => 
-                  (
-                      <Grid
-                        item
-                        sm={3}
-                        xs={6}
-                        className="home-discover-item"
-                      >   
-                      <Link href={`/discover/${cat[0]}`}>
-                        <Grid item>
-                              {cat[1]}
-                          </Grid>
-                          <Grid item>
-                            <p>{cat[0]}</p>
-                          </Grid>
-                          </Link>
-                      </Grid>
-                  ))}
-                </Grid>
-
-                <div className="subBannerButton">
-                  <Link href="/discover">
-                    <Button variant="contained" color="primary">
-                      Discover More
-                    </Button>
-                  </Link>
-                </div>
-              </div>
-            </Grid>
+            {conditional_introduction}
+            
+            {/*Discover*/}   
+            {conditional_discover}     
 
             {/*About Us*/}
-
             <Grid container align="center">
               <div className="home-sub-white">
                 <p className="subBannerTitle">
@@ -192,9 +272,32 @@ class Home extends React.Component {
             
           </Grid>
         </div>
+    )
+    let nothing;
+    let homePage;
+    if (!isLoading) {
+      homePage = homepage_contents
+    }
+    else {
+      homePage = nothing
+    }
+    
+    return (
+      <div>
+        {homePage}
       </div>
     );
   }
 }
 
-export default Home;
+// Below is for checking user authenticated or not and mapping state to props
+Home.propTypes = {
+  user: PropTypes.object.isRequired
+}
+
+const mapStateToProps = (state) => ({
+  data: state.data,
+  user: state.user
+})
+
+export default connect(mapStateToProps)(Home);
