@@ -92,18 +92,28 @@ class Beta extends React.Component
                     />
             </div>
         )
-        const Max_Card = (
+        const Prachi_Card = (
             <div className="indiana-frame" /*onClick={this.expandMax}*/>
                 <AboutNoBio 
-                    name="Max Bregman"
-                    title="Co-Founder, Design & Business Strategist"
-                    from="Chandler, AZ"
+                    name="Prachi Agarwal"
+                    title="UI/UX & Graphic Designer"
+                    from="San Francisco, CA"
                     num={4}
                     />
             </div>
         )
+        const Fiyi_Card = (
+            <div className="indiana-frame" /*onClick={this.expandMax}*/>
+                <AboutNoBio 
+                    name="Fiyi Adebekun"
+                    title="Full-Stack Engineer"
+                    from="Gilbert, AZ"
+                    num={5}
+                    />
+            </div>
+        )
 
-        const frames_founders = [Matthew_Card, Anish_Card, Jake_Card, Aaric_Card, Max_Card]; // _h for headshot
+        const frames_founders = [Matthew_Card, Anish_Card, Jake_Card, Aaric_Card, Prachi_Card, Fiyi_Card]; // _h for headshot
 
         return(
             <div>
