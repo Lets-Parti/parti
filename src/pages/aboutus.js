@@ -53,7 +53,7 @@ class Beta extends React.Component
             <div className="indiana-frame" /*onClick={this.expandMatthew}*/>
                 <AboutNoBio 
                     name="Matthew Wang"
-                    title="Co-Founder & Full-Stack Engineer"
+                    title="Co-Founder & Full-Stack Software Engineer"
                     from="Chandler, AZ"
                     num={0}
                     />
@@ -64,7 +64,7 @@ class Beta extends React.Component
             <div className="indiana-frame" /*onClick={this.expandAnish}*/>
                 <AboutNoBio 
                     name="Anish Agarwal"
-                    title="Co-Founder & Full-Stack Engineer"
+                    title="Co-Founder & Full-Stack Software Engineer"
                     from="Chandler, AZ"
                     num={1}
                     />
@@ -75,7 +75,7 @@ class Beta extends React.Component
             <div className="indiana-frame" /*onClick={this.expandJake}*/>
                 <AboutNoBio 
                     name="Jake Heller"
-                    title="Co-Founder & Full-Stack Engineer"
+                    title="Co-Founder & Full-Stack Software Engineer"
                     from="Miami, FL"
                     num={2}
                     />
@@ -86,7 +86,7 @@ class Beta extends React.Component
             <div className="indiana-frame" /*onClick={this.expandAaric}*/>
                 <AboutNoBio 
                     name="Aaric Han"
-                    title="Co-Founder & Full-Stack Engineer"
+                    title="Co-Founder & Full-Stack Software Engineer"
                     from="Cary, NC"
                     num={3}
                     />
@@ -96,7 +96,7 @@ class Beta extends React.Component
             <div className="indiana-frame" /*onClick={this.expandMax}*/>
                 <AboutNoBio 
                     name="Prachi Agarwal"
-                    title="UI/UX & Graphic Designer"
+                    title="Product (UI/UX) & Graphic Designer"
                     from="San Francisco, CA"
                     num={4}
                     />
@@ -106,7 +106,7 @@ class Beta extends React.Component
             <div className="indiana-frame" /*onClick={this.expandMax}*/>
                 <AboutNoBio 
                     name="Fiyi Adebekun"
-                    title="Full-Stack Engineer"
+                    title="Full-Stack Software Developer"
                     from="Gilbert, AZ"
                     num={5}
                     />
