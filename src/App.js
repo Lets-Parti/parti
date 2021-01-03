@@ -21,23 +21,28 @@ import PrivacyPolicy from './pages/legal/privacy'
 import Terms_Conditions from './pages/legal/terms'
 import FAQ from './pages/faq'
 
-import Beta from './pages/beta'
+// import Beta from './pages/beta'
 
 //Components
 import Navbar from '../src/components/navbar'
-import NavbarBeta from '../src/components/navbar-beta'
+// import NavbarBeta from '../src/components/navbar-beta'
+
 //Theme
 import {ThemeProvider} from '@material-ui/core/styles'
 import theme from './theme'
+
 //Token decoder 
 import jwtDecode from 'jwt-decode'
+
 //Redux
 import { Provider } from 'react-redux';
 import store from './redux/store';
 import { SET_AUTHENTICATED } from './redux/types';
 import { logoutUser, getUserData } from './redux/actions/userActions';
+
 //Axios
 import axios from 'axios';
+
 //utils
 import AuthRoute from './utils/authroute'                                 
 import ProtectedRoute from './utils/protectedroute'

@@ -3,7 +3,6 @@ import '../../stylesheets/event.css'
 
 //MaterialUI
 import Card from '@material-ui/core/Card';
-import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Tooltip from '@material-ui/core/Tooltip';
 

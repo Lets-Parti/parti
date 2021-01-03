@@ -1,6 +1,5 @@
 import React from 'react';
 import '../../stylesheets/common.css'
-import EventCard from '../../components/events-components/event-card'
 import Grid from '@material-ui/core/Grid';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { Button } from '@material-ui/core';
@@ -41,7 +40,7 @@ class Contracts extends React.Component
 
         const nothingFound = 
         <div>
-            <img src={nothing_img} className="nothingImg"/>
+            <img src={nothing_img} className="nothingImg" alt="Nothing Found"/>
             <p>None found.</p>
         </div>
 

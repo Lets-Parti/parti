@@ -33,7 +33,7 @@ class Events extends React.Component
 
         const nothingFound = 
         <div>
-            <img src={nothing_img} className="nothingImg"/>
+            <img src={nothing_img} className="nothingImg" alt="Not Found Image"/>
             <p>None found.</p>
         </div>
 

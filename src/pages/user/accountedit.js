@@ -191,7 +191,7 @@ class AccountEdit extends React.Component
                 <div>
                     <Tooltip title="Edit profile picture" placement="top">
                         <a href="#" onClick={this.onClickProfile}>
-                            <img className="profile-image" src={user.imageUrl}/>
+                            <img className="profile-image" src={user.imageUrl} alt="Profile"/>
                         </a>
                     </Tooltip>
                     <input type="file" id="imageInput" onChange={this.handleProfileImageChange} hidden="hidden"/>
@@ -209,7 +209,7 @@ class AccountEdit extends React.Component
                 <div>
                     <Tooltip title="Edit profile picture" placement="top">
                         <a href="#" onClick={this.onClickProfile}>
-                            <img className="profile-image" src={user.imageUrl}/>
+                            <img className="profile-image" src={user.imageUrl} alt="Profile"/>
                         </a>
                     </Tooltip>
                     <input type="file" id="imageInput" onChange={this.handleProfileImageChange} hidden="hidden"/>
@@ -230,7 +230,7 @@ class AccountEdit extends React.Component
                         <Grid key={index} sm={6} xs={12}>
                             <div className="gallery-image-container">
                                 <a href="#" onClick={this.onDeleteMediaImage}>
-                                    <img className="gallery-image" data-index={index} src={imageURL} />
+                                    <img className="gallery-image" data-index={index} src={imageURL} alt="Gallery"/>
                                 </a>
                             </div>
                         </Grid>

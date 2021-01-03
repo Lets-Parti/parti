@@ -41,7 +41,7 @@ class ServiceCard extends React.Component
         
         let serviceDetail = this.state.service !== null ? 
         <div>
-            <img src={this.state.service.imageURL} />
+            <img src={this.state.service.imageURL} alt="Profile"/>
             <p>Confirmed with
                 <a href={`/user/${this.state.service.userHandle}`} className="invisible-link"> @{this.state.service.userHandle}</a>
             </p>

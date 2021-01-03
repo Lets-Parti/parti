@@ -1,5 +1,4 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import FacebookIcon from "@material-ui/icons/Facebook";
 import InstagramIcon from "@material-ui/icons/Instagram";
 import Grid from "@material-ui/core/Grid";
@@ -7,16 +6,6 @@ import Link from "@material-ui/core/Link";
 import Box from "@material-ui/core/Box";
 
 import '../stylesheets/footer.css'
-
-
-
-
-const useStyles = makeStyles((theme) => ({
-    footer: {
-        backgroundColor: '#BAC4E7',
-        height: 100
-    }
-}));
 
 const footer_links = [
     {
@@ -48,7 +37,6 @@ const footer_links = [
 
 function Footer()
 {
-    const classes = useStyles();
     return (
         <div>
             <Grid container align="center">
