@@ -153,15 +153,18 @@ class ContractCard extends Component
 
                         <Grid item sm={9} xs={9}>
                             {contractStatus}
-                            <p>Contract ID <span className="code">{this.state.contractID}</span></p>
-                            <p>Created by <a href={`/user/${this.state.serviceHandle}`}>@{this.state.serviceHandle}</a> on {createdAtDate}</p>
                         </Grid>
                         <Grid item sm={3} xs={3} align="right">
                             {cancelButton}
                         </Grid>
+                        <Grid item sm={12} xs={12}>
+                            <p>Contract ID: <span className="code">{this.state.contractID}</span></p>
+                            <p>Created by <a href={`/user/${this.state.serviceHandle}`}>@{this.state.serviceHandle}</a> on {createdAtDate}</p>
+                        </Grid>
+
                         <Grid item sm={12} xs={12}><hr /></Grid>
 
-                        <Grid item sm={9} xs={9}>
+                        <Grid item sm={12} xs={12}>
                             {signedStatus}
                             <p>Event Host: @{this.state.clientHandle}</p>
                             <p>Event ID: <span className="code"><a href={`/events/${this.state.eventID}`} className="invisible-link">{this.state.eventID}</a></span></p>
@@ -174,7 +177,7 @@ class ContractCard extends Component
                                 </Button>
                             </Link>
                         </Grid>
-                        <Grid item sm={3} xs={3} align="right">
+                        <Grid item sm={12} xs={12} align="right">
                             {signButton}
                         </Grid>
                         <Grid item sm={12} xs={12}><hr /></Grid>
