@@ -1,19 +1,19 @@
 import React from "react";
 
 //Stylesheets
-import "../../stylesheets/legal.css";
+import "../../stylesheets/info.css";
 
 class PrivacyPolicy extends React.Component {
   render() {
     return (
-      <div className="legal-page">
-        <div className="legal-banner">
-          <p className="legal-title">
+      <div className="info-page">
+        <div className="info-banner">
+          <p className="info-title">
             <b>Privacy Policy</b>
           </p>
         </div>
 
-        <div className="legal-desc">
+        <div className="info-desc">
           <p>
             <b>Last Updated: January 1, 2020</b>
           </p>

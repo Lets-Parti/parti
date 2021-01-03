@@ -19,6 +19,7 @@ import EventByID from './pages/events/event-by-id'
 import Connections from './pages/connections/connections'
 import PrivacyPolicy from './pages/legal/privacy'
 import Terms_Conditions from './pages/legal/terms'
+import FAQ from './pages/faq'
 
 import Beta from './pages/beta'
 
@@ -95,6 +96,7 @@ class App extends React.Component
               <AuthRoute exact path="/login" component={Login} />
               <Route exact path="/privacy" component={PrivacyPolicy} />
               <Route exact path="/terms-and-conditions" component={Terms_Conditions} />
+              <Route exact path="/faq" component={FAQ} />
 
 
               <Route exact path="/404" component={ErrorNotFound} />

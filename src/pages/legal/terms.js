@@ -1,20 +1,25 @@
 import React from "react";
 
 //Stylesheets
-import "../../stylesheets/legal.css";
+import "../../stylesheets/info.css";
 
 class Terms_Conditions extends React.Component {
   render() {
     return (
-      <div className="legal-page">
-        <div className="legal-banner">
-          <p className="legal-title">
+      <div className="info-page">
+        <div className="info-banner">
+          <p className="info-title">
             <b>Terms and Conditions</b>
           </p>
         </div>
 
-        <div className="legal-desc">
-          <p><b>TERMS OF SERVICE</b></p>
+        <div className="info-desc">
+          <p>
+            <b>Last Updated: January 1, 2020</b>
+          </p>
+          <p>
+            <b>TERMS OF SERVICE</b>
+          </p>
 
           <p>----</p>
 
