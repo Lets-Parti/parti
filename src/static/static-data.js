@@ -31,7 +31,7 @@ const StaticData =
       { value: 'Visual Artist', label: `Visual Artist`}
       ],
     MAX_NUM_SERVICES: 5, 
-    MAX_MEDIA_IMAGES: 5
+    MAX_MEDIA_IMAGES: 10
 }
 
 
