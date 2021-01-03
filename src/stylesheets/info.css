@@ -1,4 +1,4 @@
-.legal-banner{
+.info-banner{
     width: 100%;
     height: 150px;
     background-color: black;
@@ -6,7 +6,7 @@
     vertical-align: middle;
 }
 
-.legal-title {
+.info-title {
     font-size: 2.5rem;
     margin-top: 0px;
     margin-bottom: 0px;
@@ -14,17 +14,33 @@
     line-height: 150px;
   }
 
-  .legal-page {
+  .info-page {
     width: 100%;
     font-family: "Nunito", sans-serif;
     margin-bottom: 200px;
   }
 
-  .legal-desc{
+  .info-desc{
       margin-right: 10%;
       margin-left: 10%;
   }
 
-  .legal-desc b{
+  .info-desc b{
       font-weight: bolder;
+  }
+
+  .info-desc a{
+    text-decoration: none;
+  }
+
+  .info-desc img {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      border: 1px solid black;
+      border-radius: 2%;
+      width: 50%;
+
   }
