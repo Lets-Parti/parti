@@ -304,7 +304,7 @@ class User extends React.Component {
             {/* First Row */}
             <Grid container className="row">
               <Grid item className="grid-item" sm={1} xs={1} align="left">
-                <img className="user-profile-image" src={userProfileImageURL} alt="User Profile Image"/>
+                <img className="user-profile-image" src={userProfileImageURL} alt="User Profile"/>
               </Grid>
               <Grid item className="grid-item" sm={9} xs={9} align="left">
                 <div className="user-page-title">
@@ -378,7 +378,7 @@ class User extends React.Component {
             {/* First Row */}
             <Grid container className="row">
               <Grid item className="grid-item" sm={1} xs={1} align="left">
-                <img className="user-profile-image" src={userProfileImageURL} alt="User Profile Image"/>
+                <img className="user-profile-image" src={userProfileImageURL} alt="User Profile"/>
               </Grid>
               <Grid item className="grid-item" sm={9} xs={9} align="left">
                 <div className="user-page-title">

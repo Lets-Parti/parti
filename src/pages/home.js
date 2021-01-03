@@ -30,18 +30,18 @@ const discoverCategories = [
 ];
 
 
-const testimonials = [
-  {
-    name: "Person 1",
-    description:
-      '"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Netus laoreet velit tempus nam ullamcorper vulputate. Varius ligula bibendum cursus urna luctus velit ullamcorper etiam egestas."',
-  },
-  {
-    name: "Person 2",
-    description:
-      '"Borem ipsum dolor sit amet, consectetur adipiscing elit. Netus laoreet velit tempus nam ullamcorper vulputate. Varius ligula bibendum cursus urna luctus velit ullamcorper etiam egestas."',
-  },
-];
+// const testimonials = [
+//   {
+//     name: "Person 1",
+//     description:
+//       '"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Netus laoreet velit tempus nam ullamcorper vulputate. Varius ligula bibendum cursus urna luctus velit ullamcorper etiam egestas."',
+//   },
+//   {
+//     name: "Person 2",
+//     description:
+//       '"Borem ipsum dolor sit amet, consectetur adipiscing elit. Netus laoreet velit tempus nam ullamcorper vulputate. Varius ligula bibendum cursus urna luctus velit ullamcorper etiam egestas."',
+//   },
+// ];
 
 class Home extends React.Component {
   constructor() {
