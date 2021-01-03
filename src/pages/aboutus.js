@@ -111,7 +111,7 @@ class Beta extends React.Component
             <div className="indiana-frame" /*onClick={this.expandMax}*/>
                 <AboutNoBio 
                     name="Fiyi Adebekun"
-                    title="Full-Stack Software Developer"
+                    title="Full-Stack Software Engineer & Design"
                     from="Gilbert, AZ"
                     college="MIT"
                     num={5}
