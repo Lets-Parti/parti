@@ -6,6 +6,7 @@ import Card from '@material-ui/core/Card';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link'
+import Tooltip from '@material-ui/core/Tooltip';
 
 //Icons 
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
@@ -26,9 +27,17 @@ class ServiceCard extends React.Component
     render()
     {
         let statusText = this.state.service !== null ? 
-        <div className="vendorFoundIcon"><CheckCircleOutlineIcon /></div>
+        <div className="vendorFoundIcon">
+            <Tooltip title="Vendor Already Found">
+                <CheckCircleOutlineIcon />
+            </Tooltip>
+        </div>
         :
-        <div className="vendorNotFoundIcon"><HelpOutlineIcon /></div>
+        <div className="vendorNotFoundIcon">
+            <Tooltip title="Vendor Not Found">
+                <HelpOutlineIcon />
+            </Tooltip>
+        </div>
         
         let serviceDetail = this.state.service !== null ? 
         <div>

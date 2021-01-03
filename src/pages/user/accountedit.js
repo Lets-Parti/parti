@@ -153,7 +153,6 @@ class AccountEdit extends React.Component
 
     render()
     {   
-        console.log(this.state)
         let {isLoading} = this.props.UI; 
         let circularProgress = isLoading ? <CircularProgress /> : null; 
         let userData = null
