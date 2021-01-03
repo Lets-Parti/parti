@@ -3,31 +3,18 @@ import { fade, withStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
-import Badge from "@material-ui/core/Badge";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
-import MailIcon from "@material-ui/icons/Mail";
 import Button from '@material-ui/core/Button';
 import Link from '@material-ui/core/Link'
 
 //Icons
-import HomeIcon from '@material-ui/icons/Home';
-import InfoIcon from '@material-ui/icons/Info';
-import SearchIcon from '@material-ui/icons/Search';
-import EventIcon from '@material-ui/icons/Event';
-import ReceiptIcon from '@material-ui/icons/Receipt';
 import AccountCircle from "@material-ui/icons/AccountCircle";
-import NotificationsIcon from "@material-ui/icons/Notifications";
 import DehazeIcon from '@material-ui/icons/Dehaze';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 //Logo
-import logo from '../resources/logos/main.svg'
-import logoBeta from '../resources/logos/main-beta.svg'
-import logobluebeta1 from '../resources/logos/PartiLogotranmsparnet.png'
 import logobluebeta from '../resources/logos/wowblue.jpeg'
-
-
 
 //Redux
 import { connect } from 'react-redux'

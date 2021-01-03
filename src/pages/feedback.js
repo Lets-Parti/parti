@@ -79,11 +79,7 @@ class Feedback extends React.Component
             Submit Form
         </Button>
 
-        const {classes, UI: {isLoading}} = this.props; 
-        const {errors} = this.state
         console.log(this.state);
-
-        // let errorMessage = Object.keys(this.state.errors).length > 0 ? "Something went wrong" : null
 
         return(
             <div>

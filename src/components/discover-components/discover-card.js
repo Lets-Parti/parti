@@ -57,7 +57,7 @@ class DiscoverCard extends Component {
         let mediaImagesArray = this.state.mediaImages
         let highlightPhoto = null;
         if (mediaImagesArray.length > 0) {
-            highlightPhoto = <img className="highlight-photo" src={mediaImagesArray[0]} />
+            highlightPhoto = <img className="highlight-photo" src={mediaImagesArray[0]} alt="Highlight Photo"/>
         }
 
         let chips = [];
@@ -94,7 +94,7 @@ class DiscoverCard extends Component {
                     <Grid container>
                         <Grid sm={1} xs={1} className="grid-object">
                             <a href={`/user/${this.state.userHandle}`} >
-                                <img src={this.state.profileImageUrl} className="profile-image-discover-card" />
+                                <img src={this.state.profileImageUrl} className="profile-image-discover-card" alt="Profile Image"/>
                             </a>
                         </Grid>
                         <Grid sm={7} xs={9} className="grid-object" align="left">

@@ -4,9 +4,6 @@ import React from 'react';
 import '../stylesheets/common.css'
 import '../stylesheets/loginsignup.css'
 
-//Component Imports
-import Navbar from '../components/navbar'
-
 //MaterialUI Imports 
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
@@ -78,9 +75,6 @@ class Login extends React.Component
             >
             Log In
         </Button>
-
-        const {classes, UI: {isLoading}} = this.props; 
-        const {errors} = this.state
 
         return(
             <div>

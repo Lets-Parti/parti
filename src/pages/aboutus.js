@@ -137,7 +137,7 @@ class Beta extends React.Component
                             {frames_clients.map(frame => 
                             (
                                 <div className="indiana-frame">
-                                    <img src={frame} className="indiana-frame-picture" />
+                                    <img src={frame} className="indiana-frame-picture" alt="Indiana Frame"/>
                                 </div>
                             ))
                             }
@@ -156,7 +156,7 @@ class Beta extends React.Component
                                 {frames_services.map(frame => 
                                 (
                                     <div className="indiana-frame">
-                                        <img src={frame} className="indiana-frame-picture" />
+                                        <img src={frame} className="indiana-frame-picture" alt="Indiana Frame"/>
                                     </div>
                                 ))
                                 }

@@ -63,7 +63,7 @@ class User extends React.Component {
     const company = this.props.data.user.userHandle
     const stars = this.state.stars
     const body = this.state.reviewBody
-    const client = this.props.user.user.userHandle
+
     if (body === "") {
       alert("The review cannot be empty")
     }
@@ -149,8 +149,6 @@ class User extends React.Component {
       let imageGallery = user.mediaImages
       let bio = user.bio
       let tags = user.tags
-      let userPhone = user.phone
-      let userEmail = user.email
 
       let instagram = user.instagram
       let facebook = user.facebook
@@ -306,7 +304,7 @@ class User extends React.Component {
             {/* First Row */}
             <Grid container className="row">
               <Grid item className="grid-item" sm={1} xs={1} align="left">
-                <img className="user-profile-image" src={userProfileImageURL} />
+                <img className="user-profile-image" src={userProfileImageURL} alt="User Profile Image"/>
               </Grid>
               <Grid item className="grid-item" sm={9} xs={9} align="left">
                 <div className="user-page-title">
@@ -380,7 +378,7 @@ class User extends React.Component {
             {/* First Row */}
             <Grid container className="row">
               <Grid item className="grid-item" sm={1} xs={1} align="left">
-                <img className="user-profile-image" src={userProfileImageURL} />
+                <img className="user-profile-image" src={userProfileImageURL} alt="User Profile Image"/>
               </Grid>
               <Grid item className="grid-item" sm={9} xs={9} align="left">
                 <div className="user-page-title">
