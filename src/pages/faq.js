@@ -131,7 +131,7 @@ The event host will contact you if they are interested in your service.
 <p><h3><i>How do I create a contract? </i></h3>
 Contracts help keep track of the agreements made between you and your customer. After your customer hires you, your customer will need to provide you with an Event ID. 
 <br/><br/>
-Visit the create contracts page to get started 
+Visit the <a href="/contracts">contracts</a> page to get started 
 <img src={contract_creation} alt="Creating a Contract"/>
 
 Specify the fees that you and your customer have agreed upon. 
