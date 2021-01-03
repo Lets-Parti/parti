@@ -111,7 +111,7 @@ class Discover extends React.Component {
         
         const nothingFound = 
         <div>
-            <img src={nothing_img} className="nothingImg" alt="Nothing Found Image"/>
+            <img src={nothing_img} className="nothingImg" alt="Nothing Found"/>
             <p>None found.</p>
         </div>
 

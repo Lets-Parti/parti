@@ -34,7 +34,7 @@ class Connections extends React.Component
     {
         const nothingFound = 
         <div>
-            <img src={nothing_img} className="nothingImg"/>
+            <img src={nothing_img} className="nothingImg" alt="Nothing Found"/>
             <p>None found.</p>
         </div>
 

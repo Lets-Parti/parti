@@ -6,7 +6,7 @@ function ErrorNotFound() {
 
   const nothingFound = 
   <div>
-      <img src={nothing_img} className="nothingImg"/>
+      <img src={nothing_img} className="nothingImg" alt="Nothing Found"/>
   </div>
 
   return (

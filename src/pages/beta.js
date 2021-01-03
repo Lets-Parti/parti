@@ -185,14 +185,14 @@ class Beta extends React.Component
                             <p className="description">Parti will help you find the most suitable professionals for your upcoming event. Our platform will connect you with the best professionals and organize all of your event needs in an all-in-one dashboard. </p>
                         </Grid>
 
-                        <iframe className="youtube-demo" src="https://www.youtube.com/embed/R6jInZUZuKI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe className="youtube-demo" src="https://www.youtube.com/embed/R6jInZUZuKI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen alt="youtubeDemo"></iframe>
                         
                         <Grid className="indiana-scroll" align="center">
                             <ScrollContainer className="scroll-container" horizontal hideScrollbars >
                             {frames_clients.map(frame => 
                             (
                                 <div className="indiana-frame">
-                                    <img src={frame} className="indiana-frame-picture" />
+                                    <img src={frame} className="indiana-frame-picture" alt="Indiana"/>
                                 </div>
                             ))
                             }
@@ -204,14 +204,14 @@ class Beta extends React.Component
                             <p className="description">We help professionals like you build a brand, market, and grow your event entertainment business. Parti enables direct market outreach and allows you to discover events that are looking for your service.</p>
                         </Grid>
 
-                        <iframe className="youtube-demo" src="https://www.youtube.com/embed/ijRfHZt87EI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe className="youtube-demo" src="https://www.youtube.com/embed/ijRfHZt87EI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen alt="youtubeDemo"></iframe>
 
                         <Grid className="indiana-scroll" align="center">
                                 <ScrollContainer className="scroll-container" horizontal hideScrollbars>
                                 {frames_services.map(frame => 
                                 (
                                     <div className="indiana-frame">
-                                        <img src={frame} className="indiana-frame-picture" />
+                                        <img src={frame} className="indiana-frame-picture" alt="Indiana"/>
                                     </div>
                                 ))
                                 }

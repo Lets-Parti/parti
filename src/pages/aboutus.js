@@ -18,8 +18,6 @@ import frame_six from '../resources/cards/frame6.png'
 import ScrollContainer from 'react-indiana-drag-scroll'
 import AboutNoBio from './about/about-nobio';
 
-import axios from 'axios';
-
 class Beta extends React.Component
 {
     constructor()
@@ -27,11 +25,6 @@ class Beta extends React.Component
         super()
         this.state = {description: ''}
         this.eventChange = this.eventChange.bind(this)
-        // this.expandMatthew = this.expandMatthew.bind(this)
-        // this.expandAnish = this.expandAnish.bind(this)
-        // this.expandJake = this.expandJake.bind(this)
-        // this.expandAaric = this.expandAaric.bind(this)
-        // this.expandMax = this.expandMax.bind(this)
     }   
 
     eventChange(event)
@@ -130,7 +123,7 @@ class Beta extends React.Component
                             <p className="description">Parti will help you find the most suitable professionals for your upcoming event. Our platform will connect you with the best professionals and organize all of your event needs in an all-in-one dashboard. </p>
                         </Grid>
 
-                        <iframe className="youtube-demo" src="https://www.youtube.com/embed/R6jInZUZuKI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe className="youtube-demo" src="https://www.youtube.com/embed/R6jInZUZuKI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="YoutubeDemo"></iframe>
                         
                         <Grid className="indiana-scroll" align="center">
                             <ScrollContainer className="scroll-container" horizontal hideScrollbars >
@@ -149,7 +142,7 @@ class Beta extends React.Component
                             <p className="description">We help vendors build a brand, market, and grow. Parti enables you to reach out to events that are looking for your service. Expand your business with our direct market outreach system.</p>
                         </Grid>
 
-                        <iframe className="youtube-demo" src="https://www.youtube.com/embed/ijRfHZt87EI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe className="youtube-demo" src="https://www.youtube.com/embed/ijRfHZt87EI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="YoutubeDemo"></iframe>
 
                         <Grid className="indiana-scroll" align="center">
                                 <ScrollContainer className="scroll-container" horizontal hideScrollbars>
@@ -174,9 +167,6 @@ class Beta extends React.Component
                             {frames_founders}
                             </ScrollContainer>
                         </div>
-                        {/* <Grid align="center" border={1} sm={8} xs={12}>
-                          <p className="description">{this.state.description}</p>
-                        </Grid> */}
                     </div>
                 </Grid>
             </div>
