@@ -18,7 +18,6 @@ import BrushIcon from '@material-ui/icons/Brush';
 import BusinessIcon from '@material-ui/icons/Business';
 
 import { connect } from 'react-redux'
-import { makeStyles,withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types'
 
 import axios from 'axios';
