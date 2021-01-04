@@ -69,13 +69,13 @@ class Discover extends React.Component {
             const query = {
                 serviceTags: tagsArray.join()
             }
-           this.props.discover(query, this.state.page);
+           this.props.discover(query, 1);
          }else
          {
              const query = {
                  serviceTags: ''
              }
-             this.props.discover(query, this.state.page);
+             this.props.discover(query, 1);
          }
      }
 
