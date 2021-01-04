@@ -164,8 +164,13 @@ class ContractCard extends Component
 
                         <Grid item sm={12} xs={12}><hr /></Grid>
 
-                        <Grid item sm={12} xs={12}>
+                        <Grid item sm={9} xs={9}>
                             {signedStatus}
+                        </Grid>
+                        <Grid item sm={3} xs={3}>
+                            {signButton}
+                        </Grid>
+                        <Grid item sm={12} xs={12}>
                             <p>Event Host: @{this.state.clientHandle}</p>
                             <p>Event ID: <span className="code"><a href={`/events/${this.state.eventID}`} className="invisible-link">{this.state.eventID}</a></span></p>
                             <Link href={`/events/${this.state.eventID}`}>
@@ -177,9 +182,8 @@ class ContractCard extends Component
                                 </Button>
                             </Link>
                         </Grid>
-                        <Grid item sm={12} xs={12} align="right">
-                            {signButton}
-                        </Grid>
+
+
                         <Grid item sm={12} xs={12}><hr /></Grid>
 
                         <Grid item sm={12} xs={12}>
