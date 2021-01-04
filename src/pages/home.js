@@ -18,6 +18,8 @@ import BusinessIcon from '@material-ui/icons/Business';
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
+import {firebaseAnalytics} from '../utils/firebase'
+
 const discoverCategories = [
   ["DJ", <AlbumIcon fontSize="large"/>],
   ["Photography", <PhotoCameraIcon fontSize="large"/>],
