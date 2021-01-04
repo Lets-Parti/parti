@@ -5,6 +5,7 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Card from '@material-ui/core/Card';
 import '../../stylesheets/feedback.css';
+import './modalcomponent.css'
 
 import { connect } from 'react-redux'
 import { createConnect } from '../../redux/actions/dataActions'
@@ -56,6 +57,7 @@ class ConnectModal extends React.Component {
                         <Grid align="center">
                             <div className="page-content">
                                 <div className="sign-up-form">
+                                    <div className="modal">
                                     <p className="title">Connect with @{this.props.userHandle}</p>
                                     <p className="lightText">Send a connect request to {this.props.userHandle}. Your phone number and email address will automatically be sent to {this.props.userHandle}.</p>
                                     <div className="feedback-form-container">
@@ -95,6 +97,7 @@ class ConnectModal extends React.Component {
                                             Cancel
                                         </Button>
                                         <div className="form-seperator" />
+                                    </div>
                                     </div>
                                 </div>
                             </div>
