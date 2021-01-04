@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
 
   aboutContainer: {
       width: 250,
-      height: 400,
+      height: 350,
       borderRadius: 5,
       border: '1px solid #31B6EC',
       padding: 15,
