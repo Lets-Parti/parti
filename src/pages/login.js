@@ -15,8 +15,6 @@ import { connect } from 'react-redux'
 import { loginUser } from '../redux/actions/userActions'
 import PropTypes from 'prop-types'
 
-import {firebaseAnalytics} from '../utils/firebase'
-
 class Login extends React.Component
 {
     constructor()

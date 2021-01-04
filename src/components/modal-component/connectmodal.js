@@ -87,6 +87,14 @@ class ConnectModal extends React.Component {
                                             Submit
                                         </Button>
                                         <div className="form-seperator" />
+                                        <Button
+                                            variant="outlined"
+                                            color="primary"
+                                            onClick={this.props.handleClose}
+                                        >
+                                            Cancel
+                                        </Button>
+                                        <div className="form-seperator" />
                                     </div>
                                 </div>
                             </div>
