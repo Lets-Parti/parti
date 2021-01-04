@@ -196,12 +196,12 @@ class Home extends React.Component {
         </div>
       </Grid>
     )
-    let conditional_discover = null;
-    if (authenticated && authenticatedUser.type === "service") {
-      conditional_discover = service_discover;
-    } else {
-      conditional_discover = client_discover;
-    }
+    let conditional_discover = client_discover;
+    // if (authenticated && authenticatedUser.type === "service") {
+    //   conditional_discover = service_discover;
+    // } else {
+    //   conditional_discover = client_discover;
+    // }
 
     let homepage_contents = (
       <div className="homePage">

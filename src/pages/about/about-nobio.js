@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
   intro: {
     fontFamily: '"Roboto", sans-serif',
     margin: '1rem',
-    textAlign: "center"
+    textAlign: "center", 
   },
   portrait: {
     borderRadius: '50%',

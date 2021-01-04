@@ -4,12 +4,6 @@
   margin-bottom: 200px;
 }
 
-.about-page-content {
-  width: 85%;
-  font-family: "Nunito", sans-serif;
-  margin-bottom: 400px;
-}
-
 .title {
   font-size: 2rem;
 }
@@ -68,11 +62,6 @@
 
 @media (max-width: 800px) {
   .page-content {
-    width: 95%;
-    font-family: "Nunito", sans-serif;
-  }
-
-  .about-page-content {
     width: 95%;
     font-family: "Nunito", sans-serif;
   }

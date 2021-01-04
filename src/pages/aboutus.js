@@ -117,7 +117,7 @@ class Beta extends React.Component
         return(
             <div>
                 <Grid align="center">
-                    <div className="about-page-content">
+                    <div className="page-content-beta">
                         <Grid align="center">
                             <h1>What is Parti?</h1>
                             <p className="description">Parti will help you find the most suitable professionals for your upcoming event. Our platform will connect you with the best professionals and organize all of your event needs in an all-in-one dashboard. </p>
