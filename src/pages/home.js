@@ -1,10 +1,12 @@
 import "../stylesheets/common.css";
 import "../stylesheets/home.css";
+import "../stylesheets/beta.css";
 
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import Link from "@material-ui/core/Link";
 import React from "react";
+import TextField from '@material-ui/core/TextField';
 
 import PhotoCameraIcon from '@material-ui/icons/PhotoCamera';
 import AlbumIcon from '@material-ui/icons/Album';
@@ -17,6 +19,8 @@ import BusinessIcon from '@material-ui/icons/Business';
 
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
+
+import axios from 'axios';
 
 const discoverCategories = [
   ["DJ", <AlbumIcon fontSize="large"/>],
@@ -44,11 +48,58 @@ const discoverCategories = [
 // ];
 
 class Home extends React.Component {
-  constructor() {
-    super();
-    this.state = {};
-  }
   
+  constructor()
+    {   
+        super()
+        this.state = {
+            fullName: '', 
+            email: '', 
+            phone: '', 
+            company: '',
+            isSubmitted: false, 
+        }
+        this.eventChange = this.eventChange.bind(this)
+        this.onSubmitForm = this.onSubmitForm.bind(this)
+    }   
+    
+
+    eventChange(event)
+    {
+        this.setState({
+            [event.target.name]: event.target.value
+        })
+    }
+
+    onSubmitForm()
+    {
+        this.setState({
+            isSubmitted: true
+        })
+
+        let dataSentToDB = {
+            fullName: this.state.fullName, 
+            email: this.state.email, 
+            phone: this.state.phone, 
+            company: this.state.company
+        }
+
+        axios.post('/newsletter', JSON.stringify(dataSentToDB),
+        {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(res =>
+        {
+
+        })
+        .catch(err =>
+        {
+            alert('Oops. Something went wrong ;(');
+        })
+    }
+ 
   render() {
     // Deal with checking if user is logged in and which user it is.
     //
@@ -87,7 +138,7 @@ class Home extends React.Component {
           </div>
     
           <div className="bannerButton">
-            <Link href="/about">
+            <Link href="#about">
               <Button variant="outlined" color="primary">
                 Learn More
               </Button>
@@ -119,7 +170,7 @@ class Home extends React.Component {
           </div>
     
           <div className="bannerButton">
-            <Link href="/about">
+            <Link href="#about">
               <Button variant="outlined" color="primary">
                 Learn More
               </Button>
@@ -203,6 +254,17 @@ class Home extends React.Component {
     //   conditional_discover = client_discover;
     // }
 
+    let stay_updated_button = this.state.isSubmitted ? 
+        <p>Thank you! We will keep you updated!</p> 
+        : 
+        <Button
+            variant="contained"
+            color="primary"
+            onClick={this.onSubmitForm}
+            >
+            Join
+        </Button>
+
     let homepage_contents = (
       <div className="homePage">
           <Grid container spacing={0}>
@@ -214,17 +276,17 @@ class Home extends React.Component {
 
             {/*About Us*/}
             <Grid container align="center">
-              <div className="home-sub-white">
+              <div id="about" className="home-sub-white">
                 <p className="subBannerTitle">
                   <b>ABOUT PARTI</b>
                 </p>
 
-                <p className="home-about-parti">
+                <p>
                   <b>Hosting an event is stressful.</b> Parti will assist you in finding professional 
                   services and make the event planning process easy. 
                 </p>
 
-                <p className="home-about-parti">
+                <p>
                   Are you a vendor? Parti enables you to <b>directly seek customers</b>. See who is in 
                   need of your services nearby.
                 </p>
@@ -244,6 +306,45 @@ class Home extends React.Component {
                     </Button>
                   </Link>
                 </div>
+              </div>
+            </Grid>
+
+            {/*Stay Updated*/}
+            <Grid container align="center">
+              <div className="home-sub-light">
+                <p className="subBannerTitle">
+                  <b>STAY UPDATED</b>
+                </p>
+                <p><i>Enter your email to get updates about Parti. If you are a vendor, be sure to add your company name.</i></p>
+
+                <div className="beta-form">
+                                <TextField
+                                    label="Email" 
+                                    variant="outlined" 
+                                    size="small" 
+                                    name='email'
+                                    required='true'
+                                    fullWidth
+                                    onChange={this.eventChange}
+                                    value={this.state.email}
+                                    />
+                                <div className="seperator" />
+                                <TextField
+                                    label="Company (optional)" 
+                                    variant="outlined" 
+                                    size="small" 
+                                    name='company'
+                                    fullWidth
+                                    onChange={this.eventChange}
+                                    value={this.state.company}
+                                    />
+                                <div className="seperator" />
+                            {stay_updated_button}
+                            </div>     
+
+                
+
+                
               </div>
             </Grid>
 
@@ -281,7 +382,6 @@ class Home extends React.Component {
     else {
       homePage = nothing
     }
-    
     return (
       <div>
         {homePage}
