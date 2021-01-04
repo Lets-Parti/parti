@@ -41,6 +41,14 @@
   padding-bottom: 80px;
 }
 
+.home-sub-light {
+  background-color: #f4f4f4;
+  color: black;
+  width: 100%;
+  padding: 100px;
+  padding-bottom: 80px;
+}
+
 .home-sub-white {
   background-color: white;
   color: black;
