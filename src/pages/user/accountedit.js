@@ -47,7 +47,7 @@ class AccountEdit extends React.Component
         this.onDeleteMediaImage = this.onDeleteMediaImage.bind(this); 
         this.handleChangeSelect = this.handleChangeSelect.bind(this); 
     }   
-
+    
     onUpdateProfile()
     {
 

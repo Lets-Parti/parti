@@ -72,6 +72,7 @@ class Login extends React.Component
             variant="contained"
             color="primary"
             onClick={this.onSubmitForm}
+            type="submit"
             >
             Log In
         </Button>
@@ -81,6 +82,7 @@ class Login extends React.Component
                 <Grid align="center">
                     <div className="page-content">
                         <div className="sign-up-form">
+                        <form onSubmit={this.onSubmitForm}>
                         <p className="title">Log In</p>
                         <p className="lightText">Log in to your Parti profile</p>
                             <div className="sign-up-form-container">
@@ -117,6 +119,7 @@ class Login extends React.Component
                                 <div className="form-seperator" />
                                 <p>Don't have an account? <a href="/signup">Sign up</a></p>
                             </div>
+                            </form>
                         </div>
                     </div>
                 </Grid>

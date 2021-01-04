@@ -124,6 +124,7 @@ class SignUp extends React.Component
             variant="contained"
             color="primary"
             onClick={this.onSubmitForm}
+            type="submit"
             >
             Join Parti
         </Button>
@@ -351,6 +352,8 @@ class SignUp extends React.Component
         <div className="form-seperator" />
         <p>Have an account? <a href="/login">Sign in</a></p>
     </div>
+
+
         return(
             <div>
                 <Grid align="center">
@@ -358,7 +361,9 @@ class SignUp extends React.Component
                         <div className="sign-up-form">
                         <p className="title">Sign Up</p>
                         <p className="lightText">Join the Arizona Beta</p>
-                        {signUpForm}
+                        <form onSubmit={this.onSubmitForm}>
+                            {signUpForm}   
+                        </form>
                         </div>
                     </div>
                 </Grid>
