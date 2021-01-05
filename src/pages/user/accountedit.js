@@ -115,6 +115,7 @@ class AccountEdit extends React.Component
     {
         const fileInput = document.getElementById('imageInput');
         fileInput.click(); 
+        firebaseAnalytics.logEvent(`profileupload_${this.props.user.user.userHandle}`);
     }
 
     async handleProfileImageChange(event)
@@ -131,6 +132,7 @@ class AccountEdit extends React.Component
     {
         const fileInput = document.getElementById('imageGalleryInput'); 
         fileInput.click(); 
+        
     }
     
     async handleMediaImageChange(event)

@@ -34,6 +34,7 @@ class Contracts extends React.Component
 
     createNewContract()
     {
+        firebaseAnalytics.logEvent(`newcontract_visited_${this.props.user.user.userHandle}`)
         window.location.href = "/contracts/new"
     }
 

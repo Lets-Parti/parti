@@ -80,7 +80,6 @@ class SignUp extends React.Component
         this.setState({
             type: 'service'
         })
-        firebaseAnalytics.logEvent("signup_switchToService"); 
     }
 
     handleChangeSelect(name, value)
