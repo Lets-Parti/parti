@@ -102,7 +102,7 @@ class SignUp extends React.Component
         this.setState({
             type
         })
-        firebaseAnalytics.logEvent("signup_visited")
+        firebaseAnalytics.logEvent("signup_visited");
     }
 
     componentWillReceiveProps(nextProps)
