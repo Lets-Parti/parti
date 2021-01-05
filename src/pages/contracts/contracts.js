@@ -13,14 +13,18 @@ import PropTypes from 'prop-types'
 //Resources
 import nothing_img from '../../resources/images/nothing_found.png'
 
+//Analytics
+import {firebaseAnalytics} from '../../utils/firebase'
+
 class Contracts extends React.Component
 {
     constructor()
     {
         super()
         this.state = {
-            
+
         }
+        this.analyticsTriggered = false; 
     }
 
     componentDidMount()
@@ -33,10 +37,19 @@ class Contracts extends React.Component
         window.location.href = "/contracts/new"
     }
 
+    triggerAnalytics(data)
+    {
+        if(!this.analyticsTriggered)
+        {
+            firebaseAnalytics.logEvent(`viewcontracts_${data.userHandle}`);
+            this.analyticsTriggered = true; 
+        }
+    }
+
     render()
     {
         const {contracts, isLoading} = this.props.data; 
-        const {authenticated, user} = this.props.user
+        const {authenticated, user} = this.props.user;
 
         const nothingFound = 
         <div>
@@ -61,6 +74,11 @@ class Contracts extends React.Component
                     dataDisplay.push(<ContractCard key={contract.contractID} data={contract}/>)    
                 });
             }
+        }
+
+        if(user.userHandle)
+        {
+            this.triggerAnalytics(user); 
         }
         
         let newContractsButton = (authenticated && user.type === 'service') ?

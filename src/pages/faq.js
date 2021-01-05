@@ -17,9 +17,15 @@ import vendor_listing from "../resources/faq/vendor_listing.png"
 //Icons 
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
-
+import {firebaseAnalytics} from '../utils/firebase'
 
 class FAQ extends React.Component {
+
+  componentDidMount()
+  {
+    firebaseAnalytics.logEvent("faq_visited");
+  }
+
   render() {
     return (
       <div className="info-page">

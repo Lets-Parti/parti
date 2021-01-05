@@ -1,7 +1,7 @@
 import firebase from "@firebase/app";
 import "@firebase/analytics"
 
-export const parti_development_config = {
+export const FIREBASE_DEV_CONFIG = {
     apiKey: "AIzaSyAJvJxSfr3WrfxpHLVnEhfoPl_o3BdfRcM",
     authDomain: "lets-parti.firebaseapp.com",
     databaseURL: "https://lets-parti.firebaseio.com",
@@ -9,10 +9,10 @@ export const parti_development_config = {
     storageBucket: "lets-parti.appspot.com",
     messagingSenderId: "922483274193",
     appId: "1:922483274193:web:7576441a675d50bb8470f0",
-    measurementId: "G-17JK2V8HFB", 
+    measurementId: "G-17JK2V8HFB"
   };
   
-  export const parti_production_config = {
+  export const FIREBASE_PROD_CONFIG = {
     apiKey: "AIzaSyDLSFcazLn_MDtlilgasFsEFPKn13t14jc",
     authDomain: "parti-production.firebaseapp.com",
     projectId: "parti-production",
@@ -22,6 +22,6 @@ export const parti_development_config = {
     measurementId: "G-74R0FZEWFC"
   }
 
-firebase.initializeApp(parti_development_config);
+  firebase.initializeApp(FIREBASE_DEV_CONFIG); 
 
 export const firebaseAnalytics = firebase.analytics();

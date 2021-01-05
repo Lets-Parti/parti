@@ -8,7 +8,7 @@ function ErrorNotFound() {
   <div>
       <img src={nothing_img} className="nothingImg" alt="Nothing Found"/>
   </div>
-
+  
   return (
     <center>
       <div className="page-content">

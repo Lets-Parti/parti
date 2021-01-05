@@ -23,7 +23,6 @@ import PropTypes from 'prop-types'
 import axios from 'axios';
 
 import {firebaseAnalytics} from '../utils/firebase'
-import firebase from "@firebase/app";
 
 const discoverCategories = [
   ["DJ", <AlbumIcon fontSize="large"/>],

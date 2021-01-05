@@ -18,6 +18,8 @@ import frame_six from '../resources/cards/frame6.png'
 import ScrollContainer from 'react-indiana-drag-scroll'
 import AboutNoBio from './about/about-nobio';
 
+import {firebaseAnalytics} from '../utils/firebase'
+
 class Beta extends React.Component
 {
     constructor()
@@ -26,6 +28,11 @@ class Beta extends React.Component
         this.state = {description: ''}
         this.eventChange = this.eventChange.bind(this)
     }   
+
+    componentDidMount()
+    {
+        firebaseAnalytics.logEvent("about_visited")
+    }
 
     eventChange(event)
     {

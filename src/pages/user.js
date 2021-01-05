@@ -26,12 +26,13 @@ import InstagramIcon from '@material-ui/icons/Instagram';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import WebIcon from '@material-ui/icons/Web';
 
-
 //Redux
 import { getUserByHandle, addTheReview } from '../redux/actions/dataActions'
 
 //Image Gallery (From Online) {https://www.npmjs.com/package/react-image-gallery}
 import ImageGallery from 'react-image-gallery';
+
+import {firebaseAnalytics} from '../utils/firebase'
 
 class User extends React.Component {
   constructor(props) {
@@ -96,6 +97,7 @@ class User extends React.Component {
   componentDidMount() {
     const handle = this.props.match.params.userhandle
     this.props.getUserByHandle(handle)
+    firebaseAnalytics.logEvent(`userpage_visited_${handle}`);
   }
 
   toggleAddReview() {
@@ -103,7 +105,6 @@ class User extends React.Component {
   }
 
   render() {
-
     const { toggleAddReviewComp } = this.state;
     const { user, isLoading } = this.props.data;
     const { authenticated } = this.props.user;

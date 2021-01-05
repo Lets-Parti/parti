@@ -29,6 +29,8 @@ import StaticData from '../../static/static-data'
 //Utils
 import {resizeProfileImage, resizeMediaImage} from '../../utils/imageutils'
 
+//Analytics
+import {firebaseAnalytics} from '../../utils/firebase'  
 
 class AccountEdit extends React.Component
 {
@@ -39,6 +41,7 @@ class AccountEdit extends React.Component
             errors: {},
             onUpdateProfile: false
         }
+        this.analyticsTriggered = false;
         this.onUpdateProfile = this.onUpdateProfile.bind(this); 
         this.eventChange = this.eventChange.bind(this); 
         this.onSubmitProfile = this.onSubmitProfile.bind(this); 
@@ -46,11 +49,11 @@ class AccountEdit extends React.Component
         this.handleMediaImageChange = this.handleMediaImageChange.bind(this); 
         this.onDeleteMediaImage = this.onDeleteMediaImage.bind(this); 
         this.handleChangeSelect = this.handleChangeSelect.bind(this); 
+        this.triggerAnalytics = this.triggerAnalytics.bind(this); 
     }   
     
     onUpdateProfile()
     {
-
         let tags = this.props.user.user.tags; 
         let serviceTag = []; 
 
@@ -76,6 +79,16 @@ class AccountEdit extends React.Component
         this.setState({
             user
         })
+    }
+
+    triggerAnalytics(user)
+    {
+        if(!this.analyticsTriggered)
+        {
+            console.log(`analytics ${user.userHandle}`)
+            firebaseAnalytics.logEvent(`accountedit_${user.userHandle}`);
+            this.analyticsTriggered = true; 
+        }
     }
 
     onSubmitProfile()
@@ -154,6 +167,7 @@ class AccountEdit extends React.Component
     render()
     {   
         let {isLoading} = this.props.UI; 
+        const {user} = this.props.user;
         let circularProgress = isLoading ? <CircularProgress /> : null; 
         let userData = null
         let userDataForm = null
@@ -161,6 +175,11 @@ class AccountEdit extends React.Component
         let galleryContent = null
         let buttonDisplay = null; 
         
+        if(user.userHandle)
+        {
+            this.triggerAnalytics(user); 
+        }
+
         if(!isLoading)
         {
             buttonDisplay = this.state.onUpdateProfile ? 
@@ -181,9 +200,8 @@ class AccountEdit extends React.Component
             </Button>
         }
 
-        if(this.props.user.user && !isLoading)
+        if(user && !isLoading)
         {
-            let user = this.props.user.user
             if(user.type === 'client')
             {
                 let joinedDate = user.createdAt.split('T')[0]
@@ -202,7 +220,7 @@ class AccountEdit extends React.Component
                     <p className="user-info"><LocationOnIcon fontSize="small" />{user.zipcode}</p>
                     <p className="user-info"><EventIcon fontSize="small" />Joined {joinedDate}</p>
                 </div>
-            }else if(user.type === 'service')
+            } else if(user.type === 'service')
             {
                 let joinedDate = user.createdAt.split('T')[0]
                 userData = 
