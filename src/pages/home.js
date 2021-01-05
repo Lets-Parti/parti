@@ -22,6 +22,9 @@ import PropTypes from 'prop-types'
 
 import axios from 'axios';
 
+import {firebaseAnalytics} from '../utils/firebase'
+import firebase from "@firebase/app";
+
 const discoverCategories = [
   ["DJ", <AlbumIcon fontSize="large"/>],
   ["Photography", <PhotoCameraIcon fontSize="large"/>],
@@ -63,6 +66,10 @@ class Home extends React.Component {
         this.onSubmitForm = this.onSubmitForm.bind(this)
     }   
     
+    componentDidMount()
+    {
+      firebaseAnalytics.logEvent("home_visited");
+    }
 
     eventChange(event)
     {
