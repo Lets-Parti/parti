@@ -158,7 +158,7 @@ class User extends React.Component {
       if(instagram)
       {
         socialButtons.push(
-          <Link href={`https://www.instagram.com/${instagram}`}>
+          <Link href={`https://www.instagram.com/${instagram}`} target="_blank">
             <Tooltip title="Instagram">
               <IconButton aria-label="delete" color="primary">
                 <InstagramIcon />
@@ -171,7 +171,7 @@ class User extends React.Component {
       if(facebook)
       {
         socialButtons.push(
-          <Link href={facebook}>
+          <Link href={facebook} target="_blank">
             <Tooltip title="Facebook">
             <IconButton aria-label="delete" color="primary">
               <FacebookIcon />
@@ -184,7 +184,7 @@ class User extends React.Component {
       if(website)
       {
         socialButtons.push(
-          <Link href={website}>
+          <Link href={website} target="_blank">
           <Tooltip title="Website">
             <IconButton aria-label="delete" color="primary">
               <WebIcon />
