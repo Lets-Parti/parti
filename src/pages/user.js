@@ -14,6 +14,7 @@ import TextField from '@material-ui/core/TextField';
 import { Rating } from '@material-ui/lab';
 import Link from '@material-ui/core/Link';
 import Tooltip from '@material-ui/core/Tooltip';
+import Box from '@material-ui/core/Box';
 
 import ConnectModal from '../components/modal-component/connectmodal'
 import { connect } from 'react-redux'
@@ -131,7 +132,7 @@ class User extends React.Component {
       </Button>
 
     let smallChatButton = authenticated ?
-      <IconButton aria-label="message" color="primary" onClick={this.modalOpen}>
+      <IconButton aria-label="message" color="primary" onClick={this.openModal}>
         <MessageIcon />
       </IconButton>
       :
@@ -230,6 +231,7 @@ class User extends React.Component {
       })
 
       let createReview =
+        <>
         <Grid container sm={12} xs={12} spacing={1}>
           <Grid item sm={12} xs={12}>
             <h2>Add Your Review</h2>
@@ -252,29 +254,32 @@ class User extends React.Component {
               rows={4}
             />
           </Grid>
-          <Grid item sm={2} xs={2}>
-            <Button
-              variant="contained"
-              color="primary"
-              startIcon={<ReviewIcon />}
-              display='none'
-              onClick={this.handleSubmit}
-            >
-              Submit
-          </Button>
-          </Grid>
-          <Grid item sm={2} xs={2}>
-            <Button
-              variant="contained"
-              color="secondary"
-              startIcon={<ReviewIcon />}
-              display='none'
-              onClick={() => this.toggleAddReview()}
-            >
-              Cancel
-          </Button>
-          </Grid>
         </Grid>
+
+        <Box mr={2} mt={2}>
+          <Button
+          variant="contained"
+          color="primary"
+          startIcon={<ReviewIcon />}
+          display='none'
+          onClick={this.handleSubmit}
+          >
+            Submit
+          </Button>
+        </Box>
+        
+        <Box mr={2} mt={2}>
+          <Button
+            variant="contained"
+            color="white"
+            startIcon={<ReviewIcon />}
+            display='none'
+            onClick={() => this.toggleAddReview()}
+          >
+            Cancel
+          </Button>
+        </Box>
+      </>
 
 
       let carouselImages = [];                    //Initiate carousel data 
@@ -357,7 +362,7 @@ class User extends React.Component {
                     </Button>
                   </div>
                   <div className="review-button-small">
-                    <IconButton aria-label="delete" color="primary">
+                    <IconButton aria-label="delete" color="primary" onClick={() => this.toggleAddReview()}>
                       <ReviewIcon />
                     </IconButton>
                   </div>
