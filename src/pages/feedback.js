@@ -113,8 +113,6 @@ class Feedback extends React.Component
                                 <div className="form-seperator"  />  
                                 <div className="form-seperator" />
 
-
-
                                 <TextField
                                     label="Email (Optional)" 
                                     variant="outlined" 
@@ -140,11 +138,8 @@ class Feedback extends React.Component
                                     />
                                 <div className="form-seperator" />
                                 <div className="form-seperator" />
-                            
                                 {ButtonDisplay}
-
                                 <div className="form-seperator" />
-                               
                             </div>
                         </div>
                     </div>

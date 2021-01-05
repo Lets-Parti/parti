@@ -32,6 +32,7 @@ import { getUserByHandle, addTheReview } from '../redux/actions/dataActions'
 //Image Gallery (From Online) {https://www.npmjs.com/package/react-image-gallery}
 import ImageGallery from 'react-image-gallery';
 
+//Analytics
 import {firebaseAnalytics} from '../utils/firebase'
 
 class User extends React.Component {
@@ -43,7 +44,6 @@ class User extends React.Component {
       reviewBody: '',
       stars: 0,
       modalOpen: false,
-      // userHandle: this.props.data.userHandle
     };
     this.handleTextChange = this.handleTextChange.bind(this)
     this.handleStarsChange = this.handleStarsChange.bind(this)
@@ -212,7 +212,6 @@ class User extends React.Component {
       else {
         ratingDisplay = <span>{averageStarsDisplay}({numberOfReviews})</span>
       }
-
 
       let starsDisplay;
       let reviewCards = [];
