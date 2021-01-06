@@ -117,8 +117,19 @@ class Beta extends React.Component
                     />
             </div>
         )
+        const Nicole_Card = (
+            <div className="indiana-frame" /*onClick={this.expandMax}*/>
+                <AboutNoBio 
+                    name="Nicole Bohney"
+                    title="Digital Marketing & Social Media Strategist"
+                    from="Tuscon, AZ"
+                    college="Arizona State University"
+                    num={6}
+                    />
+            </div>
+        )
 
-        const frames_founders = [Matthew_Card, Anish_Card, Jake_Card, Aaric_Card, Prachi_Card, Fiyi_Card]; // _h for headshot
+        const frames_founders = [Matthew_Card, Anish_Card, Jake_Card, Aaric_Card, Prachi_Card, Fiyi_Card, Nicole_Card]; // _h for headshot
 
         return(
             <div>
