@@ -35,7 +35,6 @@ import ImageGallery from 'react-image-gallery';
 
 //Analytics
 import {firebaseAnalytics} from '../utils/firebase'
-import firebase from '@firebase/app';
 
 class User extends React.Component {
   constructor(props) {
@@ -101,8 +100,9 @@ class User extends React.Component {
 
   componentDidMount() {
     const handle = this.props.match.params.userhandle;
-    this.props.getUserByHandle(handle);
     firebaseAnalytics.logEvent(`user_visited_${handle}`);
+
+    this.props.getUserByHandle(handle);
   }
 
   toggleAddReview() {

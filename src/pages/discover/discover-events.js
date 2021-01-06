@@ -15,7 +15,6 @@ import PropTypes from 'prop-types'
 //Resources 
 import nothing_img from '../../resources/images/nothing_found.png'
 
-
 class DiscoverEvents extends React.Component
 {
     constructor()

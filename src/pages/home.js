@@ -68,7 +68,7 @@ class Home extends React.Component {
     {
       firebaseAnalytics.logEvent("home_visited");
     }
-    
+
     eventChange(event)
     {
         this.setState({
@@ -97,7 +97,7 @@ class Home extends React.Component {
         })
         .then(res =>
         {
-
+            console.log('Newsletter submitted');
         })
         .catch(err =>
         {

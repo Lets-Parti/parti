@@ -169,17 +169,18 @@ class AccountEdit extends React.Component
     {   
         let {isLoading} = this.props.UI; 
         const {user} = this.props.user;
+        
+        if(user.userHandle)
+        {
+            this.triggerAnalytics(user); 
+        }
+
         let circularProgress = isLoading ? <CircularProgress /> : null; 
         let userData = null
         let userDataForm = null
         let imageGallery = null
         let galleryContent = null
         let buttonDisplay = null; 
-        
-        if(user.userHandle)
-        {
-            this.triggerAnalytics(user); 
-        }
 
         if(!isLoading)
         {

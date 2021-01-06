@@ -16,8 +16,6 @@ import { connect } from 'react-redux'
 import { createFeedback } from '../redux/actions/dataActions'
 import PropTypes from 'prop-types'
 
-import {firebaseAnalytics} from '../utils/firebase'
-
 class Feedback extends React.Component
 {
     constructor()
@@ -33,11 +31,6 @@ class Feedback extends React.Component
         this.eventChange = this.eventChange.bind(this)
         this.onSubmitForm = this.onSubmitForm.bind(this)
     }   
-
-    componentDidMount()
-    {
-        firebaseAnalytics.logEvent("feedback_visited"); 
-    }
 
     eventChange(event)
     {
