@@ -15,8 +15,6 @@ import { connect } from 'react-redux'
 import { loginUser } from '../redux/actions/userActions'
 import PropTypes from 'prop-types'
 
-import {firebaseAnalytics} from '../utils/firebase'
-
 class Login extends React.Component
 {
     constructor()
@@ -54,7 +52,6 @@ class Login extends React.Component
             emailOrHandle: this.state.emailOrHandle, 
             password: this.state.password
         }
-        firebaseAnalytics.logEvent(`login_attempt_${data.emailOrHandle}`);
         this.props.loginUser(data, this.props.history);
     }
 
