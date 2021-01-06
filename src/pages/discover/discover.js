@@ -19,6 +19,9 @@ import StaticData from '../../static/static-data'
 //images 
 import nothing_img from '../../resources/images/nothing_found.png'
 
+//Analytics
+import {firebaseAnalytics} from '../../utils/firebase'
+
 class Discover extends React.Component {
     constructor() {
         super()
@@ -33,6 +36,7 @@ class Discover extends React.Component {
 
     componentDidMount() 
     {
+        firebaseAnalytics.logEvent('discover_visited');
         let URLQuery = this.props.match.params.query;
         let query; 
         

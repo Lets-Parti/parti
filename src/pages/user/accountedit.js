@@ -50,6 +50,7 @@ class AccountEdit extends React.Component
         this.onDeleteMediaImage = this.onDeleteMediaImage.bind(this); 
         this.handleChangeSelect = this.handleChangeSelect.bind(this); 
         this.triggerAnalytics = this.triggerAnalytics.bind(this); 
+        this.onClickProfile = this.onClickProfile.bind(this); 
     }   
     
     onUpdateProfile()
@@ -85,14 +86,14 @@ class AccountEdit extends React.Component
     {
         if(!this.analyticsTriggered)
         {
-            console.log(`analytics ${user.userHandle}`)
-            firebaseAnalytics.logEvent(`accountedit_${user.userHandle}`);
+            firebaseAnalytics.logEvent(`profile_edit_visited_${user.userHandle}`);
             this.analyticsTriggered = true; 
         }
     }
 
     onSubmitProfile()
     {
+        firebaseAnalytics.logEvent(`profile_edit_submitted_${this.state.user.userHandle}`);
         this.props.updateUserProfile(this.state.user, this.state.user.type); 
     }
 
@@ -113,9 +114,9 @@ class AccountEdit extends React.Component
     //------ Handle Profile Image Change --------
     onClickProfile(event)
     {
+        firebaseAnalytics.logEvent(`profile_picture_edit_${this.props.user.user.userHandle}`);
         const fileInput = document.getElementById('imageInput');
         fileInput.click(); 
-        firebaseAnalytics.logEvent(`profileupload_${this.props.user.user.userHandle}`);
     }
 
     async handleProfileImageChange(event)
@@ -132,12 +133,10 @@ class AccountEdit extends React.Component
     {
         const fileInput = document.getElementById('imageGalleryInput'); 
         fileInput.click(); 
-        
     }
     
     async handleMediaImageChange(event)
     {
-        console.log(this.props.user.user.mediaImages.length)
         if(this.props.user.user.mediaImages.length >= StaticData.MAX_MEDIA_IMAGES)
         {
             alert(`Cannot have more than ${StaticData.MAX_MEDIA_IMAGES} images in gallery`);

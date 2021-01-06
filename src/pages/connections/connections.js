@@ -38,21 +38,26 @@ class Connections extends React.Component
     {
         if(!this.analyticsTriggered)
         {
-            firebaseAnalytics.logEvent(`viewconnections_${user.userHandle}`);
+            firebaseAnalytics.logEvent(`connects_visited_${user.userHandle}`);
             this.analyticsTriggered = true; 
         }
     }
 
     render()
     {
+        const {connects, isLoading} = this.props.data; 
+        const {user} = this.props.user;
+
+        if(user.userHandle)
+        {
+            this.triggerAnalytics(user); 
+        }
+
         const nothingFound = 
         <div>
             <img src={nothing_img} className="nothingImg" alt="Nothing Found"/>
             <p>None found.</p>
         </div>
-
-        const {connects, isLoading} = this.props.data; 
-        const {user} = this.props.user;
 
         let dataDisplay;
         if(isLoading)
@@ -73,10 +78,7 @@ class Connections extends React.Component
             }
         }
 
-        if(user.userHandle)
-        {
-            this.triggerAnalytics(user); 
-        }
+
         
         return(
             <div>

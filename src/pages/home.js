@@ -35,7 +35,6 @@ const discoverCategories = [
   ["Petting Zoo", <PetsIcon fontSize="large"/>]
 ];
 
-
 // const testimonials = [
 //   {
 //     name: "Person 1",
@@ -69,7 +68,7 @@ class Home extends React.Component {
     {
       firebaseAnalytics.logEvent("home_visited");
     }
-
+    
     eventChange(event)
     {
         this.setState({

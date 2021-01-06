@@ -12,6 +12,9 @@ import PropTypes from 'prop-types'
 //Resources
 import nothing_img from '../../resources/images/nothing_found.png'
 
+//Analytics
+import {firebaseAnalytics} from '../../utils/firebase'
+
 class Events extends React.Component
 {
     constructor()
@@ -20,6 +23,7 @@ class Events extends React.Component
         this.state = {
             
         }
+        this.analyticsTriggered = false; 
     }
 
     componentDidMount()
@@ -27,9 +31,25 @@ class Events extends React.Component
         this.props.getEvents(); 
     }
 
+    triggerAnalytics(user)
+    {
+        if(!this.analyticsTriggered)
+        {
+            console.log(`events_visited_${user.userHandle}`)
+            firebaseAnalytics.logEvent(`events_visited${user.userHandle}`);
+            this.analyticsTriggered = true; 
+        }
+    }
+
     render()
     {
         const {events, isLoading} = this.props.data; 
+        const {user} = this.props.user; 
+
+        if(user.userHandle)
+        {
+            this.triggerAnalytics(user); 
+        }
 
         const nothingFound = 
         <div>
@@ -71,11 +91,13 @@ class Events extends React.Component
 
 Events.propTypes = {
     getEvents: PropTypes.func.isRequired, 
-    data: PropTypes.object.isRequired
+    data: PropTypes.object.isRequired, 
+    user: PropTypes.object.isRequired
 }
 
 const mapStateToProps = (state) => ({
-    data: state.data
+    data: state.data, 
+    user: state.user
 })
 
 const mapActionsToProps = {

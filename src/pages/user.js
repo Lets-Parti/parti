@@ -35,6 +35,7 @@ import ImageGallery from 'react-image-gallery';
 
 //Analytics
 import {firebaseAnalytics} from '../utils/firebase'
+import firebase from '@firebase/app';
 
 class User extends React.Component {
   constructor(props) {
@@ -51,6 +52,7 @@ class User extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
+    this.visitSocial = this.visitSocial.bind(this); 
   }
 
   handleTextChange(event) {
@@ -80,6 +82,8 @@ class User extends React.Component {
   }
 
   openModal() {
+    const userHandle = this.props.data.user.userHandle
+    firebaseAnalytics.logEvent(`message_modal_open_${userHandle}`);
     this.setState({
       modalOpen: true
     })
@@ -96,13 +100,19 @@ class User extends React.Component {
   }
 
   componentDidMount() {
-    const handle = this.props.match.params.userhandle
-    this.props.getUserByHandle(handle)
-    firebaseAnalytics.logEvent(`userpage_visited_${handle}`);
+    const handle = this.props.match.params.userhandle;
+    this.props.getUserByHandle(handle);
+    firebaseAnalytics.logEvent(`user_visited_${handle}`);
   }
 
   toggleAddReview() {
     this.setState({toggleAddReviewComp: !this.state.toggleAddReviewComp});
+  }
+
+  visitSocial(social)
+  {
+    const userHandle = this.props.data.user.userHandle;
+    firebaseAnalytics.logEvent(`${social}_visited_${userHandle}`);
   }
 
   render() {
@@ -162,7 +172,7 @@ class User extends React.Component {
         socialButtons.push(
           <Link href={`https://www.instagram.com/${instagram}`} target="_blank">
             <Tooltip title="Instagram">
-              <IconButton aria-label="delete" color="primary">
+              <IconButton aria-label="delete" color="primary" onClick={() => {this.visitSocial("instagram")}}>
                 <InstagramIcon />
               </IconButton>
             </Tooltip>
@@ -175,7 +185,7 @@ class User extends React.Component {
         socialButtons.push(
           <Link href={facebook} target="_blank">
             <Tooltip title="Facebook">
-            <IconButton aria-label="delete" color="primary">
+            <IconButton aria-label="delete" color="primary" onClick={() => {this.visitSocial("facebook")}}>
               <FacebookIcon />
             </IconButton>
           </Tooltip>
@@ -188,7 +198,7 @@ class User extends React.Component {
         socialButtons.push(
           <Link href={website} target="_blank">
           <Tooltip title="Website">
-            <IconButton aria-label="delete" color="primary">
+            <IconButton aria-label="delete" color="primary" onClick={() => {this.visitSocial("website")}}>
               <WebIcon />
             </IconButton>
           </Tooltip>
