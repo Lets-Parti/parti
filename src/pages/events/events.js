@@ -35,7 +35,6 @@ class Events extends React.Component
     {
         if(!this.analyticsTriggered)
         {
-            console.log(`events_visited_${user.userHandle}`)
             firebaseAnalytics.logEvent(`events_visited${user.userHandle}`);
             this.analyticsTriggered = true; 
         }
