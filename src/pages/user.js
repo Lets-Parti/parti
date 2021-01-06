@@ -100,7 +100,7 @@ class User extends React.Component {
   }
 
   toggleAddReview() {
-    this.setState({ toggleAddReviewComp: !this.state.toggleAddReviewComp });
+    this.setState({toggleAddReviewComp: !this.state.toggleAddReviewComp});
   }
 
   render() {
