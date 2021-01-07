@@ -30,11 +30,6 @@ class Login extends React.Component
         this.onSubmitForm = this.onSubmitForm.bind(this)
     }   
 
-    componentDidMount()
-    {
-        firebaseAnalytics.logEvent("login_visited")
-    }
-
     eventChange(event)
     {
         this.setState({
