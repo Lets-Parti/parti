@@ -106,7 +106,6 @@ class Discover extends React.Component {
     }
 
     render() {
-        console.log(this.state); 
         const { discover, isLoading } = this.props.data;
         
         const nothingFound = 
@@ -117,7 +116,7 @@ class Discover extends React.Component {
 
         let dataDisplay
         if (isLoading) {
-            dataDisplay = <CircularProgress />
+            dataDisplay = <CircularProgress />;
         } else {
             dataDisplay = []
             if(discover.length === 0)
@@ -125,8 +124,8 @@ class Discover extends React.Component {
                 dataDisplay.push(nothingFound); 
             }else
             {
-                discover.forEach(serviceTag => {
-                    dataDisplay.push(<DiscoverCard data={serviceTag} />);
+                discover.forEach(queryTags => {
+                    dataDisplay.push(<DiscoverCard data={queryTags} />);
                 })
             }
         }
