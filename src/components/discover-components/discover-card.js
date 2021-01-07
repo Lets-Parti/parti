@@ -23,6 +23,7 @@ class DiscoverCard extends Component {
             zipcode: this.props.data.zipcode,
             tags: this.props.data.tags,
             mediaImages: this.props.data.mediaImages,
+            mediaOrder: this.props.data.mediaOrder,
             profileImageUrl: this.props.data.imageUrl,
             modalOpen: false
         }
@@ -55,9 +56,10 @@ class DiscoverCard extends Component {
         })
 
         let mediaImagesArray = this.state.mediaImages
+        let highlightPhotoPosition=this.state.mediaOrder[0]
         let highlightPhoto = null;
         if (mediaImagesArray.length > 0) {
-            highlightPhoto = <img className="highlight-photo" src={mediaImagesArray[0]} alt="Highlight"/>
+            highlightPhoto = <img className="highlight-photo" src={mediaImagesArray[highlightPhotoPosition]} alt="Highlight"/>
         }
 
         let chips = [];

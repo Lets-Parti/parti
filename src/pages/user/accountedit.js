@@ -16,6 +16,8 @@ import LocationOnIcon from '@material-ui/icons/LocationOn';
 import EventIcon from '@material-ui/icons/Event';
 import PhoneIcon from '@material-ui/icons/Phone';
 import EmailIcon from '@material-ui/icons/Email';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
 
 //Redux
 import { connect } from 'react-redux'
@@ -46,7 +48,15 @@ class AccountEdit extends React.Component
         this.handleMediaImageChange = this.handleMediaImageChange.bind(this); 
         this.onDeleteMediaImage = this.onDeleteMediaImage.bind(this); 
         this.handleChangeSelect = this.handleChangeSelect.bind(this); 
+        this.onEditImages = this.onEditImages.bind(this);
+        // this.onClickImageUpdate = this.onClickImageUpdate(this); //added
     }   
+
+    onEditImages()
+    {
+        
+        
+    }
     
     onUpdateProfile()
     {
@@ -137,8 +147,9 @@ class AccountEdit extends React.Component
 
     onDeleteMediaImage(event)
     {
-        let targetIndex = event.target.getAttribute("data-index");
-        this.props.deleteMediaImage(targetIndex); 
+        console.log(event)
+        // let targetIndex = event.target.getAttribute("data-index");
+        // this.props.deleteMediaImage(targetIndex); 
     }
 
     componentWillReceiveProps(nextProps)
@@ -224,20 +235,25 @@ class AccountEdit extends React.Component
                 //Generate Image Gallery
                 imageGallery = []; 
                 let index = 0; 
-                user.mediaImages.forEach(imageURL =>
-                {
+                user.mediaOrder.forEach(position =>
+                    {
+                    let imageURL=user.mediaImages[position]
+
                     imageGallery.push(
                         <Grid key={index} sm={6} xs={12}>
                             <div className="gallery-image-container">
-                                <a href="#" onClick={this.onDeleteMediaImage}>
                                     <img className="gallery-image" data-index={index} src={imageURL} alt="Gallery"/>
-                                </a>
+                                    <IconButton onClick={this.onDeleteMediaImage}>
+                                        <CloseIcon/>
+                                    </IconButton>
                             </div>
                         </Grid>
                     )
                     index++; 
                 })
 
+
+                
                 //Generate Gallery Content
                 galleryContent = 
                 <div>
@@ -253,6 +269,13 @@ class AccountEdit extends React.Component
 
                     <div class="divider" />
                     <input type="file" id="imageGalleryInput" onChange={this.handleMediaImageChange} hidden="hidden"/>
+                    <Button
+                variant="outlined"
+                color="primary"
+                onClick={this.onEditImages}
+                >
+                Edit Images
+            </Button>
                     <p className="lightText">Preferred Photo Ratio: (3:2)</p>
                     <Button
                         variant="contained"
