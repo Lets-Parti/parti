@@ -8,8 +8,12 @@ import matthewportrait from './imgs/matthewportrait.jpg';
 import anishportrait from './imgs/anishportrait.jpg';
 import prachiportrait from './imgs/prachi.jpeg';
 import fiyiportrait from './imgs/fiyiportrait.jpeg';
+import nicoleportrait from './imgs/nicoleportrait.jpg';
+import nicoleportraitsquare1 from './imgs/nicoleportraitsquare1.jpeg';
 
-const portraits = [matthewportrait, anishportrait, jakeportrait, aaricportrait, prachiportrait, fiyiportrait];
+
+
+const portraits = [matthewportrait, anishportrait, jakeportrait, aaricportrait, prachiportrait, fiyiportrait, nicoleportraitsquare1];
 
 const useStyles = makeStyles((theme) => ({
   intro: {
