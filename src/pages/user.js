@@ -14,6 +14,7 @@ import TextField from '@material-ui/core/TextField';
 import { Rating } from '@material-ui/lab';
 import Link from '@material-ui/core/Link';
 import Tooltip from '@material-ui/core/Tooltip';
+import Box from '@material-ui/core/Box';
 
 import ConnectModal from '../components/modal-component/connectmodal'
 import { connect } from 'react-redux'
@@ -25,6 +26,7 @@ import ReviewIcon from '@material-ui/icons/RateReview';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import WebIcon from '@material-ui/icons/Web';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 
 //Redux
@@ -32,6 +34,7 @@ import { getUserByHandle, addTheReview } from '../redux/actions/dataActions'
 
 //Image Gallery (From Online) {https://www.npmjs.com/package/react-image-gallery}
 import ImageGallery from 'react-image-gallery';
+import { Menu } from '@material-ui/core';
 
 class User extends React.Component {
   constructor(props) {
@@ -99,7 +102,7 @@ class User extends React.Component {
   }
 
   toggleAddReview() {
-    this.setState({ toggleAddReviewComp: !this.state.toggleAddReviewComp });
+    this.setState({toggleAddReviewComp: !this.state.toggleAddReviewComp});
   }
 
   render() {
@@ -131,7 +134,7 @@ class User extends React.Component {
       </Button>
 
     let smallChatButton = authenticated ?
-      <IconButton aria-label="message" color="primary" onClick={this.modalOpen}>
+      <IconButton aria-label="message" color="primary" onClick={this.openModal}>
         <MessageIcon />
       </IconButton>
       :
@@ -215,21 +218,52 @@ class User extends React.Component {
 
       let starsDisplay;
       let reviewCards = [];
+      let editButton, deleteButton;
       reviews.forEach(review => {
+        if (review.userHandle === authenticatedUser.userHandle) {
+          editButton = (
+            <IconButton color="primary" onClick={() => this.toggleAddReview()}>
+              <ReviewIcon />
+            </IconButton>
+          )
+          deleteButton = (
+            <IconButton color="primary" onClick={() => this.toggleAddReview()}>
+                <DeleteIcon />
+            </IconButton>
+          )
+        }
+        else {
+          editButton = (null);
+          deleteButton = (null);
+        }
         starsDisplay =
           <Rating
             value={review.stars}
             readOnly
           />
         reviewCards.push(
-          <Grid item sm={4} xs={12} className="review-card">
-            <p className="review-handle">@{review.userHandle} <br></br>{starsDisplay}</p>
-            <p className="review-body">{review.body}</p>
+          <Grid container sm={4} xs={12} className="review-card">
+            <Grid item sm={10} xs={10}>
+              <p className="review-handle">@{review.userHandle}</p>
+            </Grid>
+            <Grid item sm={1} xs={1}>
+              <p className="review-handle">{editButton}</p>
+            </Grid>
+            <Grid item sm={1} xs={1}>
+              <p className="review-handle">{deleteButton}</p>
+            </Grid>
+            <Grid item sm={12} xs={12}>
+              <p className="review-handle">{starsDisplay}</p>
+            </Grid>
+            <Grid item sm={12} xs={12}>
+              <p className="review-body">@{review.body}</p>
+            </Grid>
           </Grid>
         )
       })
 
       let createReview =
+        <>
         <Grid container sm={12} xs={12} spacing={1}>
           <Grid item sm={12} xs={12}>
             <h2>Add Your Review</h2>
@@ -252,29 +286,32 @@ class User extends React.Component {
               rows={4}
             />
           </Grid>
-          <Grid item sm={2} xs={2}>
-            <Button
-              variant="contained"
-              color="primary"
-              startIcon={<ReviewIcon />}
-              display='none'
-              onClick={this.handleSubmit}
-            >
-              Submit
-          </Button>
-          </Grid>
-          <Grid item sm={2} xs={2}>
-            <Button
-              variant="contained"
-              color="secondary"
-              startIcon={<ReviewIcon />}
-              display='none'
-              onClick={() => this.toggleAddReview()}
-            >
-              Cancel
-          </Button>
-          </Grid>
         </Grid>
+
+        <Box mr={2} mt={2}>
+          <Button
+          variant="contained"
+          color="primary"
+          startIcon={<ReviewIcon />}
+          display='none'
+          onClick={this.handleSubmit}
+          >
+            Submit
+          </Button>
+        </Box>
+        
+        <Box mr={2} mt={2}>
+          <Button
+            variant="contained"
+            color="white"
+            startIcon={<ReviewIcon />}
+            display='none'
+            onClick={() => this.toggleAddReview()}
+          >
+            Cancel
+          </Button>
+        </Box>
+      </>
 
 
       let carouselImages = [];                    //Initiate carousel data 
@@ -357,7 +394,7 @@ class User extends React.Component {
                     </Button>
                   </div>
                   <div className="review-button-small">
-                    <IconButton aria-label="delete" color="primary">
+                    <IconButton aria-label="delete" color="primary" onClick={() => this.toggleAddReview()}>
                       <ReviewIcon />
                     </IconButton>
                   </div>
