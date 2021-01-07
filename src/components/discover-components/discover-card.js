@@ -12,7 +12,6 @@ import '../../stylesheets/discover-card.css';
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
-
 class DiscoverCard extends Component {
     constructor(props) {
         super(props)
@@ -48,11 +47,6 @@ class DiscoverCard extends Component {
 
     render(props) {
         const { authenticated } = this.props.user; 
-
-        let tags = []
-        this.state.tags.forEach(tag => {
-            tags.push(<p>{tag}</p>);
-        })
 
         let mediaImagesArray = this.state.mediaImages
         let highlightPhoto = null;
@@ -108,7 +102,6 @@ class DiscoverCard extends Component {
                         <Grid sm={4} xs={1} className="grid-object" align="right">
                             {chatButton}
                         </Grid>
-
                         <Grid sm={12} xs={12} className="separator" />
                         <Grid sm={6} xs={12} className="grid-object" align="left">
                             {highlightPhoto}
