@@ -18,6 +18,8 @@ import frame_six from '../resources/cards/frame6.png'
 import ScrollContainer from 'react-indiana-drag-scroll'
 import AboutNoBio from './about/about-nobio';
 
+import {firebaseAnalytics} from '../utils/firebase'
+
 class Beta extends React.Component
 {
     constructor()
@@ -26,6 +28,11 @@ class Beta extends React.Component
         this.state = {description: ''}
         this.eventChange = this.eventChange.bind(this)
     }   
+
+    componentDidMount()
+    {
+        firebaseAnalytics.logEvent("about_visited")
+    }
 
     eventChange(event)
     {
@@ -40,10 +47,9 @@ class Beta extends React.Component
         console.log(this.state); 
         const frames_services = [frame_one, frame_two, frame_three];
         const frames_clients = [frame_four, frame_five, frame_six]; 
-        // let description;
 
         const Matthew_Card = (
-            <div className="indiana-frame" /*onClick={this.expandMatthew}*/>
+            <div className="indiana-frame">
                 <AboutNoBio 
                     name="Matthew Wang"
                     title="Co-Founder & Full-Stack Software Engineer"
@@ -55,7 +61,7 @@ class Beta extends React.Component
         );
 
         const Anish_Card = (
-            <div className="indiana-frame" /*onClick={this.expandAnish}*/>
+            <div className="indiana-frame">
                 <AboutNoBio 
                     name="Anish Agarwal"
                     title="Co-Founder & Full-Stack Software Engineer"
@@ -67,7 +73,7 @@ class Beta extends React.Component
         );
         
         const Jake_Card = (
-            <div className="indiana-frame" /*onClick={this.expandJake}*/>
+            <div className="indiana-frame">
                 <AboutNoBio 
                     name="Jake Heller"
                     title="Co-Founder & Full-Stack Software Engineer"
@@ -79,7 +85,7 @@ class Beta extends React.Component
         )
 
         const Aaric_Card = (
-            <div className="indiana-frame" /*onClick={this.expandAaric}*/>
+            <div className="indiana-frame">
                 <AboutNoBio 
                     name="Aaric Han"
                     title="Co-Founder & Full-Stack Software Engineer"
@@ -90,7 +96,7 @@ class Beta extends React.Component
             </div>
         )
         const Prachi_Card = (
-            <div className="indiana-frame" /*onClick={this.expandMax}*/>
+            <div className="indiana-frame">
                 <AboutNoBio 
                     name="Prachi Agarwal"
                     title="Product (UI/UX) & Graphic Designer"

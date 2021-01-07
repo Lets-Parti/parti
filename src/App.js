@@ -1,5 +1,6 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
+
 //Pages
 import Home from '../src/pages/home'
 import AboutUs from './pages/aboutus'
@@ -20,8 +21,6 @@ import Connections from './pages/connections/connections'
 import PrivacyPolicy from './pages/legal/privacy'
 import Terms_Conditions from './pages/legal/terms'
 import FAQ from './pages/faq'
-
-// import Beta from './pages/beta'
 
 //Components
 import Navbar from '../src/components/navbar'
@@ -82,7 +81,6 @@ class App extends React.Component
             <Switch>
               <Route exact path="/" component={Home} />
               {/* <Route exact path="/" component={Beta} /> */}
-              
               <Route exact path="/about" component={AboutUs} />
               <Route exact path="/feedback" component={Feedback} />
               <Route exact path="/user/:userhandle" component={User} />
@@ -102,8 +100,6 @@ class App extends React.Component
               <Route exact path="/privacy" component={PrivacyPolicy} />
               <Route exact path="/terms-and-conditions" component={Terms_Conditions} />
               <Route exact path="/faq" component={FAQ} />
-
-
               <Route exact path="/404" component={ErrorNotFound} />
               <Redirect to="/404"></Redirect>
             </Switch>

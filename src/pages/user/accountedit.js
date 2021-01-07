@@ -29,6 +29,8 @@ import StaticData from '../../static/static-data'
 //Utils
 import {resizeProfileImage, resizeMediaImage} from '../../utils/imageutils'
 
+//Analytics
+import {firebaseAnalytics} from '../../utils/firebase'  
 
 class AccountEdit extends React.Component
 {
@@ -39,6 +41,7 @@ class AccountEdit extends React.Component
             errors: {},
             onUpdateProfile: false
         }
+        this.analyticsTriggered = false;
         this.onUpdateProfile = this.onUpdateProfile.bind(this); 
         this.eventChange = this.eventChange.bind(this); 
         this.onSubmitProfile = this.onSubmitProfile.bind(this); 
@@ -46,11 +49,12 @@ class AccountEdit extends React.Component
         this.handleMediaImageChange = this.handleMediaImageChange.bind(this); 
         this.onDeleteMediaImage = this.onDeleteMediaImage.bind(this); 
         this.handleChangeSelect = this.handleChangeSelect.bind(this); 
+        this.triggerAnalytics = this.triggerAnalytics.bind(this); 
+        this.onClickProfile = this.onClickProfile.bind(this); 
     }   
     
     onUpdateProfile()
     {
-
         let tags = this.props.user.user.tags; 
         let serviceTag = []; 
 
@@ -78,8 +82,18 @@ class AccountEdit extends React.Component
         })
     }
 
+    triggerAnalytics(user)
+    {
+        if(!this.analyticsTriggered)
+        {
+            firebaseAnalytics.logEvent(`profile_edit_visited_${user.userHandle}`);
+            this.analyticsTriggered = true; 
+        }
+    }
+
     onSubmitProfile()
     {
+        firebaseAnalytics.logEvent(`profile_edit_submitted_${this.state.user.userHandle}`);
         this.props.updateUserProfile(this.state.user, this.state.user.type); 
     }
 
@@ -100,6 +114,7 @@ class AccountEdit extends React.Component
     //------ Handle Profile Image Change --------
     onClickProfile(event)
     {
+        firebaseAnalytics.logEvent(`profile_picture_edit_${this.props.user.user.userHandle}`);
         const fileInput = document.getElementById('imageInput');
         fileInput.click(); 
     }
@@ -122,7 +137,6 @@ class AccountEdit extends React.Component
     
     async handleMediaImageChange(event)
     {
-        console.log(this.props.user.user.mediaImages.length)
         if(this.props.user.user.mediaImages.length >= StaticData.MAX_MEDIA_IMAGES)
         {
             alert(`Cannot have more than ${StaticData.MAX_MEDIA_IMAGES} images in gallery`);
@@ -154,13 +168,20 @@ class AccountEdit extends React.Component
     render()
     {   
         let {isLoading} = this.props.UI; 
+        const {user} = this.props.user;
+        
+        if(user.userHandle)
+        {
+            this.triggerAnalytics(user); 
+        }
+
         let circularProgress = isLoading ? <CircularProgress /> : null; 
         let userData = null
         let userDataForm = null
         let imageGallery = null
         let galleryContent = null
         let buttonDisplay = null; 
-        
+
         if(!isLoading)
         {
             buttonDisplay = this.state.onUpdateProfile ? 
@@ -181,9 +202,8 @@ class AccountEdit extends React.Component
             </Button>
         }
 
-        if(this.props.user.user && !isLoading)
+        if(user && !isLoading)
         {
-            let user = this.props.user.user
             if(user.type === 'client')
             {
                 let joinedDate = user.createdAt.split('T')[0]
@@ -202,7 +222,7 @@ class AccountEdit extends React.Component
                     <p className="user-info"><LocationOnIcon fontSize="small" />{user.zipcode}</p>
                     <p className="user-info"><EventIcon fontSize="small" />Joined {joinedDate}</p>
                 </div>
-            }else if(user.type === 'service')
+            } else if(user.type === 'service')
             {
                 let joinedDate = user.createdAt.split('T')[0]
                 userData = 
