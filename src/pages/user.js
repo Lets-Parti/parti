@@ -218,23 +218,17 @@ class User extends React.Component {
 
       let starsDisplay;
       let reviewCards = [];
-      let editButton, deleteButton;
+      let editButton;
       reviews.forEach(review => {
-        if (review.userHandle === authenticatedUser.userHandle) {
+        if (authenticated && review.userHandle === authenticatedUser.userHandle) {
           editButton = (
             <IconButton color="primary" onClick={() => this.toggleAddReview()}>
               <ReviewIcon />
             </IconButton>
           )
-          deleteButton = (
-            <IconButton color="primary" onClick={() => this.toggleAddReview()}>
-                <DeleteIcon />
-            </IconButton>
-          )
         }
         else {
           editButton = (null);
-          deleteButton = (null);
         }
         starsDisplay =
           <Rating
@@ -246,17 +240,14 @@ class User extends React.Component {
             <Grid item sm={10} xs={10}>
               <p className="review-handle">@{review.userHandle}</p>
             </Grid>
-            <Grid item sm={1} xs={1}>
+            <Grid item sm={2} xs={2}>
               <p className="review-handle">{editButton}</p>
-            </Grid>
-            <Grid item sm={1} xs={1}>
-              <p className="review-handle">{deleteButton}</p>
             </Grid>
             <Grid item sm={12} xs={12}>
               <p className="review-handle">{starsDisplay}</p>
             </Grid>
             <Grid item sm={12} xs={12}>
-              <p className="review-body">@{review.body}</p>
+              <p className="review-body">{review.body}</p>
             </Grid>
           </Grid>
         )
@@ -334,8 +325,13 @@ class User extends React.Component {
               style={{ fontSize: '1rem' }} />
           )
       })
-
-      if (authenticated && authenticatedUser.type === "client") { // Fix this part
+      let authUserHaveReview = -1;
+      reviews.forEach(reviewBlock => {
+        if(authenticated && reviewBlock.userHandle === authenticatedUser.userHandle) {
+          authUserHaveReview = 1;
+        }
+      })
+      if (authenticated && authenticatedUser.type === "client" && authUserHaveReview === -1) {
         fullProfile =
           <Grid container>
             {/* First Row */}
@@ -455,7 +451,7 @@ class User extends React.Component {
                   <h2>Reviews</h2>
                   {ratingDisplay}
                 </Grid>
-
+                {toggleAddReviewComp && createReview}
               </Grid>
 
               <Grid container>
