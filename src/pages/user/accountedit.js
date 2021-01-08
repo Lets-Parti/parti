@@ -269,7 +269,10 @@ class AccountEdit extends React.Component
                     <div class="divider" />
                     <p className="heading">Image Gallery</p>
                     <hr></hr>
-                    <p className="lightText">Click on an image to delete</p>
+                    
+                    <p className="lightText"> Choose images that you would like to display on your profile here. Click on the "Edit Images" button to edit your image gallery.  </p>
+                    
+                    <p className="lightText"> You can click on any image to set your desired display order or click on the "X" button below each image to delete that image.</p>
                     <div class="divider" />
 
                     <Grid container>
