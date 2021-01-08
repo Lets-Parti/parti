@@ -56,9 +56,9 @@ class DiscoverCard extends Component {
         })
 
         let mediaImagesArray = this.state.mediaImages
-        let highlightPhotoPosition=this.state.mediaOrder[0]
         let highlightPhoto = null;
         if (mediaImagesArray.length > 0) {
+            let highlightPhotoPosition=this.state.mediaOrder[0]
             highlightPhoto = <img className="highlight-photo" src={mediaImagesArray[highlightPhotoPosition]} alt="Highlight"/>
         }
 

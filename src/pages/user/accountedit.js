@@ -10,6 +10,8 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Tooltip from '@material-ui/core/Tooltip';
+import Link from '@material-ui/core/Link';
+import Input from '@material-ui/core/Input';
 
 //Icons
 import LocationOnIcon from '@material-ui/icons/LocationOn';
@@ -147,9 +149,11 @@ class AccountEdit extends React.Component
 
     onDeleteMediaImage(event)
     {
-        console.log(event)
-        // let targetIndex = event.target.getAttribute("data-index");
-        // this.props.deleteMediaImage(targetIndex); 
+        if (event.target.hasAttribute("data-index")){
+            let targetIndex = event.target.getAttribute("data-index");
+            this.props.deleteMediaImage(targetIndex); 
+        }
+
     }
 
     componentWillReceiveProps(nextProps)
@@ -242,9 +246,9 @@ class AccountEdit extends React.Component
                     imageGallery.push(
                         <Grid key={index} sm={6} xs={12}>
                             <div className="gallery-image-container">
-                                    <img className="gallery-image" data-index={index} src={imageURL} alt="Gallery"/>
-                                    <IconButton onClick={this.onDeleteMediaImage}>
-                                        <CloseIcon/>
+                                    <img className="gallery-image"  src={imageURL} alt="Gallery"/>
+                                    <IconButton data-index={index} onClick={this.onDeleteMediaImage}>
+                                    <CloseIcon data-index={index}/>
                                     </IconButton>
                             </div>
                         </Grid>
