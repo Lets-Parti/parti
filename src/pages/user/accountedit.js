@@ -41,7 +41,8 @@ class AccountEdit extends React.Component
         super()
         this.state = {
             errors: {},
-            onUpdateProfile: false
+            onUpdateProfile: false,
+            editMode: false
         }
         this.onUpdateProfile = this.onUpdateProfile.bind(this); 
         this.eventChange = this.eventChange.bind(this); 
@@ -50,13 +51,13 @@ class AccountEdit extends React.Component
         this.handleMediaImageChange = this.handleMediaImageChange.bind(this); 
         this.onDeleteMediaImage = this.onDeleteMediaImage.bind(this); 
         this.handleChangeSelect = this.handleChangeSelect.bind(this); 
-        this.onEditImages = this.onEditImages.bind(this);
+        this.toggleEditImages = this.toggleEditImages.bind(this);
         // this.onClickImageUpdate = this.onClickImageUpdate(this); //added
     }   
 
-    onEditImages()
+    toggleEditImages()
     {
-        
+        this.setState({editMode: !this.state.editMode});
         
     }
     
@@ -247,9 +248,13 @@ class AccountEdit extends React.Component
                         <Grid key={index} sm={6} xs={12}>
                             <div className="gallery-image-container">
                                     <img className="gallery-image"  src={imageURL} alt="Gallery"/>
+                                    {this.state.editMode ?  
                                     <IconButton data-index={index} onClick={this.onDeleteMediaImage}>
                                     <CloseIcon data-index={index}/>
                                     </IconButton>
+
+                                    : null
+                    }
                             </div>
                         </Grid>
                     )
@@ -276,9 +281,9 @@ class AccountEdit extends React.Component
                     <Button
                 variant="outlined"
                 color="primary"
-                onClick={this.onEditImages}
+                onClick={this.toggleEditImages}
                 >
-                Edit Images
+                {this.state.editMode ? "Save Images": "Edit Images"}
             </Button>
                     <p className="lightText">Preferred Photo Ratio: (3:2)</p>
                     <Button
