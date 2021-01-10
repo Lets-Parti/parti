@@ -17,6 +17,15 @@ import PaletteIcon from '@material-ui/icons/Palette';
 import BrushIcon from '@material-ui/icons/Brush';
 import BusinessIcon from '@material-ui/icons/Business';
 
+import DJIcon from '../resources/icons/dj.svg';
+import PhotoIcon from '../resources/icons/photo.svg'; 
+import ComedianIcon from '../resources/icons/comedian.svg'; 
+import MagicIcon from '../resources/icons/magic.svg';
+import PlaceIcon from '../resources/icons/place.svg';
+import LanternIcon from '../resources/icons/lantern.svg';
+import BuffetIcon from '../resources/icons/buffet.svg'; 
+import MonkeyIcon from '../resources/icons/monkey.svg';
+
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
@@ -25,14 +34,14 @@ import axios from 'axios';
 import {firebaseAnalytics} from '../utils/firebase'
 
 const discoverCategories = [
-  ["DJ", <AlbumIcon fontSize="large" color="secondary"/>],
-  ["Photography", <PhotoCameraIcon fontSize="large" color="secondary"/>],
-  ["Magician", <BrushIcon fontSize="large" color="secondary"/>],
-  ["Comedian", <EmojiEmotionsIcon fontSize="large" color="secondary"/>],
-  ["Event Venue", <BusinessIcon fontSize="large" color="secondary"/>],
-  ["Decorator", <PaletteIcon fontSize="large" color="secondary"/>],
-  ["Food Catering", <LocalDiningIcon fontSize="large" color="secondary"/>],
-  ["Petting Zoo", <PetsIcon fontSize="large" color="secondary"/>]
+  ["DJ", <img src={DJIcon} className="discover-icon"/>],
+  ["Photography", <img src={PhotoIcon} className="discover-icon"/>],
+  ["Magician", <img src={MagicIcon} className="discover-icon"/>],
+  ["Comedian", <img src={ComedianIcon} className="discover-icon"/>],
+  ["Event Venue", <img src={PlaceIcon} className="discover-icon"/>],
+  ["Decorator", <img src={LanternIcon} className="discover-icon"/>],
+  ["Food Catering", <img src={BuffetIcon} className="discover-icon"/>],
+  ["Petting Zoo", <img src={MonkeyIcon} className="discover-icon"/>]
 ];
 
 // const testimonials = [
