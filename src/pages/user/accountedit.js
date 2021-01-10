@@ -417,6 +417,8 @@ class AccountEdit extends React.Component
                         name='instagram'
                         onChange={this.eventChange}
                         value={this.state.user.instagram}
+                        helperText={this.state.errors.insta}
+                        error={this.state.errors.insta ? true : false}
                     />
                     <div className="divider" />
                     <TextField

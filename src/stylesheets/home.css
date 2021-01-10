@@ -1,21 +1,32 @@
 .home-introduction {
   background-image: url("../resources/backgrounds/confetti_stock.jpg");
-  background-position-y: -200px;
-  background-repeat: repeat-y;
+  /*background-position-y: -200px;
+  background-repeat: repeat-y; */
   background-size: 100%;
   width: 100%;
   height: 600px;
+  text-align: center;
 }
 
 .banners {
   padding: 100px;
-  width: 50%;
+  width: 100%;
 }
 
 .bannerTitle {
-  font-size: 3rem;
   margin-top: 5px;
   margin-bottom: 5px;
+
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 110px;
+  line-height: 100px;
+  /* or 91% */
+  text-align: center;
+
+  color: #FFFFFF;
+  text-shadow: 0px 2px 30px rgba(49, 182, 236, 0.6);
 }
 
 .bannerPitch {
@@ -57,6 +68,25 @@
   padding-bottom: 80px;
 }
 
+.white-text {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 30px;
+  /* identical to box height, or 150% */
+
+  color: #FFFFFF;
+}
+.home-sub-blue {
+  background-color: #31B6EC;
+  background: #31B6EC;
+  color: white;
+  width: 100%;
+  padding: 100px;
+  padding-bottom: 80px;
+}
+
 .subBannerTitle {
   font-size: 2.5rem;
   text-align: center;
@@ -69,6 +99,13 @@
 
 .home-discover-item {
   padding-top: 25px;
+}
+
+.discover-icon {
+  width: 170px;
+  height: 170px;
+  background: #FFFFFF;
+  border-radius: 10px;
 }
 
 @media (max-width: 800px) {

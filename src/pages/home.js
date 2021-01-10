@@ -12,7 +12,7 @@ import PhotoCameraIcon from '@material-ui/icons/PhotoCamera';
 import AlbumIcon from '@material-ui/icons/Album';
 import PetsIcon from '@material-ui/icons/Pets';
 import EmojiEmotionsIcon from '@material-ui/icons/EmojiEmotions';
-import LocalDiningIcon from '@material-ui/icons/LocalDining';
+import localDiningIcon from './../resources/icons/noun_Buffet.jpg';
 import PaletteIcon from '@material-ui/icons/Palette';
 import BrushIcon from '@material-ui/icons/Brush';
 import BusinessIcon from '@material-ui/icons/Business';
@@ -25,14 +25,14 @@ import axios from 'axios';
 import {firebaseAnalytics} from '../utils/firebase'
 
 const discoverCategories = [
-  ["DJ", <AlbumIcon fontSize="large"/>],
-  ["Photography", <PhotoCameraIcon fontSize="large"/>],
-  ["Magician", <BrushIcon fontSize="large"/>],
-  ["Comedian", <EmojiEmotionsIcon fontSize="large"/>],
-  ["Event Venue", <BusinessIcon fontSize="large"/>],
-  ["Decorator", <PaletteIcon fontSize="large"/>],
-  ["Food Catering", <LocalDiningIcon fontSize="large"/>],
-  ["Petting Zoo", <PetsIcon fontSize="large"/>]
+  //["DJ", <AlbumIcon fontSize="large"/>],
+  //["Photography", <PhotoCameraIcon fontSize="large"/>],
+  //["Magician", <BrushIcon fontSize="large"/>],
+  //["Comedian", <EmojiEmotionsIcon fontSize="large"/>],
+  //["Event Venue", <BusinessIcon fontSize="large"/>],
+  //["Decorator", <PaletteIcon fontSize="large"/>],
+  ["Food Catering", (<img src={localDiningIcon} className="discover-icon"/>)]
+  // ["Petting Zoo", <PetsIcon fontSize="large"/>]
 ];
 
 // const testimonials = [
@@ -152,8 +152,9 @@ class Home extends React.Component {
         </div>
       </Grid>
     )
+    //sm={12} xs={12}
     const service_introduction = (
-      <Grid item sm={12} xs={12} className="home-introduction">
+      <Grid item className="home-introduction">
         <div className="banners">
           <p className="bannerTitle" >
             <b>Effortless Event Planning</b>
@@ -194,7 +195,7 @@ class Home extends React.Component {
     // Conditional Discover Section of Homepage
     const client_discover = (
       <Grid container align="center">
-        <div className="home-sub-black">
+        <div className="home-sub-blue">
           <Grid item sm={12} xs={12}>
             <p className="subBannerTitle">
               <b>DISCOVER</b>
@@ -211,14 +212,14 @@ class Home extends React.Component {
                   xs={6}
                   className="home-discover-item"
                 >   
-                <Link href={`/discover/${cat[0]}`}>
-                  <Grid item>
-                        {cat[1]}
-                    </Grid>
+                  <Link href={`/discover/${cat[0]}`}>
                     <Grid item>
-                      <p>{cat[0]}</p>
-                    </Grid>
-                    </Link>
+                        {cat[1]}
+                      </Grid>
+                      <Grid item className="white-text">
+                        <p>{cat[0]}</p>
+                      </Grid>
+                      </Link>
                 </Grid>
             ))}
           </Grid>
@@ -235,7 +236,7 @@ class Home extends React.Component {
     )
     const service_discover = (
       <Grid container align="center">
-        <div className="home-sub-black">
+        <div className="home-sub-blue">
           <Grid item sm={12} xs={12}>
             <p className="subBannerTitle">
               <b>DISCOVER</b>
@@ -276,9 +277,6 @@ class Home extends React.Component {
             {/*Introduction*/}
             {conditional_introduction}
             
-            {/*Discover*/}   
-            {conditional_discover}     
-
             {/*About Us*/}
             <Grid container align="center">
               <div id="about" className="home-sub-white">
@@ -313,6 +311,9 @@ class Home extends React.Component {
                 </div>
               </div>
             </Grid>
+
+            {/*Discover*/}   
+            {conditional_discover}     
 
             {/*Stay Updated*/}
             <Grid container align="center">
