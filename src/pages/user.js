@@ -183,7 +183,7 @@ class User extends React.Component {
       if(facebook)
       {
         socialButtons.push(
-          <Link href={facebook} target="_blank">
+          <Link href={`https://${facebook}`} target="_blank">
             <Tooltip title="Facebook">
             <IconButton aria-label="delete" color="primary" onClick={() => {this.visitSocial("facebook")}}>
               <FacebookIcon />
@@ -196,7 +196,7 @@ class User extends React.Component {
       if(website)
       {
         socialButtons.push(
-          <Link href={website} target="_blank">
+          <Link href={`https://${website}`} target="_blank">
           <Tooltip title="Website">
             <IconButton aria-label="delete" color="primary" onClick={() => {this.visitSocial("website")}}>
               <WebIcon />

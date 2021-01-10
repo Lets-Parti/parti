@@ -10,6 +10,7 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Tooltip from '@material-ui/core/Tooltip';
+import InputAdornment from '@material-ui/core/InputAdornment';
 
 //Icons
 import LocationOnIcon from '@material-ui/icons/LocationOn';
@@ -338,6 +339,7 @@ class AccountEdit extends React.Component
 
                 userDataForm = 
                 <div className="edit-form">
+                    
                     <TextField
                         label="Company Name" 
                         variant="outlined" 
@@ -407,6 +409,9 @@ class AccountEdit extends React.Component
                         name='website'
                         onChange={this.eventChange}
                         value={this.state.user.website}
+                        InputProps={{
+                            startAdornment: <InputAdornment position="start">https://</InputAdornment>,
+                        }}
                     />
                     <div className="divider" />
                     <TextField
@@ -417,8 +422,9 @@ class AccountEdit extends React.Component
                         name='instagram'
                         onChange={this.eventChange}
                         value={this.state.user.instagram}
-                        helperText={this.state.errors.insta}
-                        error={this.state.errors.insta ? true : false}
+                        InputProps={{
+                            startAdornment: <InputAdornment position="start">@</InputAdornment>,
+                        }}
                     />
                     <div className="divider" />
                     <TextField
@@ -429,6 +435,9 @@ class AccountEdit extends React.Component
                         name='facebook'
                         onChange={this.eventChange}
                         value={this.state.user.facebook}
+                        InputProps={{
+                            startAdornment: <InputAdornment position="start">https://</InputAdornment>,
+                        }}
                     />
                 </div>
             }
