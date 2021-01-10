@@ -8,15 +8,6 @@ import Link from "@material-ui/core/Link";
 import React from "react";
 import TextField from '@material-ui/core/TextField';
 
-import PhotoCameraIcon from '@material-ui/icons/PhotoCamera';
-import AlbumIcon from '@material-ui/icons/Album';
-import PetsIcon from '@material-ui/icons/Pets';
-import EmojiEmotionsIcon from '@material-ui/icons/EmojiEmotions';
-import LocalDiningIcon from '@material-ui/icons/LocalDining';
-import PaletteIcon from '@material-ui/icons/Palette';
-import BrushIcon from '@material-ui/icons/Brush';
-import BusinessIcon from '@material-ui/icons/Business';
-
 import DJIcon from '../resources/icons/dj.svg';
 import PhotoIcon from '../resources/icons/photo.svg'; 
 import ComedianIcon from '../resources/icons/comedian.svg'; 
