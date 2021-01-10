@@ -12,7 +12,7 @@ import PhotoCameraIcon from '@material-ui/icons/PhotoCamera';
 import AlbumIcon from '@material-ui/icons/Album';
 import PetsIcon from '@material-ui/icons/Pets';
 import EmojiEmotionsIcon from '@material-ui/icons/EmojiEmotions';
-import localDiningIcon from './../resources/icons/noun_Buffet.jpg';
+import LocalDiningIcon from '@material-ui/icons/LocalDining';
 import PaletteIcon from '@material-ui/icons/Palette';
 import BrushIcon from '@material-ui/icons/Brush';
 import BusinessIcon from '@material-ui/icons/Business';
@@ -25,14 +25,14 @@ import axios from 'axios';
 import {firebaseAnalytics} from '../utils/firebase'
 
 const discoverCategories = [
-  //["DJ", <AlbumIcon fontSize="large"/>],
-  //["Photography", <PhotoCameraIcon fontSize="large"/>],
-  //["Magician", <BrushIcon fontSize="large"/>],
-  //["Comedian", <EmojiEmotionsIcon fontSize="large"/>],
-  //["Event Venue", <BusinessIcon fontSize="large"/>],
-  //["Decorator", <PaletteIcon fontSize="large"/>],
-  ["Food Catering", (<img src={localDiningIcon} className="discover-icon"/>)]
-  // ["Petting Zoo", <PetsIcon fontSize="large"/>]
+  ["DJ", <AlbumIcon fontSize="large" color="secondary"/>],
+  ["Photography", <PhotoCameraIcon fontSize="large" color="secondary"/>],
+  ["Magician", <BrushIcon fontSize="large" color="secondary"/>],
+  ["Comedian", <EmojiEmotionsIcon fontSize="large" color="secondary"/>],
+  ["Event Venue", <BusinessIcon fontSize="large" color="secondary"/>],
+  ["Decorator", <PaletteIcon fontSize="large" color="secondary"/>],
+  ["Food Catering", <LocalDiningIcon fontSize="large" color="secondary"/>],
+  ["Petting Zoo", <PetsIcon fontSize="large" color="secondary"/>]
 ];
 
 // const testimonials = [
@@ -106,12 +106,6 @@ class Home extends React.Component {
     }
  
   render() {
-    // Deal with checking if user is logged in and which user it is.
-    //
-    // Important variables are:
-    // authenticated = (true or false depending on if someone is logged in)
-    // authenticatedUser = (service or client logged in with their own sub-variables)
-    //
     const { authenticated } = this.props.user;
     const { isLoading } = this.props.data;
     let authenticatedUser;
@@ -121,30 +115,25 @@ class Home extends React.Component {
 
     // Conditional Introduction Section of Homepage
     const client_introduction = (
-      <Grid item sm={12} xs={12} className="home-introduction">
+      <Grid item sm={12} xs={12} className="home-introduction" align="center">
         <div className="banners">
           <p className="bannerTitle" >
-            <b>Effortless Event Planning</b>
-          </p>
-          <p className="bannerPitch">
-            Manage all of your event's needs in 1 app
-          </p>
-          <p>
-            Need a DJ for your party? A photographer for your wedding?
-            Parti will help you find the perfect services. Start by creating your first event!
+            Effortless Event Planning
           </p>
     
           <div className="bannerButton">
             <Link href="/events/new">
-              <Button variant="contained" color="primary">
+              <Button variant="contained" color="primary" size="large">
                 Create an Event
               </Button>
             </Link>
           </div>
-    
+          <Link href="/signup/vendor" >
+            <p className="darkText">Are you a vendor? List yourself here</p>
+          </Link>
           <div className="bannerButton">
             <Link href="#about">
-              <Button variant="outlined" color="primary">
+              <Button variant="outlined" color="secondary" size="small">
                 Learn More
               </Button>
             </Link>
@@ -152,24 +141,17 @@ class Home extends React.Component {
         </div>
       </Grid>
     )
-    //sm={12} xs={12}
+
     const service_introduction = (
       <Grid item className="home-introduction">
         <div className="banners">
           <p className="bannerTitle" >
             <b>Effortless Event Planning</b>
           </p>
-          <p className="bannerPitch">
-            Manage all of your client's needs in 1 app
-          </p>
-          <p>
-            Looking for events to DJ? Provide photography for events?
-            Parti will help you connect with clients and build your brand. Start by browsing local events!
-          </p>
     
           <div className="bannerButton">
             <Link href="/discover-events">
-              <Button variant="contained" color="primary">
+              <Button variant="contained" color="primary" size="large">
                 Find Events
               </Button>
             </Link>
@@ -177,7 +159,7 @@ class Home extends React.Component {
     
           <div className="bannerButton">
             <Link href="#about">
-              <Button variant="outlined" color="primary">
+              <Button variant="outlined" color="secondary" size="small">
                 Learn More
               </Button>
             </Link>
@@ -216,8 +198,8 @@ class Home extends React.Component {
                     <Grid item>
                         {cat[1]}
                       </Grid>
-                      <Grid item className="white-text">
-                        <p>{cat[0]}</p>
+                      <Grid item>
+                        <p className="whiteText">{cat[0]}</p>
                       </Grid>
                       </Link>
                 </Grid>
@@ -226,7 +208,7 @@ class Home extends React.Component {
 
           <div className="subBannerButton">
             <Link href="/discover">
-              <Button variant="contained" color="primary">
+              <Button variant="outlined" color="secondary">
                 Discover More
               </Button>
             </Link>
@@ -234,31 +216,8 @@ class Home extends React.Component {
         </div>
       </Grid>
     )
-    const service_discover = (
-      <Grid container align="center">
-        <div className="home-sub-blue">
-          <Grid item sm={12} xs={12}>
-            <p className="subBannerTitle">
-              <b>DISCOVER</b>
-            </p>
-            <p>Find events near you.</p>
-          </Grid>
-          <div className="subBannerButton">
-            <Link href="/discover-events">
-              <Button variant="contained" color="primary">
-                Discover More
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </Grid>
-    )
+
     let conditional_discover = client_discover;
-    // if (authenticated && authenticatedUser.type === "service") {
-    //   conditional_discover = service_discover;
-    // } else {
-    //   conditional_discover = client_discover;
-    // }
 
     let stay_updated_button = this.state.isSubmitted ? 
         <p>Thank you! We will keep you updated!</p> 
@@ -274,41 +233,52 @@ class Home extends React.Component {
     let homepage_contents = (
       <div className="homePage">
           <Grid container spacing={0}>
-            {/*Introduction*/}
             {conditional_introduction}
-            
-            {/*About Us*/}
             <Grid container align="center">
               <div id="about" className="home-sub-white">
-                <p className="subBannerTitle">
-                  <b>ABOUT PARTI</b>
-                </p>
-
-                <p>
-                  <b>Hosting an event is stressful.</b> Parti will assist you in finding professional 
-                  services and make the event planning process easy. 
-                </p>
-
-                <p>
-                  Are you a vendor? Parti enables you to <b>directly seek customers</b>. See who is in 
-                  need of your services nearby.
-                </p>
-
-                <div className="subBannerButton">
-                  <Link href="/about">
-                    <Button variant="contained" color="primary">
-                      Learn More
-                    </Button>
-                  </Link>
-                </div>
-
-                <div className="subBannerButton">
-                  <Link href="/faq">
-                    <Button variant="outlined" color="primary">
-                      FAQ
-                    </Button>
-                  </Link>
-                </div>
+                <Grid item sm={12} xs={12}>
+                  <p className="subBannerTitle">
+                    <b>ABOUT PARTI</b>
+                  </p>
+                </Grid>
+                <Grid item sm={12} xs={12} align="left" className="about-text-xs">
+                  <p>
+                    <b>Hosting an event is stressful.</b> Parti will assist you in finding professional 
+                    services and make the event planning process easy. 
+                  </p>
+                  <p>
+                    Are you a vendor? Parti enables you to <b>directly seek customers</b>. See who is in 
+                    need of your services nearby.
+                  </p>
+                </Grid>
+                <Grid item sm={12} xs={12} className="about-text-sm">
+                  <p>
+                    <b>Hosting an event is stressful.</b> Parti will assist you in finding professional 
+                    services and make the event planning process easy. 
+                  </p>
+                  <p>
+                    Are you a vendor? Parti enables you to <b>directly seek customers</b>. See who is in 
+                    need of your services nearby.
+                  </p>
+                </Grid>
+                <Grid item sm={12} xs={12}>
+                  <div className="subBannerButton">
+                    <Link href="/about">
+                      <Button variant="contained" color="primary">
+                        Learn More
+                      </Button>
+                    </Link>
+                  </div>
+                </Grid>
+                <Grid item sm={12} xs={12}>
+                  <div className="subBannerButton">
+                    <Link href="/faq">
+                      <Button variant="outlined" color="primary">
+                        FAQ
+                      </Button>
+                    </Link>
+                  </div>
+                </Grid>
               </div>
             </Grid>
 
@@ -321,36 +291,32 @@ class Home extends React.Component {
                 <p className="subBannerTitle">
                   <b>STAY UPDATED</b>
                 </p>
-                <p><i>Enter your email to get updates about Parti. If you are a vendor, be sure to add your company name.</i></p>
+                <p><i>Enter your email to get updates about Parti.</i></p>
 
                 <div className="beta-form">
-                                <TextField
-                                    label="Email" 
-                                    variant="outlined" 
-                                    size="small" 
-                                    name='email'
-                                    required='true'
-                                    fullWidth
-                                    onChange={this.eventChange}
-                                    value={this.state.email}
-                                    />
-                                <div className="seperator" />
-                                <TextField
-                                    label="Company (optional)" 
-                                    variant="outlined" 
-                                    size="small" 
-                                    name='company'
-                                    fullWidth
-                                    onChange={this.eventChange}
-                                    value={this.state.company}
-                                    />
-                                <div className="seperator" />
-                            {stay_updated_button}
-                            </div>     
-
-                
-
-                
+                    <TextField
+                        label="Email" 
+                        variant="outlined" 
+                        size="small" 
+                        name='email'
+                        required='true'
+                        fullWidth
+                        onChange={this.eventChange}
+                        value={this.state.email}
+                        />
+                    <div className="seperator" />
+                    <TextField
+                        label="Company (optional)" 
+                        variant="outlined" 
+                        size="small" 
+                        name='company'
+                        fullWidth
+                        onChange={this.eventChange}
+                        value={this.state.company}
+                        />
+                    <div className="seperator" />
+                {stay_updated_button}
+                </div>     
               </div>
             </Grid>
 
