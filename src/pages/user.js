@@ -161,6 +161,7 @@ class User extends React.Component {
       let userHandle = user.userHandle
       let userProfileImageURL = user.imageUrl
       let imageGallery = user.mediaImages
+      let imageOrder=user.mediaOrder
       let bio = user.bio
       let tags = user.tags
 
@@ -315,13 +316,22 @@ class User extends React.Component {
       </>
 
 
-      let carouselImages = [];                    //Initiate carousel data 
-      imageGallery.forEach(imageURL => {
+      let carouselImages = [];  
+      imageOrder.forEach(imagePos => {
+        let imageURL=imageGallery[imagePos]
         carouselImages.push({
           original: imageURL,
           thumbnail: imageURL
         })
       })
+        
+      // })                  //Initiate carousel data 
+      // imageGallery.forEach(imageURL => {
+      //   carouselImages.push({
+      //     original: imageURL,
+      //     thumbnail: imageURL
+      //   })
+      // })
 
 
       let chips = [];

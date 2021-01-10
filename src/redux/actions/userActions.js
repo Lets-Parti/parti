@@ -175,6 +175,29 @@ export const uploadMediaImage = (formData) => (dispatch) =>
     })
 }
 
+export const saveMediaOrder = (mediaOrderData) => (dispatch) =>
+{
+    dispatch({type: LOADING_UI})
+    let axiosData ={
+        mediaOrder: mediaOrderData
+    }
+    axios.post('/user/services/media/save_order', JSON.stringify(axiosData), 
+    {            
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(res =>
+    {
+        dispatch(getUserData()); 
+        dispatch({type: CLEAR_ERRORS})
+    })
+    .catch(err =>
+    {
+        console.error(err); 
+    })
+}
+
 export const deleteMediaImage = (indexValue) => (dispatch) =>
 {
     dispatch({type: LOADING_UI})
