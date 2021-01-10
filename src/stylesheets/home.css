@@ -1,21 +1,26 @@
 .home-introduction {
-  background-image: url("../resources/backgrounds/confetti_stock.jpg");
-  background-position-y: -200px;
-  background-repeat: repeat-y;
+  background-image: url("../resources/backgrounds/hero_img.jpg");
   background-size: 100%;
+  background-repeat: no-repeat;
+  background-position-y: -7rem;
+  background-position-x: center;
+  text-align: center;
   width: 100%;
-  height: 600px;
-}
-
-.banners {
-  padding: 100px;
-  width: 50%;
+  height: 800px;
+  padding-top: 100px;
+  padding-left: 30%;
+  padding-right: 30%;
 }
 
 .bannerTitle {
-  font-size: 3rem;
-  margin-top: 5px;
-  margin-bottom: 5px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 7rem;
+  color: #ffffff;
+  text-shadow: 0px 2px 30px rgba(49, 182, 236, 0.6);
+  margin-top: 0px;
+  margin-bottom: 0px;
+  line-height: 1;
 }
 
 .bannerPitch {
@@ -36,25 +41,42 @@
 .home-sub-black {
   background-color: black;
   color: white;
-  width: 100%;
   padding: 100px;
   padding-bottom: 80px;
+  width: 100%;
 }
 
 .home-sub-light {
   background-color: #f4f4f4;
   color: black;
-  width: 100%;
   padding: 100px;
   padding-bottom: 80px;
+  width: 100%;
 }
 
 .home-sub-white {
   background-color: white;
   color: black;
-  width: 100%;
   padding: 100px;
   padding-bottom: 80px;
+  width: 100%;
+}
+
+.home-sub-blue {
+  background-color: #31b6ec;
+  color: white;
+  padding: 100px;
+  padding-bottom: 80px;
+  width: 100%;
+}
+
+.white-text {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 30px;
+  color: #ffffff;
 }
 
 .subBannerTitle {
@@ -71,50 +93,38 @@
   padding-top: 25px;
 }
 
+.discover-icon {
+  width: 170px;
+  height: 170px;
+  background: #ffffff;
+  border-radius: 10px;
+}
+
+.about-text-xs {
+  display: none;
+}
+
+.about-text-sm {
+  display: block;
+}
+
 @media (max-width: 800px) {
   .home-introduction {
-    background-image: url("../resources/backgrounds/confetti_stock.jpg");
-    background-repeat: repeat-y;
-    width: 100%;
-    height: 500px;
-    background-size: 400%;
-    /* background-position-y: 50px; */
-    padding-right: 40px;
-  }
-
-  .banners {
-    padding: 20px;
-    width: 100%;
+    background-image: url("../resources/backgrounds/hero_img.jpg");
+    background-size: 300%;
+    background-position-y: -5rem;
+    text-align: center;
+    height: 600px;
+    background-position-x: center;
+    padding-top: 100px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 
   .bannerTitle {
-    font-size: 2.5rem;
+    font-size: 4rem;
     margin-top: 5px;
-    margin-bottom: 5px;
-  }
-
-  .bannerPitch {
-    font-size: 1.5rem;
-    margin-top: 5px;
-    margin-bottom: 5px;
-  }
-
-  .home-sub-black {
-    background-color: black;
-    color: white;
-    height: 100%;
-    width: 100%;
-    padding: 10px;
-    padding-bottom: 80px;
-  }
-
-  .home-sub-white {
-    background-color: white;
-    color: black;
-    height: 100%;
-    width: 100%;
-    padding: 10px;
-    padding-bottom: 80px;
+    margin-bottom: 40px;
   }
 
   .subBannerTitle {
@@ -124,5 +134,45 @@
   }
   .subBannerButton {
     margin-top: 40px;
+  }
+
+  .home-sub-black {
+    background-color: black;
+    color: white;
+    padding: 25px;
+    padding-bottom: 80px;
+    width: 100%;
+  }
+
+  .home-sub-light {
+    background-color: #f4f4f4;
+    color: black;
+    padding: 25px;
+    padding-bottom: 80px;
+    width: 100%;
+  }
+
+  .home-sub-white {
+    background-color: white;
+    color: black;
+    padding: 25px;
+    padding-bottom: 80px;
+    width: 100%;
+  }
+
+  .home-sub-blue {
+    background-color: #31b6ec;
+    color: white;
+    padding: 25px;
+    padding-bottom: 80px;
+    width: 100%;
+  }
+
+  .about-text-xs {
+    display: block;
+  }
+
+  .about-text-sm {
+    display: none;
   }
 }

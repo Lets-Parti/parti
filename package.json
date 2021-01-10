@@ -55,6 +55,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "@svgr/webpack": "^5.5.0",
     "typescript": "^3.3.1"
   },
   "proxy": "https://us-central1-lets-parti.cloudfunctions.net/api"
