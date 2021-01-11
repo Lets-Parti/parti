@@ -315,3 +315,24 @@ export const addTheReview = (theData) => (dispatch) =>
     console.error(err);
   })
 }
+
+export const editTheReview = (theData) => (dispatch) =>
+{
+  dispatch({type: LOADING_UI})
+  axios.post('/review/edit', JSON.stringify(theData),
+  {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  .then(res => 
+  {
+    console.log(res)
+    dispatch({type: CLEAR_ERRORS})
+    window.location.reload()
+  })
+  .catch(err => 
+  {
+    console.error(err);
+  })
+}

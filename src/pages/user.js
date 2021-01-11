@@ -26,12 +26,14 @@ import ReviewIcon from '@material-ui/icons/RateReview';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import WebIcon from '@material-ui/icons/Web';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 //Redux
-import { getUserByHandle, addTheReview } from '../redux/actions/dataActions'
+import { getUserByHandle, addTheReview, editTheReview } from '../redux/actions/dataActions'
 
 //Image Gallery (From Online) {https://www.npmjs.com/package/react-image-gallery}
 import ImageGallery from 'react-image-gallery';
+import { Menu } from '@material-ui/core';
 
 //Analytics
 import {firebaseAnalytics} from '../utils/firebase'
@@ -45,12 +47,15 @@ class User extends React.Component {
       reviewBody: '',
       stars: 0,
       modalOpen: false,
+      editReview: false
     };
     this.handleTextChange = this.handleTextChange.bind(this)
     this.handleStarsChange = this.handleStarsChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
+    this.toggleEditReview = this.toggleEditReview.bind(this);
+    this.toggleCancel = this.toggleCancel.bind(this);
     this.visitSocial = this.visitSocial.bind(this); 
   }
 
@@ -76,7 +81,12 @@ class User extends React.Component {
         stars: parseFloat(stars),
         body: body
       }
-      this.props.addTheReview(everything)
+      if (this.state.editReview) {
+        this.props.editTheReview(everything)
+      }
+      else {
+        this.props.addTheReview(everything)
+      }
     }
   }
 
@@ -106,7 +116,21 @@ class User extends React.Component {
   }
 
   toggleAddReview() {
-    this.setState({toggleAddReviewComp: !this.state.toggleAddReviewComp});
+    this.setState({toggleAddReviewComp: true});
+  }
+
+  toggleEditReview() {
+    this.setState({
+      toggleAddReviewComp: true,
+      editReview: true
+    })
+  }
+
+  toggleCancel() {
+    this.setState({
+      toggleAddReviewComp: false,
+      editReview: false
+    })
   }
 
   visitSocial(social)
@@ -226,16 +250,37 @@ class User extends React.Component {
 
       let starsDisplay;
       let reviewCards = [];
+      let editButton;
       reviews.forEach(review => {
+        if (authenticated && review.userHandle === authenticatedUser.userHandle) {
+          editButton = (
+            <IconButton color="primary" onClick={() => this.toggleEditReview()}>
+              <ReviewIcon />
+            </IconButton>
+          )
+        }
+        else {
+          editButton = (null);
+        }
         starsDisplay =
           <Rating
             value={review.stars}
             readOnly
           />
         reviewCards.push(
-          <Grid item sm={4} xs={12} className="review-card">
-            <p className="review-handle">@{review.userHandle} <br></br>{starsDisplay}</p>
-            <p className="review-body">{review.body}</p>
+          <Grid container sm={4} xs={12} className="review-card">
+            <Grid item sm={10} xs={10}>
+              <p className="review-handle">@{review.userHandle}</p>
+            </Grid>
+            <Grid item sm={2} xs={2}>
+              <p className="review-handle">{editButton}</p>
+            </Grid>
+            <Grid item sm={12} xs={12}>
+              <p className="review-handle">{starsDisplay}</p>
+            </Grid>
+            <Grid item sm={12} xs={12}>
+              <p className="review-body">{review.body}</p>
+            </Grid>
           </Grid>
         )
       })
@@ -284,7 +329,7 @@ class User extends React.Component {
             color="white"
             startIcon={<ReviewIcon />}
             display='none'
-            onClick={() => this.toggleAddReview()}
+            onClick={() => this.toggleCancel()}
           >
             Cancel
           </Button>
@@ -312,8 +357,13 @@ class User extends React.Component {
               style={{ fontSize: '1rem' }} />
           )
       })
-
-      if (authenticated && authenticatedUser.type === "client") { // Fix this part
+      let authUserHaveReview = -1;
+      reviews.forEach(reviewBlock => {
+        if(authenticated && reviewBlock.userHandle === authenticatedUser.userHandle) {
+          authUserHaveReview = 1;
+        }
+      })
+      if (authenticated && authenticatedUser.type === "client" && authUserHaveReview === -1) {
         fullProfile =
           <Grid container>
             {/* First Row */}
@@ -433,7 +483,7 @@ class User extends React.Component {
                   <h2>Reviews</h2>
                   {ratingDisplay}
                 </Grid>
-
+                {toggleAddReviewComp && createReview}
               </Grid>
 
               <Grid container>
@@ -472,7 +522,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapActionsToProps = {
-  getUserByHandle, addTheReview
+  getUserByHandle, addTheReview, editTheReview
 }
 
 export default connect(mapStateToProps, mapActionsToProps)(User)
