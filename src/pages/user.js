@@ -28,13 +28,15 @@ import FacebookIcon from '@material-ui/icons/Facebook';
 import WebIcon from '@material-ui/icons/Web';
 import DeleteIcon from '@material-ui/icons/Delete';
 
-
 //Redux
 import { getUserByHandle, addTheReview, editTheReview } from '../redux/actions/dataActions'
 
 //Image Gallery (From Online) {https://www.npmjs.com/package/react-image-gallery}
 import ImageGallery from 'react-image-gallery';
 import { Menu } from '@material-ui/core';
+
+//Analytics
+import {firebaseAnalytics} from '../utils/firebase'
 
 class User extends React.Component {
   constructor(props) {
@@ -54,6 +56,7 @@ class User extends React.Component {
     this.closeModal = this.closeModal.bind(this);
     this.toggleEditReview = this.toggleEditReview.bind(this);
     this.toggleCancel = this.toggleCancel.bind(this);
+    this.visitSocial = this.visitSocial.bind(this); 
   }
 
   handleTextChange(event) {
@@ -88,6 +91,8 @@ class User extends React.Component {
   }
 
   openModal() {
+    const userHandle = this.props.data.user.userHandle
+    firebaseAnalytics.logEvent(`message_modal_open_${userHandle}`);
     this.setState({
       modalOpen: true
     })
@@ -104,8 +109,10 @@ class User extends React.Component {
   }
 
   componentDidMount() {
-    const handle = this.props.match.params.userhandle
-    this.props.getUserByHandle(handle)
+    const handle = this.props.match.params.userhandle;
+    firebaseAnalytics.logEvent(`user_visited_${handle}`);
+
+    this.props.getUserByHandle(handle);
   }
 
   toggleAddReview() {
@@ -126,8 +133,13 @@ class User extends React.Component {
     })
   }
 
-  render() {
+  visitSocial(social)
+  {
+    const userHandle = this.props.data.user.userHandle;
+    firebaseAnalytics.logEvent(`${social}_visited_${userHandle}`);
+  }
 
+  render() {
     const { toggleAddReviewComp } = this.state;
     const { user, isLoading } = this.props.data;
     const { authenticated } = this.props.user;
@@ -184,7 +196,7 @@ class User extends React.Component {
         socialButtons.push(
           <Link href={`https://www.instagram.com/${instagram}`} target="_blank">
             <Tooltip title="Instagram">
-              <IconButton aria-label="delete" color="primary">
+              <IconButton aria-label="delete" color="primary" onClick={() => {this.visitSocial("instagram")}}>
                 <InstagramIcon />
               </IconButton>
             </Tooltip>
@@ -195,9 +207,9 @@ class User extends React.Component {
       if(facebook)
       {
         socialButtons.push(
-          <Link href={facebook} target="_blank">
+          <Link href={`https://${facebook}`} target="_blank">
             <Tooltip title="Facebook">
-            <IconButton aria-label="delete" color="primary">
+            <IconButton aria-label="delete" color="primary" onClick={() => {this.visitSocial("facebook")}}>
               <FacebookIcon />
             </IconButton>
           </Tooltip>
@@ -208,9 +220,9 @@ class User extends React.Component {
       if(website)
       {
         socialButtons.push(
-          <Link href={website} target="_blank">
+          <Link href={`https://${website}`} target="_blank">
           <Tooltip title="Website">
-            <IconButton aria-label="delete" color="primary">
+            <IconButton aria-label="delete" color="primary" onClick={() => {this.visitSocial("website")}}>
               <WebIcon />
             </IconButton>
           </Tooltip>
@@ -235,7 +247,6 @@ class User extends React.Component {
       else {
         ratingDisplay = <span>{averageStarsDisplay}({numberOfReviews})</span>
       }
-
 
       let starsDisplay;
       let reviewCards = [];

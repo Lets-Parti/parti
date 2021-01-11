@@ -14,6 +14,9 @@ import PropTypes from 'prop-types'
 //Resources
 import nothing_img from '../../resources/images/nothing_found.png'
 
+//Analytics
+import {firebaseAnalytics} from '../../utils/firebase'
+
 class Connections extends React.Component
 {
     constructor()
@@ -22,7 +25,8 @@ class Connections extends React.Component
         this.state = {
             connects: [],
             isLoading: false
-        }
+        }        
+        this.analyticsTriggered = false; 
     }
 
     componentDidMount()
@@ -30,15 +34,31 @@ class Connections extends React.Component
         this.props.getConnects(); 
     }
 
+    triggerAnalytics(user)
+    {
+        if(!this.analyticsTriggered)
+        {
+            firebaseAnalytics.logEvent(`connects_visited_${user.userHandle}`);
+            this.analyticsTriggered = true; 
+        }
+    }
+
     render()
     {
+        const {connects, isLoading} = this.props.data; 
+        const {user} = this.props.user;
+
+        if(user.userHandle)
+        {
+            this.triggerAnalytics(user); 
+        }
+
         const nothingFound = 
         <div>
             <img src={nothing_img} className="nothingImg" alt="Nothing Found"/>
             <p>None found.</p>
         </div>
 
-        const {connects, isLoading} = this.props.data; 
         let dataDisplay;
         if(isLoading)
         {
@@ -57,6 +77,8 @@ class Connections extends React.Component
                 });
             }
         }
+
+
         
         return(
             <div>
@@ -75,11 +97,13 @@ class Connections extends React.Component
 
 Connections.propTypes = {
     getConnects: PropTypes.func.isRequired, 
-    data: PropTypes.object.isRequired
+    data: PropTypes.object.isRequired,
+    user: PropTypes.object.isRequired,
 }
 
 const mapStateToProps = (state) => ({
-    data: state.data
+    data: state.data,
+    user: state.user
 })
 
 const mapActionsToProps = {

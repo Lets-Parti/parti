@@ -19,6 +19,9 @@ import StaticData from '../../static/static-data'
 //images 
 import nothing_img from '../../resources/images/nothing_found.png'
 
+//Analytics
+import {firebaseAnalytics} from '../../utils/firebase'
+
 class Discover extends React.Component {
     constructor() {
         super()
@@ -33,6 +36,7 @@ class Discover extends React.Component {
 
     componentDidMount() 
     {
+        firebaseAnalytics.logEvent('discover_visited');
         let URLQuery = this.props.match.params.query;
         let query; 
         
@@ -106,7 +110,6 @@ class Discover extends React.Component {
     }
 
     render() {
-        console.log(this.state); 
         const { discover, isLoading } = this.props.data;
         
         const nothingFound = 
@@ -117,7 +120,7 @@ class Discover extends React.Component {
 
         let dataDisplay
         if (isLoading) {
-            dataDisplay = <CircularProgress />
+            dataDisplay = <CircularProgress />;
         } else {
             dataDisplay = []
             if(discover.length === 0)
@@ -125,8 +128,8 @@ class Discover extends React.Component {
                 dataDisplay.push(nothingFound); 
             }else
             {
-                discover.forEach(serviceTag => {
-                    dataDisplay.push(<DiscoverCard data={serviceTag} />);
+                discover.forEach(queryTags => {
+                    dataDisplay.push(<DiscoverCard data={queryTags} />);
                 })
             }
         }

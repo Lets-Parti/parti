@@ -19,6 +19,8 @@ import PropTypes from 'prop-types'
 import Select from 'react-select'
 import StaticData from '../static/static-data'
 
+import {firebaseAnalytics} from '../utils/firebase'
+
 class SignUp extends React.Component
 {
     constructor()
@@ -69,7 +71,7 @@ class SignUp extends React.Component
             zipcode: this.state.zipcode,
             service: this.state.service.value
         }
-        
+        firebaseAnalytics.logEvent(`signup_attempted_${data.userHandle}`);
         this.props.signupUser(data, this.props.history); 
     }
 
@@ -100,6 +102,7 @@ class SignUp extends React.Component
         this.setState({
             type
         })
+        firebaseAnalytics.logEvent("signup_visited");
     }
 
     componentWillReceiveProps(nextProps)

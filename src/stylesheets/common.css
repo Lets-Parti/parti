@@ -12,6 +12,14 @@
   color: gray;
 }
 
+.whiteText {
+  color: white;
+}
+
+.darkText {
+  color: black;
+}
+
 .seperator {
   height: 0px;
 }

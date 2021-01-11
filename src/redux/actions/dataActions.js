@@ -53,7 +53,6 @@ export const createEvent = (eventData, history) => (dispatch) =>
     })
     .then(res =>
     {
-        console.log(res); 
         dispatch({type: CLEAR_ERRORS})
         history.push('/events')
     })
@@ -150,7 +149,6 @@ export const createContract = (contractData, history) => (dispatch) =>
     })
     .then(res =>
     {
-        console.log(res); 
         dispatch({type: CLEAR_ERRORS})
         history.push('/contracts')
     })
@@ -175,7 +173,6 @@ export const createFeedback = (feedbackData, history) => (dispatch) =>
     })
     .then(res =>
     {
-        console.log(res); 
         dispatch({type: CLEAR_ERRORS})
         history.push('/')
     })
@@ -199,7 +196,6 @@ export const createConnect = (connectInfo) => (dispatch) =>
     })
     .then(res =>
     {
-        console.log(res); 
         dispatch({type: CLEAR_ERRORS})
     })
     .catch(err =>
@@ -217,7 +213,6 @@ export const getConnects = () => dispatch =>
     axios.get('/connect')
     .then(res =>
     {
-        console.log(res); 
         dispatch({
             type: SET_CONNECTS,
             payload: res.data
@@ -235,7 +230,6 @@ export const getConnects = () => dispatch =>
 export const discover = (queryData, page) => (dispatch) =>
 {
     dispatch({type: LOADING_DATA});
-    console.log(queryData.serviceTags)
     axios.get('/discover', {
         headers: {
             'service': queryData.serviceTags,
@@ -244,7 +238,6 @@ export const discover = (queryData, page) => (dispatch) =>
     })
     .then(res =>
         {
-            console.log(res); 
             dispatch({
                 type: DISCOVER, 
                 payload: res.data
@@ -314,7 +307,6 @@ export const addTheReview = (theData) => (dispatch) =>
   })
   .then(res => 
   {
-    console.log(res)
     dispatch({type: CLEAR_ERRORS})
     window.location.reload()
   })
