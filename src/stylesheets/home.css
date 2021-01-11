@@ -108,6 +108,12 @@
   display: block;
 }
 
+.discover-icon {
+  color: white;
+  height: 8rem;
+  width: 8rem;
+}
+
 @media (max-width: 800px) {
   .home-introduction {
     background-image: url("../resources/backgrounds/hero_img.jpg");
@@ -174,5 +180,11 @@
 
   .about-text-sm {
     display: none;
+  }
+
+  .discover-icon {
+    color: white;
+    height: 4rem;
+    width: 4rem;
   }
 }
