@@ -30,7 +30,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 
 
 //Redux
-import { getUserByHandle, addTheReview } from '../redux/actions/dataActions'
+import { getUserByHandle, addTheReview, editTheReview } from '../redux/actions/dataActions'
 
 //Image Gallery (From Online) {https://www.npmjs.com/package/react-image-gallery}
 import ImageGallery from 'react-image-gallery';
@@ -45,13 +45,15 @@ class User extends React.Component {
       reviewBody: '',
       stars: 0,
       modalOpen: false,
-      // userHandle: this.props.data.userHandle
+      editReview: false
     };
     this.handleTextChange = this.handleTextChange.bind(this)
     this.handleStarsChange = this.handleStarsChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
+    this.toggleEditReview = this.toggleEditReview.bind(this);
+    this.toggleCancel = this.toggleCancel.bind(this);
   }
 
   handleTextChange(event) {
@@ -76,7 +78,12 @@ class User extends React.Component {
         stars: parseFloat(stars),
         body: body
       }
-      this.props.addTheReview(everything)
+      if (this.state.editReview) {
+        this.props.editTheReview(everything)
+      }
+      else {
+        this.props.addTheReview(everything)
+      }
     }
   }
 
@@ -102,7 +109,21 @@ class User extends React.Component {
   }
 
   toggleAddReview() {
-    this.setState({toggleAddReviewComp: !this.state.toggleAddReviewComp});
+    this.setState({toggleAddReviewComp: true});
+  }
+
+  toggleEditReview() {
+    this.setState({
+      toggleAddReviewComp: true,
+      editReview: true
+    })
+  }
+
+  toggleCancel() {
+    this.setState({
+      toggleAddReviewComp: false,
+      editReview: false
+    })
   }
 
   render() {
@@ -222,7 +243,7 @@ class User extends React.Component {
       reviews.forEach(review => {
         if (authenticated && review.userHandle === authenticatedUser.userHandle) {
           editButton = (
-            <IconButton color="primary" onClick={() => this.toggleAddReview()}>
+            <IconButton color="primary" onClick={() => this.toggleEditReview()}>
               <ReviewIcon />
             </IconButton>
           )
@@ -297,7 +318,7 @@ class User extends React.Component {
             color="white"
             startIcon={<ReviewIcon />}
             display='none'
-            onClick={() => this.toggleAddReview()}
+            onClick={() => this.toggleCancel()}
           >
             Cancel
           </Button>
@@ -490,7 +511,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapActionsToProps = {
-  getUserByHandle, addTheReview
+  getUserByHandle, addTheReview, editTheReview
 }
 
 export default connect(mapStateToProps, mapActionsToProps)(User)
