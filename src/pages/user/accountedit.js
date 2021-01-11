@@ -409,6 +409,8 @@ class AccountEdit extends React.Component
                         name='website'
                         onChange={this.eventChange}
                         value={this.state.user.website}
+                        helperText={this.state.errors.website}
+                        error={this.state.errors.website ? true : false}
                         InputProps={{
                             startAdornment: <InputAdornment position="start">https://</InputAdornment>,
                         }}
@@ -422,6 +424,8 @@ class AccountEdit extends React.Component
                         name='instagram'
                         onChange={this.eventChange}
                         value={this.state.user.instagram}
+                        helperText={this.state.errors.instagram}
+                        error={this.state.errors.instagram ? true : false}
                         InputProps={{
                             startAdornment: <InputAdornment position="start">@</InputAdornment>,
                         }}
