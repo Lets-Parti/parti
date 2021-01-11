@@ -199,7 +199,7 @@ class Home extends React.Component {
                         {cat[1]}
                       </Grid>
                       <Grid item>
-                        <p className="whiteText">{cat[0]}</p>
+                        <p className="white-text">{cat[0]}</p>
                       </Grid>
                       </Link>
                 </Grid>
