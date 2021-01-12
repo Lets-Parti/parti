@@ -17,6 +17,8 @@ import LanternIcon from '../resources/icons/lantern.png';
 import BuffetIcon from '../resources/icons/buffet.png'; 
 import MonkeyIcon from '../resources/icons/monkey.png';
 
+import HomeHeroText from '../resources/images/home_hero_text.svg';
+
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
@@ -182,7 +184,6 @@ class Home extends React.Component {
             <p className="subBannerTitle">
               <b>DISCOVER</b>
             </p>
-            <p>Find services for your upcoming event.</p>
           </Grid>
 
           <Grid container align="center">
@@ -199,7 +200,7 @@ class Home extends React.Component {
                         {cat[1]}
                       </Grid>
                       <Grid item>
-                        <p className="white-text">{cat[0]}</p>
+                        <p className="white-text" className="discover-icon-text">{cat[0]}</p>
                       </Grid>
                       </Link>
                 </Grid>
@@ -264,17 +265,8 @@ class Home extends React.Component {
                 <Grid item sm={12} xs={12}>
                   <div className="subBannerButton">
                     <Link href="/about">
-                      <Button variant="contained" color="primary">
-                        Learn More
-                      </Button>
-                    </Link>
-                  </div>
-                </Grid>
-                <Grid item sm={12} xs={12}>
-                  <div className="subBannerButton">
-                    <Link href="/faq">
                       <Button variant="outlined" color="primary">
-                        FAQ
+                        Learn More
                       </Button>
                     </Link>
                   </div>
@@ -315,7 +307,9 @@ class Home extends React.Component {
                         value={this.state.company}
                         />
                     <div className="seperator" />
-                {stay_updated_button}
+                    <div className="home-newsletter-button">
+                      {stay_updated_button}
+                    </div>
                 </div>     
               </div>
             </Grid>
