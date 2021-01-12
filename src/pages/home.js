@@ -131,7 +131,7 @@ class Home extends React.Component {
             </Link>
           </div>
           <Link href="/signup/vendor" >
-            <p className="darkText">Are you a vendor? List yourself here</p>
+            <p className="darkText"><u>Are you a vendor? List yourself here</u></p>
           </Link>
           <div className="bannerButton">
             <Link href="#about">
@@ -182,7 +182,7 @@ class Home extends React.Component {
         <div className="home-sub-blue">
           <Grid item sm={12} xs={12}>
             <p className="subBannerTitle">
-              <b>DISCOVER</b>
+              <p>DISCOVER</p>
             </p>
           </Grid>
 
@@ -239,26 +239,26 @@ class Home extends React.Component {
               <div id="about" className="home-sub-white">
                 <Grid item sm={12} xs={12}>
                   <p className="subBannerTitle">
-                    <b>ABOUT PARTI</b>
+                    <p>ABOUT PARTI</p>
                   </p>
                 </Grid>
                 <Grid item sm={12} xs={12} align="left" className="about-text-xs">
                   <p>
-                    <b>Hosting an event is stressful.</b> Parti will assist you in finding professional 
+                    Hosting an event is stressful. Parti will assist you in finding professional 
                     services and make the event planning process easy. 
                   </p>
                   <p>
-                    Are you a vendor? Parti enables you to <b>directly seek customers</b>. See who is in 
+                    Are you a vendor? Parti enables you to directly seek customers. See who is in 
                     need of your services nearby.
                   </p>
                 </Grid>
                 <Grid item sm={12} xs={12} className="about-text-sm">
                   <p>
-                    <b>Hosting an event is stressful.</b> Parti will assist you in finding professional 
+                    Hosting an event is stressful. Parti will assist you in finding professional 
                     services and make the event planning process easy. 
                   </p>
                   <p>
-                    Are you a vendor? Parti enables you to <b>directly seek customers</b>. See who is in 
+                    Are you a vendor? Parti enables you to directly seek customers. See who is in 
                     need of your services nearby.
                   </p>
                 </Grid>
@@ -281,7 +281,7 @@ class Home extends React.Component {
             <Grid container align="center">
               <div className="home-sub-light">
                 <p className="subBannerTitle">
-                  <b>STAY UPDATED</b>
+                  <p>STAY UPDATED</p>
                 </p>
                 <p><i>Enter your email to get updates about Parti.</i></p>
 

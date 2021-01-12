@@ -15,7 +15,7 @@
 
 .bannerTitle {
   color: #ffffff;
-  font-family: "Montserrat";
+  font-family: "Montserrat", sans-serif;
   font-style: normal;
   font-weight: bold;
   font-size: 110px;
@@ -37,7 +37,7 @@
 }
 
 .homePage {
-  font-family: "Nunito", sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .home-sub-black {
@@ -123,14 +123,15 @@
 @media (max-width: 800px) {
   .home-introduction {
     background-image: url("../resources/backgrounds/hero_img_2.jpg");
-    background-size: 300%;
-    background-position-y: -5rem;
+    background-size: 350%;
+    background-position-y: 0rem;
     text-align: center;
-    height: 500px;
     background-position-x: center;
-    padding-top: 100px;
-    padding-left: 10px;
-    padding-right: 10px;
+    text-align: center;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    padding-left: 50px;
+    padding-right: 50px;
   }
 
   .bannerTitle {
