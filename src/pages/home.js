@@ -279,7 +279,7 @@ class Home extends React.Component {
 
             {/*Stay Updated*/}
             <Grid container align="center">
-              <div className="home-sub-light">
+              <div className="home-sub-white">
                 <p className="subBannerTitle">
                   <p>STAY UPDATED</p>
                 </p>
