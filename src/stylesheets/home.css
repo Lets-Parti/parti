@@ -135,9 +135,10 @@
   }
 
   .bannerTitle {
-    font-size: 4rem;
+    font-size: 5rem;
     margin-top: 5px;
     margin-bottom: 40px;
+    line-height: 100px;
   }
 
   .subBannerTitle {
@@ -192,7 +193,7 @@
 
   .discover-icon {
     color: white;
-    height: 4rem;
-    width: 4rem;
+    height: 6rem;
+    width: 6rem;
   }
 }
