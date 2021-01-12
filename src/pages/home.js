@@ -8,14 +8,14 @@ import Link from "@material-ui/core/Link";
 import React from "react";
 import TextField from '@material-ui/core/TextField';
 
-import DJIcon from '../resources/icons/dj.svg';
-import PhotoIcon from '../resources/icons/photo.svg'; 
-import ComedianIcon from '../resources/icons/comedian.svg'; 
-import MagicIcon from '../resources/icons/magic.svg';
-import PlaceIcon from '../resources/icons/place.svg';
-import LanternIcon from '../resources/icons/lantern.svg';
-import BuffetIcon from '../resources/icons/buffet.svg'; 
-import MonkeyIcon from '../resources/icons/monkey.svg';
+import DJIcon from '../resources/icons/dj.png';
+import PhotoIcon from '../resources/icons/photo.png'; 
+import ComedianIcon from '../resources/icons/comedian.png'; 
+import MagicIcon from '../resources/icons/magic.png';
+import PlaceIcon from '../resources/icons/place.png';
+import LanternIcon from '../resources/icons/lantern.png';
+import BuffetIcon from '../resources/icons/buffet.png'; 
+import MonkeyIcon from '../resources/icons/monkey.png';
 
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
