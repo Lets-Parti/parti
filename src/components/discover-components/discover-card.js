@@ -6,6 +6,7 @@ import IconButton from '@material-ui/core/IconButton';
 import ChatIcon from '@material-ui/icons/Chat';
 import Chip from '@material-ui/core/Chip';
 import ConnectModal from '../modal-component/connectmodal'
+import Tooltip from '@material-ui/core/Tooltip';
 import '../../stylesheets/discover-card.css';
 
 //redux
@@ -51,7 +52,7 @@ class DiscoverCard extends Component {
         let mediaImagesArray = this.state.mediaImages
         let highlightPhoto = null;
         if (mediaImagesArray.length > 0) {
-            highlightPhoto = <img className="highlight-photo" src={mediaImagesArray[0]} alt="Highlight"/>
+            highlightPhoto = < a href={`/user/${this.state.userHandle}`}><img className="highlight-photo" src={mediaImagesArray[0]} alt="Highlight"/></a>
         }
 
         let chips = [];
@@ -73,13 +74,17 @@ class DiscoverCard extends Component {
         null
 
         let chatButton = authenticated ? 
+        <Tooltip title="Send Message">
         <IconButton aria-label="message" color="primary" onClick={this.openModal}>
             <ChatIcon />
         </IconButton>
+        </Tooltip>
         : 
+        <Tooltip title="Send Message">
         <IconButton aria-label="message" color="primary" onClick={this.redirect}>
             <ChatIcon />
         </IconButton>
+        </Tooltip>
 
         return (
             <div className="discover-card">
