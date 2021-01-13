@@ -109,10 +109,14 @@ class User extends React.Component {
   }
 
   componentDidMount() {
-    const handle = this.props.match.params.userhandle;
-    firebaseAnalytics.logEvent(`user_visited_${handle}`);
-
-    this.props.getUserByHandle(handle);
+    const userHandle = this.props.match.params.userHandle;
+    const promoID = this.props.match.params.promoID; 
+    firebaseAnalytics.logEvent(`user_visited_${userHandle}`);
+    if(promoID)
+    {
+      firebaseAnalytics.logEvent(`promo_1_clicked_${promoID}_${userHandle}`);
+    }
+    this.props.getUserByHandle(userHandle);
   }
 
   toggleAddReview() {
