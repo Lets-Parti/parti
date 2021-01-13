@@ -15,6 +15,7 @@ import { Rating } from '@material-ui/lab';
 import Link from '@material-ui/core/Link';
 import Tooltip from '@material-ui/core/Tooltip';
 import Box from '@material-ui/core/Box';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
 
 import ConnectModal from '../components/modal-component/connectmodal'
 import { connect } from 'react-redux'
@@ -181,6 +182,9 @@ class User extends React.Component {
 
     let fullProfile = null;
     let circularProgress = null;
+    let firstRow = null;
+    let socialsRow = null;
+    let secondRow = null;
 
     if (user && !isLoading) {
       let userDisplay = user.fullName
@@ -239,22 +243,35 @@ class User extends React.Component {
       let numberOfReviews = reviewData.numberOfReviews
       let reviews = reviewData.reviews
 
+
+      const StyledRating = withStyles({
+        iconFilled: {
+          color: '#31b6ec'
+        }
+      })(Rating);
+
+      let numReviews = <span className="grey-text">({numberOfReviews})</span>
       let averageStarsDisplay =
-        <Rating
-          value={averageStars}
+        <StyledRating
+          value={1}
           readOnly
+          defaultValue={1}
+          max={1}
+          className="icon-filled"
         />
-      let ratingDisplay
-      if (averageStars === 0) {
-        ratingDisplay = <span>{averageStarsDisplay}({numberOfReviews})</span>
-      }
-      else {
-        ratingDisplay = <span>{averageStarsDisplay}({numberOfReviews})</span>
-      }
+           
+      let ratingDisplay = (
+      <Grid container>
+        {averageStarsDisplay} 
+        <span className="review-text"> {averageStars} {numReviews}</span>
+      </Grid>
+      );
+    
 
       let starsDisplay;
       let reviewCards = [];
       let editButton;
+      /*
       reviews.forEach(review => {
         if (authenticated && review.userHandle === authenticatedUser.userHandle) {
           editButton = (
@@ -288,6 +305,7 @@ class User extends React.Component {
           </Grid>
         )
       })
+      */
 
       let createReview =
         <>
@@ -361,143 +379,179 @@ class User extends React.Component {
               style={{ fontSize: '1rem' }} />
           )
       })
+      /*
       let authUserHaveReview = -1;
       reviews.forEach(reviewBlock => {
         if(authenticated && reviewBlock.userHandle === authenticatedUser.userHandle) {
           authUserHaveReview = 1;
         }
       })
-      if (authenticated && authenticatedUser.type === "client" && authUserHaveReview === -1) {
-        fullProfile =
-          <Grid container>
-            {/* First Row */}
-            <Grid container className="row">
-              <Grid item className="grid-item" sm={1} xs={1} align="left">
+      */
+      
+      firstRow = (
+        <Grid container>
+          <Grid container className="row" spacing={2}>
+            <Grid item className="grid-item" align="left">
                 <img className="user-profile-image" src={userProfileImageURL} alt="User Profile"/>
-              </Grid>
-              <Grid item className="grid-item" sm={9} xs={9} align="left">
-                <div className="user-page-title">
-                  <p className="user-company-name">{userDisplay}</p>
-                  <p className="user-handle">@{userHandle}</p>
-                  {socialButtons}
-                </div>
-              </Grid>
-              <Grid item className="grid-item" align="center" sm={2} xs={2}>
-                <div className="message-button-large">
-                  {chatButton}
-                </div>
-                <div className="message-button-small">
-                  {smallChatButton}
-                </div>
-              </Grid>
             </Grid>
-
-            {/* Second Row */}
-            <Grid container className="row">
-              <Grid container className="image-gallery" sm={6} xs={12}>
-                <ImageGallery items={carouselImages} />
-              </Grid>
-
-              <Grid item className="grid-item-description" sm={6} xs={12}>
-                <div className="bio-container">
-                  <p className="bio">{bio}</p>
-                  {chips}
+            <Grid item className="grid-item">
+                <div className="user-company-name">
+                  {userDisplay}
                 </div>
-              </Grid>
+                {ratingDisplay}
             </Grid>
-
-            <div className="reviews-section">
-              <hr className="hrmargin"></hr>
-              <Grid container className="row">
-                <Grid item className="grid-item" align="left" sm={10} xs={10}>
-                  <h2>Reviews</h2>
-                  {ratingDisplay}
-                </Grid>
-                <Grid item className="grid-item" sm={2} xs={2}>
-                  <div className="review-button-large">
-                    <Button
-                      variant="contained"
-                      color="primary"
-                      startIcon={<ReviewIcon />}
-                      display='none'
-                      onClick={() => this.toggleAddReview()}
-                    >
-                      Add Review
-                    </Button>
-                  </div>
-                  <div className="review-button-small">
-                    <IconButton aria-label="delete" color="primary" onClick={() => this.toggleAddReview()}>
-                      <ReviewIcon />
-                    </IconButton>
-                  </div>
-                </Grid>
-                {toggleAddReviewComp && createReview}
-              </Grid>
-              <Grid container>
-                {reviewCards}
-              </Grid>
-              {/* Below is ghetto spacing */}
-              <br></br>
-            </div>
           </Grid>
-      }
-      else {
-        fullProfile =
-          <Grid container>
-            {/* First Row */}
-            <Grid container className="row">
-              <Grid item className="grid-item" sm={1} xs={1} align="left">
-                <img className="user-profile-image" src={userProfileImageURL} alt="User Profile"/>
-              </Grid>
-              <Grid item className="grid-item" sm={9} xs={9} align="left">
-                <div className="user-page-title">
-                  <p className="user-company-name">{userDisplay}</p>
-                  <p className="user-handle">@{userHandle}</p>
-                  {socialButtons}
-                </div>
-              </Grid>
-              <Grid item className="grid-item" align="center" sm={2} xs={2}>
-                <div className="message-button-large">
-                  {chatButton}
-                </div>
-                <div className="message-button-small">
-                  {smallChatButton}
-                </div>
-              </Grid>
-            </Grid>
-
-            {/* Second Row */}
-            <Grid container className="row">
-              <Grid container className="image-gallery" sm={6} xs={12}>
-                <ImageGallery items={carouselImages} />
-              </Grid>
-
-              <Grid item className="grid-item-description" sm={6} xs={12}>
-                <div className="bio-container">
-                  <p className="bio">{bio}</p>
-                  {chips}
-                </div>
-              </Grid>
-            </Grid>
-
-            <div className="reviews-section">
-              <hr className="hrmargin"></hr>
-              <Grid container className="row">
-                <Grid item className="grid-item" align="left" sm={12} xs={12}>
-                  <h2>Reviews</h2>
-                  {ratingDisplay}
-                </Grid>
-                {toggleAddReviewComp && createReview}
-              </Grid>
-
-              <Grid container>
-                {reviewCards}
-              </Grid>
-              {/* Below is ghetto spacing */}
-              <br></br>
-            </div>
+        </Grid>
+      )
+      
+      socialsRow = (
+        <Grid container>
+          <Grid item sm={12} align="right"> 
+            {socialButtons}      
           </Grid>
-      }
+        </Grid>
+      );
+      
+      secondRow = (
+        <Grid container>
+          <Grid item className="image-gallery" sm={12}>
+            <ImageGallery items={carouselImages} />
+          </Grid>
+        </Grid>
+      );
+      
+      // if (authenticated && authenticatedUser.type === "client" && authUserHaveReview === -1) {
+      //   fullProfile =
+      //     <Grid container>
+      //       /* First Row */
+      //       <Grid container className="row">
+      //         <Grid item className="grid-item" sm={1} xs={1} align="left">
+      //           <img className="user-profile-image" src={userProfileImageURL} alt="User Profile"/>
+      //         </Grid>
+      //         <Grid item className="grid-item" sm={9} xs={9} align="left">
+      //           <div className="user-page-title">
+      //             <p className="user-company-name">{userDisplay}</p>
+      //             <p className="user-handle">@{userHandle}</p>
+      //             {socialButtons}
+      //           </div>
+      //         </Grid>
+      //         <Grid item className="grid-item" align="center" sm={2} xs={2}>
+      //           <div className="message-button-large">
+      //             {chatButton}
+      //           </div>
+      //           <div className="message-button-small">
+      //             {smallChatButton}
+      //           </div>
+      //         </Grid>
+      //       </Grid>
+
+      //       /* Second Row */
+      //       <Grid container className="row">
+      //         <Grid container className="image-gallery" sm={6} xs={12}>
+      //           <ImageGallery items={carouselImages} />
+      //         </Grid>
+
+      //         <Grid item className="grid-item-description" sm={6} xs={12}>
+      //           <div className="bio-container">
+      //             <p className="bio">{bio}</p>
+      //             {chips}
+      //           </div>
+      //         </Grid>
+      //       </Grid>
+
+      //       <div className="reviews-section">
+      //         <hr className="hrmargin"></hr>
+      //         <Grid container className="row">
+      //           <Grid item className="grid-item" align="left" sm={10} xs={10}>
+      //             <h2>Reviews</h2>
+      //             {ratingDisplay}
+      //           </Grid>
+      //           <Grid item className="grid-item" sm={2} xs={2}>
+      //             <div className="review-button-large">
+      //               <Button
+      //                 variant="contained"
+      //                 color="primary"
+      //                 startIcon={<ReviewIcon />}
+      //                 display='none'
+      //                 onClick={() => this.toggleAddReview()}
+      //               >
+      //                 Add Review
+      //               </Button>
+      //             </div>
+      //             <div className="review-button-small">
+      //               <IconButton aria-label="delete" color="primary" onClick={() => this.toggleAddReview()}>
+      //                 <ReviewIcon />
+      //               </IconButton>
+      //             </div>
+      //           </Grid>
+      //           {toggleAddReviewComp && createReview}
+      //         </Grid>
+      //         <Grid container>
+      //           {reviewCards}
+      //         </Grid>
+      //         {/* Below is ghetto spacing */}
+      //         <br></br>
+      //       </div>
+      //     </Grid>
+      // }
+      // else {
+      //   fullProfile =
+      //     <Grid container>
+      //       {/* First Row */}
+      //       <Grid container className="row">
+      //         <Grid item className="grid-item" sm={1} xs={1} align="left">
+      //           <img className="user-profile-image" src={userProfileImageURL} alt="User Profile"/>
+      //         </Grid>
+      //         <Grid item className="grid-item" sm={9} xs={9} align="left">
+      //           <div className="user-page-title">
+      //             <p className="user-company-name">{userDisplay}</p>
+      //             <p className="user-handle">@{userHandle}</p>
+      //             {socialButtons}
+      //           </div>
+      //         </Grid>
+      //         <Grid item className="grid-item" align="center" sm={2} xs={2}>
+      //           <div className="message-button-large">
+      //             {chatButton}
+      //           </div>
+      //           <div className="message-button-small">
+      //             {smallChatButton}
+      //           </div>
+      //         </Grid>
+      //       </Grid>
+
+      //       {/* Second Row */}
+      //       <Grid container className="row">
+      //         <Grid container className="image-gallery" sm={6} xs={12}>
+      //           <ImageGallery items={carouselImages} />
+      //         </Grid>
+
+      //         <Grid item className="grid-item-description" sm={6} xs={12}>
+      //           <div className="bio-container">
+      //             <p className="bio">{bio}</p>
+      //             {chips}
+      //           </div>
+      //         </Grid>
+      //       </Grid>
+
+      //       <div className="reviews-section">
+      //         <hr className="hrmargin"></hr>
+      //         <Grid container className="row">
+      //           <Grid item className="grid-item" align="left" sm={12} xs={12}>
+      //             <h2>Reviews</h2>
+      //             {ratingDisplay}
+      //           </Grid>
+      //           {toggleAddReviewComp && createReview}
+      //         </Grid>
+
+      //         <Grid container>
+      //           {reviewCards}
+      //         </Grid>
+      //         {/* Below is ghetto spacing */}
+      //         <br></br>
+      //       </div>
+      //     </Grid>
+      // }
+
     } 
     else 
     {
@@ -505,10 +559,15 @@ class User extends React.Component {
     }
 
     return (
+      // <div className="user-container">
+      //   {connectModal}
+      //   {circularProgress}
+      //   {fullProfile}
+      // </div>
       <div className="user-container">
-        {connectModal}
-        {circularProgress}
-        {fullProfile}
+        {firstRow}
+        {socialsRow}
+        {secondRow}
       </div>
     )
   }
