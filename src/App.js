@@ -83,7 +83,8 @@ class App extends React.Component
               {/* <Route exact path="/" component={Beta} /> */}
               <Route exact path="/about" component={AboutUs} />
               <Route exact path="/feedback" component={Feedback} />
-              <Route exact path="/user/:userhandle" component={User} />
+              <Route exact path="/user/:userHandle" component={User} />
+              <Route exact path="/user/:userHandle/:promoID" component={User} />
               <ProtectedClientRoute exact path="/events/new" component={NewEvent} />
               <ProtectedRoute exact path="/events" component={Events} />
               <ProtectedRoute exact path="/events/:eventID" component={EventByID} />
