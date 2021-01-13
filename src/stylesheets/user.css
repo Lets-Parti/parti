@@ -10,7 +10,6 @@
   margin-bottom: 100px;
   color: #222222;
   /* Testing Below */
-  border: 1px solid black;
 }
 
 .grid-item-messagebutton {
@@ -18,8 +17,8 @@
 }
 
 .grid-item {
-  /*padding-right: 10px; */
-  border: 1px solid black;
+  /* padding-right: 10px;  */
+  /* border: 1px solid black; */
 }
 
 .row {

@@ -184,7 +184,8 @@ class User extends React.Component {
     let circularProgress = null;
     let firstRow = null;
     let socialsRow = null;
-    let secondRow = null;
+    let imageGallerySection = null;
+    let bioSection = null;
 
     if (user && !isLoading) {
       let userDisplay = user.fullName
@@ -391,14 +392,24 @@ class User extends React.Component {
       firstRow = (
         <Grid container>
           <Grid container className="row" spacing={2}>
-            <Grid item className="grid-item" align="left">
-                <img className="user-profile-image" src={userProfileImageURL} alt="User Profile"/>
+            <Grid container xs={11} spacing={2} sm={9}>
+              <Grid item className="grid-item" align="left">
+                  <img className="user-profile-image" src={userProfileImageURL} alt="User Profile"/>
+              </Grid>
+              <Grid item className="grid-item">
+                  <div className="user-company-name">
+                    {userDisplay}
+                  </div>
+                  {ratingDisplay}
+              </Grid>
             </Grid>
-            <Grid item className="grid-item">
-                <div className="user-company-name">
-                  {userDisplay}
-                </div>
-                {ratingDisplay}
+            <Grid item className="grid-item" align="right" xs={1} sm={3}>
+                 <div className="message-button-large">
+                   {chatButton}
+                 </div>
+                 <div className="message-button-small">
+                   {smallChatButton}
+                 </div>
             </Grid>
           </Grid>
         </Grid>
@@ -406,18 +417,29 @@ class User extends React.Component {
       
       socialsRow = (
         <Grid container>
-          <Grid item sm={12} align="right"> 
+          <Grid item xs={12} align="right"> 
             {socialButtons}      
           </Grid>
         </Grid>
       );
       
-      secondRow = (
+      imageGallerySection = (
         <Grid container>
           <Grid item className="image-gallery" sm={12}>
-            <ImageGallery items={carouselImages} />
+            <ImageGallery className="image-gallery" items={carouselImages} />
           </Grid>
         </Grid>
+      );
+
+      bioSection = (
+        <Grid container spacing={4}>
+          <Grid item xs={12} className="review-text">
+            {bio}
+          </Grid>
+          <Grid item xs={12} align="left">
+            {chips}
+            </Grid>
+        </Grid>        
       );
       
       // if (authenticated && authenticatedUser.type === "client" && authUserHaveReview === -1) {
@@ -565,9 +587,18 @@ class User extends React.Component {
       //   {fullProfile}
       // </div>
       <div className="user-container">
+        {connectModal}
+        {circularProgress}
         {firstRow}
         {socialsRow}
-        {secondRow}
+        {imageGallerySection}
+        <br></br>
+        <br></br>
+        {bioSection}
+        <br></br>
+        <br></br>
+        <hr></hr>
+        {}
       </div>
     )
   }
