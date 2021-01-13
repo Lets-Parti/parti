@@ -17,6 +17,8 @@ import LanternIcon from '../resources/icons/lantern.png';
 import BuffetIcon from '../resources/icons/buffet.png'; 
 import MonkeyIcon from '../resources/icons/monkey.png';
 
+import HomeHeroText from '../resources/images/home_hero_text.svg';
+
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
@@ -129,7 +131,7 @@ class Home extends React.Component {
             </Link>
           </div>
           <Link href="/signup/vendor" >
-            <p className="darkText">Are you a vendor? List yourself here</p>
+            <p className="darkText"><u>Are you a vendor? List yourself here</u></p>
           </Link>
           <div className="bannerButton">
             <Link href="#about">
@@ -180,9 +182,8 @@ class Home extends React.Component {
         <div className="home-sub-blue">
           <Grid item sm={12} xs={12}>
             <p className="subBannerTitle">
-              <b>DISCOVER</b>
+              <p>DISCOVER</p>
             </p>
-            <p>Find services for your upcoming event.</p>
           </Grid>
 
           <Grid container align="center">
@@ -192,6 +193,7 @@ class Home extends React.Component {
                   item
                   sm={3}
                   xs={6}
+                  spacing={10}
                   className="home-discover-item"
                 >   
                   <Link href={`/discover/${cat[0]}`}>
@@ -199,7 +201,7 @@ class Home extends React.Component {
                         {cat[1]}
                       </Grid>
                       <Grid item>
-                        <p className="white-text">{cat[0]}</p>
+                        <p className="white-text" className="discover-icon-text">{cat[0]}</p>
                       </Grid>
                       </Link>
                 </Grid>
@@ -238,43 +240,36 @@ class Home extends React.Component {
               <div id="about" className="home-sub-white">
                 <Grid item sm={12} xs={12}>
                   <p className="subBannerTitle">
-                    <b>ABOUT PARTI</b>
+                    <p>ABOUT PARTI</p>
                   </p>
-                </Grid>
+                </Grid> 
+
                 <Grid item sm={12} xs={12} align="left" className="about-text-xs">
                   <p>
-                    <b>Hosting an event is stressful.</b> Parti will assist you in finding professional 
+                    Hosting an event is stressful. Parti will assist you in finding professional 
                     services and make the event planning process easy. 
                   </p>
                   <p>
-                    Are you a vendor? Parti enables you to <b>directly seek customers</b>. See who is in 
+                    Are you a vendor? Parti enables you to directly seek customers. See who is in 
                     need of your services nearby.
                   </p>
                 </Grid>
+    
                 <Grid item sm={12} xs={12} className="about-text-sm">
                   <p>
-                    <b>Hosting an event is stressful.</b> Parti will assist you in finding professional 
+                    Hosting an event is stressful. Parti will assist you in finding professional 
                     services and make the event planning process easy. 
                   </p>
                   <p>
-                    Are you a vendor? Parti enables you to <b>directly seek customers</b>. See who is in 
+                    Are you a vendor? Parti enables you to directly seek customers. See who is in 
                     need of your services nearby.
                   </p>
                 </Grid>
                 <Grid item sm={12} xs={12}>
                   <div className="subBannerButton">
                     <Link href="/about">
-                      <Button variant="contained" color="primary">
-                        Learn More
-                      </Button>
-                    </Link>
-                  </div>
-                </Grid>
-                <Grid item sm={12} xs={12}>
-                  <div className="subBannerButton">
-                    <Link href="/faq">
                       <Button variant="outlined" color="primary">
-                        FAQ
+                        Learn More
                       </Button>
                     </Link>
                   </div>
@@ -287,13 +282,14 @@ class Home extends React.Component {
 
             {/*Stay Updated*/}
             <Grid container align="center">
-              <div className="home-sub-light">
+              <div className="home-sub-white">
                 <p className="subBannerTitle">
-                  <b>STAY UPDATED</b>
+                  <p>STAY UPDATED</p>
                 </p>
                 <p><i>Enter your email to get updates about Parti.</i></p>
 
                 <div className="beta-form">
+                  <div className="text-field">
                     <TextField
                         label="Email" 
                         variant="outlined" 
@@ -303,19 +299,26 @@ class Home extends React.Component {
                         fullWidth
                         onChange={this.eventChange}
                         value={this.state.email}
+                        className="text-field"
                         />
+                      </div>
                     <div className="seperator" />
-                    <TextField
-                        label="Company (optional)" 
-                        variant="outlined" 
-                        size="small" 
-                        name='company'
-                        fullWidth
-                        onChange={this.eventChange}
-                        value={this.state.company}
-                        />
+                    <div className="text-field">
+                      <TextField
+                          label="Company (optional)" 
+                          variant="outlined" 
+                          size="small" 
+                          name='company'
+                          fullWidth
+                          onChange={this.eventChange}
+                          value={this.state.company}
+                          className="text-field"
+                          />
+                      </div>
                     <div className="seperator" />
-                {stay_updated_button}
+                    <div className="home-newsletter-button">
+                      {stay_updated_button}
+                    </div>
                 </div>     
               </div>
             </Grid>

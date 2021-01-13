@@ -1,27 +1,32 @@
 .home-introduction {
-  background-image: url("../resources/backgrounds/hero_img.jpg");
+  background: url("../resources/backgrounds/hero_img_2.jpg") no-repeat center center;
   background-size: cover;
-  background-repeat: no-repeat;
-  background-position-y: -7rem;
+  
+  background-position-y: 0rem;
   background-position-x: center;
-  background-attachment: fixed;
+  background-attachment: sticky;
   text-align: center;
-  width: 1000%;
-  height: 700px;
-  padding-top: 50px;
+  
+  /* width: 1000%; */
+  padding-top: 125px;
+  padding-bottom: 125px;
   padding-left: 30%;
-  padding-right: 30%;
+  padding-right: 50%;
+  
+  height: 800px;
+  
 }
 
 .bannerTitle {
+  color: #ffffff;
+  font-family: "Montserrat", sans-serif;
   font-style: normal;
   font-weight: bold;
-  font-size: 7rem;
-  color: #ffffff;
+  font-size: 110px;
+  line-height: 100px;
   text-shadow: 0px 2px 30px rgba(49, 182, 236, 0.6);
   margin-top: 0px;
-  margin-bottom: 0px;
-  line-height: 1;
+  margin-bottom: 50px;
 }
 
 .bannerPitch {
@@ -36,42 +41,43 @@
 }
 
 .homePage {
-  font-family: "Nunito", sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .home-sub-black {
   background-color: black;
   color: white;
-  padding: 100px;
-  padding-bottom: 80px;
+  padding: 115px;
   width: 100%;
 }
 
 .home-sub-light {
   background-color: #f4f4f4;
-  color: black;
-  padding: 100px;
-  padding-bottom: 80px;
+  color: #222222;
+  padding: 115px;
   width: 100%;
 }
 
 .home-sub-white {
   background-color: white;
-  color: black;
-  padding: 100px;
-  padding-bottom: 80px;
+  color: #222222;
+  padding: 115px;
+  padding-left: 250px;
+  padding-right: 250px;
   width: 100%;
 }
 
 .home-sub-blue {
   background-color: #31b6ec;
   color: white;
-  padding: 100px;
-  padding-bottom: 80px;
+  padding: 115px;
+  padding-left: 200px;
+  padding-right: 200px;
   width: 100%;
 }
 
 .white-text {
+  font-family: Montserrat;
   font-style: normal;
   font-weight: bold;
   font-size: 20px;
@@ -82,61 +88,93 @@
 .subBannerTitle {
   font-size: 2.5rem;
   text-align: center;
-  margin-bottom: 50px;
+  margin-top: 0px;
 }
 
 .subBannerButton {
-  margin-top: 30px;
+  margin-top: 40px;
 }
 
 .home-discover-item {
   padding-top: 25px;
+  margin-left: 100px;
+  margin-right: 100px;
 }
 
 .discover-icon {
-  width: 170px;
-  height: 170px;
-  background: #ffffff;
+  width: 110px;
+  height: 110px;
   border-radius: 10px;
 }
 
 .about-text-xs {
   display: none;
+  font-size: 24px;
 }
 
 .about-text-sm {
   display: block;
+  font-size: 24px;
+  min-width: 300px;
+  
 }
 
-.discover-icon {
+.home-newsletter-button {
+  margin-top: 4 0px;
+}
+
+.discover-icon-text {
+  margin-top: 5px;
   color: white;
-  height: 8rem;
-  width: 8rem;
+  font-size: 20px;
 }
 
-@media (max-width: 800px) {
+.text-field {
+  min-width: 175px;
+}
+
+@media (max-width: 900px) {
   .home-introduction {
-    background-image: url("../resources/backgrounds/hero_img.jpg");
-    background-size: 300%;
-    background-position-y: -5rem;
+    /*
+    background-image: url("../resources/backgrounds/hero_img_2.jpg");
+    background-size: 350%;
+    background-position-y: 0rem;
     text-align: center;
-    height: 500px;
     background-position-x: center;
-    padding-top: 100px;
-    padding-left: 10px;
-    padding-right: 10px;
+    text-align: center;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    padding-left: 50px;
+    padding-right: 50px;
+    */
+    background: url("../resources/backgrounds/hero_img_2.jpg") no-repeat center center;
+    background-size: cover;
+    
+    background-position-y: 0rem;
+    background-position-x: center;
+    background-attachment: sticky;
+    text-align: center;
+    
+    /* width: 1000%; */
+    padding-top: 125px;
+    padding-bottom: 125px;
+    padding-left: 50px;
+    padding-right: 50px;
+    height: 800px;
   }
 
   .bannerTitle {
-    font-size: 4rem;
+    font-size: 5rem;
     margin-top: 5px;
     margin-bottom: 40px;
+    line-height: 100px;
   }
 
   .subBannerTitle {
     font-size: 2.5rem;
     text-align: center;
     margin-bottom: 50px;
+    font-size: 40px;
   }
   .subBannerButton {
     margin-top: 40px;
@@ -160,7 +198,7 @@
 
   .home-sub-white {
     background-color: white;
-    color: black;
+    color: #222222;
     padding: 25px;
     padding-bottom: 80px;
     width: 100%;
@@ -184,7 +222,7 @@
 
   .discover-icon {
     color: white;
-    height: 4rem;
-    width: 4rem;
+    height: 6rem;
+    width: 6rem;
   }
 }

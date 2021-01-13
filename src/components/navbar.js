@@ -87,7 +87,7 @@ const styles = theme => ({
     backgroundColor: 'white',
     boxShadow: 'None',
     padding: theme.spacing(1),
-    fontFamily: '"Nunito", sans-serif',
+    fontFamily: '"Monserrat", sans-serif',
   },
   logo: {
     height: 70,

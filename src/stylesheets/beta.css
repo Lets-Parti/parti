@@ -47,7 +47,7 @@
 }
 
 .page-content-beta {
-  font-family: "Nunito", sans-serif;
+  font-family: "Montserrat", sans-serif;
   width: 70%;
   margin-bottom: 400px;
 }
@@ -71,7 +71,7 @@
 @media (max-width: 800px) {
   .page-content-beta {
     width: 95%;
-    font-family: "Nunito", sans-serif;
+    font-family: "Montserrat", sans-serif;
     margin-bottom: 300px;
   }
 
