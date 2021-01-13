@@ -193,6 +193,7 @@ class Home extends React.Component {
                   item
                   sm={3}
                   xs={6}
+                  spacing={10}
                   className="home-discover-item"
                 >   
                   <Link href={`/discover/${cat[0]}`}>
@@ -241,7 +242,8 @@ class Home extends React.Component {
                   <p className="subBannerTitle">
                     <p>ABOUT PARTI</p>
                   </p>
-                </Grid>
+                </Grid> 
+
                 <Grid item sm={12} xs={12} align="left" className="about-text-xs">
                   <p>
                     Hosting an event is stressful. Parti will assist you in finding professional 
@@ -252,6 +254,7 @@ class Home extends React.Component {
                     need of your services nearby.
                   </p>
                 </Grid>
+    
                 <Grid item sm={12} xs={12} className="about-text-sm">
                   <p>
                     Hosting an event is stressful. Parti will assist you in finding professional 
@@ -286,6 +289,7 @@ class Home extends React.Component {
                 <p><i>Enter your email to get updates about Parti.</i></p>
 
                 <div className="beta-form">
+                  <div className="text-field">
                     <TextField
                         label="Email" 
                         variant="outlined" 
@@ -295,17 +299,22 @@ class Home extends React.Component {
                         fullWidth
                         onChange={this.eventChange}
                         value={this.state.email}
+                        className="text-field"
                         />
+                      </div>
                     <div className="seperator" />
-                    <TextField
-                        label="Company (optional)" 
-                        variant="outlined" 
-                        size="small" 
-                        name='company'
-                        fullWidth
-                        onChange={this.eventChange}
-                        value={this.state.company}
-                        />
+                    <div className="text-field">
+                      <TextField
+                          label="Company (optional)" 
+                          variant="outlined" 
+                          size="small" 
+                          name='company'
+                          fullWidth
+                          onChange={this.eventChange}
+                          value={this.state.company}
+                          className="text-field"
+                          />
+                      </div>
                     <div className="seperator" />
                     <div className="home-newsletter-button">
                       {stay_updated_button}
