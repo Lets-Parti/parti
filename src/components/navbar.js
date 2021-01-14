@@ -29,10 +29,11 @@ const styles = theme => ({
   },
   menuButton: {
     fontFamily: "Montserrat, sans-serif",
-    fontWeight: "500",
+    fontWeight: "480",
     color: "#9B9B9B",
-    marginRight: theme.spacing(2)
-  },
+    marginRight: theme.spacing(2),
+    fontSize: "15.5px"
+    },
   activeMenuButton:{
     color: "black",
     textDecoration: "underline",
