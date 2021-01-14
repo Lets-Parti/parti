@@ -332,7 +332,6 @@ class User extends React.Component {
         </Box>
       </>
 
-
       let carouselImages = [];                    //Initiate carousel data 
       imageGallery.forEach(imageURL => {
         carouselImages.push({
@@ -340,7 +339,6 @@ class User extends React.Component {
           thumbnail: imageURL
         })
       })
-
 
       let chips = [];
       tags.forEach(tag => {
