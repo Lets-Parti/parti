@@ -7,13 +7,14 @@
   padding-left: 10%;
   padding-right: 10%;
   padding-bottom: 25px;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Montserrat";
 }
 
 .footer-social {
-  padding-left: 25px;
+  padding-left: 8px;
 }
 
 .footer-text {
-  font-size: 0.75rem;
+  font-size: .9rem;
+  padding-left: 0.5%
 }

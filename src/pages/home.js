@@ -244,7 +244,7 @@ class Home extends React.Component {
                   </p>
                 </Grid> 
 
-                <Grid item sm={12} xs={12} align="left" className="about-text-xs">
+                <Grid item sm={12} xs={12} align="center" className="about-text-xs">
                   <p>
                     Hosting an event is stressful. Parti will assist you in finding professional 
                     services and make the event planning process easy. 
@@ -255,7 +255,7 @@ class Home extends React.Component {
                   </p>
                 </Grid>
     
-                <Grid item sm={12} xs={12} className="about-text-sm">
+                <Grid item sm={12} xs={12} align="center" className="about-text-sm">
                   <p>
                     Hosting an event is stressful. Parti will assist you in finding professional 
                     services and make the event planning process easy. 
@@ -269,7 +269,7 @@ class Home extends React.Component {
                   <div className="subBannerButton">
                     <Link href="/about">
                       <Button variant="outlined" color="primary">
-                        Learn More
+                        About Us
                       </Button>
                     </Link>
                   </div>
@@ -286,7 +286,15 @@ class Home extends React.Component {
                 <p className="subBannerTitle">
                   <p>STAY UPDATED</p>
                 </p>
-                <p><i>Enter your email to get updates about Parti.</i></p>
+                <div className="about-text-xs">
+                <p> Enter your email to get updates about Parti.</p>
+                <p>If you are a vendor, be sure to add your company name.</p>
+</div>
+                <div className="about-text-sm">
+                <p> Enter your email to get updates about Parti.</p>
+                <p>If you are a vendor, be sure to add your company name.</p>
+</div>
+
 
                 <div className="beta-form">
                   <div className="text-field">
