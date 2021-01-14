@@ -193,7 +193,6 @@ class Home extends React.Component {
                   item
                   sm={3}
                   xs={6}
-                  spacing={10}
                   className="home-discover-item"
                 >   
                   <Link href={`/discover/${cat[0]}`}>
@@ -286,18 +285,11 @@ class Home extends React.Component {
                 <p className="subBannerTitle">
                   <p>STAY UPDATED</p>
                 </p>
-                <div className="about-text-xs">
-                <p> Enter your email to get updates about Parti.</p>
-                <p>If you are a vendor, be sure to add your company name.</p>
-</div>
-                <div className="about-text-sm">
-                <p> Enter your email to get updates about Parti.</p>
-                <p>If you are a vendor, be sure to add your company name.</p>
-</div>
-
-
+                <div>
+                  <p> Enter your email to get updates about Parti.</p>
+                  <p> Vendor? Be sure to add your company name.</p>
+                </div>
                 <div className="beta-form">
-                  <div className="text-field">
                     <TextField
                         label="Email" 
                         variant="outlined" 
@@ -309,9 +301,7 @@ class Home extends React.Component {
                         value={this.state.email}
                         className="text-field"
                         />
-                      </div>
                     <div className="seperator" />
-                    <div className="text-field">
                       <TextField
                           label="Company (optional)" 
                           variant="outlined" 
@@ -322,7 +312,6 @@ class Home extends React.Component {
                           value={this.state.company}
                           className="text-field"
                           />
-                      </div>
                     <div className="seperator" />
                     <div className="home-newsletter-button">
                       {stay_updated_button}
@@ -352,8 +341,6 @@ class Home extends React.Component {
                 </Carousel>
               </div>
             </Grid> */}
-
-            
           </Grid>
         </div>
     )

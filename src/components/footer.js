@@ -14,7 +14,7 @@ const footer_links = [
       link: "/about",
     },
     {
-      text: "Terms and Conditions",
+      text: "Terms & Conditions",
       link: "/terms-and-conditions",
     },
     {
@@ -50,13 +50,8 @@ function Footer()
                       </Link>
                     </Grid>
                   ))}
-                </Grid>
 
-                <Box mt={1}/>
-                
-                <Grid item justify="space-evenly" alignItems="center">
-                <p className="footer-text">
-                    </p>
+                <Grid item justify="space-evenly" alignItems="center" sm={12} xs={12}>
                     <Link href="https://www.instagram.com/parti.app/" target="_blank" className="footer-social">
                       <InstagramIcon style={{ color: "black" }}/>
                     </Link>
@@ -68,14 +63,12 @@ function Footer()
                     </Link>
                 </Grid>
 
-                <Grid item justify="space-evenly" alignItems="center">
-                  <Grid item>
+                <Grid item justify="space-evenly" alignItems="center" sm={12} xs={12}>
                     <p className="footer-text">
                     2020 Parti LLC.
                     </p>
-                  </Grid>
-                  
                 </Grid> 
+                </Grid>
               </div>
             </Grid>
         </div>
