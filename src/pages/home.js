@@ -7,6 +7,8 @@ import Grid from "@material-ui/core/Grid";
 import Link from "@material-ui/core/Link";
 import React from "react";
 import TextField from '@material-ui/core/TextField';
+import {withStyles } from "@material-ui/core/styles";
+
 
 import DJIcon from '../resources/icons/dj.png';
 import PhotoIcon from '../resources/icons/photo.png'; 
@@ -36,7 +38,14 @@ const discoverCategories = [
   ["Food Catering", <img src={BuffetIcon} className="discover-icon"/>],
   ["Petting Zoo", <img src={MonkeyIcon} className="discover-icon"/>]
 ];
-
+const styles = theme => ({
+  homeButton:{
+    fontFamily: "Montserrat, sans-serif",
+    textTransform: 'none',
+    fontWeight: '600',
+    textAlign: 'center'
+  }
+})
 // const testimonials = [
 //   {
 //     name: "Person 1",
@@ -110,6 +119,7 @@ class Home extends React.Component {
   render() {
     const { authenticated } = this.props.user;
     const { isLoading } = this.props.data;
+    const {classes}=this.props;
     let authenticatedUser;
     if (authenticated) {
       authenticatedUser = this.props.user.user;
@@ -125,7 +135,7 @@ class Home extends React.Component {
     
           <div className="bannerButton">
             <Link href="/events/new">
-              <Button variant="contained" color="primary" size="large">
+              <Button className={classes.homeButton}  variant="contained" color="primary" size="large">
                 Create an Event
               </Button>
             </Link>
@@ -135,7 +145,7 @@ class Home extends React.Component {
           </Link>
           <div className="bannerButton">
             <Link href="#about">
-              <Button variant="outlined" color="secondary" size="small">
+              <Button className={classes.homeButton}  variant="outlined" color="secondary" size="small">
                 Learn More
               </Button>
             </Link>
@@ -153,7 +163,7 @@ class Home extends React.Component {
     
           <div className="bannerButton">
             <Link href="/discover-events">
-              <Button variant="contained" color="primary" size="large">
+              <Button className={classes.homeButton}  variant="contained" color="primary" size="large">
                 Find Events
               </Button>
             </Link>
@@ -161,7 +171,7 @@ class Home extends React.Component {
     
           <div className="bannerButton">
             <Link href="#about">
-              <Button variant="outlined" color="secondary" size="small">
+              <Button className={classes.homeButton}  variant="outlined" color="secondary" size="small">
                 Learn More
               </Button>
             </Link>
@@ -209,7 +219,7 @@ class Home extends React.Component {
 
           <div className="subBannerButton">
             <Link href="/discover">
-              <Button variant="outlined" color="secondary">
+              <Button className={classes.homeButton}  variant="outlined" color="secondary">
                 Discover More
               </Button>
             </Link>
@@ -223,7 +233,7 @@ class Home extends React.Component {
     let stay_updated_button = this.state.isSubmitted ? 
         <p>Thank you! We will keep you updated!</p> 
         : 
-        <Button
+        <Button className={classes.homeButton} 
             variant="contained"
             color="primary"
             onClick={this.onSubmitForm}
@@ -267,7 +277,7 @@ class Home extends React.Component {
                 <Grid item sm={12} xs={12}>
                   <div className="subBannerButton">
                     <Link href="/about">
-                      <Button variant="outlined" color="primary">
+                      <Button className={classes.homeButton}  variant="outlined" color="primary">
                         About Us
                       </Button>
                     </Link>
@@ -370,4 +380,4 @@ const mapStateToProps = (state) => ({
   user: state.user
 })
 
-export default connect(mapStateToProps)(Home);
+export default connect(mapStateToProps)(withStyles(styles)(Home));
