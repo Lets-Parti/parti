@@ -1,3 +1,7 @@
+.review-card-container {
+  padding: 1.5rem;
+}
+
 .review-card-profile-pic {
   height: 4rem;
   width: 4rem;
@@ -10,7 +14,7 @@
   margin-top: 10px;
   margin-bottom: 0px;
   font-size: 20px;
-  padding-left: 0px;
+  padding-left: 10px;
 }
 
 .review-card-created-date {
@@ -18,10 +22,21 @@
   margin-bottom: 0px;
   color: grey;
   font-size: 18px;
-  padding-left: 0px;
+  padding-left: 10px;
 }
 
 .review-card-body {
   line-height: 25px;
   padding-right: 50px;
+}
+
+.review-card-source {
+  font-size: 10px;
+  color: grey;
+}
+
+@media (max-width: 800px) {
+  .review-card-body {
+    padding-right: 0px;
+  }
 }
