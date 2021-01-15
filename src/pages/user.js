@@ -29,11 +29,10 @@ import WebIcon from '@material-ui/icons/Web';
 import DeleteIcon from '@material-ui/icons/Delete';
 
 //Redux
-import { getUserByHandle, addTheReview, editTheReview } from '../redux/actions/dataActions'
+import { getUserByHandle, addReview, editReview } from '../redux/actions/dataActions'
 
 //Image Gallery (From Online) {https://www.npmjs.com/package/react-image-gallery}
 import ImageGallery from 'react-image-gallery';
-import { Menu } from '@material-ui/core';
 
 //Analytics
 import {firebaseAnalytics} from '../utils/firebase'
@@ -45,12 +44,12 @@ class User extends React.Component {
       errors: {},
       toggleAddReviewComp: false,
       reviewBody: '',
-      stars: 0,
+      rating: 0,
       modalOpen: false,
       editReview: false
     };
     this.handleTextChange = this.handleTextChange.bind(this)
-    this.handleStarsChange = this.handleStarsChange.bind(this)
+    this.handleRatingChange = this.handleRatingChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
@@ -63,29 +62,29 @@ class User extends React.Component {
     this.setState({ reviewBody: event.target.value });
   }
 
-  handleStarsChange(event) {
-    this.setState({ stars: event.target.value })
+  handleRatingChange(event) {
+    this.setState({ rating: event.target.value })
   }
 
   handleSubmit() {
     const company = this.props.data.user.userHandle
-    const stars = this.state.stars
+    const rating = this.state.rating
     const body = this.state.reviewBody
 
     if (body === "") {
-      alert("The review cannot be empty")
+      alert("The review cannot be empty");
     }
     else {
-      let everything = {
+      let data = {
         userHandle: company,
-        stars: parseFloat(stars),
+        rating: parseFloat(rating),
         body: body
       }
       if (this.state.editReview) {
-        this.props.editTheReview(everything)
+        this.props.editReview(data);
       }
       else {
-        this.props.addTheReview(everything)
+        this.props.addReview(data);
       }
     }
   }
@@ -234,27 +233,25 @@ class User extends React.Component {
         )
       }
 
-      let reviewData = user.reviews
-      let averageStars = reviewData.averageStars
-      let numberOfReviews = reviewData.numberOfReviews
-      let reviews = reviewData.reviews
+      let reviews = user.reviews;
+      let totalRating = 0; 
+      reviews.forEach(review =>
+      {
+        totalRating += review.rating; 
+      })
+      
 
-      let averageStarsDisplay =
-        <Rating
-          value={averageStars}
-          readOnly
-        />
-      let ratingDisplay
-      if (averageStars === 0) {
-        ratingDisplay = <span>{averageStarsDisplay}({numberOfReviews})</span>
-      }
-      else {
-        ratingDisplay = <span>{averageStarsDisplay}({numberOfReviews})</span>
-      }
+      let averateRatingDisplay =
+      <Rating
+        value={totalRating}
+        readOnly
+      />
 
-      let starsDisplay;
+      let ratingDisplay = <span>{averateRatingDisplay}({reviews.length})</span>
+
       let reviewCards = [];
       let editButton;
+
       reviews.forEach(review => {
         if (authenticated && review.userHandle === authenticatedUser.userHandle) {
           editButton = (
@@ -266,28 +263,23 @@ class User extends React.Component {
         else {
           editButton = (null);
         }
-        starsDisplay =
-          <Rating
-            value={review.stars}
-            readOnly
-          />
         reviewCards.push(
           <Grid container sm={4} xs={12} className="review-card">
             <Grid item sm={10} xs={10}>
-              <p className="review-handle">@{review.userHandle}</p>
+              <p className="review-handle">@{review.author_userHandle}</p>
             </Grid>
             <Grid item sm={2} xs={2}>
               <p className="review-handle">{editButton}</p>
             </Grid>
             <Grid item sm={12} xs={12}>
-              <p className="review-handle">{starsDisplay}</p>
+              <p className="review-handle">{ratingDisplay}</p>
             </Grid>
             <Grid item sm={12} xs={12}>
               <p className="review-body">{review.body}</p>
             </Grid>
           </Grid>
         )
-      })
+      });
 
       let createReview =
         <>
@@ -297,8 +289,8 @@ class User extends React.Component {
           </Grid>
           <Grid item sm={12} xs={12}>
             <Rating
-              value={this.state.stars}
-              onChange={this.handleStarsChange}
+              value={this.state.rating}
+              onChange={this.handleRatingChange}
             />
           </Grid>
           <Grid item sm={12} xs={12}>
@@ -340,7 +332,6 @@ class User extends React.Component {
         </Box>
       </>
 
-
       let carouselImages = [];                    //Initiate carousel data 
       imageGallery.forEach(imageURL => {
         carouselImages.push({
@@ -348,7 +339,6 @@ class User extends React.Component {
           thumbnail: imageURL
         })
       })
-
 
       let chips = [];
       tags.forEach(tag => {
@@ -361,12 +351,14 @@ class User extends React.Component {
               style={{ fontSize: '1rem' }} />
           )
       })
+
       let authUserHaveReview = -1;
       reviews.forEach(reviewBlock => {
         if(authenticated && reviewBlock.userHandle === authenticatedUser.userHandle) {
           authUserHaveReview = 1;
         }
       })
+
       if (authenticated && authenticatedUser.type === "client" && authUserHaveReview === -1) {
         fullProfile =
           <Grid container>
@@ -516,7 +508,7 @@ class User extends React.Component {
 
 User.propTypes = {
   getUserByHandle: PropTypes.func.isRequired,
-  addTheReview: PropTypes.func.isRequired,
+  addReview: PropTypes.func.isRequired,
   user: PropTypes.object.isRequired,
 }
 
@@ -526,7 +518,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapActionsToProps = {
-  getUserByHandle, addTheReview, editTheReview
+  getUserByHandle, addReview, editReview
 }
 
 export default connect(mapStateToProps, mapActionsToProps)(User)

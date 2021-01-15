@@ -296,10 +296,10 @@ export const getUserByHandle = (userHandle) => (dispatch) =>
     })
 }
 
-export const addTheReview = (theData) => (dispatch) =>
+export const addReview = (data) => (dispatch) =>
 {
   dispatch({type: LOADING_UI})
-  axios.post('/review', JSON.stringify(theData),
+  axios.post('/review', JSON.stringify(data),
   {
     headers: {
       'Content-Type': 'application/json'
@@ -316,10 +316,10 @@ export const addTheReview = (theData) => (dispatch) =>
   })
 }
 
-export const editTheReview = (theData) => (dispatch) =>
+export const editReview = (data) => (dispatch) =>
 {
   dispatch({type: LOADING_UI})
-  axios.post('/review/edit', JSON.stringify(theData),
+  axios.post('/review/edit', JSON.stringify(data),
   {
     headers: {
       'Content-Type': 'application/json'
