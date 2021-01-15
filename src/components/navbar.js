@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from 'react-router-dom';
 import { fade, withStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -27,6 +28,20 @@ const styles = theme => ({
     flexGrow: 1
   },
   menuButton: {
+    fontFamily: "Montserrat, sans-serif",
+    fontWeight: "480",
+    color: "#9B9B9B",
+    marginRight: theme.spacing(2),
+    fontSize: "15.5px"
+    },
+  activeMenuButton:{
+    color: "black",
+    textDecoration: "underline",
+    textDecorationColor: "#31B6EC"
+  },
+  menuButtonCreate:{
+    color: "primary",
+    fontFamily: "Montserrat, sans-serif",
     marginRight: theme.spacing(2)
   },
   title: {
@@ -87,7 +102,7 @@ const styles = theme => ({
     backgroundColor: 'white',
     boxShadow: 'None',
     padding: theme.spacing(1),
-    fontFamily: '"Monserrat", sans-serif',
+    fontFamily: "Montserrat, sans-serif",
   },
   logo: {
     height: 70,
@@ -379,15 +394,15 @@ class Navbar extends React.Component {
       renderNavbarButtons = 
       <div className={classes.sectionDesktop}>
         <div className={classes.buttonGroup}>
-            <Link href="/">
-            <Button className={classes.menuButton}>Home</Button>
-            </Link> 
-            <Link href="/about">
-            <Button className={classes.menuButton}>About</Button>
-            </Link> 
-            <Link href="/discover">
-            <Button className={classes.menuButton}>Discover</Button>
-            </Link> 
+        {
+              [{text: 'Home', link: '/'},
+              {text: 'About', link: '/about'},
+              {text: 'Discover', link: '/discover'}].map(
+                item =>
+          (<Button className={classes.menuButton} component={NavLink} to={item.link} exact activeClassName={classes.activeMenuButton}>{item.text}</Button>)
+
+              )
+            }
         </div>
       </div>
     }else if(authenticated && user.type === 'client')
@@ -395,21 +410,17 @@ class Navbar extends React.Component {
       renderNavbarButtons = 
       <div className={classes.sectionDesktop}>
           <div className={classes.buttonGroup}>
-              <Link href="/">
-              <Button className={classes.menuButton}>Home</Button>
-              </Link> 
-              <Link href="/events">
-              <Button className={classes.menuButton}>Events</Button>
-              </Link> 
-              <Link href="/contracts">
-              <Button className={classes.menuButton}>Contracts</Button>
-              </Link> 
-              <Link href="/connections">
-              <Button className={classes.menuButton}>Connects</Button>
-              </Link> 
-              <Link href="/discover">
-              <Button className={classes.menuButton}>Discover</Button>
-              </Link> 
+            {
+              [{text: 'Home', link: '/'},
+              {text: 'Events', link: '/events'},
+              {text: 'Contracts', link: '/contracts'},
+              {text: 'Connects', link: '/connections'},
+              {text: 'Discover', link: '/discover'}].map(
+                item =>
+          (<Button className={classes.menuButton} component={NavLink} to={item.link} exact activeClassName={classes.activeMenuButton}>{item.text}</Button>)
+
+              )
+            }
           </div>
       </div>
     }else if(authenticated && user.type === 'service')
@@ -417,18 +428,16 @@ class Navbar extends React.Component {
       renderNavbarButtons = 
       <div className={classes.sectionDesktop}>
           <div className={classes.buttonGroup}>
-            <Link href="/">
-            <Button className={classes.menuButton}>Home</Button>
-            </Link> 
-            <Link href="/contracts">
-            <Button className={classes.menuButton}>Contracts</Button>
-            </Link> 
-            <Link href="/connections">
-              <Button className={classes.menuButton}>Connects</Button>
-            </Link> 
-            <Link href="/discover">
-              <Button className={classes.menuButton}>Discover</Button>
-              </Link> 
+          {
+              [{text: 'Home', link: '/'},
+              {text: 'Contracts', link: '/contracts'},
+              {text: 'Connects', link: '/connections'},
+              {text: 'Discover', link: '/discover'}].map(
+                item =>
+          (<Button className={classes.menuButton} component={NavLink} to={item.link} exact activeClassName={classes.activeMenuButton}>{item.text}</Button>)
+
+              )
+            }
           </div>
       </div>
     }
@@ -552,13 +561,13 @@ class Navbar extends React.Component {
     {
       rightSideButton =       
       <Link href="/events/new">
-        <Button className={classes.menuButton} variant="contained" color="primary">New Event</Button>
+        <Button className={classes.menuButtonCreate} variant="contained" color="primary">New Event</Button>
       </Link> 
     }else if(authenticated && user.type === 'service')
     {
       rightSideButton = 
       <Link href="/discover-events">
-        <Button className={classes.menuButton} variant="contained" color="primary">Find Events</Button>
+        <Button className={classes.menuButtonCreate} variant="contained" color="primary">Find Events</Button>
       </Link> 
     }
 

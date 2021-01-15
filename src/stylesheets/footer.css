@@ -4,16 +4,17 @@
   height: 150px;
   width: 100%;
   padding-top: 50px;
-  padding-left: 10%;
-  padding-right: 10%;
+  padding-left: 15%;
+  padding-right: 15%;
   padding-bottom: 25px;
   font-family: "Montserrat", sans-serif;
 }
 
 .footer-social {
-  padding-left: 25px;
+  padding-left: 8px;
 }
 
 .footer-text {
-  font-size: 0.75rem;
+  font-size: 0.9rem;
+  padding-left: 0.5%;
 }

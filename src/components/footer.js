@@ -1,6 +1,7 @@
 import React from 'react';
 import FacebookIcon from "@material-ui/icons/Facebook";
 import InstagramIcon from "@material-ui/icons/Instagram";
+import LinkedInIcon from "@material-ui/icons/LinkedIn";
 import Grid from "@material-ui/core/Grid";
 import Link from "@material-ui/core/Link";
 import Box from "@material-ui/core/Box";
@@ -13,7 +14,7 @@ const footer_links = [
       link: "/about",
     },
     {
-      text: "Terms and Conditions",
+      text: "Terms & Conditions",
       link: "/terms-and-conditions",
     },
     {
@@ -49,26 +50,24 @@ function Footer()
                       </Link>
                     </Grid>
                   ))}
-                </Grid>
 
-                <Box mt={1}/>
-                
-                <Grid item alignItems="center">
-                    <Link href="https://www.instagram.com/parti.app/" className="footer-social">
+                <Grid item justify="space-evenly" alignItems="center" sm={12} xs={12}>
+                    <Link href="https://www.instagram.com/parti.app/" target="_blank" className="footer-social">
                       <InstagramIcon style={{ color: "black" }}/>
                     </Link>
-                    <Link href="https://www.facebook.com/officialpartiapp" className="footer-social">
+                    <Link href={"https://www.facebook.com/officialpartiapp"} target="_blank" className="footer-social">
                       <FacebookIcon style={{ color: "black" }}/>
+                    </Link>
+                    <Link href={"https://www.linkedin.com/company/partiapp/"} target="_blank" className="footer-social">
+                      <LinkedInIcon style={{ color: "black" }}/>
                     </Link>
                 </Grid>
 
-                <Grid item justify="space-evenly" alignItems="center">
-                  <Grid item>
+                <Grid item justify="space-evenly" alignItems="center" sm={12} xs={12}>
                     <p className="footer-text">
-                    2020 Parti LLC
+                    2020 Parti LLC.
                     </p>
-                  </Grid>
-                  
+                </Grid> 
                 </Grid>
               </div>
             </Grid>
