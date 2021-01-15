@@ -1,6 +1,6 @@
 .review-card-profile-pic {
-  height: 5rem;
-  width: 5rem;
+  height: 4rem;
+  width: 4rem;
   border-radius: 50%;
   box-shadow: 0 0 0 1pt #53befc;
   object-fit: cover;
@@ -10,12 +10,15 @@
   margin-top: 10px;
   margin-bottom: 0px;
   font-size: 20px;
+  padding-left: 2rem;
 }
 
 .review-card-created-date {
   margin-top: 0px;
   margin-bottom: 0px;
   color: grey;
+  font-size: 18px;
+  padding-left: 2rem;
 }
 
 .review-card-body {

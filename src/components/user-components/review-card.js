@@ -33,10 +33,10 @@ class ReviewCard extends React.Component {
         return (
             <Grid item sm={6} xs={12}>
                 <Grid container>
-                    <Grid item sm={2} xs={2}>
+                    <Grid item sm={1} xs={1}>
                         <img src={this.state.profile_photo_url} className="review-card-profile-pic"/>
                     </Grid>
-                    <Grid item sm={10} xs={10}>
+                    <Grid item sm={11} xs={11}>
                         <p className="review-card-author-name">{this.state.author_fullName}</p>
                         <p className="review-card-created-date">{date}</p>
                     </Grid>
