@@ -25,13 +25,24 @@ class ReviewCard extends React.Component {
     }
 
     render() {
-
         //Clean up date display
         let date = new Date(this.state.createdAt).toString(); 
         date = simpleDate(date); 
 
+        let body = this.state.body; 
+        let source; 
+        let sourceUrl; 
+        if(this.state.source !== 'Parti')
+        {
+            const middle = this.state.body.length / 2; 
+            sourceUrl = <Link href={this.state.source_url} target="_blank"> ...read more.</Link>
+            body = body.substr(0, middle);
+            date = null; 
+            source = `from ${this.state.source}`; 
+        }
+        
         return (
-            <Grid item sm={6} xs={12}>
+            <Grid item sm={6} xs={12} className="review-card-container">
                 <Grid container spacing={2}>
                     <Grid container xs={12} spacing={1}>
                         <Grid item align="left">
@@ -43,7 +54,8 @@ class ReviewCard extends React.Component {
                         </Grid>
                     </Grid>
                     <Grid item sm={12} xs={12}>
-                        <p className="review-card-body">{this.state.body}</p>
+                        <p className="review-card-body">{body}{sourceUrl}</p>
+                        <p className="review-card-source">{source}</p>
                     </Grid>
                 </Grid>
             </Grid>
