@@ -1,0 +1,27 @@
+.review-card-profile-pic {
+  height: 4rem;
+  width: 4rem;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1pt #53befc;
+  object-fit: cover;
+}
+
+.review-card-author-name {
+  margin-top: 10px;
+  margin-bottom: 0px;
+  font-size: 20px;
+  padding-left: 0px;
+}
+
+.review-card-created-date {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  color: grey;
+  font-size: 18px;
+  padding-left: 0px;
+}
+
+.review-card-body {
+  line-height: 25px;
+  padding-right: 50px;
+}
