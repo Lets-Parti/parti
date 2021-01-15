@@ -15,6 +15,11 @@ export function cleanDate(dateString) {
     return `${dateSplit[0]} ${dateSplit[1]} ${dateSplit[2]}, ${dateSplit[3]} at ${militaryToStandardTime(dateSplit[4])}`;
 }
 
+export function simpleDate(dateString) {
+    let dateSplit = dateString.split(' ');
+    return `${dateSplit[1]} ${dateSplit[2]}, ${dateSplit[3]}`;
+}
+
 function militaryToStandardTime(timeString) {
     let time = timeString.split(':'); // convert to array
     // fetch

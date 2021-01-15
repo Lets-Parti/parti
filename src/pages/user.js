@@ -16,9 +16,13 @@ import Link from '@material-ui/core/Link';
 import Tooltip from '@material-ui/core/Tooltip';
 import Box from '@material-ui/core/Box';
 
+//Redux
 import ConnectModal from '../components/modal-component/connectmodal'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
+
+//Components
+import ReviewCard from '../components/user-components/review-card';
 
 //Material UI Icons
 import MessageIcon from '@material-ui/icons/Message';
@@ -26,7 +30,6 @@ import ReviewIcon from '@material-ui/icons/RateReview';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import WebIcon from '@material-ui/icons/Web';
-import DeleteIcon from '@material-ui/icons/Delete';
 
 //Redux
 import { getUserByHandle, addReview, editReview } from '../redux/actions/dataActions'
@@ -253,7 +256,7 @@ class User extends React.Component {
       let editButton;
 
       reviews.forEach(review => {
-        if (authenticated && review.userHandle === authenticatedUser.userHandle) {
+        if (authenticated && review.author_userHandle === authenticatedUser.userHandle) {
           editButton = (
             <IconButton color="primary" onClick={() => this.toggleEditReview()}>
               <ReviewIcon />
@@ -264,20 +267,7 @@ class User extends React.Component {
           editButton = (null);
         }
         reviewCards.push(
-          <Grid container sm={4} xs={12} className="review-card">
-            <Grid item sm={10} xs={10}>
-              <p className="review-handle">@{review.author_userHandle}</p>
-            </Grid>
-            <Grid item sm={2} xs={2}>
-              <p className="review-handle">{editButton}</p>
-            </Grid>
-            <Grid item sm={12} xs={12}>
-              <p className="review-handle">{ratingDisplay}</p>
-            </Grid>
-            <Grid item sm={12} xs={12}>
-              <p className="review-body">{review.body}</p>
-            </Grid>
-          </Grid>
+          <ReviewCard data={review} />
         )
       });
 
@@ -425,6 +415,7 @@ class User extends React.Component {
                 </Grid>
                 {toggleAddReviewComp && createReview}
               </Grid>
+              
               <Grid container>
                 {reviewCards}
               </Grid>
