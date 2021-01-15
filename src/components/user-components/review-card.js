@@ -35,8 +35,8 @@ class ReviewCard extends React.Component {
         if(this.state.source !== 'Parti')
         {
             const middle = this.state.body.length / 2; 
-            sourceUrl = <Link href={this.state.source_url} target="_blank">read more.</Link>
-            body = body.substr(0, middle) + ' ...';
+            sourceUrl = <Link href={this.state.source_url} target="_blank"> ...read more.</Link>
+            body = body.substr(0, middle);
             date = null; 
             source = `from ${this.state.source}`; 
         }
