@@ -3,10 +3,9 @@
 .user-container {
   margin-left: 4rem;
   margin-right: 4rem;
-  margin-top: 2rem;
   font-family: "Montserrat", sans-serif;
   padding: 50px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   margin-bottom: 100px;
   color: #222222;
   /* Testing Below */
@@ -16,13 +15,15 @@
   height: 4rem;
 }
 
-.grid-item {
-  /* padding-right: 10px;  */
-  /* border: 1px solid black; */
+.user-page-first-row {
+  margin-bottom: 25px;
 }
 
-.row {
-  margin-bottom: 20px;
+.ratings-text {
+  font-family: "Montserrat", sans-serif;
+  font-size: 20px;
+  padding-top: 1px;
+  padding-left: 3px;
 }
 
 .user-company-name {
@@ -30,13 +31,11 @@
   margin-top: 0px;
   margin-bottom: 0px;
 
-  
   font-family: "Montserrat", sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 26px;
   line-height: 32px;
-  
 
   /* identical to box height */
   display: flex;
@@ -81,8 +80,24 @@
 
 .image-gallery {
   width: 100%;
-  border: 1px solid black;
+}
+
+.image-gallery-highlight-photo {
+  border-radius: 15px;
+  width: 100%;
   height: 400px;
+  object-fit: cover;
+}
+
+.image-gallery-sub-photo {
+  border-radius: 15px;
+  width: 100%;
+  height: 192.5px;
+  object-fit: cover;
+}
+
+.image-gallery-photo-item {
+  padding: 5px;
 }
 
 .reviews-section {
@@ -167,14 +182,13 @@
 }
 
 .icon-filled {
-
 }
 
 .review-text {
   font-family: "Montserrat", sans-serif;
   font-style: normal;
   font-size: 20px;
-  line-height: 28px;
+  line-height: 40px;
   /* identical to box height
   display: flex; */
   align-items: center;
@@ -184,7 +198,6 @@
   padding-bottom: 6px;
   padding-left: 5px;
 }
-
 
 @media (max-width: 800px) {
   .user-container {
@@ -220,8 +233,12 @@
     object-fit: cover;
   }
 
-  .row {
-    margin-bottom: 5px;
+  .image-gallery-highlight-photo {
+    height: 200px;
+  }
+
+  .image-gallery-sub-photo {
+    height: 150px;
   }
 
   .message-button-large {

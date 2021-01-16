@@ -18,12 +18,13 @@ import Box from '@material-ui/core/Box';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 
 //Redux
-import ConnectModal from '../components/modal-component/connectmodal'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
 //Components
 import ReviewCard from '../components/user-components/review-card';
+import ConnectModal from '../components/modal-component/connectmodal';
+import GalleryModal from '../components/modal-component/gallerymodal';
 
 //Material UI Icons
 import MessageIcon from '@material-ui/icons/Message';
@@ -50,13 +51,17 @@ class User extends React.Component {
       reviewBody: '',
       rating: 0,
       modalOpen: false,
+      galleryModalOpen: false,
       editReview: false
     };
+
     this.handleTextChange = this.handleTextChange.bind(this)
     this.handleRatingChange = this.handleRatingChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
+    this.openGalleryModal = this.openGalleryModal.bind(this); 
+    this.closeGalleryModal = this.closeGalleryModal.bind(this); 
     this.toggleEditReview = this.toggleEditReview.bind(this);
     this.toggleCancel = this.toggleCancel.bind(this);
     this.visitSocial = this.visitSocial.bind(this); 
@@ -107,6 +112,18 @@ class User extends React.Component {
     })
   }
 
+  openGalleryModal() {
+    this.setState({
+      galleryModalOpen: true
+    })
+  }
+
+  closeGalleryModal() {
+    this.setState({
+      galleryModalOpen: false
+    })
+  }
+
   redirect() {
     window.location.href = '/login'
   }
@@ -150,6 +167,7 @@ class User extends React.Component {
     const { toggleAddReviewComp } = this.state;
     const { user, isLoading } = this.props.data;
     const { authenticated } = this.props.user;
+
     let authenticatedUser;
     if (authenticated) {
       authenticatedUser = this.props.user.user;
@@ -159,13 +177,14 @@ class User extends React.Component {
       <ConnectModal open={this.state.modalOpen} handleClose={this.closeModal} userHandle={user.userHandle} />
       :
       null
+    let galleryModal; 
 
     let chatButton = authenticated ?
       <Button aria-label="message" color="primary" variant="contained" onClick={this.openModal}
         startIcon={<MessageIcon />}
         display='none'>
         Message
-        </Button>
+      </Button>
       :
       <Button aria-label="message" color="primary" variant="contained" onClick={this.redirect}
         startIcon={<MessageIcon />}
@@ -197,12 +216,14 @@ class User extends React.Component {
       let imageGallery = user.mediaImages
       let bio = user.bio
       let tags = user.tags
+      let location = user.location
 
       let instagram = user.instagram
       let facebook = user.facebook
       let website = user.website
 
       let socialButtons = []; 
+
       if(instagram)
       {
         socialButtons.push(
@@ -215,7 +236,6 @@ class User extends React.Component {
           </Link>
         )
       }
-
       if(facebook)
       {
         socialButtons.push(
@@ -228,7 +248,6 @@ class User extends React.Component {
         </Link>
         )
       }
-
       if(website)
       {
         socialButtons.push(
@@ -249,7 +268,7 @@ class User extends React.Component {
         totalRating += review.rating; 
       })
       
-      let averageRating = 1.0 * totalRating / reviews.length;
+      let averageRating = reviews.length > 0 ? 1.0 * totalRating / reviews.length : 0;
 
       const StyledRating = withStyles({
         iconFilled: {
@@ -270,7 +289,7 @@ class User extends React.Component {
       let ratingDisplay = (
       <Grid container>
         {blueStar} 
-        <span className="review-text"> {averageRating} {numReviews}</span>
+        <span className="ratings-text"> {averageRating} {numReviews}</span>
       </Grid>
       );
     
@@ -351,7 +370,9 @@ class User extends React.Component {
           original: imageURL,
           thumbnail: imageURL
         })
-      })
+      });
+
+      galleryModal = <GalleryModal open={this.state.galleryModalOpen} handleClose={this.closeGalleryModal} items={carouselImages}/>;
 
       let chips = [];
       tags.forEach(tag => {
@@ -373,8 +394,8 @@ class User extends React.Component {
       })
       
       firstRow = (
-        <Grid container>
-          <Grid container className="row" spacing={2}>
+        <div className="user-page-first-row">
+          <Grid container spacing={2}>
             <Grid container xs={11} spacing={2} sm={9}>
               <Grid item className="grid-item" align="left">
                   <img className="user-profile-image" src={userProfileImageURL} alt="User Profile"/>
@@ -395,22 +416,59 @@ class User extends React.Component {
                  </div>
             </Grid>
           </Grid>
-        </Grid>
+        </div>
       )
       
       socialsRow = (
         <Grid container>
-          <Grid item xs={12} align="right"> 
+          <Grid item xs={12} align="left"> 
             {socialButtons}      
           </Grid>
         </Grid>
       );
       
+      let highlightPhoto; 
+      let subPhotos = [];
+
+      if(carouselImages.length > 0)
+      {
+        highlightPhoto = 
+        <Link href="#">
+          <Tooltip title="View Gallery">
+            <img src={carouselImages[0].original} className="image-gallery-highlight-photo" onClick={() => this.openGalleryModal()}/>
+          </Tooltip>
+        </Link>
+        
+        for(var i = 1; i < Math.min(carouselImages.length, 5); i++)
+        {
+          subPhotos.push(
+            <Grid item sm={6} xs={6} className="image-gallery-photo-item">
+              <Link href="#">
+              <Tooltip title="View Gallery">
+                <img src={carouselImages[i].original} className="image-gallery-sub-photo" onClick={() => this.openGalleryModal()}/>
+              </Tooltip>
+              </Link>
+            </Grid>
+          )
+        }
+      }
+        
       imageGallerySection = (
         <Grid container>
-          <Grid item className="image-gallery" sm={12}>
-            <ImageGallery className="image-gallery" items={carouselImages} />
-          </Grid>
+            <Grid item sm={6} xs={12} className="image-gallery-photo-item">
+                {highlightPhoto}
+            </Grid>
+            <Grid item sm={6} xs={12}>
+              <Grid container>
+                {subPhotos}
+              </Grid>
+            </Grid>
+            <Grid item sm={12} xs={12} align="right">
+              <Button aria-label="message" color="primary" variant="outlined" onClick={this.openGalleryModal}
+                display='none'>
+                View Gallery
+              </Button>
+            </Grid>
         </Grid>
       );
 
@@ -468,12 +526,8 @@ class User extends React.Component {
     }
 
     return (
-      // <div className="user-container">
-      //   {connectModal}
-      //   {circularProgress}
-      //   {fullProfile}
-      // </div>
       <div className="user-container">
+        {galleryModal}
         {connectModal}
         {circularProgress}
         {firstRow}
