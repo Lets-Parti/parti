@@ -51,7 +51,7 @@ class DiscoverCard extends Component {
 
         let mediaImagesArray = this.state.mediaImages
         let highlightPhoto = null;
-        if (mediaImagesArray.length > 0) {
+        if (mediaImagesArray && mediaImagesArray.length > 0) {
             highlightPhoto = < a href={`/user/${this.state.userHandle}`}><img className="highlight-photo" src={mediaImagesArray[0]} alt="Highlight"/></a>
         }
 
