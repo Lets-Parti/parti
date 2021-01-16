@@ -16,6 +16,7 @@ import Link from '@material-ui/core/Link';
 import Tooltip from '@material-ui/core/Tooltip';
 import Box from '@material-ui/core/Box';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
+import ShareIcon from '@material-ui/icons/Share';
 
 //Redux
 import { connect } from 'react-redux'
@@ -25,6 +26,8 @@ import PropTypes from 'prop-types'
 import ReviewCard from '../components/user-components/review-card';
 import ConnectModal from '../components/modal-component/connectmodal';
 import GalleryModal from '../components/modal-component/gallerymodal';
+import {CopyToClipboard} from 'react-copy-to-clipboard';
+
 
 //Material UI Icons
 import MessageIcon from '@material-ui/icons/Message';
@@ -52,7 +55,8 @@ class User extends React.Component {
       rating: 0,
       modalOpen: false,
       galleryModalOpen: false,
-      editReview: false
+      editReview: false,
+      copyClipboardAlert: false
     };
 
     this.handleTextChange = this.handleTextChange.bind(this)
@@ -65,6 +69,8 @@ class User extends React.Component {
     this.toggleEditReview = this.toggleEditReview.bind(this);
     this.toggleCancel = this.toggleCancel.bind(this);
     this.visitSocial = this.visitSocial.bind(this); 
+    this.copyClipboardAlert = this.copyClipboardAlert.bind(this);
+
   }
 
   handleTextChange(event) {
@@ -104,6 +110,10 @@ class User extends React.Component {
     this.setState({
       modalOpen: true
     })
+  }
+
+  copyClipboardAlert() {
+    alert('Profile link copied to clipboard.')
   }
 
   closeModal() {
@@ -268,7 +278,7 @@ class User extends React.Component {
         totalRating += review.rating; 
       })
       
-      let averageRating = reviews.length > 0 ? parseFloat(1.0 * totalRating / reviews.length).toFixed(2) : parseFloat(0).toFixed(2);
+      let averageRating = reviews.length > 0 ? parseFloat(1.0 * totalRating / reviews.length).toFixed(2) : 0;
 
       const StyledRating = withStyles({
         iconFilled: {
@@ -430,15 +440,25 @@ class User extends React.Component {
       
       socialsRow = (
         <Grid container>
-          <Grid item xs={12} align="left"> 
-            {socialButtons}      
+          <Grid item sm={6} xs={6} align="left"> 
+            {socialButtons}
+          </Grid>
+          <Grid item sm={6} xs={6} align="right">
+            <CopyToClipboard
+              text={`https://parti.app/user/${userHandle}`}>      
+                <Button aria-label="message" color="primary" variant="outlined" onClick={this.copyClipboardAlert}
+                startIcon={<ShareIcon />}
+                display='none'>
+                Share
+                </Button>
+            </CopyToClipboard>
           </Grid>
         </Grid>
       );
       
       let highlightPhoto; 
       let subPhotos = [];
-
+      let viewGalleryButton; 
       if(carouselImages.length > 0)
       {
         highlightPhoto = 
@@ -448,6 +468,12 @@ class User extends React.Component {
           </Tooltip>
         </Link>
         
+        viewGalleryButton =               
+        <Button aria-label="message" color="primary" variant="outlined" onClick={this.openGalleryModal}
+          display='none'>
+          View Gallery
+        </Button>
+
         for(var i = 1; i < Math.min(carouselImages.length, 5); i++)
         {
           subPhotos.push(
@@ -473,10 +499,7 @@ class User extends React.Component {
               </Grid>
             </Grid>
             <Grid item sm={12} xs={12} align="right">
-              <Button aria-label="message" color="primary" variant="outlined" onClick={this.openGalleryModal}
-                display='none'>
-                View Gallery
-              </Button>
+                {viewGalleryButton}
             </Grid>
         </Grid>
       );
