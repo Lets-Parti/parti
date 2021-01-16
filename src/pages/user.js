@@ -14,6 +14,7 @@ import TextField from '@material-ui/core/TextField';
 import { Rating } from '@material-ui/lab';
 import Link from '@material-ui/core/Link';
 import Tooltip from '@material-ui/core/Tooltip';
+import Popover from '@material-ui/core/Popover';
 import Box from '@material-ui/core/Box';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 
@@ -31,6 +32,7 @@ import MessageIcon from '@material-ui/icons/Message';
 import ReviewIcon from '@material-ui/icons/RateReview';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import FacebookIcon from '@material-ui/icons/Facebook';
+import PhoneIcon from '@material-ui/icons/Phone';
 import WebIcon from '@material-ui/icons/Web';
 
 //Redux
@@ -52,7 +54,8 @@ class User extends React.Component {
       rating: 0,
       modalOpen: false,
       galleryModalOpen: false,
-      editReview: false
+      editReview: false,
+      anchorEl: null
     };
 
     this.handleTextChange = this.handleTextChange.bind(this)
@@ -65,6 +68,7 @@ class User extends React.Component {
     this.toggleEditReview = this.toggleEditReview.bind(this);
     this.toggleCancel = this.toggleCancel.bind(this);
     this.visitSocial = this.visitSocial.bind(this); 
+    this.toggleShowPhoneNumber=this.toggleShowPhoneNumber.bind(this);
   }
 
   handleTextChange(event) {
@@ -157,6 +161,16 @@ class User extends React.Component {
     })
   }
 
+  toggleShowPhoneNumber= (event) =>{
+    if (!Boolean(this.state.anchorEl)){
+      this.setState({anchorEl: event.currentTarget})
+
+    }
+    else{
+      this.setState({anchorEl: null})
+    }
+  }
+
   visitSocial(social)
   {
     const userHandle = this.props.data.user.userHandle;
@@ -200,6 +214,27 @@ class User extends React.Component {
       <IconButton aria-label="message" color="primary" onClick={this.redirect}>
         <MessageIcon />
       </IconButton>
+
+      let phoneNumberDisplay =(
+      <Grid container item xs={4}>
+  <IconButton size='small' color="primary" onClick={this.toggleShowPhoneNumber}><PhoneIcon/></IconButton>
+  <Popover 
+  open={Boolean(this.state.anchorEl)}
+  anchorEl={this.state.anchorEl}
+  onClose={this.toggleShowPhoneNumber}
+  anchorOrigin={{
+    vertical: 'bottom',
+    horizontal: 'right'
+  }}>
+    <div className='phone-number'>
+    {authenticated ? authenticatedUser.phone : "Please login or signup"}
+    </div>
+
+  </Popover>
+
+      </Grid>
+)
+
 
     let fullProfile = null;
     let circularProgress = null;
@@ -289,7 +324,7 @@ class User extends React.Component {
         />
            
       let ratingDisplay = (
-      <Grid container>
+      <Grid container item xs={4}>
         {blueStar} 
         <span className="ratings-text"> {averageRating} {numReviews}</span>
       </Grid>
@@ -404,19 +439,23 @@ class User extends React.Component {
       
       firstRow = (
         <div className="user-page-first-row">
-          <Grid container spacing={2}>
-            <Grid container xs={11} spacing={2} sm={9}>
-              <Grid item className="grid-item" align="left">
+          <Grid container spacing={2} justify="space-between">
+            <Grid container item  spacing={2} xs={11} sm={9}>
+              <Grid item className="grid-item" xs={1.5}>
                   <img className="user-profile-image" src={userProfileImageURL} alt="User Profile"/>
               </Grid>
-              <Grid item className="grid-item">
+              <Grid container item className="grid-item" xs={9}>
                   <div className="user-company-name">
                     {userDisplay}
                   </div>
+                  <Grid container item justify="flex-start" alignItems="center">
                   {ratingDisplay}
+                  {phoneNumberDisplay}
+                  </Grid>
+
               </Grid>
             </Grid>
-            <Grid item className="grid-item" align="right" xs={1} sm={3}>
+            <Grid container item className="grid-item"  justify="flex-end" xs={1} sm={3}>
                  <div className="message-button-large">
                    {chatButton}
                  </div>
