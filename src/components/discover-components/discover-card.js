@@ -49,23 +49,28 @@ class DiscoverCard extends Component {
     render(props) {
         const { authenticated } = this.props.user; 
 
-        let mediaImagesArray = this.state.mediaImages
+        let mediaImagesArray = this.state.mediaImages;
+        let tagsArray = this.state.tags; 
+
         let highlightPhoto = null;
         if (mediaImagesArray && mediaImagesArray.length > 0) {
             highlightPhoto = < a href={`/user/${this.state.userHandle}`}><img className="highlight-photo" src={mediaImagesArray[0]} alt="Highlight"/></a>
         }
 
         let chips = [];
-        this.state.tags.forEach(tag => {
-            chips.push
-                (
-                    <Chip
-                        className="chip-padding"
-                        color="primary"
-                        label={tag}
-                        style={{ fontSize: '.8rem' }} />
-                )
-        })
+        if(tagsArray)
+        {
+            tagsArray.forEach(tag => {
+                chips.push
+                    (
+                        <Chip
+                            className="chip-padding"
+                            color="primary"
+                            label={tag}
+                            style={{ fontSize: '.8rem' }} />
+                    )
+            })
+        }
 
         //MODAL STUFF
         let connectModal = authenticated ? 
