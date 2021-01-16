@@ -14,6 +14,7 @@ import TextField from '@material-ui/core/TextField';
 import { Rating } from '@material-ui/lab';
 import Link from '@material-ui/core/Link';
 import Tooltip from '@material-ui/core/Tooltip';
+import Popover from '@material-ui/core/Popover';
 import Box from '@material-ui/core/Box';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import ShareIcon from '@material-ui/icons/Share';
@@ -34,13 +35,11 @@ import MessageIcon from '@material-ui/icons/Message';
 import ReviewIcon from '@material-ui/icons/RateReview';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import FacebookIcon from '@material-ui/icons/Facebook';
+import PhoneIcon from '@material-ui/icons/Phone';
 import WebIcon from '@material-ui/icons/Web';
 
 //Redux
 import { getUserByHandle, addReview, editReview } from '../redux/actions/dataActions'
-
-//Image Gallery (From Online) {https://www.npmjs.com/package/react-image-gallery}
-import ImageGallery from 'react-image-gallery';
 
 //Analytics
 import {firebaseAnalytics} from '../utils/firebase'
@@ -56,6 +55,7 @@ class User extends React.Component {
       modalOpen: false,
       galleryModalOpen: false,
       editReview: false,
+      anchorEl: null,
       copyClipboardAlert: false
     };
 
@@ -69,8 +69,8 @@ class User extends React.Component {
     this.toggleEditReview = this.toggleEditReview.bind(this);
     this.toggleCancel = this.toggleCancel.bind(this);
     this.visitSocial = this.visitSocial.bind(this); 
+    this.toggleShowPhoneNumber=this.toggleShowPhoneNumber.bind(this);
     this.copyClipboardAlert = this.copyClipboardAlert.bind(this);
-
   }
 
   handleTextChange(event) {
@@ -167,6 +167,15 @@ class User extends React.Component {
     })
   }
 
+  toggleShowPhoneNumber= (event) =>{
+    if (!Boolean(this.state.anchorEl)){
+      this.setState({anchorEl: event.currentTarget})
+    }
+    else{
+      this.setState({anchorEl: null})
+    }
+  }
+
   visitSocial(social)
   {
     const userHandle = this.props.data.user.userHandle;
@@ -211,14 +220,15 @@ class User extends React.Component {
         <MessageIcon />
       </IconButton>
 
-    let fullProfile = null;
     let circularProgress = null;
     let firstRow = null;
     let socialsRow = null;
+    let contactsRow = null; 
     let imageGallerySection = null;
     let bioSection = null;
     let reviewsSection = null;
     let reviewButton = null;
+    let phoneNumberDisplay;
 
     if (user && !isLoading) {
       let userDisplay = user.fullName
@@ -272,6 +282,28 @@ class User extends React.Component {
         )
       }
 
+      const unauthorizedPhoneMessage = ['Please ', <Link href="/login">log in</Link>, ' or ', <Link href="/signup">sign up.</Link>];
+      phoneNumberDisplay =
+      <div>
+        <Tooltip title="Call">
+          <IconButton color="primary" onClick={this.toggleShowPhoneNumber}><PhoneIcon/></IconButton>
+        </Tooltip>
+        <Popover 
+        open={Boolean(this.state.anchorEl)}
+        anchorEl={this.state.anchorEl}
+        onClose={this.toggleShowPhoneNumber}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'right'
+        }}>
+          <div className='phone-number'>
+            {authenticated ? <Link href={`tel:${authenticatedUser.phone}`}>{authenticatedUser.phone}</Link> 
+            : 
+            unauthorizedPhoneMessage}
+          </div>
+        </Popover>
+      </div>
+
       let reviews = user.reviews;
       let totalRating = 0; 
       reviews.forEach(review =>
@@ -300,7 +332,7 @@ class User extends React.Component {
         />
            
       let ratingDisplay = (
-      <Grid container>
+      <Grid container item xs={4}>
         {blueStar} 
         <span className="ratings-text"> {averageRating} {numReviews}</span>
       </Grid>
@@ -415,19 +447,21 @@ class User extends React.Component {
       
       firstRow = (
         <div className="user-page-first-row">
-          <Grid container spacing={2}>
-            <Grid container xs={11} spacing={2} sm={9}>
-              <Grid item className="grid-item" align="left">
+          <Grid container spacing={2} justify="space-between">
+            <Grid container item spacing={2} xs={11} sm={9}>
+              <Grid item className="grid-item" xs={1.5}>
                   <img className="user-profile-image" src={userProfileImageURL} alt="User Profile"/>
               </Grid>
-              <Grid item className="grid-item">
+              <Grid container item className="grid-item" xs={9}>
                   <div className="user-company-name">
                     {userDisplay}
                   </div>
+                  <Grid container item justify="flex-start" alignItems="center">
                   {ratingDisplay}
+                  </Grid>
               </Grid>
             </Grid>
-            <Grid item className="grid-item" align="right" xs={1} sm={3}>
+            <Grid container item className="grid-item"  justify="flex-end" xs={1} sm={3}>
                  <div className="message-button-large">
                    {chatButton}
                  </div>
@@ -439,6 +473,13 @@ class User extends React.Component {
         </div>
       )
       
+      contactsRow = 
+      <Grid container>
+        <Grid item sm={12} xs={12} align="right">
+          {phoneNumberDisplay}
+        </Grid>
+      </Grid>
+
       socialsRow = (
         <Grid container>
           <Grid item sm={6} xs={6} align="left"> 
@@ -456,7 +497,7 @@ class User extends React.Component {
           </Grid>
         </Grid>
       );
-      
+
       let highlightPhoto; 
       let subPhotos = [];
       let viewGalleryButton; 
@@ -569,6 +610,7 @@ class User extends React.Component {
         {connectModal}
         {circularProgress}
         {firstRow}
+        {contactsRow}
         {socialsRow}
         {imageGallerySection}
         <br></br>
