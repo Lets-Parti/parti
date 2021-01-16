@@ -41,9 +41,6 @@ import WebIcon from '@material-ui/icons/Web';
 //Redux
 import { getUserByHandle, addReview, editReview } from '../redux/actions/dataActions'
 
-//Image Gallery (From Online) {https://www.npmjs.com/package/react-image-gallery}
-import ImageGallery from 'react-image-gallery';
-
 //Analytics
 import {firebaseAnalytics} from '../utils/firebase'
 
@@ -173,7 +170,6 @@ class User extends React.Component {
   toggleShowPhoneNumber= (event) =>{
     if (!Boolean(this.state.anchorEl)){
       this.setState({anchorEl: event.currentTarget})
-
     }
     else{
       this.setState({anchorEl: null})
@@ -224,34 +220,14 @@ class User extends React.Component {
         <MessageIcon />
       </IconButton>
 
-      let phoneNumberDisplay =(
-      <Grid container item xs={4}>
-  <IconButton size='small' color="primary" onClick={this.toggleShowPhoneNumber}><PhoneIcon/></IconButton>
-  <Popover 
-  open={Boolean(this.state.anchorEl)}
-  anchorEl={this.state.anchorEl}
-  onClose={this.toggleShowPhoneNumber}
-  anchorOrigin={{
-    vertical: 'bottom',
-    horizontal: 'right'
-  }}>
-    <div className='phone-number'>
-    {authenticated ? authenticatedUser.phone : "Please login or signup"}
-    </div>
-
-  </Popover>
-
-      </Grid>
-)
-
-
-    let fullProfile = null;
     let circularProgress = null;
     let firstRow = null;
     let socialsRow = null;
+    let contactsRow = null; 
     let imageGallerySection = null;
     let bioSection = null;
     let reviewsSection = null;
+    let phoneNumberDisplay;
 
     if (user && !isLoading) {
       let userDisplay = user.fullName
@@ -304,6 +280,28 @@ class User extends React.Component {
         </Link>
         )
       }
+
+      const unauthorizedPhoneMessage = ['Please ', <Link href="/login">log in</Link>, ' or ', <Link href="/signup">sign up.</Link>];
+      phoneNumberDisplay =
+      <div>
+        <Tooltip title="Call">
+          <IconButton color="primary" onClick={this.toggleShowPhoneNumber}><PhoneIcon/></IconButton>
+        </Tooltip>
+        <Popover 
+        open={Boolean(this.state.anchorEl)}
+        anchorEl={this.state.anchorEl}
+        onClose={this.toggleShowPhoneNumber}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'right'
+        }}>
+          <div className='phone-number'>
+            {authenticated ? <Link href={`tel:${authenticatedUser.phone}`}>{authenticatedUser.phone}</Link> 
+            : 
+            unauthorizedPhoneMessage}
+          </div>
+        </Popover>
+      </div>
 
       let reviews = user.reviews;
       let totalRating = 0; 
@@ -449,7 +447,7 @@ class User extends React.Component {
       firstRow = (
         <div className="user-page-first-row">
           <Grid container spacing={2} justify="space-between">
-            <Grid container item  spacing={2} xs={11} sm={9}>
+            <Grid container item spacing={2} xs={11} sm={9}>
               <Grid item className="grid-item" xs={1.5}>
                   <img className="user-profile-image" src={userProfileImageURL} alt="User Profile"/>
               </Grid>
@@ -459,9 +457,7 @@ class User extends React.Component {
                   </div>
                   <Grid container item justify="flex-start" alignItems="center">
                   {ratingDisplay}
-                  {phoneNumberDisplay}
                   </Grid>
-
               </Grid>
             </Grid>
             <Grid container item className="grid-item"  justify="flex-end" xs={1} sm={3}>
@@ -476,6 +472,13 @@ class User extends React.Component {
         </div>
       )
       
+      contactsRow = 
+      <Grid container>
+        <Grid item sm={12} xs={12} align="right">
+          {phoneNumberDisplay}
+        </Grid>
+      </Grid>
+
       socialsRow = (
         <Grid container>
           <Grid item sm={6} xs={6} align="left"> 
@@ -493,7 +496,7 @@ class User extends React.Component {
           </Grid>
         </Grid>
       );
-      
+
       let highlightPhoto; 
       let subPhotos = [];
       let viewGalleryButton; 
@@ -601,6 +604,7 @@ class User extends React.Component {
         {connectModal}
         {circularProgress}
         {firstRow}
+        {contactsRow}
         {socialsRow}
         {imageGallerySection}
         <br></br>
