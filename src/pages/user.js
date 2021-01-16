@@ -440,16 +440,18 @@ class User extends React.Component {
       
       socialsRow = (
         <Grid container>
-          <Grid item xs={12} align="left"> 
+          <Grid item sm={6} xs={6} align="left"> 
             {socialButtons}
+          </Grid>
+          <Grid item sm={6} xs={6} align="right">
             <CopyToClipboard
-            text={`https://parti.app/user/${userHandle}`}>      
-            <Button aria-label="message" color="primary" variant="outlined" onClick={this.copyClipboardAlert}
-            startIcon={<ShareIcon />}
-            display='none'>
-            Share
-          </Button>
-          </CopyToClipboard>
+              text={`https://parti.app/user/${userHandle}`}>      
+                <Button aria-label="message" color="primary" variant="outlined" onClick={this.copyClipboardAlert}
+                startIcon={<ShareIcon />}
+                display='none'>
+                Share
+                </Button>
+            </CopyToClipboard>
           </Grid>
         </Grid>
       );
