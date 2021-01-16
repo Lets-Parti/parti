@@ -268,7 +268,7 @@ class User extends React.Component {
         totalRating += review.rating; 
       })
       
-      let averageRating = reviews.length > 0 ? 1.0 * totalRating / reviews.length : 0;
+      let averageRating = reviews.length > 0 ? parseFloat(1.0 * totalRating / reviews.length).toFixed(2) : parseFloat(0).toFixed(2);
 
       const StyledRating = withStyles({
         iconFilled: {
@@ -277,6 +277,8 @@ class User extends React.Component {
       })(Rating);
 
       let numReviews = <span className="grey-text">({reviews.length})</span>
+      let numReviews1 = <span className="grey-text">({reviews.length} reviews)</span>
+
       let blueStar =
         <StyledRating
           value={1}
@@ -292,6 +294,13 @@ class User extends React.Component {
         <span className="ratings-text"> {averageRating} {numReviews}</span>
       </Grid>
       );
+
+      let ratingDisplay1 = (
+        <Grid container>
+          {blueStar} 
+          <span className="ratings-text"> {averageRating} {numReviews1}</span>
+        </Grid>
+        );
     
       let reviewCards = [];
       let editButton;
@@ -489,7 +498,7 @@ class User extends React.Component {
         <Grid container className="row">
           <Grid item className="grid-item" align="left" sm={10} xs={10}>
             <h2>Reviews</h2>
-            {ratingDisplay}
+            {ratingDisplay1} 
           </Grid>
           <Grid item className="grid-item" sm={2} xs={2}>
             <div className="review-button-large">
