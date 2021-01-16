@@ -218,6 +218,7 @@ class User extends React.Component {
     let imageGallerySection = null;
     let bioSection = null;
     let reviewsSection = null;
+    let reviewButton = null;
 
     if (user && !isLoading) {
       let userDisplay = user.fullName
@@ -514,7 +515,27 @@ class User extends React.Component {
             </Grid>
         </Grid>        
       );
-
+      
+      reviewButton = (
+        <>
+          <div className="review-button-large">
+            <Button
+              variant="contained"
+              color="primary"
+              startIcon={<ReviewIcon />}
+              display='none'
+              onClick={() => this.toggleAddReview()}
+            >
+              Add Review
+            </Button>
+          </div>
+          <div className="review-button-small">
+            <IconButton aria-label="delete" color="primary" onClick={() => this.toggleAddReview()}>
+              <ReviewIcon />
+            </IconButton>
+          </div>
+        </>
+      );
       reviewsSection = (
         <div className="reviews-section">
         <hr className="hrmargin"></hr>
@@ -524,22 +545,7 @@ class User extends React.Component {
             {ratingDisplay_alt} 
           </Grid>
           <Grid item className="grid-item" sm={2} xs={2}>
-            <div className="review-button-large">
-              <Button
-                variant="contained"
-                color="primary"
-                startIcon={<ReviewIcon />}
-                display='none'
-                onClick={() => this.toggleAddReview()}
-              >
-                Add Review
-              </Button>
-            </div>
-            <div className="review-button-small">
-              <IconButton aria-label="delete" color="primary" onClick={() => this.toggleAddReview()}>
-                <ReviewIcon />
-              </IconButton>
-            </div>
+            {authenticated && reviewButton}
           </Grid>
           {toggleAddReviewComp && createReview}
         </Grid>
