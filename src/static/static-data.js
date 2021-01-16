@@ -2,6 +2,7 @@ const StaticData =
 {
     options: [
       { value: 'Audio Visual Equipment (AV)', label: `Audio Visual Equipment (AV)`},
+      { value: 'Bartending', label: `Bartending`},
       { value: 'Bounce House', label: `Bounce House`},
       { value: 'Boutique', label: `Boutique`},
       { value: 'Casino Rental', label: `Casino`},
