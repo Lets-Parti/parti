@@ -278,7 +278,7 @@ class User extends React.Component {
         totalRating += review.rating; 
       })
       
-      let averageRating = reviews.length > 0 ? parseFloat(1.0 * totalRating / reviews.length).toFixed(2) : parseFloat(0).toFixed(2);
+      let averageRating = reviews.length > 0 ? parseFloat(1.0 * totalRating / reviews.length).toFixed(2) : 0;
 
       const StyledRating = withStyles({
         iconFilled: {
@@ -458,7 +458,7 @@ class User extends React.Component {
       
       let highlightPhoto; 
       let subPhotos = [];
-
+      let viewGalleryButton; 
       if(carouselImages.length > 0)
       {
         highlightPhoto = 
@@ -468,6 +468,12 @@ class User extends React.Component {
           </Tooltip>
         </Link>
         
+        viewGalleryButton =               
+        <Button aria-label="message" color="primary" variant="outlined" onClick={this.openGalleryModal}
+          display='none'>
+          View Gallery
+        </Button>
+
         for(var i = 1; i < Math.min(carouselImages.length, 5); i++)
         {
           subPhotos.push(
@@ -493,10 +499,7 @@ class User extends React.Component {
               </Grid>
             </Grid>
             <Grid item sm={12} xs={12} align="right">
-              <Button aria-label="message" color="primary" variant="outlined" onClick={this.openGalleryModal}
-                display='none'>
-                View Gallery
-              </Button>
+                {viewGalleryButton}
             </Grid>
         </Grid>
       );
