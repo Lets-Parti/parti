@@ -1,5 +1,5 @@
 .discover-container {
-  margin: 30px;
+  margin: 15px;
 }
 
 .discover-card-full-name {
@@ -17,15 +17,20 @@
 }
 
 .grid-object {
+
 }
 
 .left-padding {
-  padding-left: 20px;
+  padding-left: 0px;
 }
 
-.discover-card-handle {
-  margin-top: 10px;
-  color: gray;
+.discover-card-rating {
+  margin-top: 7px;
+  font-size: 30px;
+}
+
+.ratings-text {
+  font-size: 15px;
 }
 
 .discover-card {
@@ -33,6 +38,11 @@
   border-radius: 5px;
   margin-top: 30px;
   width: 100%;
+}
+
+.city-state {
+  font-size: 15px;
+  margin-left: 10px;
 }
 
 .highlight-photo {
@@ -72,14 +82,19 @@
     font-size: 1.25rem;
     margin-top: 0px;
     margin-bottom: 0px;
-    padding-left: 40px;
+    padding-left: 0px;
   }
-
-  .discover-card-handle {
+  /*
+  .discover-card-rating {
     margin-bottom: 0px;
     margin-top: 10px;
     font-size: 1rem;
     color: gray;
-    padding-left: 40px;
+    padding-left: 0px;
+  }
+  */
+
+  .left-padding {
+    padding-left: 15px;
   }
 }
