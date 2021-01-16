@@ -277,7 +277,7 @@ class User extends React.Component {
       })(Rating);
 
       let numReviews = <span className="grey-text">({reviews.length})</span>
-      let numReviews1 = <span className="grey-text">({reviews.length} reviews)</span>
+      let numReviews_alt = <span className="grey-text">({reviews.length} reviews)</span>
 
       let blueStar =
         <StyledRating
@@ -295,10 +295,10 @@ class User extends React.Component {
       </Grid>
       );
 
-      let ratingDisplay1 = (
+      let ratingDisplay_alt = (
         <Grid container>
           {blueStar} 
-          <span className="ratings-text"> {averageRating} {numReviews1}</span>
+          <span className="ratings-text"> {averageRating} {numReviews_alt}</span>
         </Grid>
         );
     
@@ -498,7 +498,7 @@ class User extends React.Component {
         <Grid container className="row">
           <Grid item className="grid-item" align="left" sm={10} xs={10}>
             <h2>Reviews</h2>
-            {ratingDisplay1} 
+            {ratingDisplay_alt} 
           </Grid>
           <Grid item className="grid-item" sm={2} xs={2}>
             <div className="review-button-large">
