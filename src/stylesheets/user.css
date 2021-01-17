@@ -21,6 +21,7 @@
 .ratings-text {
   font-family: "Montserrat", sans-serif;
   font-size: 18px;
+  margin-top: 2px;
 }
 
 .user-page-num-reviews {
@@ -34,6 +35,7 @@
   font-family: "Montserrat", sans-serif;
   font-size: 18px;
   color: grey;
+  padding-top: 2px;
 }
 
 .phone-number {

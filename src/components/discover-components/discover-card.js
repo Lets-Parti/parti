@@ -7,7 +7,10 @@ import ChatIcon from '@material-ui/icons/Chat';
 import Chip from '@material-ui/core/Chip';
 import ConnectModal from '../modal-component/connectmodal'
 import Tooltip from '@material-ui/core/Tooltip';
+import { Rating } from '@material-ui/lab';
 import '../../stylesheets/discover-card.css';
+import '../../stylesheets/common.css';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
 
 //redux
 import { connect } from 'react-redux'
@@ -24,7 +27,10 @@ class DiscoverCard extends Component {
             tags: this.props.data.tags,
             mediaImages: this.props.data.mediaImages,
             profileImageUrl: this.props.data.imageUrl,
-            modalOpen: false
+            modalOpen: false,
+            reviews: this.props.data.reviews,
+            city: this.props.data.city,
+            state: this.props.data.state
         }
         this.openModal = this.openModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
@@ -91,25 +97,77 @@ class DiscoverCard extends Component {
         </IconButton>
         </Tooltip>
 
+        let reviews = this.state.reviews;
+        let totalRating = 0; 
+        if (reviews) {
+            reviews.forEach(review =>
+            {
+            totalRating += review.rating; 
+            })
+        }
+        else {
+            totalRating = 0;
+        }
+        
+        let averageRating = reviews.length > 0 ? parseFloat(1.0 * totalRating / reviews.length).toFixed(2) : 0;
+
+        const StyledRating = withStyles({
+            iconFilled: {
+              color: '#31b6ec'
+            }
+          })(Rating);
+    
+        let numReviews = <span className="greyText discover-card-ratings-text">({reviews.length})</span>
+
+        let blueStar =
+        <StyledRating
+            value={1}
+            readOnly
+            defaultValue={1}
+            max={1}
+            className="icon-filled"
+            size="small"
+        />
+               
+        let city = this.state.city;
+        let state = this.state.state;
+        let cityState = null;
+        if(city && state)
+        {
+            cityState = <span className="discover-card-city-state">{city}, {state}</span>
+        }
+
+        let ratingDisplay = (
+        <Grid container>
+            {blueStar} 
+            <span className="discover-card-ratings-text"> {averageRating}{numReviews}</span>
+            {cityState}
+        </Grid>
+        );
+
         return (
             <div className="discover-card">
                 {connectModal}
                 <div className="discover-container">
                     <Grid container>
-                        <Grid sm={1} xs={1} className="grid-object">
-                            <a href={`/user/${this.state.userHandle}`} >
-                                <img src={this.state.profileImageUrl} className="profile-image-discover-card" alt="Profile"/>
-                            </a>
-                        </Grid>
-                        <Grid sm={7} xs={9} className="grid-object" align="left">
-                            <a href={`/user/${this.state.userHandle}`} className="invisible-link">
+                        <Grid container sm={11} xs={11} spacing={2}>
+                            <Grid item sm={2} xs={2} className="grid-object" align="left">
+                                <a href={`/user/${this.state.userHandle}`} >
+                                    <img src={this.state.profileImageUrl} className="profile-image-discover-card" alt="Profile"/>
+                                </a>
+                            </Grid>
+                            <Grid item sm={10} xs={10} className="grid-object" align="left">
                                 <div className="left-padding">
-                                    <p className="discover-card-full-name">{this.state.fullName}</p>
-                                    <p className="discover-card-handle">@{this.state.userHandle}</p>
+                                    <a href={`/user/${this.state.userHandle}`} className="invisible-link">
+                                        <p className="discover-card-full-name">{this.state.fullName}</p>
+                                    </a>
+                                    <Grid item className="discover-card-rating">
+                                        {ratingDisplay}
+                                    </Grid>
                                 </div>
-                            </a>
+                            </Grid>
                         </Grid>
-                        <Grid sm={4} xs={1} className="grid-object" align="right">
+                        <Grid sm={1} xs={1} className="grid-object" align="right">
                             {chatButton}
                         </Grid>
                         <Grid sm={12} xs={12} className="separator" />

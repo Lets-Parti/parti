@@ -273,7 +273,7 @@ class User extends React.Component {
       if(website)
       {
         socialButtons.push(
-          <Link href={`https://${website}`} target="_blank">
+          <Link href={`http://${website}`} target="_blank">
           <Tooltip title="Website">
             <IconButton aria-label="delete" color="primary" onClick={() => {this.visitSocial("website")}}>
               <WebIcon />
@@ -339,11 +339,11 @@ class User extends React.Component {
         />
            
       let ratingDisplay = (
-      <div className="vertical-center">
-        {blueStar} 
-        <span className="ratings-text"> {averageRating} {numReviews}</span>
-        {cityState}
-      </div>
+        <Grid container>
+            {blueStar} 
+            <span className="ratings-text"> {averageRating}{numReviews}</span>
+            {cityState}
+        </Grid>
       );
 
       let ratingDisplay_alt = (

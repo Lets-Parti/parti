@@ -136,7 +136,7 @@ class Discover extends React.Component {
 
         return (
             <Grid align="center">
-                <div className="page-content">
+                <div className="discover-page-content">
                     <p className="title">Discover</p>
                     <p className="lightText">What service(s) are you looking for?</p>
                     <div className="discoverSelect">
