@@ -39,6 +39,10 @@
   color: #31b6ec;
 }
 
+.vertical-center {
+  margin: auto;
+}
+
 .nothingImg {
   height: 250px;
 }
