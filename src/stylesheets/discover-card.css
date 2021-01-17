@@ -4,8 +4,14 @@
 
 .discover-card-full-name {
   font-size: 1.5rem;
-  margin-top: 0px;
+  margin-top: 10px;
   margin-bottom: 0px;
+}
+
+.discover-card-city-state {
+  font-size: 16;
+  color: grey;
+  margin-left: 20px;
 }
 
 .profile-image-discover-card {
@@ -16,7 +22,6 @@
   object-fit: cover;
 }
 
-
 .left-padding {
   padding-left: 0px;
 }
@@ -26,7 +31,7 @@
 }
 
 .discover-card-ratings-text {
-  font-size: 13px;
+  font-size: 16px;
   margin-left: 2px;
   margin-top: 1px;
 }
@@ -84,7 +89,7 @@
     margin-bottom: 0px;
     padding-left: 0px;
   }
-  
+
   .discover-card-rating {
     margin-bottom: 0px;
     margin-top: 10px;

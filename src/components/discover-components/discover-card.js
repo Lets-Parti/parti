@@ -130,22 +130,13 @@ class DiscoverCard extends Component {
         let cityState = null;
         if(city && state)
         {
-            cityState = <span className="city-state greyText">{city}, {state}</span>
+            cityState = <span className="discover-card-city-state">{city}, {state}</span>
         }
 
         let ratingDisplay = (
             <Grid container>
                 {blueStar} 
                 <span className="discover-card-ratings-text"> {averageRating}{numReviews}</span>
-                {cityState}
-            </Grid>
-            );
-    
-        let ratingDisplay_alt = (
-            <Grid container>
-                {blueStar} 
-                <span className="discover-card-ratings-text"> {averageRating}</span>
-                {numReviews_alt}
                 {cityState}
             </Grid>
             );
