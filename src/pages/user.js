@@ -237,7 +237,8 @@ class User extends React.Component {
       let imageGallery = user.mediaImages
       let bio = user.bio
       let tags = user.tags
-      let location = user.location
+      let city = user.city; 
+      let state = user.state;
 
       let instagram = user.instagram
       let facebook = user.facebook
@@ -304,6 +305,12 @@ class User extends React.Component {
         </Popover>
       </div>
 
+      let cityState; 
+      if(city && state)
+      {
+        cityState = <span className="city-state">{city}, {state}</span>
+      }
+
       let reviews = user.reviews;
       let totalRating = 0; 
       reviews.forEach(review =>
@@ -319,8 +326,8 @@ class User extends React.Component {
         }
       })(Rating);
 
-      let numReviews = <span className="grey-text">({reviews.length})</span>
-      let numReviews_alt = <span className="grey-text">({reviews.length} reviews)</span>
+      let numReviews = <span className="user-page-num-reviews">({reviews.length})</span>
+      let numReviews_alt = <span className="user-page-num-reviews">({reviews.length} reviews)</span>
 
       let blueStar =
         <StyledRating
@@ -332,10 +339,11 @@ class User extends React.Component {
         />
            
       let ratingDisplay = (
-      <Grid container item xs={4}>
-        {blueStar} 
-        <span className="ratings-text"> {averageRating} {numReviews}</span>
-      </Grid>
+        <Grid container>
+            {blueStar} 
+            <span className="ratings-text"> {averageRating}{numReviews}</span>
+            {cityState}
+        </Grid>
       );
 
       let ratingDisplay_alt = (
@@ -449,19 +457,24 @@ class User extends React.Component {
         <div className="user-page-first-row">
           <Grid container spacing={2} justify="space-between">
             <Grid container item spacing={2} xs={11} sm={9}>
-              <Grid item className="grid-item" xs={1.5}>
+              <Grid item className="grid-item" sm={1} xs={2}>
                   <img className="user-profile-image" src={userProfileImageURL} alt="User Profile"/>
               </Grid>
-              <Grid container item className="grid-item" xs={9}>
-                  <div className="user-company-name">
-                    {userDisplay}
-                  </div>
-                  <Grid container item justify="flex-start" alignItems="center">
-                  {ratingDisplay}
+              <Grid container item className="grid-item" sm={10} xs={9}>
+                <div className="user-company-info">
+                  <Grid item sm={12} xs={12}>
+                    <div className="user-company-name">
+                      {userDisplay}
+                    </div>
                   </Grid>
+                  <Grid item sm={12} xs={12} alignItems="center" justify="flex-start">
+                    {ratingDisplay}
+                  </Grid>
+                </div>
               </Grid>
             </Grid>
-            <Grid container item className="grid-item"  justify="flex-end" xs={1} sm={3}>
+
+            <Grid container item className="grid-item"  justify="flex-end" xs={1} sm={1}>
                  <div className="message-button-large">
                    {chatButton}
                  </div>
@@ -490,7 +503,9 @@ class User extends React.Component {
               text={`https://parti.app/user/${userHandle}`}>      
                 <Button aria-label="message" color="primary" variant="outlined" onClick={this.copyClipboardAlert}
                 startIcon={<ShareIcon />}
-                display='none'>
+                display='none'
+                size='small'
+                >
                 Share
                 </Button>
             </CopyToClipboard>

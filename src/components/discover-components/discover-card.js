@@ -55,23 +55,28 @@ class DiscoverCard extends Component {
     render(props) {
         const { authenticated } = this.props.user; 
 
-        let mediaImagesArray = this.state.mediaImages
+        let mediaImagesArray = this.state.mediaImages;
+        let tagsArray = this.state.tags; 
+
         let highlightPhoto = null;
         if (mediaImagesArray && mediaImagesArray.length > 0) {
             highlightPhoto = < a href={`/user/${this.state.userHandle}`}><img className="highlight-photo" src={mediaImagesArray[0]} alt="Highlight"/></a>
         }
 
         let chips = [];
-        this.state.tags.forEach(tag => {
-            chips.push
-            (
-                <Chip
-                    className="chip-padding"
-                    color="primary"
-                    label={tag}
-                    style={{ fontSize: '.8rem' }} />
-            )
-        })
+        if(tagsArray)
+        {
+            tagsArray.forEach(tag => {
+                chips.push
+                    (
+                        <Chip
+                            className="chip-padding"
+                            color="primary"
+                            label={tag}
+                            style={{ fontSize: '.8rem' }} />
+                    )
+            })
+        }
 
         //MODAL STUFF
         let connectModal = authenticated ? 
@@ -113,7 +118,6 @@ class DiscoverCard extends Component {
           })(Rating);
     
         let numReviews = <span className="greyText discover-card-ratings-text">({reviews.length})</span>
-        let numReviews_alt = <span className="greyText discover-card-ratings-text">({reviews.length} reviews)</span>
 
         let blueStar =
         <StyledRating
@@ -134,25 +138,25 @@ class DiscoverCard extends Component {
         }
 
         let ratingDisplay = (
-            <Grid container>
-                {blueStar} 
-                <span className="discover-card-ratings-text"> {averageRating}{numReviews}</span>
-                {cityState}
-            </Grid>
-            );
+        <Grid container>
+            {blueStar} 
+            <span className="discover-card-ratings-text"> {averageRating}{numReviews}</span>
+            {cityState}
+        </Grid>
+        );
 
         return (
             <div className="discover-card">
                 {connectModal}
                 <div className="discover-container">
                     <Grid container>
-                        <Grid container xs={11} spacing={2}>
-                            <Grid item className="grid-object" align="left">
+                        <Grid container sm={11} xs={11} spacing={2}>
+                            <Grid item sm={2} xs={2} className="grid-object" align="left">
                                 <a href={`/user/${this.state.userHandle}`} >
                                     <img src={this.state.profileImageUrl} className="profile-image-discover-card" alt="Profile"/>
                                 </a>
                             </Grid>
-                            <Grid item className="grid-object" align="left">
+                            <Grid item sm={10} xs={10} className="grid-object" align="left">
                                 <div className="left-padding">
                                     <a href={`/user/${this.state.userHandle}`} className="invisible-link">
                                         <p className="discover-card-full-name">{this.state.fullName}</p>
@@ -163,7 +167,7 @@ class DiscoverCard extends Component {
                                 </div>
                             </Grid>
                         </Grid>
-                        <Grid xs={1} className="grid-object" align="right">
+                        <Grid sm={1} xs={1} className="grid-object" align="right">
                             {chatButton}
                         </Grid>
                         <Grid sm={12} xs={12} className="separator" />

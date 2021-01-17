@@ -12,6 +12,7 @@
   font-size: 16;
   color: grey;
   margin-left: 20px;
+  padding-top: 2px;
 }
 
 .profile-image-discover-card {
@@ -83,11 +84,16 @@
     font-size: 1rem;
   }
 
+  .profile-image-discover-card {
+    height: 3rem;
+    width: 3rem;
+  }
+
   .discover-card-full-name {
     font-size: 1.25rem;
-    margin-top: 0px;
+    margin-top: 5px;
     margin-bottom: 0px;
-    padding-left: 0px;
+    padding-left: 5px;
   }
 
   .discover-card-rating {
