@@ -109,7 +109,7 @@ class DiscoverCard extends Component {
             totalRating = 0;
         }
         
-        let averageRating = reviews.length > 0 ? parseFloat(1.0 * totalRating / reviews.length).toFixed(2) : 0;
+        let averageRating = reviews.length > 0 ? parseFloat(1.0 * totalRating / reviews.length).toFixed(1) : 0;
 
         const StyledRating = withStyles({
             iconFilled: {
