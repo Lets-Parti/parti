@@ -64,13 +64,13 @@ class DiscoverCard extends Component {
         let chips = [];
         this.state.tags.forEach(tag => {
             chips.push
-                (
-                    <Chip
-                        className="chip-padding"
-                        color="primary"
-                        label={tag}
-                        style={{ fontSize: '.8rem' }} />
-                )
+            (
+                <Chip
+                    className="chip-padding"
+                    color="primary"
+                    label={tag}
+                    style={{ fontSize: '.8rem' }} />
+            )
         })
 
         //MODAL STUFF
@@ -112,18 +112,18 @@ class DiscoverCard extends Component {
             }
           })(Rating);
     
-          let numReviews = <span className="greyText ratings-text">({reviews.length})</span>
-          let numReviews_alt = <span className="greyText ratings-text">({reviews.length} reviews)</span>
-    
-          let blueStar =
-            <StyledRating
-              value={1}
-              readOnly
-              defaultValue={1}
-              max={1}
-              className="icon-filled"
-              size="small"
-            />
+        let numReviews = <span className="greyText discover-card-ratings-text">({reviews.length})</span>
+        let numReviews_alt = <span className="greyText discover-card-ratings-text">({reviews.length} reviews)</span>
+
+        let blueStar =
+        <StyledRating
+            value={1}
+            readOnly
+            defaultValue={1}
+            max={1}
+            className="icon-filled"
+            size="small"
+        />
                
         let city = this.state.city;
         let state = this.state.state;
@@ -134,18 +134,19 @@ class DiscoverCard extends Component {
         }
 
         let ratingDisplay = (
-            <Grid container item>
+            <Grid container>
                 {blueStar} 
-                <span className="ratings-text"> {averageRating}{numReviews}</span>
+                <span className="discover-card-ratings-text"> {averageRating}{numReviews}</span>
                 {cityState}
             </Grid>
             );
     
         let ratingDisplay_alt = (
             <Grid container>
-            {blueStar} 
-            <span className="ratings-text"> {averageRating}{numReviews_alt}</span>
-            {cityState}
+                {blueStar} 
+                <span className="discover-card-ratings-text"> {averageRating}</span>
+                {numReviews_alt}
+                {cityState}
             </Grid>
             );
 
