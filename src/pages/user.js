@@ -354,18 +354,13 @@ class User extends React.Component {
         );
     
       let reviewCards = [];
-      let editButton;
 
       reviews.forEach(review => {
         if (authenticated && review.author_userHandle === authenticatedUser.userHandle) {
-          editButton = (
-            <IconButton color="primary" onClick={() => this.toggleEditReview()}>
-              <ReviewIcon />
-            </IconButton>
-          )
+          this.state.editReview = true;
         }
         else {
-          editButton = (null);
+          this.state.editReview = false;
         }
         reviewCards.push(
           <ReviewCard data={review} />
@@ -444,13 +439,6 @@ class User extends React.Component {
               label={tag}
               style={{ fontSize: '1rem' }} />
           )
-      })
-
-      let authUserHaveReview = -1;
-      reviews.forEach(reviewBlock => {
-        if(authenticated && reviewBlock.userHandle === authenticatedUser.userHandle) {
-          authUserHaveReview = 1;
-        }
       })
       
       firstRow = (
@@ -572,6 +560,15 @@ class User extends React.Component {
         </Grid>        
       );
       
+
+      let reviewButtonText = '';
+      if (this.state.editReview) {
+        reviewButtonText = 'Edit Review';
+      }
+      else {
+        reviewButtonText = 'Add Review';
+      }
+
       reviewButton = (
         <>
           <div className="review-button-large">
@@ -582,7 +579,7 @@ class User extends React.Component {
               display='none'
               onClick={() => this.toggleAddReview()}
             >
-              Add Review
+              {reviewButtonText}
             </Button>
           </div>
           <div className="review-button-small">
@@ -609,7 +606,6 @@ class User extends React.Component {
         <Grid container>
           {reviewCards}
         </Grid>
-        {/* Below is ghetto spacing */}
         <br></br>
       </div>
       )

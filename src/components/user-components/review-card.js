@@ -6,6 +6,9 @@ import Card from '@material-ui/core/Card';
 import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link'
 
+import ReviewIcon from '@material-ui/icons/RateReview';
+import IconButton from '@material-ui/core/IconButton';
+
 import { connect } from 'react-redux'
 import {cleanDate, simpleDate} from '../../utils/validators';
 
@@ -24,10 +27,15 @@ class ReviewCard extends React.Component {
         }
     }
 
+
     render() {
         //Clean up date display
         let date = new Date(this.state.createdAt).toString(); 
         date = simpleDate(date); 
+
+        if (this.state.author_userHandle) {
+          console.log(this.state.author_userHandle)
+        }
 
         let body = this.state.body; 
         let source; 
@@ -51,6 +59,9 @@ class ReviewCard extends React.Component {
                         <Grid item>
                             <p className="review-card-author-name">{this.state.author_fullName}</p>
                             <p className="review-card-created-date">{date}</p>
+                        </Grid>
+                        <Grid item>
+
                         </Grid>
                     </Grid>
                     <Grid item sm={12} xs={12}>
