@@ -59,10 +59,10 @@ class ConnectModal extends React.Component {
                                 <div className="sign-up-form">
                                     <div className="modal">
                                     <p className="title">Connect with @{this.props.userHandle}</p>
-                                    <p className="lightText">Send a connect request to {this.props.userHandle}. Your phone number and email address will automatically be sent to {this.props.userHandle}.</p>
+                                    <p className="lightText">Send a message to {this.props.userHandle}. Your phone number and email address will be included in the message.</p>
                                     <div className="feedback-form-container">
                                         <TextField
-                                            label="Please write your first message"
+                                            label="Please write a message"
                                             variant="filled"
                                             size="large"
                                             fullWidth='true'
