@@ -298,7 +298,7 @@ class User extends React.Component {
           horizontal: 'right'
         }}>
           <div className='phone-number'>
-            {authenticated ? <Link href={`tel:${authenticatedUser.phone}`}>{authenticatedUser.phone}</Link> 
+            {authenticated ? <Link href={`tel:${user.phone}`}>{user.phone}</Link> 
             : 
             unauthorizedPhoneMessage}
           </div>
