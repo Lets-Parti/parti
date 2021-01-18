@@ -33,10 +33,6 @@ class ReviewCard extends React.Component {
         let date = new Date(this.state.createdAt).toString(); 
         date = simpleDate(date); 
 
-        if (this.state.author_userHandle) {
-          console.log(this.state.author_userHandle)
-        }
-
         let body = this.state.body; 
         let source; 
         let sourceUrl; 
