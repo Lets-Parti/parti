@@ -80,7 +80,6 @@ class Home extends React.Component {
       firebaseAnalytics.logEvent("home_visited");
       const uniqueID = this.props.match.params.uniqueID; 
       if(uniqueID){
-         console.log(`outreach_clicked_${uniqueID}`);
          firebaseAnalytics.logEvent(`outreach_clicked_${uniqueID}`);
       }
     }
