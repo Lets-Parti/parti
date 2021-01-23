@@ -74,10 +74,15 @@ class Home extends React.Component {
         this.eventChange = this.eventChange.bind(this)
         this.onSubmitForm = this.onSubmitForm.bind(this)
     }   
-    
+
     componentDidMount()
     {
       firebaseAnalytics.logEvent("home_visited");
+      const uniqueID = this.props.match.params.uniqueID; 
+      if(uniqueID){
+         console.log(`outreach_clicked_${uniqueID}`);
+         firebaseAnalytics.logEvent(`outreach_clicked_${uniqueID}`);
+      }
     }
 
     eventChange(event)
@@ -116,14 +121,7 @@ class Home extends React.Component {
         })
     }
  
-    componentDidMount()
-    {
-      firebaseAnalytics.logEvent("home_visited");
-      const uniqueID = this.props.match.params.promoID; 
-      if(uniqueID){
-         firebaseAnalytics.logEvent(`outreach_clicked_${uniqueID}`)
-      }
-    }
+
 
   render() {
     const { authenticated } = this.props.user;
