@@ -47,7 +47,8 @@ class Login extends React.Component
             emailOrHandle: this.state.emailOrHandle, 
             password: this.state.password
         }
-        this.props.loginUser(data, this.props.history);
+        const {history} = this.props; 
+        this.props.loginUser(data, history);
     }
 
     componentWillReceiveProps(nextProps)
