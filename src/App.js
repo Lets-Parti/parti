@@ -80,7 +80,7 @@ class App extends React.Component
           <div className="container">
             <Switch>
               <Route exact path="/" component={Home} />
-              {/* <Route exact path="/" component={Beta} /> */}
+              <Route exact path="/a/:uniqueID" component={Home} />
               <Route exact path="/about" component={AboutUs} />
               <Route exact path="/feedback" component={Feedback} />
               <Route exact path="/user/:userHandle" component={User} />
