@@ -56,7 +56,7 @@ class User extends React.Component {
       galleryModalOpen: false,
       editReview: false,
       anchorEl: null,
-      copyClipboardAlert: false
+      copyClipboardAlert: false,
     };
 
     this.handleTextChange = this.handleTextChange.bind(this)
@@ -95,7 +95,7 @@ class User extends React.Component {
         rating: parseFloat(rating),
         body: body
       }
-      if (this.state.editReview) {
+      if (this.state.editReview === true) {
         this.props.editReview(data);
       }
       else {
@@ -359,9 +359,6 @@ class User extends React.Component {
         if (authenticated && review.author_userHandle === authenticatedUser.userHandle) {
           this.state.editReview = true;
         }
-        else {
-          this.state.editReview = false;
-        }
         reviewCards.push(
           <ReviewCard data={review} />
         )
@@ -562,7 +559,7 @@ class User extends React.Component {
       
 
       let reviewButtonText = '';
-      if (this.state.editReview) {
+      if (this.state.editReview === true) {
         reviewButtonText = 'Edit Review';
       }
       else {
