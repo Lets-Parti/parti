@@ -22,6 +22,6 @@ export const FIREBASE_DEV_CONFIG = {
     measurementId: "G-74R0FZEWFC"
   }
 
-  firebase.initializeApp(FIREBASE_DEV_CONFIG); 
+  firebase.initializeApp(FIREBASE_PROD_CONFIG); 
 
 export const firebaseAnalytics = firebase.analytics();
