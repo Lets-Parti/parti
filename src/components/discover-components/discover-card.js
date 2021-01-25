@@ -10,7 +10,8 @@ import Tooltip from '@material-ui/core/Tooltip';
 import { Rating } from '@material-ui/lab';
 import '../../stylesheets/discover-card.css';
 import '../../stylesheets/common.css';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
+import NoGalleryImage from '../../resources/images/parti_empty_gallery.png';
 
 //redux
 import { connect } from 'react-redux'
@@ -60,7 +61,9 @@ class DiscoverCard extends Component {
 
         let highlightPhoto = null;
         if (mediaImagesArray && mediaImagesArray.length > 0) {
-            highlightPhoto = < a href={`/user/${this.state.userHandle}`}><img className="highlight-photo" src={mediaImagesArray[0]} alt="Highlight"/></a>
+            highlightPhoto = <a href={`/user/${this.state.userHandle}`}><img className="highlight-photo" src={mediaImagesArray[0]} alt="Highlight"/></a>
+        }else {
+            highlightPhoto = <a href={`/user/${this.state.userHandle}`}><img className="highlight-photo" src={NoGalleryImage} alt="no-gallery" /></a>
         }
 
         let chips = [];
