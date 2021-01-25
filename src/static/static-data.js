@@ -5,6 +5,7 @@ const StaticData =
       { value: 'Bartending', label: `Bartending`},
       { value: 'Bounce House', label: `Bounce House`},
       { value: 'Boutique', label: `Boutique`},
+      { value: 'Calligraphy / Invitations', label: `Calligraphy / Invitations`},
       { value: 'Casino Rental', label: `Casino`},
       { value: 'Circus / Acrobat', label: `Circus / Acrobat`},
       { value: 'Clown', label: `Clown`},
