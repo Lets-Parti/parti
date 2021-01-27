@@ -251,7 +251,7 @@ class User extends React.Component {
         socialButtons.push(
           <Link href={`https://www.instagram.com/${instagram}`} target="_blank">
             <Tooltip title="Instagram">
-              <IconButton aria-label="delete" color="primary" size="small" onClick={() => {this.visitSocial("instagram")}}>
+              <IconButton aria-label="delete" color="primary" size='small' onClick={() => {this.visitSocial("instagram")}}>
                 <InstagramIcon />
               </IconButton>
             </Tooltip>
@@ -263,7 +263,7 @@ class User extends React.Component {
         socialButtons.push(
           <Link href={`https://${facebook}`} target="_blank">
             <Tooltip title="Facebook">
-            <IconButton aria-label="delete" color="primary" size="small" onClick={() => {this.visitSocial("facebook")}}>
+            <IconButton aria-label="delete" color="primary" size='small' onClick={() => {this.visitSocial("facebook")}}>
               <FacebookIcon />
             </IconButton>
           </Tooltip>
@@ -275,7 +275,7 @@ class User extends React.Component {
         socialButtons.push(
           <Link href={`http://${website}`} target="_blank">
           <Tooltip title="Website">
-            <IconButton aria-label="delete" color="primary" size="small" onClick={() => {this.visitSocial("website")}}>
+            <IconButton aria-label="delete" color="primary" size='small' onClick={() => {this.visitSocial("website")}}>
               <WebIcon />
             </IconButton>
           </Tooltip>
