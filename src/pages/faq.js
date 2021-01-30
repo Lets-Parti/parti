@@ -149,6 +149,15 @@ class FAQ extends React.Component {
         Edit your tags and social media here 
         </p>
 
+        <p><h3><i>Importing Reviews </i></h3>
+        We know how important reviews are for your business. Your business's reviews can now be imported from Facebook, Google Reviews, WeddingWire, and Yelp. Our team will import reviews for you. All we need from you is your permission. Please email us or reach out on social media if you're interested in this feature. 
+        <p><h4><i>Limitations: </i></h4></p>
+        <ul>
+          <li>Max of 2 reviews per review source (Facebook, Google Reviews, WeddingWire, Yelp).</li>
+          <li>Total max of 5 reviews. </li>
+        </ul>
+        <br />
+        </p>
         </div>
       </div>
     );
