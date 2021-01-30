@@ -188,9 +188,12 @@ class User extends React.Component {
     const { authenticated } = this.props.user;
 
     let authenticatedUser;
+    let authenticatedUserType;
     if (authenticated) {
       authenticatedUser = this.props.user.user;
+      authenticatedUserType = this.props.user.user.type;
     }
+    console.log(authenticatedUserType);
 
     let connectModal = authenticated && user && !isLoading ?
       <ConnectModal open={this.state.modalOpen} handleClose={this.closeModal} userHandle={user.userHandle} />
@@ -595,7 +598,7 @@ class User extends React.Component {
             {ratingDisplay_alt} 
           </Grid>
           <Grid item className="grid-item" sm={2} xs={2}>
-            {authenticated && reviewButton}
+            {authenticated && authenticatedUserType === "client" && reviewButton}
           </Grid>
           {toggleAddReviewComp && createReview}
         </Grid>
