@@ -31,6 +31,7 @@ const StaticData =
       { value: 'Photography', label: 'Photography'},
       { value: 'Photo Booth', label: `Photo Booth`},  
       { value: 'Singer', label: `Singer`},
+      { value: 'Videography', label: `Videography`},
       { value: 'Video Game Truck', label: `Video Game Truck`},
       { value: 'Visual Artist', label: `Visual Artist`}
       ],

@@ -60,11 +60,6 @@ class Terms_Conditions extends React.Component {
             changes. Your continued use of or access to the website following
             the posting of any changes constitutes acceptance of those changes.
           </p>
-          <p>
-            Our store is hosted on Shopify Inc. They provide us with the online
-            e-commerce platform that allows us to sell our products and services
-            to you.
-          </p>
 
           <b>SECTION 1 - ONLINE STORE TERMS</b>
           <p>
