@@ -188,10 +188,8 @@ class User extends React.Component {
     const { authenticated } = this.props.user;
 
     let authenticatedUser;
-    let authenticatedUserType; 
     if (authenticated) {
       authenticatedUser = this.props.user.user;
-      authenticatedUserType = this.props.user.user.type; 
     }
 
     let connectModal = authenticated && user && !isLoading ?
@@ -253,7 +251,7 @@ class User extends React.Component {
         socialButtons.push(
           <Link href={`https://www.instagram.com/${instagram}`} target="_blank">
             <Tooltip title="Instagram">
-              <IconButton aria-label="delete" color="primary" size='small' onClick={() => {this.visitSocial("instagram")}}>
+              <IconButton aria-label="delete" color="primary" onClick={() => {this.visitSocial("instagram")}}>
                 <InstagramIcon />
               </IconButton>
             </Tooltip>
@@ -265,7 +263,7 @@ class User extends React.Component {
         socialButtons.push(
           <Link href={`https://${facebook}`} target="_blank">
             <Tooltip title="Facebook">
-            <IconButton aria-label="delete" color="primary" size='small' onClick={() => {this.visitSocial("facebook")}}>
+            <IconButton aria-label="delete" color="primary" onClick={() => {this.visitSocial("facebook")}}>
               <FacebookIcon />
             </IconButton>
           </Tooltip>
@@ -277,7 +275,7 @@ class User extends React.Component {
         socialButtons.push(
           <Link href={`http://${website}`} target="_blank">
           <Tooltip title="Website">
-            <IconButton aria-label="delete" color="primary" size='small' onClick={() => {this.visitSocial("website")}}>
+            <IconButton aria-label="delete" color="primary" onClick={() => {this.visitSocial("website")}}>
               <WebIcon />
             </IconButton>
           </Tooltip>
@@ -289,7 +287,7 @@ class User extends React.Component {
       phoneNumberDisplay =
       <div>
         <Tooltip title="Call">
-          <IconButton color="primary" onClick={this.toggleShowPhoneNumber} size='small' ><PhoneIcon/></IconButton>
+          <IconButton color="primary" onClick={this.toggleShowPhoneNumber}><PhoneIcon/></IconButton>
         </Tooltip>
         <Popover 
         open={Boolean(this.state.anchorEl)}
@@ -472,13 +470,17 @@ class User extends React.Component {
           </Grid>
         </div>
       )
+      
+      contactsRow = 
+      <Grid container>
+        <Grid item sm={12} xs={12} align="right">
+          {phoneNumberDisplay}
+        </Grid>
+      </Grid>
 
       socialsRow = (
         <Grid container>
-          <Grid item sm={1} xs={2} align="left">
-            {phoneNumberDisplay}
-          </Grid>
-          <Grid item sm={5} xs={4} align="left"> 
+          <Grid item sm={6} xs={6} align="left"> 
             {socialButtons}
           </Grid>
           <Grid item sm={6} xs={6} align="right">
@@ -593,7 +595,7 @@ class User extends React.Component {
             {ratingDisplay_alt} 
           </Grid>
           <Grid item className="grid-item" sm={2} xs={2}>
-            {authenticated && authenticatedUserType === 'client' && reviewButton}
+            {authenticated && reviewButton}
           </Grid>
           {toggleAddReviewComp && createReview}
         </Grid>
@@ -616,6 +618,7 @@ class User extends React.Component {
         {connectModal}
         {circularProgress}
         {firstRow}
+        {contactsRow}
         {socialsRow}
         {imageGallerySection}
         <br></br>
