@@ -17,6 +17,10 @@
   /* border: 1px solid black; */
 }
 
+.accordionTitle {
+  padding: 10px;
+}
+
 .eventCardSubtitle {
   font-size: 1.25rem;
   font-weight: lighter;

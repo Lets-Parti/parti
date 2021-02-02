@@ -3,6 +3,12 @@ import React, { Component } from 'react';
 import Grid from '@material-ui/core/Grid';
 import EventIcon from '@material-ui/icons/Event';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
+import Accordion from '@material-ui/core/Accordion';
+import AccordionSummary from '@material-ui/core/AccordionSummary';
+import AccordionDetails from '@material-ui/core/AccordionDetails';
+import Typography from '@material-ui/core/Typography';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import Tooltip from '@material-ui/core/Tooltip';
 
 import ServiceCard from './service-card'
 import '../../stylesheets/event.css'
@@ -45,7 +51,7 @@ class EventCard extends Component
 
         return(
             <div className="eventCard">
-                <div className="eventWrapper">
+                {/* <div className="eventWrapper">
                     <Grid align="left">
                         <p className="eventCardTitle">{this.state.title}</p>
                         <p class="subInfo"> Event ID: <span className="code">{this.props.data.eventID}</span></p>
@@ -66,7 +72,49 @@ class EventCard extends Component
                             {serviceCards}
                         </Grid>
                     </Grid>
-                </div>
+                </div> */}
+                <Accordion>
+                    <Tooltip title="Expand for Details">
+                        <AccordionSummary
+                        expandIcon={
+                            <ExpandMoreIcon />
+                        }
+                        aria-controls="panel1a-content"
+                        id="panel1a-header"
+                        >
+                        <Grid container align="left" className="accordionTitle">
+                            <Grid item sm={12} xs={12}>
+                                <p className="eventCardTitle">{this.state.title}</p>
+                            </Grid>
+                            <Grid item sm={12} xs={12}>
+                            <div class="eventInfo"> 
+                                <p class="subInfo"> <EventIcon fontSize="small"/>{date.toString()}</p>
+                                <p class="subInfo"> <LocationOnIcon fontSize="small"/>{this.state.zipcode}</p>
+                                <hr />
+                                <p class="subInfo">X of X requested services found</p>
+                            </div>
+                            </Grid>
+                        </Grid>
+                        </AccordionSummary>
+                    </Tooltip>
+                    
+                    <AccordionDetails>
+                        <Grid container align="left">
+                            <Grid item sm={12} xs={12}>
+                                <p>{this.state.description}</p>
+                            </Grid>
+                            <Grid item sm={12} xs={12}>
+                                <p className="eventCardSubtitle">Services ({services.length})</p>
+                            </Grid>
+                            <Grid item sm={12} xs={12}>
+                            <   hr></hr>
+                                <Grid container>
+                                    {serviceCards}
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                    </AccordionDetails>
+                </Accordion>
             </div>
         )
     }
