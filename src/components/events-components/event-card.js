@@ -91,7 +91,7 @@ class EventCard extends Component
                                 <p class="subInfo"> <EventIcon fontSize="small"/>{date.toString()}</p>
                                 <p class="subInfo"> <LocationOnIcon fontSize="small"/>{this.state.zipcode}</p>
                                 <hr />
-                                <p class="subInfo">X of X requested services found</p>
+                                <p class="subInfo">Looking for {services.length} service(s)</p>
                             </div>
                             </Grid>
                         </Grid>
@@ -101,13 +101,17 @@ class EventCard extends Component
                     <AccordionDetails>
                         <Grid container align="left">
                             <Grid item sm={12} xs={12}>
+                                <p className="eventCardSubtitle">Event Details</p>
+                                <hr></hr>
+                            </Grid>
+                            <Grid item sm={12} xs={12}>
                                 <p>{this.state.description}</p>
                             </Grid>
                             <Grid item sm={12} xs={12}>
                                 <p className="eventCardSubtitle">Services ({services.length})</p>
+                                <hr></hr>
                             </Grid>
                             <Grid item sm={12} xs={12}>
-                            <   hr></hr>
                                 <Grid container>
                                     {serviceCards}
                                 </Grid>
