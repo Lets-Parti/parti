@@ -405,5 +405,4 @@ const mapActionsToProps = {
   createEvent,
 }
 
-
 export default connect(mapStateToProps, mapActionsToProps)(withStyles(styles)(Home));
