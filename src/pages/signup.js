@@ -58,21 +58,35 @@ class SignUp extends React.Component
         this.setState({
             isLoading: true
         })
-
-        let data = {
-            userHandle: this.state.userHandle,
-            fullName: this.state.fullName,
-            email: this.state.email, 
-            phone: this.state.phone, 
-            password: this.state.password,
-            confirmPassword: this.state.confirmPassword,
-            bio: this.state.bio, 
-            type: this.state.type,
-            zipcode: this.state.zipcode,
-            service: this.state.service.value
+        let data; 
+        if(this.state.type === "client")
+        {
+            data = {
+                userHandle: this.state.userHandle,
+                fullName: this.state.fullName,
+                email: this.state.email, 
+                phone: this.state.phone, 
+                password: this.state.password,
+                confirmPassword: this.state.confirmPassword,
+                type: this.state.type,
+                zipcode: this.state.zipcode,
+            }
+        }else{
+            data = {
+                userHandle: this.state.userHandle,
+                fullName: this.state.fullName,
+                email: this.state.email, 
+                phone: this.state.phone, 
+                password: this.state.password,
+                confirmPassword: this.state.confirmPassword,
+                bio: this.state.bio, 
+                type: this.state.type,
+                zipcode: this.state.zipcode,
+                service: this.state.service.value
+            }
         }
         firebaseAnalytics.logEvent(`signup_attempted_${data.userHandle}`);
-        this.props.signupUser(data, this.props.history); 
+        this.props.signupUser(data, this.props.history);
     }
 
     switchToServiceSignUp()
@@ -389,7 +403,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapActionsToProps = {
-    signupUser
+    signupUser,
 }
 
 export default connect(mapStateToProps, mapActionsToProps)(SignUp)
