@@ -42,6 +42,7 @@ export const getEventByID = (eventID) => (dispatch) =>
     })
 }
 
+
 export const getEventByUser = (userHandle) => (dispatch) =>                        
 {
     dispatch({type: LOADING_DATA});
@@ -58,6 +59,28 @@ export const getEventByUser = (userHandle) => (dispatch) =>
         dispatch({
             type: SET_EVENTS, 
             payload: []
+            })
+    })
+}
+export const toggleEventService = (data) => (dispatch) =>
+{
+    console.log(data); 
+    dispatch({type: LOADING_UI});
+    axios.post('/events/toggle', data,
+    {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(res =>
+    {
+        dispatch({type: CLEAR_ERRORS});
+    })
+    .catch(err =>
+    {
+        dispatch({
+            type: SET_ERRORS, 
+            payload: err.response.data
         })
     })
 }
