@@ -19,7 +19,7 @@ export const loginUser = (userData, history) => (dispatch) =>
 
         if(res.data.userType === 'service')
         {
-            window.location.href = '/account/edit';
+            window.location.href = '/';
         }else 
         {
             window.location.href = '/';
@@ -48,7 +48,7 @@ export const signupUser = (newUserData, history) => (dispatch) =>
         setAuthorizationHeader(res.data.token); 
         dispatch(getUserData()); 
         dispatch({type: CLEAR_ERRORS});
-        history.push('/')
+        history.push('/');
     })
     .catch(err => 
     {
