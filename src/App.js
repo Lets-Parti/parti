@@ -17,6 +17,7 @@ import AccountEdit from './pages/user/accountedit'
 import NewContract from './pages/contracts/newcontract'
 import Contracts from './pages/contracts/contracts'
 import EventByID from './pages/events/event-by-id'
+import EventByUser from './pages/events/events-by-user'
 import Connections from './pages/connections/connections'
 import PrivacyPolicy from './pages/legal/privacy'
 import Terms_Conditions from './pages/legal/terms'
@@ -50,6 +51,7 @@ import ProtectedServiceRoute from './utils/protectedserviceroute'
 import ProtectedClientRoute from './utils/protectedclientroute'
 import FunctionsConfig from './static/config';
 import Footer from './components/footer';
+import eventsByUser from './pages/events/events-by-user';
 
 axios.defaults.baseURL = FunctionsConfig.FUNCTIONS_DEVELOPMENT_URL; 
 
@@ -87,8 +89,9 @@ class App extends React.Component
               <Route exact path="/user/:userHandle" component={User} />
               <Route exact path="/user/:userHandle/:promoID" component={User} />
               <Route exact path="/events/new" component={NewEvent} />
-              <ProtectedRoute exact path="/events" component={Events} />
-              <ProtectedRoute exact path="/events/:eventID" component={EventByID} />
+              <Route exact path="/events" component={Events} />
+              <Route exact path="/events/:eventID" component={EventByID} />
+              <Route exact path="/events/user/:userHandle" component={EventByUser} />
               <ProtectedRoute exact path="/contracts" component={Contracts} />
               <ProtectedRoute exact path="/account/edit" component={AccountEdit} />
               <Route exact path="/discover" component={Discover} />

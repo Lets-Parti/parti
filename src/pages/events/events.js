@@ -23,32 +23,18 @@ class Events extends React.Component
         this.state = {
             
         }
-        this.analyticsTriggered = false; 
     }
 
     componentDidMount()
     {
         this.props.getEvents(); 
-    }
-
-    triggerAnalytics(user)
-    {
-        if(!this.analyticsTriggered)
-        {
-            firebaseAnalytics.logEvent(`events_visited${user.userHandle}`);
-            this.analyticsTriggered = true; 
-        }
+        firebaseAnalytics.logEvent(`events_visited`);
     }
 
     render()
     {
         const {events, isLoading} = this.props.data; 
         const {user} = this.props.user; 
-
-        if(user.userHandle)
-        {
-            this.triggerAnalytics(user); 
-        }
 
         const nothingFound = 
         <div>
@@ -82,7 +68,7 @@ class Events extends React.Component
             <div>
                 <Grid align="center">
                     <div className="page-content">
-                        <p className="title">My Events</p>
+                        <p className="title">Events in Arizona</p>
                         {dataDisplay}
                     </div>
                 </Grid>
