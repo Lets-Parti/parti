@@ -8,10 +8,10 @@ import nothing_img from '../../resources/images/nothing_found.png'
 
 //Redux
 import { connect } from 'react-redux'
-import { getEventByID } from '../../redux/actions/dataActions'
+import { getEventByUser } from '../../redux/actions/dataActions'
 import PropTypes from 'prop-types'
 
-class EventByID extends React.Component
+class EventByUser extends React.Component
 {
     constructor()
     {
@@ -23,8 +23,8 @@ class EventByID extends React.Component
 
     componentDidMount()
     {
-        const eventID = this.props.match.params.eventID;
-        this.props.getEventByID(eventID); 
+        const userHandle = this.props.match.params.userHandle;
+        this.props.getEventByUser(userHandle); 
     }
 
     render()
@@ -71,8 +71,8 @@ class EventByID extends React.Component
     }
 }
 
-EventByID.propTypes = {
-    getEventByID: PropTypes.func.isRequired, 
+EventByUser.propTypes = {
+    getEventByUser: PropTypes.func.isRequired, 
     data: PropTypes.object.isRequired,
     user: PropTypes.object.isRequired
 }
@@ -83,8 +83,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapActionsToProps = {
-    getEventByID
+    getEventByUser
 }
 
 
-export default connect(mapStateToProps, mapActionsToProps)(EventByID)
+export default connect(mapStateToProps, mapActionsToProps)(EventByUser)

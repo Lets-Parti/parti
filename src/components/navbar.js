@@ -229,7 +229,12 @@ class Navbar extends React.Component {
         </Link>
         <Link href="/discover">
             <StyledMenuItem className={classes.menuItem}>
-              <p>Discover</p>
+              <p>Events</p>
+            </StyledMenuItem>
+        </Link>
+        <Link href="/discover">
+            <StyledMenuItem className={classes.menuItem}>
+              <p>Vendors</p>
             </StyledMenuItem>
         </Link>
         <hr></hr>
@@ -264,19 +269,14 @@ class Navbar extends React.Component {
           <p>Events</p>
           </StyledMenuItem>
       </Link>
-      <Link href="/contracts">
+      <Link href="/discover">
           <StyledMenuItem name="home" className={classes.menuItem}>
-          <p>Contracts</p>
+          <p>Vendors</p>
           </StyledMenuItem>
       </Link>
       <Link href="/connections">
           <StyledMenuItem name="home" className={classes.menuItem}>
-          <p>Connects</p>
-          </StyledMenuItem>
-      </Link>
-      <Link href="/discover">
-          <StyledMenuItem name="home" className={classes.menuItem}>
-          <p>Discover</p>
+          <p>Messages</p>
           </StyledMenuItem>
       </Link>
       <hr></hr>
@@ -322,19 +322,19 @@ class Navbar extends React.Component {
           <p>Home</p>
           </StyledMenuItem>
       </Link>
-      <Link href="/contracts">
+      <Link href="/events">
           <StyledMenuItem name="home" className={classes.menuItem}>
-          <p>Contracts</p>
-          </StyledMenuItem>
-      </Link>
-      <Link href="/connections">
-          <StyledMenuItem name="home" className={classes.menuItem}>
-          <p>Connects</p>
+          <p>Events</p>
           </StyledMenuItem>
       </Link>
       <Link href="/discover">
           <StyledMenuItem name="home" className={classes.menuItem}>
-          <p>Discover</p>
+          <p>Vendors</p>
+          </StyledMenuItem>
+      </Link>
+      <Link href="/connections">
+          <StyledMenuItem name="home" className={classes.menuItem}>
+          <p>Messages</p>
           </StyledMenuItem>
       </Link>
       
@@ -397,7 +397,8 @@ class Navbar extends React.Component {
         {
               [{text: 'Home', link: '/'},
               {text: 'About', link: '/about'},
-              {text: 'Discover', link: '/discover'}].map(
+              {text: 'Events', link: '/events'},
+              {text: 'Vendors', link: '/discover'}].map(
                 item =>
           (<Button className={classes.menuButton} component={NavLink} to={item.link} exact activeClassName={classes.activeMenuButton}>{item.text}</Button>)
 
@@ -413,9 +414,8 @@ class Navbar extends React.Component {
             {
               [{text: 'Home', link: '/'},
               {text: 'Events', link: '/events'},
-              {text: 'Contracts', link: '/contracts'},
-              {text: 'Connects', link: '/connections'},
-              {text: 'Discover', link: '/discover'}].map(
+              {text: 'Vendors', link: '/discover'},
+              {text: 'Messages', link: '/connections'}].map(
                 item =>
           (<Button className={classes.menuButton} component={NavLink} to={item.link} exact activeClassName={classes.activeMenuButton}>{item.text}</Button>)
 
@@ -430,9 +430,9 @@ class Navbar extends React.Component {
           <div className={classes.buttonGroup}>
           {
               [{text: 'Home', link: '/'},
-              {text: 'Contracts', link: '/contracts'},
-              {text: 'Connects', link: '/connections'},
-              {text: 'Discover', link: '/discover'}].map(
+              {text: 'Events', link: '/events'},
+              {text: 'Vendors', link: '/discover'},
+              {text: 'Messages', link: '/connections'}].map(
                 item =>
           (<Button className={classes.menuButton} component={NavLink} to={item.link} exact activeClassName={classes.activeMenuButton}>{item.text}</Button>)
 
@@ -555,21 +555,7 @@ class Navbar extends React.Component {
           </div>
       </div>
       )
-    
-    let rightSideButton = null; 
-    if(authenticated && user.type === 'client')
-    {
-      rightSideButton =       
-      <Link href="/events/new">
-        <Button className={classes.menuButtonCreate} variant="contained" color="primary">New Event</Button>
-      </Link> 
-    }else if(authenticated && user.type === 'service')
-    {
-      rightSideButton = 
-      <Link href="/discover-events">
-        <Button className={classes.menuButtonCreate} variant="contained" color="primary">Find Events</Button>
-      </Link> 
-    }
+  
 
     return (
         <div className={classes.grow}>
@@ -583,7 +569,6 @@ class Navbar extends React.Component {
 
             <div className={classes.grow} />
             {renderNavbarButtons}
-            {rightSideButton}
 
             <div className={classes.sectionMobile}>
                 <IconButton
