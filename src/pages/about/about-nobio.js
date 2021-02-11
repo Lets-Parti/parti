@@ -13,7 +13,7 @@ import nicoleportraitsquare1 from './imgs/nicoleportraitsquare1.jpeg';
 
 
 
-const portraits = [matthewportrait, anishportrait, jakeportrait, aaricportrait, prachiportrait, fiyiportrait, nicoleportraitsquare1];
+const portraits = [matthewportrait, anishportrait, jakeportrait, prachiportrait, fiyiportrait, aaricportrait, nicoleportraitsquare1];
 
 const useStyles = makeStyles((theme) => ({
   intro: {

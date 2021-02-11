@@ -22,6 +22,7 @@ import MonkeyIcon from '../resources/icons/monkey.png';
 import HomeHeroText from '../resources/images/home_hero_text.svg';
 
 import { connect } from 'react-redux'
+import { createEvent } from '../redux/actions/dataActions'
 import PropTypes from 'prop-types'
 
 import axios from 'axios';
@@ -129,6 +130,19 @@ class Home extends React.Component {
     let authenticatedUser;
     if (authenticated) {
       authenticatedUser = this.props.user.user;
+
+      const PartiEventData = localStorage.PartiEventData
+      if(PartiEventData)
+      {
+        try{
+          let data = JSON.parse(PartiEventData); 
+          this.props.createEvent(data, this.props.history);
+          localStorage.removeItem("PartiEventData"); 
+        }catch (err)
+        {
+          alert("Something went wrong with creating an event.");
+        }
+      }
     }
 
     // Conditional Introduction Section of Homepage
@@ -378,7 +392,8 @@ class Home extends React.Component {
 
 // Below is for checking user authenticated or not and mapping state to props
 Home.propTypes = {
-  user: PropTypes.object.isRequired
+  user: PropTypes.object.isRequired,
+  createEvent: PropTypes.func.isRequired, 
 }
 
 const mapStateToProps = (state) => ({
@@ -386,4 +401,8 @@ const mapStateToProps = (state) => ({
   user: state.user
 })
 
-export default connect(mapStateToProps)(withStyles(styles)(Home));
+const mapActionsToProps = {
+  createEvent,
+}
+
+export default connect(mapStateToProps, mapActionsToProps)(withStyles(styles)(Home));

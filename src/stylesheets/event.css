@@ -24,7 +24,40 @@
 .eventCardSubtitle {
   font-size: 1.25rem;
   font-weight: lighter;
-  margin-top: 30px;
+  margin-top: 0px;
+}
+
+.eventHostName {
+  color: grey;
+  font-size: 14px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.event-card-subsection {
+  padding-bottom: 50px;
+}
+
+.host-name {
+  padding-left: 15px;
+  font-size: 20px;
+}
+
+.event-description {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.event-date-location {
+  padding-bottom: 15px;
+}
+
+.user-profile-image-event-card {
+  height: 3.5rem;
+  width: 3.5rem;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1pt #e3dee2;
+  object-fit: cover;
 }
 
 .eventInfo {
@@ -53,10 +86,23 @@
   margin-bottom: 0px;
 }
 
+.toggle-features {
+  padding-top: 25px;
+}
+
 .serviceCardDescription {
+  font-size: 1rem;
+  color: black;
+  line-height: 1.5;
+}
+
+.searchStatusText {
   font-size: 0.8rem;
   color: grey;
-  line-height: 2;
+}
+
+.service-card-vendor-profile {
+  padding-top: 25px;
 }
 
 .vendorFoundIcon {

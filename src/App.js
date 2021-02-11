@@ -20,6 +20,7 @@ import EventByID from './pages/events/event-by-id'
 import Connections from './pages/connections/connections'
 import PrivacyPolicy from './pages/legal/privacy'
 import Terms_Conditions from './pages/legal/terms'
+import Webinar from './pages/webinar'
 import FAQ from './pages/faq'
 
 //Components
@@ -85,7 +86,7 @@ class App extends React.Component
               <Route exact path="/feedback" component={Feedback} />
               <Route exact path="/user/:userHandle" component={User} />
               <Route exact path="/user/:userHandle/:promoID" component={User} />
-              <ProtectedClientRoute exact path="/events/new" component={NewEvent} />
+              <Route exact path="/events/new" component={NewEvent} />
               <ProtectedRoute exact path="/events" component={Events} />
               <ProtectedRoute exact path="/events/:eventID" component={EventByID} />
               <ProtectedRoute exact path="/contracts" component={Contracts} />
@@ -101,6 +102,7 @@ class App extends React.Component
               <Route exact path="/privacy" component={PrivacyPolicy} />
               <Route exact path="/terms-and-conditions" component={Terms_Conditions} />
               <Route exact path="/faq" component={FAQ} />
+              <Route exact path="/webinar" component={Webinar} />
               <Route exact path="/404" component={ErrorNotFound} />
               <Redirect to="/404"></Redirect>
             </Switch>

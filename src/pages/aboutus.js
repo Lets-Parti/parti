@@ -84,17 +84,6 @@ class Beta extends React.Component
             </div>
         )
 
-        const Aaric_Card = (
-            <div className="indiana-frame">
-                <AboutNoBio 
-                    name="Aaric Han"
-                    title="Co-Founder & Full-Stack Software Engineer"
-                    from="Cary, NC"
-                    college="Duke University"
-                    num={3}
-                    />
-            </div>
-        )
         const Prachi_Card = (
             <div className="indiana-frame">
                 <AboutNoBio 
@@ -102,10 +91,11 @@ class Beta extends React.Component
                     title="Product (UI/UX) & Graphic Designer"
                     from="San Francisco, CA"
                     college="Visual Arts Graduate"
-                    num={4}
+                    num={3}
                     />
             </div>
         )
+
         const Fiyi_Card = (
             <div className="indiana-frame" /*onClick={this.expandMax}*/>
                 <AboutNoBio 
@@ -113,10 +103,23 @@ class Beta extends React.Component
                     title="Full-Stack Software Engineer & Design"
                     from="Gilbert, AZ"
                     college="MIT"
+                    num={4}
+                    />
+            </div>
+        )
+
+        const Aaric_Card = (
+            <div className="indiana-frame">
+                <AboutNoBio 
+                    name="Aaric Han"
+                    title="Full-Stack Software Engineer & Design"
+                    from="Cary, NC"
+                    college="Duke University"
                     num={5}
                     />
             </div>
         )
+
         const Nicole_Card = (
             <div className="indiana-frame" /*onClick={this.expandMax}*/>
                 <AboutNoBio 
@@ -129,7 +132,7 @@ class Beta extends React.Component
             </div>
         )
 
-        const frames_founders = [Matthew_Card, Anish_Card, Jake_Card, Aaric_Card, Prachi_Card, Fiyi_Card, Nicole_Card]; // _h for headshot
+        const frames_founders = [Matthew_Card, Anish_Card, Jake_Card, Prachi_Card, Aaric_Card, Fiyi_Card, Nicole_Card]; // _h for headshot
 
         return(
             <div>

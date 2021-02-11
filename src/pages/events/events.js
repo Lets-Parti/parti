@@ -63,7 +63,10 @@ class Events extends React.Component
         }else
         {
             dataDisplay = []
-            if(events.length === 0)
+            if (!Array.isArray(events)){
+                dataDisplay.push(<EventCard key={events.eventID} data={events}/>) 
+            }
+            else if(events.length === 0)
             {
                 dataDisplay.push(nothingFound); 
             }else

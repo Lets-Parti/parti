@@ -2,6 +2,7 @@ import React from 'react';
 import '../../stylesheets/create-event.css'
 import '../../stylesheets/common.css'
 import StaticData from '../../static/static-data'
+import SignUp from '../../pages/signup'
 
 //SubComponents 
 import ServiceForm from '../../components/create-event-components/service-form'
@@ -44,6 +45,7 @@ class NewEvent extends React.Component
         }
         //Method bindings 
         this.onSubmitForm = this.onSubmitForm.bind(this)
+        this.redirectToSignup = this.redirectToSignup.bind(this)
         this.eventChange = this.eventChange.bind(this)
         this.calendarChange = this.calendarChange.bind(this)
         this.addService = this.addService.bind(this)
@@ -77,6 +79,35 @@ class NewEvent extends React.Component
         }
 
         this.props.createEvent(data, this.props.history);
+    }
+
+    redirectToSignup()
+    {
+        let services = []
+
+        for(var key of Object.keys(this.state.services))
+        {
+            let service = this.state.services[key]
+            services.push
+            (
+                {
+                    serviceType: service.service.value, 
+                    description: service.description, 
+                    service: null
+                }
+            )
+        }
+
+        let data = {
+            title: this.state.title, 
+            zipcode: this.state.zipcode, 
+            eventDate: this.state.eventdate.toISOString(), 
+            description: this.state.description, 
+            services 
+        }
+        localStorage.setItem('PartiEventData', JSON.stringify(data)); 
+        alert('Sign up or log in to create your event!'); 
+        window.location.href="/signup";
     }
 
     eventChange(event)
@@ -155,6 +186,7 @@ class NewEvent extends React.Component
 
     render()
     {
+        const { authenticated } = this.props.user;
         let AddServiceButton
         let SubmitButton
         let servicesCounter = this.state.services_count > 0 ? `(${this.state.services_count})` : null
@@ -179,7 +211,7 @@ class NewEvent extends React.Component
             </div>
         }else
         {
-            SubmitButton =
+            SubmitButton = authenticated ? 
             <div className="submit">
                 <Button
                     variant="contained"
@@ -189,6 +221,17 @@ class NewEvent extends React.Component
                 >
                     Submit
                 </Button>
+            </div>
+            :
+            <div className="submit">
+            <Button
+                variant="contained"
+                startIcon={<CheckCircleOutlineIcon />}
+                onClick={this.redirectToSignup}
+                color="primary"
+            >
+                Submit
+            </Button>
             </div>
 
             AddServiceButton = 
@@ -313,11 +356,13 @@ class NewEvent extends React.Component
 NewEvent.propTypes = {
     createEvent: PropTypes.func.isRequired, 
     data: PropTypes.object.isRequired,
+    user: PropTypes.object.isRequired,
     UI: PropTypes.object.isRequired
 }
 
 const mapStateToProps = (state) => ({
     UI: state.UI,
+    user: state.user,
     data: state.data
 })
 

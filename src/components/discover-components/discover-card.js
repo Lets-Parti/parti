@@ -102,17 +102,18 @@ class DiscoverCard extends Component {
 
         let reviews = this.state.reviews;
         let totalRating = 0; 
+        let averageRating=0;
+        let numReviews = <span className="greyText discover-card-ratings-text">(0)</span>;
         if (reviews) {
             reviews.forEach(review =>
             {
             totalRating += review.rating; 
             })
+
+            averageRating = reviews.length > 0 ? parseFloat(1.0 * totalRating / reviews.length).toFixed(1) : 0;
+            numReviews = <span className="greyText discover-card-ratings-text">({reviews.length})</span>
         }
-        else {
-            totalRating = 0;
-        }
-        
-        let averageRating = reviews.length > 0 ? parseFloat(1.0 * totalRating / reviews.length).toFixed(1) : 0;
+
 
         const StyledRating = withStyles({
             iconFilled: {
@@ -120,7 +121,6 @@ class DiscoverCard extends Component {
             }
           })(Rating);
     
-        let numReviews = <span className="greyText discover-card-ratings-text">({reviews.length})</span>
 
         let blueStar =
         <StyledRating
