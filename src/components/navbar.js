@@ -227,7 +227,7 @@ class Navbar extends React.Component {
               <p>About</p>
             </StyledMenuItem>
         </Link>
-        <Link href="/discover">
+        <Link href="/events">
             <StyledMenuItem className={classes.menuItem}>
               <p>Events</p>
             </StyledMenuItem>

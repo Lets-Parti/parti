@@ -149,14 +149,14 @@ class ServiceCard extends React.Component
         <div className="service-card-vendor-profile">
             <p>{this.state.serviceType} for this event</p>
             <Grid container>
-                <Grid item sm={1} xs={1}>
+                <Grid item sm={1} xs={2}>
                     <Tooltip title="Visit Profile">
                         <Link href={`/user/${this.state.service.userHandle}`}>
                             <img className="user-profile-image-event-card" src={this.state.service.imageUrl} alt="User Profile"/>
                         </Link>
                     </Tooltip>
                 </Grid>
-                <Grid item sm={11} xs={11}>
+                <Grid item sm={11} xs={10}>
                     <Link href={`/user/${this.state.service.userHandle}`}>
                         <p className="host-name">{this.state.service.fullName}</p>
                     </Link>

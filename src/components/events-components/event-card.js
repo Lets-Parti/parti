@@ -178,19 +178,19 @@ class EventCard extends Component
                             <Grid item sm={12} xs={12} className="event-card-subsection">
                                 <p className="eventCardSubtitle">Host</p>
                                 <Grid container>
-                                    <Grid item sm={1} xs={1}>
+                                    <Grid item sm={1} xs={2}>
                                         <Tooltip title="Visit Profile">
                                             <Link href={`/user/${this.state.userHandle}`}>
                                                 <img className="user-profile-image-event-card" src={this.state.userImageUrl} alt="User Profile"/>
                                             </Link>
                                         </Tooltip>
                                     </Grid>
-                                    <Grid item sm={5} xs={5}>
+                                    <Grid item sm={7} xs={10}>
                                         <Link href={`/user/${this.state.userHandle}`}>
                                             <p className="host-name">{this.state.fullName}</p>
                                         </Link>
                                     </Grid>
-                                    <Grid item sm={6} xs={6} align="right">
+                                    <Grid item sm={4} xs={12} align="left">
                                         {chatButton}
                                     </Grid>
                                 </Grid>
