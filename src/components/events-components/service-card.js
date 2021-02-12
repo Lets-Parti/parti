@@ -158,7 +158,7 @@ class ServiceCard extends React.Component
                 </Grid>
                 <Grid item sm={11} xs={10}>
                     <Link href={`/user/${this.state.service.userHandle}`}>
-                        <p className="host-name">{this.state.service.fullName}</p>
+                        <p className="host-name-service-card">{this.state.service.fullName}</p>
                     </Link>
                 </Grid>
             </Grid>

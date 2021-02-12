@@ -53,7 +53,7 @@ class ServiceForm extends React.Component
         return(
             <div className="service-form">
                 <Grid container>
-                        <Grid item sm="6" xs="12" align="left" >
+                        <Grid item sm="6" xs="10" align="left" >
                             <Select 
                             options={StaticData.options} 
                             styles="width:100px;" 
@@ -62,7 +62,7 @@ class ServiceForm extends React.Component
                             onChange={this.handleChangeSelect.bind(this, "service")}/>
                         </Grid>
 
-                        <Grid item sm="6" xs="6" align="right">
+                        <Grid item sm="6" xs="2" align="right">
                             <IconButton onClick={() => this.props.deleteMethod(this.state.index)}>
                                 <DeleteIcon />
                             </IconButton>
@@ -73,7 +73,7 @@ class ServiceForm extends React.Component
                         <Grid item sm="12" xs="12" align="left">
                             <TextField
                                 id="standard-multiline-static"
-                                placeholder="Describe what you need"
+                                placeholder="Describe what you're looking for. More details helps us connect you with better suited vendors"
                                 multiline
                                 rows={4}
                                 variant="outlined"

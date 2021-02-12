@@ -39,7 +39,17 @@
 }
 
 .host-name {
-  padding-left: 15px;
+  padding-left: 25px;
+  font-size: 20px;
+}
+
+.show-my-events-only {
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+.host-name-service-card {
+  padding-left: 25px;
   font-size: 20px;
 }
 

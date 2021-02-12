@@ -250,7 +250,7 @@ class NewEvent extends React.Component
                         <p className="title">Create Event</p>
 
                         <div className='general-info-form'>
-                            <p className="question">Event Information</p>
+                            <p className="question">1. Event Information</p>
                             <Grid container justify="space-around">
                                 <Grid item sm="7" xs="7" align="left" >
                                     <TextField
@@ -266,7 +266,7 @@ class NewEvent extends React.Component
                                     />
                                 </Grid>
 
-                                <Grid item sm="5" xs="5" align="right">
+                                <Grid item sm="5" xs="3" align="right">
                                     <TextField
                                         label="Zipcode" 
                                         variant="outlined" 
@@ -278,7 +278,9 @@ class NewEvent extends React.Component
                                         error={this.state.errors.zipcode ? true : false}
                                         />
                                 </Grid>
-
+                                <Grid item sm={12} xs={12}>
+                                    <p className="question">2. Event date & time (must be future date).</p>
+                                </Grid>
                                 <Grid item sm="7" xs="7" align="left">
                                 <MuiPickersUtilsProvider utils={DateFnsUtils}>
                                     <KeyboardDatePicker
@@ -300,7 +302,6 @@ class NewEvent extends React.Component
                                         />
                                     </MuiPickersUtilsProvider>
                                 </Grid>
-
                                 <Grid item sm="5" xs="5" align="right">
                                     <MuiPickersUtilsProvider utils={DateFnsUtils}>
                                         <KeyboardTimePicker
@@ -321,12 +322,15 @@ class NewEvent extends React.Component
                                     </MuiPickersUtilsProvider>
                                 </Grid>
 
+                                <Grid item sm={12} xs={12}>
+                                    <p className="question">3. Describe your event.</p>
+                                </Grid>
                                 <Grid item sm="12" xs="12" className="seperator"></Grid>
 
                                 <Grid item sm="12" xs="12" align="left">
                                     <TextField
                                         id="standard-multiline-static"
-                                        placeholder="Describe your event"
+                                        placeholder="Event theme, number of people, budget, etc. Providing more details helps us connect you with better suited vendors"
                                         multiline
                                         rows={5}
                                         variant="outlined"
@@ -342,7 +346,7 @@ class NewEvent extends React.Component
                         </div>
                         
                         <div className="services-form">
-                            <p className="question">Services {servicesCounter} {missingService}</p>
+                            <p className="question">Services (list of services you're looking for) {servicesCounter} {missingService}</p>
                             {this.state.serviceComponents}
                         </div>
                         {AddServiceButton}

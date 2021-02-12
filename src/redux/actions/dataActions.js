@@ -329,6 +329,12 @@ export const getUserByHandle = (userHandle) => (dispatch) =>
                 type: SET_USER_DATA, 
                 payload: res.data.user
             })
+        }else
+        {
+            dispatch({
+                type: SET_ERRORS, 
+                payload: res.data.message
+            })
         }
     })
     .catch(() =>

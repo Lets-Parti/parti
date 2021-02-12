@@ -63,6 +63,7 @@ class EventByUser extends React.Component
             <div>
                 <Grid align="center">
                     <div className="page-content">
+                        <p className="title">My Events</p>
                         {dataDisplay}
                     </div>
                 </Grid>

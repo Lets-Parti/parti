@@ -186,6 +186,12 @@ class User extends React.Component {
     const { toggleAddReviewComp } = this.state;
     const { user, isLoading } = this.props.data;
     const { authenticated } = this.props.user;
+    const { errors } = this.props.UI; 
+    
+    if(errors)                                                  //If the user is not found, redirect to 404. 
+    {
+      window.location.href="/404";
+    }
 
     let authenticatedUser;
     let authenticatedUserType;
@@ -609,8 +615,7 @@ class User extends React.Component {
         <br></br>
       </div>
       )
-    } 
-    else 
+    }else 
     {
       circularProgress = <CircularProgress />
     }
@@ -639,11 +644,13 @@ User.propTypes = {
   getUserByHandle: PropTypes.func.isRequired,
   addReview: PropTypes.func.isRequired,
   user: PropTypes.object.isRequired,
+  UI: PropTypes.object.isRequired
 }
 
 const mapStateToProps = (state) => ({
   data: state.data,
-  user: state.user
+  user: state.user,
+  UI: state.UI
 })
 
 const mapActionsToProps = {
