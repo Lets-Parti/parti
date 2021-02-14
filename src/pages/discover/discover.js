@@ -21,6 +21,7 @@ import nothing_img from '../../resources/images/nothing_found.png'
 
 //Analytics
 import {firebaseAnalytics} from '../../utils/firebase'
+import { Link } from '@material-ui/core';
 
 class Discover extends React.Component {
     constructor() {
@@ -137,7 +138,7 @@ class Discover extends React.Component {
         return (
             <Grid align="center">
                 <div className="discover-page-content">
-                    <p className="title">Discover</p>
+                    <p className="title">Vendors</p>
                     <p className="lightText">What service(s) are you looking for?</p>
                     <div className="discoverSelect">
                         <Select 
@@ -149,6 +150,12 @@ class Discover extends React.Component {
                             onChange={this.handleChangeSelect.bind(this, "serviceTag")}
                         /> 
                         </div>
+                    <div class="separator" />
+                    <div class="separator" />
+                    <div class="separator" />
+                    <Link href="/signup/vendor">
+                        Vendor? List yourself here.
+                    </Link>
                     {dataDisplay}
                     <div className="pagination">
                         <Pagination count={10} 
