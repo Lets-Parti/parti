@@ -434,7 +434,7 @@ class User extends React.Component {
               className="chip-padding"
               color="primary"
               label={tag}
-              style={{ fontSize: '1rem' }} />
+              style={{ fontSize: '1rem', marginBottom: '0.5rem' }} />
           )
       })
       
