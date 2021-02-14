@@ -76,7 +76,8 @@ class DiscoverCard extends Component {
                             className="chip-padding"
                             color="primary"
                             label={tag}
-                            style={{ fontSize: '.8rem' }} />
+                            style={{ fontSize: '.8rem', marginBottom: '0.5rem'}}
+                            />
                     )
             })
         }
