@@ -13,6 +13,8 @@ import Link from '@material-ui/core/Link';
 import IconButton from '@material-ui/core/IconButton';
 import MessageIcon from '@material-ui/icons/Message';
 import { Button } from '@material-ui/core';
+import {CopyToClipboard} from 'react-copy-to-clipboard';
+import ShareIcon from '@material-ui/icons/Share';
 
 import ServiceCard from './service-card'
 import '../../stylesheets/event.css'
@@ -61,7 +63,11 @@ class EventCard extends Component
     }
 
     redirect() {
-        window.location.href = '/login'
+        window.location.href = '/login';
+    }
+
+    copyClipboardAlert() {
+        alert('Event link copied to clipboard');
     }
 
     render(props)
@@ -116,9 +122,11 @@ class EventCard extends Component
             Message Host
         </Button>
 
+        let profileUrl = `/user/${this.state.userHandle}`;
         if(authenticated && user.userHandle === this.state.userHandle)
         {
             chatButton = null; 
+            profileUrl = '/account/edit';
         }
 
         return(
@@ -158,9 +166,15 @@ class EventCard extends Component
                         id="panel1a-header"
                         >
                         <Grid container align="left" className="accordionTitle">
-                            <Grid item sm={12} xs={12}>
+                            <Grid item sm={8} xs={12}>
                                 <p className="eventCardTitle">{this.state.title}</p>
                                 <p className="eventHostName">hosted by {this.state.fullName}</p> 
+                            </Grid>
+                            <Grid item sm={4} xs={12} align="left">
+                                <div className="event-date-location">
+                                    <p class="subInfo">{date.toString()}</p>
+                                    <p class="subInfo">Arizona, {this.state.zipcode} </p>
+                                </div>
                             </Grid>
                             <Grid item sm={12} xs={12}>
                             <div class="eventInfo"> 
@@ -185,12 +199,12 @@ class EventCard extends Component
                                             </Link>
                                         </Tooltip>
                                     </Grid>
-                                    <Grid item sm={7} xs={10}>
-                                        <Link href={`/user/${this.state.userHandle}`}>
+                                    <Grid item sm={8} xs={10}>
+                                        <Link href={profileUrl}>
                                             <p className="host-name">{this.state.fullName}</p>
                                         </Link>
                                     </Grid>
-                                    <Grid item sm={4} xs={12} align="left">
+                                    <Grid item sm={3} xs={12} align="left">
                                         {chatButton}
                                     </Grid>
                                 </Grid>
@@ -209,10 +223,21 @@ class EventCard extends Component
 
                             <Grid item sm={12} xs={12} className="event-card-subsection">
                                 <p className="eventCardSubtitle">Services {this.state.fullName} is looking for ({services.length})</p>
+                                <p className="eventHostName">Interested in being a vendor for this event? Reach out to the host {this.state.fullName}</p>
                                 <Grid container>
                                     {serviceCards}
                                 </Grid>
                             </Grid>
+                            <CopyToClipboard
+                                text={`https://parti.app/events/${this.state.eventID}`}>      
+                                <Button aria-label="message" color="primary" variant="outlined" onClick={this.copyClipboardAlert}
+                                startIcon={<ShareIcon />}
+                                display='none'
+                                size='small'
+                                >
+                                Share Event
+                                </Button>
+                            </CopyToClipboard>
                         </Grid>
                     </AccordionDetails>
                 </Accordion>
@@ -222,12 +247,11 @@ class EventCard extends Component
 }
 
 EventCard.propTypes = {
-    user: PropTypes.object.isRequired
+    user: PropTypes.object.isRequired,
 }
 
 const mapStateToProps = (state) => ({
-    user: state.user
-    
+    user: state.user,
 })
 
 const mapActionsToProps = {

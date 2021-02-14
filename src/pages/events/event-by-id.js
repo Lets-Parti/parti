@@ -4,7 +4,9 @@ import EventCard from '../../components/events-components/event-card'
 import EventCardBView from '../../components/events-components/event-card-businessView'
 import Grid from '@material-ui/core/Grid';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import nothing_img from '../../resources/images/nothing_found.png'
+import nothing_img from '../../resources/images/nothing_found.png';
+import { Button } from '@material-ui/core';
+import Link from '@material-ui/core/Link';
 
 //Redux
 import { connect } from 'react-redux'
@@ -63,6 +65,11 @@ class EventByID extends React.Component
             <div>
                 <Grid align="center">
                     <div className="page-content">
+                        <Link href='/events/new'>
+                            <Button aria-label="new-events" color="primary" variant="contained">
+                                Create Event
+                            </Button>
+                        </Link>
                         {dataDisplay}
                     </div>
                 </Grid>

@@ -3,6 +3,8 @@ import '../../stylesheets/common.css'
 import EventCard from '../../components/events-components/event-card'
 import Grid from '@material-ui/core/Grid';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import { Button } from '@material-ui/core';
+import Link from '@material-ui/core/Link';
 
 //Redux
 import { connect } from 'react-redux'
@@ -34,7 +36,7 @@ class Events extends React.Component
     render()
     {
         const {events, isLoading} = this.props.data; 
-        const {user} = this.props.user; 
+        const {authenticated, user} = this.props.user; 
 
         const nothingFound = 
         <div>
@@ -64,11 +66,26 @@ class Events extends React.Component
             }
         }
         
+        let myEventsButton = authenticated && user ? 
+        <Link href={`/events/user/${user.userHandle}`}>
+            Show my events only
+        </Link>
+        :
+        null; 
+
         return(
             <div>
                 <Grid align="center">
                     <div className="page-content">
                         <p className="title">Events in Arizona</p>
+                        <Link href='/events/new'>
+                            <Button aria-label="new-events" color="primary" variant="contained">
+                                Create Event
+                            </Button>
+                        </Link>
+                        <div className="show-my-events-only">
+                            {myEventsButton}
+                        </div>
                         {dataDisplay}
                     </div>
                 </Grid>
