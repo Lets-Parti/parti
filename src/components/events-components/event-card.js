@@ -100,7 +100,7 @@ class EventCard extends Component
                 className="chip-padding"
                 color="primary"
                 label={service.serviceType}
-                style={{ fontSize: '1rem' }} />
+                style={{ fontSize: '1rem', marginBottom: '0.5rem', marginTop: '0.5rem' }} />
             )
         })
 
@@ -166,11 +166,11 @@ class EventCard extends Component
                         id="panel1a-header"
                         >
                         <Grid container align="left" className="accordionTitle">
-                            <Grid item sm={8} xs={12}>
+                            <Grid item sm={7} xs={8}>
                                 <p className="eventCardTitle">{this.state.title}</p>
                                 <p className="eventHostName">hosted by {this.state.fullName}</p> 
                             </Grid>
-                            <Grid item sm={4} xs={12} align="left">
+                            <Grid item sm={5} xs={4} align="left">
                                 <div className="event-date-location">
                                     <p class="subInfo">{date.toString()}</p>
                                     <p class="subInfo">Arizona, {this.state.zipcode} </p>
@@ -192,19 +192,19 @@ class EventCard extends Component
                             <Grid item sm={12} xs={12} className="event-card-subsection">
                                 <p className="eventCardSubtitle">Host</p>
                                 <Grid container>
-                                    <Grid item sm={1} xs={2}>
+                                    <Grid item sm={1} xs={1}>
                                         <Tooltip title="Visit Profile">
                                             <Link href={`/user/${this.state.userHandle}`}>
                                                 <img className="user-profile-image-event-card" src={this.state.userImageUrl} alt="User Profile"/>
                                             </Link>
                                         </Tooltip>
                                     </Grid>
-                                    <Grid item sm={8} xs={10}>
+                                    <Grid item sm={7} xs={6}>
                                         <Link href={profileUrl}>
                                             <p className="host-name">{this.state.fullName}</p>
                                         </Link>
                                     </Grid>
-                                    <Grid item sm={3} xs={12} align="left">
+                                    <Grid item sm={4} xs={5} align="right">
                                         {chatButton}
                                     </Grid>
                                 </Grid>
