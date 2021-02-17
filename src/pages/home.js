@@ -162,7 +162,7 @@ class Home extends React.Component {
             Connect with Arizona's best event services. 
           </p>
     
-          <p className="bannerPitch">Start by creating an event. Tell us what services you're looking for, and we will take care of the rest. It only takes 5 minutes.</p>
+          <p className="bannerPitch">Start by creating an event. Tell us what services you're looking for, and we will take care of the rest. <b>It only takes 5 minutes.</b></p>
 
           <div className="bannerButton">
             <Link href="/events/new">
