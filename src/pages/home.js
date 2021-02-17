@@ -147,12 +147,14 @@ class Home extends React.Component {
 
     // Conditional Introduction Section of Homepage
     const client_introduction = (
-      <Grid item sm={12} xs={12} className="home-introduction" align="center">
+      <Grid item sm={12} xs={12} className="home-introduction" align="left">
         <div className="banners">
           <p className="bannerTitle" >
-            Effortless Event Planning
+            Connect with Arizona's best event services. 
           </p>
     
+          <p className="bannerPitch">Start by creating an event. Tell us what services you're looking for, and we take care of the rest. It only takes 5 minutes.</p>
+
           <div className="bannerButton">
             <Link href="/events/new">
               <Button className={classes.homeButton}  variant="contained" color="primary" size="large">
@@ -160,6 +162,7 @@ class Home extends React.Component {
               </Button>
             </Link>
           </div>
+
           <Link href="/signup/vendor" >
             <p className="darkText"><u>Are you a vendor? List yourself here</u></p>
           </Link>
@@ -275,8 +278,7 @@ class Home extends React.Component {
 
                 <Grid item sm={12} xs={12} align="center" className="about-text-xs">
                   <p>
-                    Hosting an event is stressful. Parti will assist you in finding professional 
-                    services and make the event planning process easy. 
+                    Finding the perfect vendor for your upcoming event can be time consuming and stressful. Tell us what services you're looking for by <Link href="/events/new">creating an event</Link>. 
                   </p>
                   <p>
                     Are you a vendor? Parti enables you to directly seek customers. See who is in 
@@ -284,14 +286,15 @@ class Home extends React.Component {
                   </p>
                 </Grid>
     
-                <Grid item sm={12} xs={12} align="center" className="about-text-sm">
+                <Grid item sm={12} xs={12} align="left" className="about-text-sm">
                   <p>
-                    Hosting an event is stressful. Parti will assist you in finding professional 
-                    services and make the event planning process easy. 
+                    <b>Thinking of hosting an event?</b> Finding the perfect vendor for your upcoming event can be time consuming and stressful. 
+                  Tell us what services you're looking for by <Link href="/events/new">creating an event</Link>. Once you create an event, we will
+                  connect you with the best vendors that suit your needs. The entire process only takes 5 minutes. 
                   </p>
                   <p>
-                    Are you a vendor? Parti enables you to directly seek customers. See who is in 
-                    need of your services nearby.
+                    <b>Are you a vendor?</b> We enable you to see who is in need of your services. Build your digital
+                    storefront and start generating leads with Parti. <Link href="/signup/vendor">Join the Parti community today!</Link>
                   </p>
                 </Grid>
                 <Grid item sm={12} xs={12}>
