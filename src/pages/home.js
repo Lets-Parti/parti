@@ -19,7 +19,13 @@ import LanternIcon from '../resources/icons/lantern.png';
 import BuffetIcon from '../resources/icons/buffet.png'; 
 import MonkeyIcon from '../resources/icons/monkey.png';
 
-import HomeHeroText from '../resources/images/home_hero_text.svg';
+import frame_seven from '../resources/cards/frame7.png'
+import frame_eight from '../resources/cards/frame8.png'
+import frame_nine from '../resources/cards/frame9.png'
+import frame_ten from '../resources/cards/frame10.png'
+
+import ScrollContainer from 'react-indiana-drag-scroll'
+import AboutNoBio from './about/about-nobio';
 
 import { connect } from 'react-redux'
 import { createEvent } from '../redux/actions/dataActions'
@@ -145,6 +151,9 @@ class Home extends React.Component {
       }
     }
 
+    const frames_vendors = [frame_seven, frame_eight]; 
+    const frames_clients = [frame_nine, frame_ten];
+
     // Conditional Introduction Section of Homepage
     const client_introduction = (
       <Grid item sm={12} xs={12} className="home-introduction" align="left">
@@ -153,7 +162,7 @@ class Home extends React.Component {
             Connect with Arizona's best event services. 
           </p>
     
-          <p className="bannerPitch">Start by creating an event. Tell us what services you're looking for, and we take care of the rest. It only takes 5 minutes.</p>
+          <p className="bannerPitch">Start by creating an event. Tell us what services you're looking for, and we will take care of the rest. It only takes 5 minutes.</p>
 
           <div className="bannerButton">
             <Link href="/events/new">
@@ -168,8 +177,8 @@ class Home extends React.Component {
           </Link>
           <div className="bannerButton">
             <Link href="#about">
-              <Button className={classes.homeButton}  variant="outlined" color="secondary" size="small">
-                Learn More
+              <Button className={classes.homeButton}  variant="outlined" color="secondary" size="medium">
+                What's Parti?
               </Button>
             </Link>
           </div>
@@ -215,7 +224,7 @@ class Home extends React.Component {
         <div className="home-sub-blue">
           <Grid item sm={12} xs={12}>
             <p className="subBannerTitle">
-              <p>DISCOVER</p>
+              <p>FIND VENDORS</p>
             </p>
           </Grid>
 
@@ -261,7 +270,7 @@ class Home extends React.Component {
             color="primary"
             onClick={this.onSubmitForm}
             >
-            Join
+            Keep Me Updated!
         </Button>
 
     let homepage_contents = (
@@ -276,14 +285,38 @@ class Home extends React.Component {
                   </p>
                 </Grid> 
 
-                <Grid item sm={12} xs={12} align="center" className="about-text-xs">
+                <Grid item sm={12} xs={12} align="left" className="about-text-xs">
                   <p>
-                    Finding the perfect vendor for your upcoming event can be time consuming and stressful. Tell us what services you're looking for by <Link href="/events/new">creating an event</Link>. 
+                  <b>Thinking of hosting an event?</b> Finding a vendor is time consuming and stressful. 
+                  Tell us what services you're looking for by <Link href="/events/new">creating an event</Link>. We will
+                  connect you with the best vendors that suit your needs. The entire process only takes 5 minutes. 
                   </p>
+                  <Grid className="indiana-scroll" align="center">
+                    <ScrollContainer className="scroll-container" horizontal hideScrollbars >
+                    {frames_clients.map(frame => 
+                    (
+                        <div className="indiana-frame">
+                            <img src={frame} className="indiana-frame-picture" alt="Indiana Frame"/>
+                        </div>
+                    ))
+                    }
+                    </ScrollContainer>
+                  </Grid>
                   <p>
-                    Are you a vendor? Parti enables you to directly seek customers. See who is in 
+                    <b>Are you a vendor?</b> Parti enables you to directly seek customers. See who is in 
                     need of your services nearby.
                   </p>
+                  <Grid className="indiana-scroll" align="center">
+                    <ScrollContainer className="scroll-container" horizontal hideScrollbars >
+                    {frames_vendors.map(frame => 
+                    (
+                        <div className="indiana-frame">
+                            <img src={frame} className="indiana-frame-picture" alt="Indiana Frame"/>
+                        </div>
+                    ))
+                    }
+                    </ScrollContainer>
+                  </Grid>
                 </Grid>
     
                 <Grid item sm={12} xs={12} align="left" className="about-text-sm">
@@ -292,19 +325,35 @@ class Home extends React.Component {
                   Tell us what services you're looking for by <Link href="/events/new">creating an event</Link>. Once you create an event, we will
                   connect you with the best vendors that suit your needs. The entire process only takes 5 minutes. 
                   </p>
+
+                  <Grid className="indiana-scroll" align="center">
+                    <ScrollContainer className="scroll-container" horizontal hideScrollbars >
+                    {frames_clients.map(frame => 
+                    (
+                        <div className="indiana-frame">
+                            <img src={frame} className="indiana-frame-picture" alt="Indiana Frame"/>
+                        </div>
+                    ))
+                    }
+                    </ScrollContainer>
+                  </Grid>
+
                   <p>
                     <b>Are you a vendor?</b> We enable you to see who is in need of your services. Build your digital
                     storefront and start generating leads with Parti. <Link href="/signup/vendor">Join the Parti community today!</Link>
                   </p>
-                </Grid>
-                <Grid item sm={12} xs={12}>
-                  <div className="subBannerButton">
-                    <Link href="/about">
-                      <Button className={classes.homeButton}  variant="outlined" color="primary">
-                        About Us
-                      </Button>
-                    </Link>
-                  </div>
+
+                  <Grid className="indiana-scroll" align="center">
+                    <ScrollContainer className="scroll-container" horizontal hideScrollbars >
+                    {frames_vendors.map(frame => 
+                    (
+                        <div className="indiana-frame">
+                            <img src={frame} className="indiana-frame-picture" alt="Indiana Frame"/>
+                        </div>
+                    ))
+                    }
+                    </ScrollContainer>
+                  </Grid>
                 </Grid>
               </div>
             </Grid>
