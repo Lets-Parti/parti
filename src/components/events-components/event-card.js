@@ -166,11 +166,11 @@ class EventCard extends Component
                         id="panel1a-header"
                         >
                         <Grid container align="left" className="accordionTitle">
-                            <Grid item sm={7} xs={8}>
+                            <Grid item sm={7} xs={12}>
                                 <p className="eventCardTitle">{this.state.title}</p>
                                 <p className="eventHostName">hosted by {this.state.fullName}</p> 
                             </Grid>
-                            <Grid item sm={5} xs={4} align="left">
+                            <Grid item sm={5} xs={12} align="left">
                                 <div className="event-date-location">
                                     <p class="subInfo">{date.toString()}</p>
                                     <p class="subInfo">Arizona, {this.state.zipcode} </p>
