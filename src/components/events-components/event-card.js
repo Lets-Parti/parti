@@ -110,13 +110,13 @@ class EventCard extends Component
         null
 
         let chatButton = authenticated ? 
-        <Button aria-label="message" color="primary" variant="outlined" onClick={this.openModal}
+        <Button aria-label="message" color="primary" variant="outlined" fullWidth={true} onClick={this.openModal}
             startIcon={<MessageIcon />}
             display='none'>
             Message Host
         </Button>
         :
-        <Button aria-label="message" color="primary" variant="outlined" onClick={this.redirect}
+        <Button aria-label="message" color="primary" variant="outlined" fullWidth={true} onClick={this.redirect}
             startIcon={<MessageIcon />}
             display='none'>
             Message Host
