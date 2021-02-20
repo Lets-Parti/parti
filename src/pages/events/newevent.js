@@ -53,6 +53,10 @@ class NewEvent extends React.Component
         this.getChildrenData = this.getChildrenData.bind(this)
     }
 
+    componentDidMount() {
+        this.addService();  // Handle showing +1 Add services when new event page is loaded
+    }
+
     onSubmitForm()
     {
         let services = []
@@ -247,110 +251,107 @@ class NewEvent extends React.Component
             <div>
                 <Grid align="center">
                     <div className="page-content">
-                        <p className="title">Create Event</p>
-
-                        <div className='general-info-form'>
-                            <p className="question">1. Event Information</p>
-                            <Grid container justify="space-around">
-                                <Grid item sm="7" xs="7" align="left" >
-                                    <TextField
-                                    label="Event Name" 
-                                    variant="outlined" 
-                                    size="small" 
-                                    fullWidth='true'
-                                    name='title'
-                                    value={this.state.title}
-                                    onChange={this.eventChange}
-                                    helperText={this.state.errors.title}
-                                    error={this.state.errors.title ? true : false}
-                                    />
-                                </Grid>
-
-                                <Grid item sm="5" xs="3" align="right">
-                                    <TextField
-                                        label="Zipcode" 
-                                        variant="outlined" 
+                        <p className="title">Create New Events</p>
+                        
+                        <div className="form-box">
+                            <div className='general-info-form'>
+                                <Grid container justify="space-around" spacing={2}>
+                                    <Grid item sm="6" xs="6" align="left" >
+                                        <TextField
+                                        label="Event Name"  
                                         size="small" 
-                                        name='zipcode'
-                                        value={this.state.zipcode}
+                                        fullWidth='true'
+                                        name='title'
+                                        value={this.state.title}
                                         onChange={this.eventChange}
-                                        helperText={this.state.errors.zipcode}
-                                        error={this.state.errors.zipcode ? true : false}
+                                        helperText={this.state.errors.title}
+                                        error={this.state.errors.title ? true : false}
                                         />
-                                </Grid>
-                                <Grid item sm={12} xs={12}>
-                                    <p className="question">2. Event date & time (must be future date).</p>
-                                </Grid>
-                                <Grid item sm="7" xs="7" align="left">
-                                <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                                    <KeyboardDatePicker
-                                        disableToolbar
-                                        variant="inline"
-                                        format="MM/dd/yyyy"
-                                        margin="normal"
-                                        id="date-picker-inline"
-                                        name="date"
-                                        label="Event Date"
-                                        value={this.state.eventdate}
-                                        onChange={this.calendarChange}
-                                        KeyboardButtonProps={{
-                                            'aria-label': 'change date',
-                                        }}
-                                        style={{marginTop: 25}}
-                                        helperText={this.state.errors.eventDate}
-                                        error={this.state.errors.eventDate ? true : false}
-                                        />
-                                    </MuiPickersUtilsProvider>
-                                </Grid>
-                                <Grid item sm="5" xs="5" align="right">
+                                    </Grid>
+
+                                    <Grid item sm="6" xs="6" align="left">
+                                        <TextField
+                                            label="Zipcode" 
+                                            size="small"
+                                            fullWidth='true' 
+                                            name='zipcode'
+                                            value={this.state.zipcode}
+                                            onChange={this.eventChange}
+                                            helperText={this.state.errors.zipcode}
+                                            error={this.state.errors.zipcode ? true : false}
+                                            />
+                                    </Grid>
+                                    <Grid item sm="6" xs="6" align="left">
                                     <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                                        <KeyboardTimePicker
+                                        <KeyboardDatePicker
+                                            disableToolbar
+                                            variant="inline"
+                                            format="MM/dd/yyyy"
+                                            margin="normal"
+                                            id="date-picker-inline"
+                                            fullWidth='true' 
+                                            name="date"
+                                            label="Event Date"
                                             value={this.state.eventdate}
                                             onChange={this.calendarChange}
-                                            variant="inline"
-                                            name="date"
-                                            margin="normal"
-                                            id="time-picker"
-                                            label="Event Time"
                                             KeyboardButtonProps={{
-                                                'aria-label': 'change time',
+                                                'aria-label': 'change date',
                                             }}
                                             style={{marginTop: 25}}
                                             helperText={this.state.errors.eventDate}
                                             error={this.state.errors.eventDate ? true : false}
                                             />
-                                    </MuiPickersUtilsProvider>
-                                </Grid>
+                                        </MuiPickersUtilsProvider>
+                                    </Grid>
+                                    <Grid item sm="6" xs="6" align="left">
+                                        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                                            <KeyboardTimePicker
+                                                value={this.state.eventdate}
+                                                onChange={this.calendarChange}
+                                                variant="inline"
+                                                name="date"
+                                                fullWidth='true' 
+                                                margin="normal"
+                                                id="time-picker"
+                                                label="Event Time"
+                                                KeyboardButtonProps={{
+                                                    'aria-label': 'change time',
+                                                }}
+                                                style={{marginTop: 25}}
+                                                helperText={this.state.errors.eventDate}
+                                                error={this.state.errors.eventDate ? true : false}
+                                                />
+                                        </MuiPickersUtilsProvider>
+                                    </Grid>
 
-                                <Grid item sm={12} xs={12}>
-                                    <p className="question">3. Describe your event.</p>
-                                </Grid>
-                                <Grid item sm="12" xs="12" className="seperator"></Grid>
+                                    <Grid item sm="12" xs="12" className="seperator"></Grid>
 
-                                <Grid item sm="12" xs="12" align="left">
-                                    <TextField
-                                        id="standard-multiline-static"
-                                        placeholder="Event theme, number of people, budget, etc. Providing more details helps us connect you with better suited vendors"
-                                        multiline
-                                        rows={5}
-                                        variant="outlined"
-                                        fullWidth
-                                        name="description"
-                                        onChange={this.eventChange}
-                                        value={this.state.description}
-                                        helperText={this.state.errors.description}
-                                        error={this.state.errors.description ? true : false}
-                                    />
+                                    <Grid item sm="12" xs="12" align="left">
+                                        <TextField
+                                            id="standard-multiline-static"
+                                            placeholder="Describe your event"
+                                            multiline
+                                            rows={5}
+                                            variant="outlined"
+                                            fullWidth
+                                            name="description"
+                                            onChange={this.eventChange}
+                                            value={this.state.description}
+                                            helperText={this.state.errors.description}
+                                            error={this.state.errors.description ? true : false}
+                                        />
+                                    </Grid>
                                 </Grid>
-                            </Grid>
+                            </div>
+                            
+                            <div className="services-form">
+                                <p className="question">Add Services {servicesCounter}</p>
+                                {missingService}
+                                {this.state.serviceComponents}
+                            </div>
+                            {AddServiceButton}
+                            {SubmitButton}
                         </div>
-                        
-                        <div className="services-form">
-                            <p className="question">Services (list of services you're looking for) {servicesCounter} {missingService}</p>
-                            {this.state.serviceComponents}
-                        </div>
-                        {AddServiceButton}
-                        {SubmitButton}
                     </div>
                 </Grid>
             </div>

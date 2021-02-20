@@ -52,38 +52,38 @@ class ServiceForm extends React.Component
     {
         return(
             <div className="service-form">
-                <Grid container>
-                        <Grid item sm="6" xs="10" align="left" >
+                <Grid container spacing={2}>
+                    <Grid container item sm="4" xs="12">
+                        <Grid item sm="12" xs="10">
                             <Select 
-                            options={StaticData.options} 
-                            styles="width:100px;" 
-                            id="service"
-                            value={this.state.service}
-                            onChange={this.handleChangeSelect.bind(this, "service")}/>
+                                options={StaticData.options} 
+                                styles="width:100px;" 
+                                placeholder={"Select a service..."}
+                                id="service"
+                                value={this.state.service}
+                                onChange={this.handleChangeSelect.bind(this, "service")}
+                            />
                         </Grid>
-
-                        <Grid item sm="6" xs="2" align="right">
+                        <Grid item sm="12" xs="2">
                             <IconButton onClick={() => this.props.deleteMethod(this.state.index)}>
                                 <DeleteIcon />
                             </IconButton>
                         </Grid>
-
-                        <Grid item sm="12" xs="12" className="seperator"></Grid>
-
-                        <Grid item sm="12" xs="12" align="left">
-                            <TextField
-                                id="standard-multiline-static"
-                                placeholder="Describe what you're looking for. More details helps us connect you with better suited vendors"
-                                multiline
-                                rows={4}
-                                variant="outlined"
-                                fullWidth
-                                name="description"
-                                onChange={this.eventChange}
-                                value={this.state.description}
-                            />
-                        </Grid>
                     </Grid>
+                    <Grid item sm="8" xs="12">
+                        <TextField
+                            id="standard-multiline-static"
+                            placeholder="Describe what you need"
+                            multiline
+                            rows={4}
+                            variant="outlined"
+                            fullWidth
+                            name="description"
+                            onChange={this.eventChange}
+                            value={this.state.description}
+                        />
+                    </Grid>
+                </Grid>
             </div>
         )
     }
