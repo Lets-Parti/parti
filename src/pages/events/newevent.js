@@ -251,7 +251,7 @@ class NewEvent extends React.Component
             <div>
                 <Grid align="center">
                     <div className="page-content">
-                        <p className="title">Create New Events</p>
+                        <p className="title">Create an Event</p>
                         
                         <div className="form-box">
                             <div className='general-info-form'>
