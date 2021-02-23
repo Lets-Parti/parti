@@ -4,11 +4,23 @@
   display: flex;
 }
 
+.title {
+  color: #31B6EC;
+}
+
+.form-box {
+  border: 1px solid #31B6EC;
+  border-radius: 0.5rem;
+  padding: 2rem;
+}
+
 .question {
   color: grey;
   padding-top: 15px;
   padding-bottom: 20px;
   margin-bottom: 0px;
+  text-decoration: underline;
+  font-size: 20px;
 }
 
 .question2 {
