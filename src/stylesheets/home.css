@@ -5,10 +5,10 @@
   background-position-x: center;
   background-attachment: fixed;
   text-align: center;
-  padding-top: 125px;
+  padding-top: 75px;
   padding-bottom: 125px;
-  padding-left: 30%;
-  padding-right: 30%;
+  padding-left: 25%;
+  padding-right: 25%;
   height: 800px;
 }
 
@@ -17,22 +17,26 @@
   font-family: "Montserrat", sans-serif;
   font-style: normal;
   font-weight: bold;
-  font-size: 110px;
-  line-height: 100px;
+  font-size: 75px;
   text-shadow: 0px 2px 30px rgba(49, 182, 236, 0.6);
   margin-top: 0px;
   margin-bottom: 50px;
 }
 
 .bannerPitch {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   margin-top: 5px;
   margin-bottom: 5px;
+  padding-left: 25px;
+  padding-right: 25px;
+  line-height: 2rem;
+  color: #ffffff;
 }
 
 .bannerButton {
   margin-top: 20px;
   margin-bottom: 20px;
+  padding-bottom: 50px;
 }
 
 .homePage {
@@ -104,14 +108,14 @@
 .about-text-xs {
   display: none;
   font-size: 24px;
-  line-height: 29px;
+  line-height: 30px;
   font-weight: normal;
 }
 
 .about-text-sm {
   display: block;
   font-size: 24px;
-  line-height: 29px;
+  line-height: 2.5rem;
   font-weight: normal;
 }
 
@@ -137,7 +141,7 @@
     background-position-x: center;
     background-attachment: sticky;
     text-align: center;
-    padding-top: 125px;
+    padding-top: 50px;
     padding-bottom: 125px;
     padding-left: 10px;
     padding-right: 10px;
@@ -146,14 +150,14 @@
   }
 
   .bannerTitle {
-    font-size: 4.5rem;
-    margin-top: 5px;
+    font-size: 3.5rem;
+    margin-top: 0px;
     margin-bottom: 40px;
-    line-height: 100px;
+    line-height: 4rem;
   }
 
   .subBannerTitle {
-    font-size: 2.5rem;
+    font-size: 2rem;
     text-align: center;
     margin-bottom: 50px;
     font-size: 40px;
@@ -162,6 +166,11 @@
 
   .subBannerButton {
     margin-top: 40px;
+  }
+
+  .bannerPitch {
+    padding-left: 0px;
+    padding-right: 0px;
   }
 
   .home-sub-black {
@@ -185,6 +194,7 @@
     color: #222222;
     padding: 25px;
     padding-bottom: 80px;
+    /* width: 100%; */
     width: 100%;
     font-weight: normal;
   }

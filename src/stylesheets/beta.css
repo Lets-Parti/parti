@@ -19,26 +19,19 @@
 }
 
 .indiana-frame {
-  width: 400px;
-  margin-right: 15px;
-  margin-left: 15px;
-  height: 800px;
+  width: 280px;
+  margin-right: 70px;
+  margin-left: 70px;
+  height: 500px;
 }
 
 .indiana-scroll {
-  margin-bottom: 80px;
-}
-
-.indiana-scroll-about {
-  height: 370px;
+  margin-bottom: 0px;
 }
 
 .indiana-frame-picture {
   border-radius: 0.5rem;
-  width: 400px;
-  margin-right: 15px;
-  height: 800px;
-  object-fit: cover;
+  height: 100%;
 }
 
 .intro {
@@ -75,18 +68,33 @@
     margin-bottom: 300px;
   }
 
-  .indiana-frame-picture {
-    border-radius: 0.5rem;
-    width: 200px;
-    margin-right: 15px;
-    height: 400px;
-    object-fit: cover;
+  .scroll-container {
+    display: flex;
+    margin: auto;
+    padding-bottom: 0px;
+    padding-top: 10px;
+    cursor: grab;
+    padding-left: 0px;
+    align-items: center;
+    align-content: center;
+    margin-left: 0px;
+    margin-right: 0px;
   }
 
   .indiana-frame {
-    width: 200px;
-    margin-right: 60px;
-    height: 400px;
+    width: 280px;
+    margin-right: 10px;
+    margin-left: 10px;
+    height: 22rem;
+  }
+
+  .indiana-scroll {
+    margin-bottom: 0px;
+    width: 20rem;
+  }
+
+  .indiana-frame-picture {
+    border-radius: 0.5rem;
   }
 
   .intro {
