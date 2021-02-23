@@ -1,5 +1,5 @@
 .home-introduction {
-  background: url("../resources/backgrounds/hero_img_2.jpg");
+  background: url("../resources/backgrounds/hero_img.jpg");
   background-size: cover;
   background-position-y: 0rem;
   background-position-x: center;
@@ -135,7 +135,7 @@
 
 @media (max-width: 900px) {
   .home-introduction {
-    background: url("../resources/backgrounds/hero_img_2.jpg");
+    background: url("../resources/backgrounds/hero_img.jpg");
     background-size: cover;
     background-position-y: 0rem;
     background-position-x: center;

@@ -153,7 +153,7 @@ class Home extends React.Component {
 
     const frames_vendors = [frame_seven, frame_eight]; 
     const frames_clients = [frame_nine, frame_ten];
-
+  
     // Conditional Introduction Section of Homepage
     const client_introduction = (
       <Grid item sm={12} xs={12} className="home-introduction" align="left">
@@ -211,12 +211,6 @@ class Home extends React.Component {
         </div>
       </Grid>
     )
-    let conditional_introduction = null;
-    if (authenticated && authenticatedUser.type === "service") {
-      conditional_introduction = service_introduction;
-    } else {
-      conditional_introduction = client_introduction;
-    }
 
     // Conditional Discover Section of Homepage
     const client_discover = (
@@ -276,7 +270,7 @@ class Home extends React.Component {
     let homepage_contents = (
       <div className="homePage">
           <Grid container spacing={0}>
-            {conditional_introduction}
+            {client_introduction}
             <Grid container align="center">
               <div id="about" className="home-sub-white">
                 <Grid item sm={12} xs={12}>
