@@ -121,7 +121,10 @@ class Discover extends React.Component {
 
         let dataDisplay
         if (isLoading) {
-            dataDisplay = <CircularProgress />;
+            dataDisplay = 
+            <Grid item sm={12} xs={12}>
+                <CircularProgress />;
+            </Grid>
         } else {
             dataDisplay = []
             if(discover.length === 0)
